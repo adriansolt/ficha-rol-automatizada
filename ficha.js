@@ -62,9 +62,9 @@ if(Number(event.value) <= 0) {
 }
 */
 
-// Validate ventaja (1-7)
+// Validate ventaja
 /*
-var num_ventaja = 1;
+var num_ventaja = event.target.name.substr(7,1);
 if(
     event.value === "Afinidad animal" ||
     event.value === "Ambidiestría" ||
@@ -72,11 +72,9 @@ if(
     event.value === "Aprendizaje innato en una materia" ||
     event.value === "Apto en una materia" ||
     event.value === "Dificil de matar" ||
-    event.value === "Encanto" ||
     event.value === "Fondos iniciales" ||
     event.value === "Habilidoso en destreza" ||
     event.value === "Mente fria" ||
-    event.value === "Inquietante" ||
     event.value === "Seductor" ||
     event.value === "Sentidos agudos" ||
     event.value === "Al límite" ||
@@ -90,6 +88,7 @@ if(
   ) 
   {
     this.getField("ventaja" + num_ventaja + "_coste").value = 2;
+
   } else if (
     event.value === "Aprendizaje innato en llevar armadura II" ||
     event.value === "Aprendizaje innato en una materia II" ||
@@ -123,7 +122,7 @@ if(
 
 // Validate desventaja (1-4)
 /*
-var num_desventaja = 1;
+var num_desventaja = event.target.name.substr(10,1);
 if(
     event.value === "-2 a una característica" ||
     event.value === "Adicción/vicio grave" ||
@@ -214,7 +213,15 @@ var lista_habilidades = [
 var i = 0;
 var j = 0;
 var k = 0;
+while (j < lista_habilidades.length) {
+  var habilidad = lista_habilidades[j];
+  var esp_habilidad = this.getField("esp_" + habilidad);
+  esp_habilidad.value = "";
+  j++
+}
+j = 0;
 
+var ctm = false;
 var puntos_base = 0;
 
 var lista_atr = ["agi", "con", "des", "fue", "int", "per", "pod", "vol"];
@@ -294,44 +301,44 @@ var cat_llA = this.getField("cat_llA");
 switch (categoria.value) {
   case "Guerrero":
     coste_vida.value = 2;
-    cat_vida.value = 4 * Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = 4 * (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 1;
-    cat_ataque.value = Math.floor(nivel.value / 2);
-    cat_parada.value = Math.floor(nivel.value / 2);
-    cat_llA.value = 2 * Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
+    cat_parada.value = (nivel.value / 2);
+    cat_llA.value = 2 * (nivel.value / 2);
     break;
   case "Guerrero Acróbata":
     coste_vida.value = 4;
-    cat_vida.value = 2 * Math.floor(nivel.value / 2);
-    cat_turno.value = 2 * Math.floor(nivel.value / 2);
+    cat_vida.value = 2 * (nivel.value / 2);
+    cat_turno.value = 2 * (nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = Math.floor(nivel.value / 2);
-    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
+    cat_parada.value = (nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Paladín":
     coste_vida.value = 3;
-    cat_vida.value = 3 * Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = 3 * (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
-    cat_parada.value = Math.floor(nivel.value / 2);
-    cat_llA.value = 2 * Math.floor(nivel.value / 2);
+    cat_parada.value = (nivel.value / 2);
+    cat_llA.value = 2 * (nivel.value / 2);
     break;
   case "Paladín Oscuro":
     coste_vida.value = 3;
-    cat_vida.value = 3 * Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = 3 * (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
     cat_parada.value = 0;
-    cat_llA.value = Math.floor(nivel.value / 2);
+    cat_llA.value = (nivel.value / 2);
     break;
   case "Tao":
     coste_vida.value = 4;
-    cat_vida.value = 2 * Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = 2 * (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
     cat_parada.value = 0;
@@ -339,44 +346,44 @@ switch (categoria.value) {
     break;
   case "Explorador":
     coste_vida.value = 4;
-    cat_vida.value = 2 * Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = 2 * (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Sombra":
     coste_vida.value = 4;
-    cat_vida.value = Math.floor(nivel.value / 2);
-    cat_turno.value = 2 * Math.floor(nivel.value / 2);
+    cat_vida.value = (nivel.value / 2);
+    cat_turno.value = 2 * (nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = Math.floor(nivel.value / 2);
-    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
+    cat_parada.value = (nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Ladrón":
     coste_vida.value = 4;
-    cat_vida.value = Math.floor(nivel.value / 2);
-    cat_turno.value = 2 * Math.floor(nivel.value / 2);
+    cat_vida.value = (nivel.value / 2);
+    cat_turno.value = 2 * (nivel.value / 2);
     coste_llA.value = 3;
     cat_ataque.value = 0;
-    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_parada.value = (nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Asesino":
     coste_vida.value = 4;
-    cat_vida.value = Math.floor(nivel.value / 2);
-    cat_turno.value = 2 * Math.floor(nivel.value / 2);
+    cat_vida.value = (nivel.value / 2);
+    cat_turno.value = 2 * (nivel.value / 2);
     coste_llA.value = 3;
-    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_ataque.value = (nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Ilusionista":
     coste_vida.value = 4;
-    cat_vida.value = Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 3;
     cat_ataque.value = 0;
     cat_parada.value = 1;
@@ -384,8 +391,8 @@ switch (categoria.value) {
     break;
   case "Novel":
     coste_vida.value = 4;
-    cat_vida.value = Math.floor(nivel.value / 2);
-    cat_turno.value = Math.floor(nivel.value / 2);
+    cat_vida.value = (nivel.value / 2);
+    cat_turno.value = (nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
     cat_parada.value = 0;
@@ -393,6 +400,93 @@ switch (categoria.value) {
     break;
   default:
     break;
+}
+
+// Ventajas
+i = 1;
+while(i < 8) {
+  switch (this.getField("ventaja"+i).value) {
+    case "Afinidad animal":
+      this.getField("esp_animales").value = Number(this.getField("esp_animales").value) + 12;
+      break;
+    case "Aprendizaje innato en llevar armadura":
+      this.getField("esp_llA").value = (nivel.value / 2);
+      break;
+    case "Aprendizaje innato en llevar armadura II":
+      this.getField("esp_llA").value = 2 * (nivel.value / 2);
+      break;
+    case "Aprendizaje innato en llevar armadura III":
+      this.getField("esp_llA").value = 3 * (nivel.value / 2);
+      break;
+    case "Aprendizaje innato en una materia":
+      this.getField("esp_llA").value = 3 * (nivel.value / 2);
+      break;
+    case "Aprendizaje innato en una materia II":
+      this.getField("esp_llA").value = 3 * (nivel.value / 2);
+      break;
+    case "Dificil de matar":
+      this.getField("esp_vida").value = 2 * (nivel.value / 2);
+      break;
+    case "Dificil de matar II":
+      this.getField("esp_vida").value = 4 * (nivel.value / 2);
+      break;
+    case "Dificil de matar III":
+      this.getField("esp_vida").value = 6 * (nivel.value / 2);
+      break;
+    case "Fondos iniciales":
+      break;
+    case "Fondos iniciales II":
+      break;
+    case "Fondos iniciales III":
+      break;
+    case "Habilidoso en destreza":
+      this.getField("esp_tmanos").value = Number(this.getField("esp_tmanos").value) + 12;
+      break;
+    case "Mente fria":
+      this.getField("esp_frialdad").value = Number(this.getField("esp_frialdad").value) + 12;
+      break;
+      case "Seductor":
+      this.getField("esp_persuasion").value = Number(this.getField("esp_persuasion").value) + 12;
+      break;
+    case "Sentidos agudos":
+      this.getField("esp_ver").value = Number(this.getField("esp_ver").value) + 6;
+      this.getField("esp_escuchar").value = Number(this.getField("esp_escuchar").value) + 6;
+      break;
+    case "Reflejos rápidos":
+      this.getField("especial_turno").value = Number(this.getField("especial_turno").value) + 5;
+      break;
+    case "Regeneración mejorada":
+      this.getField("reg_especial").value = Number(this.getField("reg_especial").value) + 2;
+      break;
+    case "Resistencia física excepcional":
+      this.getField("res_fisica_esp").value = Number(this.getField("res_fisica_esp").value) + 5;
+      this.getField("res_enfermedades_esp").value = Number(this.getField("res_enfermedades_esp").value) + 5;
+      this.getField("res_venenos_esp").value = Number(this.getField("reg_especial").value) + 5;
+      break;
+    case "Conecedor de todas las materias":
+      ctm = true;
+      break;
+    case "Reflejos rápidos II":
+      this.getField("especial_turno").value = Number(this.getField("especial_turno").value) + 9;
+      break;
+    case "Regeneración mejorada II":
+      this.getField("reg_especial").value = Number(this.getField("reg_especial").value) + 4;
+      break;
+    case "Resistencia física excepcional II":
+      this.getField("res_fisica_esp").value = Number(this.getField("res_fisica_esp").value) + 10;
+      this.getField("res_enfermedades_esp").value = Number(this.getField("res_enfermedades_esp").value) + 10;
+      this.getField("res_venenos_esp").value = Number(this.getField("reg_especial").value) + 10;
+      break;
+    case "Reflejos rápidos III":
+      this.getField("especial_turno").value = Number(this.getField("especial_turno").value) + 12;
+      break;
+    case "Regeneración mejorada III":
+      this.getField("reg_especial").value = Number(this.getField("reg_especial").value) + 6;
+      break;
+    default:
+      break;
+  }
+  i++;
 }
 
 var lista_vida = [
@@ -421,17 +515,20 @@ var lista_vida = [
 var base_vida = this.getField("base_vida");
 var mult_vida = this.getField("mult_vida");
 var con_actual = this.getField("con_actual");
+var con_bono = this.getField("con_bono");
 var totales_vida = this.getField("totales_vida");
 var actuales_vida = this.getField("actuales_vida");
+var esp_vida = this.getField("esp_vida");
 // var biolimite = this.getField("biolimite");
 
 base_vida.value = lista_vida[Number(con_actual.value) - 1];
 // biolimite.value = -1 * Number(con_actual.value);
 
-mult_vida.value = this.getField("n_multiplos").value * con_actual.value;
+mult_vida.value = this.getField("n_multiplos").value * con_bono.value;
 
 totales_vida.value =
   Number(base_vida.value) +
+  Number(esp_vida.value) +
   Number(this.getField("cat_vida").value) +
   Number(mult_vida.value);
 
@@ -492,6 +589,7 @@ this.getField("base_llA").value = Math.floor(
 
 this.getField("final_llA").value =
   Number(this.getField("base_llA").value) +
+  Number(this.getField("esp_llA").value) +
   Number(this.getField("fue_bono").value) +
   Number(this.getField("cat_llA").value);
 // }
@@ -575,13 +673,17 @@ while (i < lista_habilidades.length) {
   var esp = this.getField("esp_" + habilidad);
   var cat_nivel = this.getField("cat_nivel_" + habilidad);
   var final_habilidad = this.getField("final_" + habilidad);
-  var base_hab_final =
-    Number(base_habilidad.value) === 0 ? -6 : Number(base_habilidad.value);
+  if(ctm) {
+    esp.value = Number(esp.value) + 2;
+  }
+  // var base_hab_final =
+    // base_habilidad.value === "" ? -6 : Number(base_habilidad.value);
   final_habilidad.value =
-    Number(base_hab_final) +
     Number(bono.value) +
     Number(esp.value) +
     Number(cat_nivel.value);
+    final_habilidad.value = Number(final_habilidad.value) + (ctm ? Number(base_habilidad.value) : -6);
+  
   i++;
 }
 
@@ -676,3 +778,7 @@ this.getField("res_venenos_final").value =
   presencia.value +
   Number(this.getField("con_bono").value) +
   Number(this.getField("res_venenos_esp").value);
+
+
+  
+  
