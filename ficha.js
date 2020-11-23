@@ -62,6 +62,106 @@ if(Number(event.value) <= 0) {
 }
 */
 
+// Validate ventaja (1-7)
+/*
+var num_ventaja = 1;
+if(
+    event.value === "Afinidad animal" ||
+    event.value === "Ambidiestría" ||
+    event.value === "Aprendizaje innato en llevar armadura" ||
+    event.value === "Aprendizaje innato en una materia" ||
+    event.value === "Apto en una materia" ||
+    event.value === "Dificil de matar" ||
+    event.value === "Encanto" ||
+    event.value === "Fondos iniciales" ||
+    event.value === "Habilidoso en destreza" ||
+    event.value === "Mente fria" ||
+    event.value === "Inquietante" ||
+    event.value === "Seductor" ||
+    event.value === "Sentidos agudos" ||
+    event.value === "Al límite" ||
+    event.value === "Armadura natural" ||
+    event.value === "Buena suerte" ||
+    event.value === "Reflejos rápidos" ||
+    event.value === "Regeneración mejorada" ||
+    event.value === "Resistencia física excepcional" ||
+    event.value === "Sueño ligero" ||
+    event.value === "Tocado por el destino" 
+  ) 
+  {
+    this.getField("ventaja" + num_ventaja + "_coste").value = 2;
+  } else if (
+    event.value === "Aprendizaje innato en llevar armadura II" ||
+    event.value === "Aprendizaje innato en una materia II" ||
+    event.value === "Aprendizaje innato en un campo" ||
+    event.value === "Apto en un campo" ||
+    event.value === "Apto en una materia II" ||
+    event.value === "Conecedor de todas las materias" ||
+    event.value === "Dificil de matar II" ||
+    event.value === "Fondos iniciales II" ||
+    event.value === "Reflejos rápidos II" ||
+    event.value === "Regeneración mejorada II" ||
+    event.value === "Resistencia física excepcional II" 
+  ) 
+  {
+    this.getField("ventaja" + num_ventaja + "_coste").value = 4;
+  } else if (
+    event.value === "Aprendizaje innato en llevar armadura III" ||
+    event.value === "Aprendizaje innato en un campo II" ||
+    event.value === "Dificil de matar III" ||
+    event.value === "Fondos iniciales III" ||
+    event.value === "Reflejos rápidos III" ||
+    event.value === "Regeneración mejorada III" 
+  ) 
+  {
+    this.getField("ventaja" + num_ventaja + "_coste").value = 6;
+  } else 
+  {
+    this.getField("ventaja" + num_ventaja + "_coste").value = "";
+  }
+*/
+
+// Validate desventaja (1-4)
+/*
+var num_desventaja = 1;
+if(
+    event.value === "-2 a una característica" ||
+    event.value === "Adicción/vicio grave" ||
+    event.value === "Alergia grave" ||
+    event.value === "Debilidad física" ||
+    event.value === "Desafortunado" ||
+    event.value === "Endeble" ||
+    event.value === "Extremidad atrofiada" ||
+    event.value === "Fobia grave" ||
+    event.value === "Insufrible" ||
+    event.value === "Lenta curación" ||
+    event.value === "Mala suerte" ||
+    event.value === "Maldición" ||
+    event.value === "Miopía" ||
+    event.value === "Mudo" ||
+    event.value === "Patoso" ||
+    event.value === "Reacción lenta" ||
+    event.value === "Salud enfermiza" ||
+    event.value === "Sordo" ||
+    event.value === "Sueño profundo" ||
+    event.value === "Vulnerable a los venenos" ||
+    event.value === "Vulnerable al dolor" ||
+    event.value === "Vulnerable al frío" ||
+    event.value === "Vulnerable al calor" 
+  ) {
+    this.getField("desventaja" + num_desventaja + "_coste").value = 2;
+  } else if(
+    event.value === "Enfermedad grave" ||
+    event.value === "Maldición II" ||
+    event.value === "Reacción lenta II"
+  ) { 
+    this.getField("desventaja" + num_desventaja + "_coste").value = 4;
+  } else {
+    this.getField("desventaja" + num_desventaja + "_coste").value = "";
+  }
+
+*/
+
 var lista_habilidades = [
   "acrobacias",
   "atletismo",
@@ -115,49 +215,68 @@ var i = 0;
 var j = 0;
 var k = 0;
 
+var puntos_base = 0;
+
 var lista_atr = ["agi", "con", "des", "fue", "int", "per", "pod", "vol"];
 var lista_bonos = [
-  -30,
-  -20,
-  -10,
+  -6,
   -5,
+  -4,
+  -4,
+  -3,
+  -3,
+  -2,
+  -1,
+  -1,
   0,
-  5,
-  5,
-  10,
-  10,
-  15,
-  20,
-  20,
-  25,
-  25,
-  30,
-  35,
-  35,
-  40,
-  40,
-  45,
+  1,
+  1,
+  1,
+  1,
+  2,
+  2,
+  2,
+  3,
+  3,
+  4,
 ];
-var puntos_gastados = 3 + Math.floor(Number(this.getField("nivel").value) / 2);
+var puntos_gastados = 6 + Math.floor(Number(this.getField("nivel").value) / 2);
 i = 0;
 while (i < lista_atr.length) {
   var atr = lista_atr[i];
   var atr_actual = this.getField(atr + "_actual");
-  var atr_puntos = this.getField(atr + "_puntos");
-  atr_actual.value =
-    Number(this.getField(atr + "_base").value) + atr_puntos.value;
+  var atr_base = this.getField(atr + "_base");
+  var atr_puntos = Number(atr_actual.value) - Number(atr_base.value);
   this.getField(atr + "_bono").value =
     lista_bonos[Number(atr_actual.value) - 1];
-  puntos_gastados -= atr_puntos.value;
+  puntos_gastados -= atr_puntos;
+  puntos_base += atr_base.value === 20 ? 24 : atr_base.value;
   i++;
 }
 
-this.getField("atr_restante").value = Number(puntos_gastados);
+puntos_gastados =
+  puntos_gastados -
+  Number(this.getField("ventaja1_coste").value) -
+  Number(this.getField("ventaja2_coste").value) -
+  Number(this.getField("ventaja3_coste").value) -
+  Number(this.getField("ventaja4_coste").value) -
+  Number(this.getField("ventaja5_coste").value) -
+  Number(this.getField("ventaja6_coste").value) -
+  Number(this.getField("ventaja7_coste").value) +
+  Number(this.getField("desventaja1_coste").value) +
+  Number(this.getField("desventaja2_coste").value) +
+  Number(this.getField("desventaja3_coste").value) +
+  Number(this.getField("desventaja4_coste").value);
+
+// Categorias base
+this.getField("puntos_base").value = 90 - puntos_base;
+
+this.getField("puntos_creacion").value = Number(puntos_gastados);
 
 // Nivel
-var base = Number(this.getField("nivel").value) == 0 ? 400 : 500;
+var base = Number(this.getField("nivel").value) == 0 ? 80 : 100;
 this.getField("pd_totales").value =
-  Number(this.getField("nivel").value) * 100 + base;
+  Number(this.getField("nivel").value) * 10 + base;
 
 // Categoria
 var categoria = this.getField("categoria");
@@ -174,99 +293,99 @@ var cat_llA = this.getField("cat_llA");
 
 switch (categoria.value) {
   case "Guerrero":
-    coste_vida.value = 10;
-    cat_vida.value = 20 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 2;
+    cat_vida.value = 4 * Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 1;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
-    cat_parada.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
-    cat_llA.value = 10 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_llA.value = 2 * Math.floor(nivel.value / 2);
     break;
   case "Guerrero Acróbata":
-    coste_vida.value = 20;
-    cat_vida.value = 10 * nivel.value;
-    cat_turno.value = 10 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = 2 * Math.floor(nivel.value / 2);
+    cat_turno.value = 2 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
-    cat_parada.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_parada.value = Math.floor(nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Paladín":
-    coste_vida.value = 15;
-    cat_vida.value = 15 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 3;
+    cat_vida.value = 3 * Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
-    cat_parada.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
-    cat_llA.value = 10 * nivel.value;
+    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_llA.value = 2 * Math.floor(nivel.value / 2);
     break;
   case "Paladín Oscuro":
-    coste_vida.value = 15;
-    cat_vida.value = 15 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 3;
+    cat_vida.value = 3 * Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
-    cat_llA.value = 5 * nivel.value;
+    cat_llA.value = Math.floor(nivel.value / 2);
     break;
   case "Tao":
-    coste_vida.value = 20;
-    cat_vida.value = 10 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = 2 * Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Explorador":
-    coste_vida.value = 20;
-    cat_vida.value = 10 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = 2 * Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Sombra":
-    coste_vida.value = 20;
-    cat_vida.value = 5 * nivel.value;
-    cat_turno.value = 10 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = Math.floor(nivel.value / 2);
+    cat_turno.value = 2 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
-    cat_parada.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_parada.value = Math.floor(nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Ladrón":
-    coste_vida.value = 20;
-    cat_vida.value = 5 * nivel.value;
-    cat_turno.value = 10 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = Math.floor(nivel.value / 2);
+    cat_turno.value = 2 * Math.floor(nivel.value / 2);
     coste_llA.value = 3;
     cat_ataque.value = 0;
-    cat_parada.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_parada.value = Math.floor(nivel.value / 2);
     cat_llA.value = 0;
     break;
   case "Asesino":
-    coste_vida.value = 20;
-    cat_vida.value = 5 * nivel.value;
-    cat_turno.value = 10 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = Math.floor(nivel.value / 2);
+    cat_turno.value = 2 * Math.floor(nivel.value / 2);
     coste_llA.value = 3;
-    cat_ataque.value = 5 * nivel.value > 50 ? 50 : 5 * nivel.value;
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Ilusionista":
-    coste_vida.value = 20;
-    cat_vida.value = 5 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 3;
     cat_ataque.value = 0;
-    cat_parada.value = 5;
+    cat_parada.value = 1;
     cat_llA.value = 0;
     break;
   case "Novel":
-    coste_vida.value = 20;
-    cat_vida.value = 5 * nivel.value;
-    cat_turno.value = 5 * nivel.value;
+    coste_vida.value = 4;
+    cat_vida.value = Math.floor(nivel.value / 2);
+    cat_turno.value = Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     cat_ataque.value = 0;
     cat_parada.value = 0;
@@ -277,26 +396,26 @@ switch (categoria.value) {
 }
 
 var lista_vida = [
-  5,
-  20,
-  40,
-  55,
-  70,
-  85,
-  95,
-  110,
-  120,
-  135,
-  150,
-  160,
-  175,
-  185,
-  200,
-  215,
-  225,
-  240,
-  250,
-  265,
+  1,
+  3,
+  4,
+  7,
+  8,
+  10,
+  11,
+  13,
+  14,
+  16,
+  17,
+  18,
+  19,
+  21,
+  22,
+  23,
+  24,
+  26,
+  28,
+  30,
 ];
 
 var base_vida = this.getField("base_vida");
@@ -304,24 +423,26 @@ var mult_vida = this.getField("mult_vida");
 var con_actual = this.getField("con_actual");
 var totales_vida = this.getField("totales_vida");
 var actuales_vida = this.getField("actuales_vida");
-var biolimite = this.getField("biolimite");
+// var biolimite = this.getField("biolimite");
 
 base_vida.value = lista_vida[Number(con_actual.value) - 1];
-biolimite.value = -1 * Number(con_actual.value);
+// biolimite.value = -1 * Number(con_actual.value);
 
 mult_vida.value = this.getField("n_multiplos").value * con_actual.value;
 
 totales_vida.value =
-  (Number(base_vida.value) +
-    Number(this.getField("cat_vida").value) +
-    Number(mult_vida.value)) /
-  5;
+  Number(base_vida.value) +
+  Number(this.getField("cat_vida").value) +
+  Number(mult_vida.value);
 
 if (actuales_vida.value > totales_vida.value) {
   actuales_vida.value = totales_vida.value;
-} else if (actuales_vida.value < biolimite.value) {
-  actuales_vida.value = biolimite.value;
+} else if (actuales_vida.value < 0) {
+  actuales_vida.value = 0;
 }
+// else if (actuales_vida.value < biolimite.value) {
+//   actuales_vida.value = biolimite.value;
+// }
 
 this.getField("des_agi_bono").value = Math.max(
   this.getField("des_bono").value,
@@ -455,7 +576,7 @@ while (i < lista_habilidades.length) {
   var cat_nivel = this.getField("cat_nivel_" + habilidad);
   var final_habilidad = this.getField("final_" + habilidad);
   var base_hab_final =
-    Number(base_habilidad.value) === 0 ? -30 : Number(base_habilidad.value);
+    Number(base_habilidad.value) === 0 ? -6 : Number(base_habilidad.value);
   final_habilidad.value =
     Number(base_hab_final) +
     Number(bono.value) +
@@ -469,51 +590,18 @@ var reg_base = this.getField("reg_base");
 var reg_final = this.getField("reg_final");
 var reg_pv = this.getField("reg_pv");
 
-if (Number(con_actual.value) === 1 || Number(con_actual.value) === 2) {
+if (Number(con_actual.value) >= 1 && Number(con_actual.value) <= 4) {
   reg_base.value = 0;
-} else if (Number(con_actual.value) >= 3 || Number(con_actual.value) <= 7) {
+} else if (Number(con_actual.value) >= 5 && Number(con_actual.value) <= 14) {
   reg_base.value = 1;
-} else if (Number(con_actual.value) === 8 || Number(con_actual.value) === 9) {
+} else if (Number(con_actual.value) >= 15 && Number(con_actual.value) <= 19) {
   reg_base.value = 2;
 } else {
-  switch (Number(con_actual.value)) {
-    case 10:
-      reg_base.value = 3;
-      break;
-    case 11:
-      reg_base.value = 4;
-      break;
-    case 12:
-      reg_base.value = 5;
-      break;
-    case 13:
-      reg_base.value = 6;
-      break;
-    case 14:
-      reg_base.value = 7;
-      break;
-    case 15:
-      reg_base.value = 8;
-      break;
-    case 16:
-      reg_base.value = 9;
-      break;
-    case 17:
-      reg_base.value = 10;
-      break;
-    case 18:
-      reg_base.value = 11;
-      break;
-    case 19:
-    case 20:
-      reg_base.value = 12;
-      break;
-    default:
-      break;
-  }
+  reg_base.value = 3;
 }
 
-reg_final.value = Number(this.getField("reg_esp").value) + Number(reg_base.value);
+reg_final.value =
+  Number(this.getField("reg_esp").value) + Number(reg_base.value);
 
 switch (reg_final.value) {
   case 1:
@@ -543,39 +631,6 @@ switch (reg_final.value) {
   case 9:
     reg_pv.value = 100;
     break;
-  case 10:
-    // reg_pv.value = 2;
-    // break;
-  case 11:
-    // reg_pv.value = 2;
-    // break;
-  case 12:
-    // reg_pv.value = 2;
-    // break;
-  case 13:
-    // reg_pv.value = 2;
-    // break;
-  case 14:
-    // reg_pv.value = 2;
-    // break;
-  case 15:
-    // reg_pv.value = 2;
-    // break;
-  case 16:
-    // reg_pv.value = 2;
-    // break;
-  case 17:
-    // reg_pv.value = 2;
-    // break;
-  case 18:
-    // reg_pv.value = 2;
-    // break;
-  case 19:
-    // reg_pv.value = 2;
-    // break;
-  case 20:
-    reg_pv.value = 100;
-    break;
   default:
     break;
 }
@@ -590,13 +645,14 @@ var arma2_vel = this.getField("arma2_vel");
 var arma_vel = this.getField("arma_vel");
 
 arma_vel.value = Number(arma1_vel.value) + Number(arma2_vel.value);
-arma1_dfinal.value = (Number(arma1_dbase.value) + Number(this.getField("fue_bono").value)) / 10;
-arma2_dfinal.value = (Number(arma2_dbase.value) + Number(this.getField("fue_bono").value)) / 10;
-
+arma1_dfinal.value =
+  Number(arma1_dbase.value) + Number(this.getField("fue_bono").value);
+arma2_dfinal.value =
+  Number(arma2_dbase.value) + Number(this.getField("fue_bono").value);
 
 // Turno
-this.getField("final_turno").value = 
-  Number(this.getField("armadura_vel").value) +  
+this.getField("final_turno").value =
+  Number(this.getField("armadura_vel").value) +
   Number(this.getField("agi_bono").value) +
   Number(this.getField("des_bono").value) +
   Number(this.getField("arma_vel").value) +
@@ -605,9 +661,18 @@ this.getField("final_turno").value =
 
 // Presencia
 var presencia = this.getField("presencia");
-presencia.value = 25 + (nivel.value*5);
+presencia.value = 5 + nivel.value;
 
 // Resistencias
-this.getField("res_fisica_final").value = presencia.value + Number(this.getField("con_bono").value) + Number(this.getField("res_fisica_esp").value);
-this.getField("res_enfermedades_final").value = presencia.value + Number(this.getField("con_bono").value) + Number(this.getField("res_enfermedades_esp").value);
-this.getField("res_venenos_final").value = presencia.value + Number(this.getField("con_bono").value) + Number(this.getField("res_venenos_esp").value);
+this.getField("res_fisica_final").value =
+  presencia.value +
+  Number(this.getField("con_bono").value) +
+  Number(this.getField("res_fisica_esp").value);
+this.getField("res_enfermedades_final").value =
+  presencia.value +
+  Number(this.getField("con_bono").value) +
+  Number(this.getField("res_enfermedades_esp").value);
+this.getField("res_venenos_final").value =
+  presencia.value +
+  Number(this.getField("con_bono").value) +
+  Number(this.getField("res_venenos_esp").value);
