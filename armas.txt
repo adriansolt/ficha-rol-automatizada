@@ -1,4 +1,4 @@
-ARMA                    Daño Turno FUE R. Crítico 1 Crítico 2 Tipo de arma        Especial                         Enterz. Rot. Pres.
+ARMA                    DAÑO TURNO FUE R. CRÍTICO 1 CRÍTICO 2 TIPO DE ARMA        ESPECIAL                         ENTERZ. ROT. PRES.
 Alabarda                60   -15   6/11   FIL       CON       Asta / Mandoble     A dos manos                      15      4    20
 Arpón                   35   -5    5      PEN                 Asta                A una o dos manos, Lanzable      11      0    15
 Cadena                  25   +0    6      CON                 Cuerda              Compleja, Presa (Fuerza 8)       13      2    15
@@ -48,3 +48,31 @@ Azada                   30   -20   4      FIL       CON       Hacha             
 Hoz                     35   -10   4      FIL       PEN       Arma corta                                           8       0    15
 Pico                    40   -20   5      PEN                 Arma corta                                           10      3    15
 Antorcha                20   -10   4      CON       CAL       Maza                                                 10     -2    20
+
+NOMBRE                      REQ. DE ARMADURA   PENALIZADOR NATURAL   RESTR. AL MOV.   ENTEREZA   PRESEN.   CLASE
+Camisola acolchada          0                  -5                    0                10         25        Blanda
+Camisola de cuero           0                   0                    0                12         25        Blanda
+Gabardina completa          0                  -5                    0                10         25        Blanda
+Camisola de piel            10                 -10                   0                10         25        Blanda
+Completa de cuero           10                  0                    1                12         25        Blanda
+Pero de cuero endurecido    20                 -10                   0                13         25        Dura
+Peto de cuero tachonado     25                 -10                   1                14         25        Dura
+Mallas completa             30                 -15                   1                15         30        Blanda
+Peto de metal               40                 -15                   1                16         30        Dura
+Completa de piezas          50                 -20                   2                15         30        Dura
+Camisola de anillas         60                 -20                   2                15         30        Blanda
+Semicompleta de metal       70                 -20                   3                16         35        Dura
+Escamas completa            80                 -25                   3                17         35        Dura
+Placas completa             90                 -35                   4                17         40        Dura
+Completa                    100                -50                   4                18         45        Dura
+Completa pesada             120                -60                   5                19         45        Dura
+Completa de campaña pesada  150                -70                   6                20         50        Dura
+
+NOMBRE                      REQ. DE ARMADURA   PENALIZADOR PERCEPCION  ENTEREZA   PRESENCIA CLASE
+Anillas                     0                   0                      8          15        Dura
+Frentón                     0                   0                      12         15        Dura
+Coronilla                   0                   0                      12         15        Dura
+Capucha de cuero            0                   0                      10         15        Blanda
+Capucha de maya             0                  -10                     13         20        Blanda
+Completo abierto            5                  -20                     16         25        Dura
+Completo cerrado            10                 -30                     16         25        Dura
