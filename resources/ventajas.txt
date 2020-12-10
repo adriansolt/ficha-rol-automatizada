@@ -1,0 +1,147 @@
+--- Ventajas (Coste 2) ---
+Afinidad animal
+Ambidiestría
+Aprendizaje innato en llevar armadura 
+Aprendizaje innato en una materia
+Apto en una materia 
+Dificil de matar
+Encanto
+Fondos iniciales
+Habilidoso en destreza
+Mente fria
+Inquietante
+Seductor
+Sentidos agudos
+Al límite
+Armadura natural
+Buena suerte
+Reflejos rápidos 
+Regeneración mejorada 
+Resistencia física excepcional
+Sueño ligero
+Tocado por el destino
+
+--- Ventajas (Coste 4) ---
+Aprendizaje innato en llevar armadura II
+Aprendizaje innato en una materia II
+Aprendizaje innato en un campo
+Apto en un campo
+Apto en una materia II
+Conecedor de todas las materias
+Dificil de matar II
+Fondos iniciales II
+Reflejos rápidos II
+Regeneración mejorada II
+Resistencia física excepcional II
+
+--- Ventajas (Coste 6) ---
+Aprendizaje innato en llevar armadura III
+Aprendizaje innato en un campo II
+Dificil de matar III
+Fondos iniciales III
+Reflejos rápidos III
+Regeneración mejorada III
+
+--- Desventajas (Coste 2) ---
+-2 a una característica
+Adicción/vicio grave
+Alergia grave
+Debilidad física
+Desafortunado
+Endeble
+Enfermedad grave
+Extremidad atrofiada
+Fobia grave
+Insufrible
+Lenta curación
+Mala suerte
+Maldición 
+Miopía
+Mudo
+Patoso
+Reacción lenta
+Reacción lenta II
+Salud enfermiza
+Sordo
+Sueño profundo
+Vulnerable a los venenos
+Vulnerable al dolor
+Vulnerable al frío
+Vulnerable al calor
+
+--- Desventajas (Coste 4)
+Enfermedad grave
+Maldición II
+Reacción lenta II
+
+--- Ventajas solo durante la creación del personaje ---
+Afinidad animal
+Aprendizaje innato en una materia
+Aprendizaje innato en una materia II
+Aprendizaje innato en un campo
+Aprendizaje innato en un campo II
+Apto en un campo
+Apto en una materia 
+Apto en una materia II
+Conecedor de todas las materias
+Dificil de matar
+Dificil de matar II
+Dificil de matar III
+Encanto
+Fondos iniciales
+Fondos iniciales II
+Fondos iniciales III
+Habilidoso en destreza
+Mente fria
+Inquietante
+Seductor
+Sentidos agudos
+Aprendizaje innato en llevar armadura 
+Aprendizaje innato en llevar armadura II
+Aprendizaje innato en llevar armadura III
+
+--- Resto de ventajas ---
+Al límite
+Ambidiestría
+Armadura natural
+Buena suerte
+Reflejos rápidos 
+Reflejos rápidos II
+Reflejos rápidos III
+Regeneración mejorada 
+Regeneración mejorada II
+Regeneración mejorada III
+Resistencia física excepcional
+Resistencia física excepcional II
+Sueño ligero
+Tocado por el destino
+
+
+--- Desventajas ---
+
+-2 a una característica
+Adicción/vicio grave
+Alergia grave
+Debilidad física
+Desafortunado
+Endeble
+Enfermedad grave
+Extremidad atrofiada
+Fobia grave
+Insufrible
+Lenta curación
+Mala suerte
+Maldición 
+Maldición II
+Miopía
+Mudo
+Patoso
+Reacción lenta
+Reacción lenta II
+Salud enfermiza
+Sordo
+Sueño profundo
+Vulnerable a los venenos
+Vulnerable al dolor
+Vulnerable al frío
+Vulnerable al calor
