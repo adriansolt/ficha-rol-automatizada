@@ -37,13 +37,13 @@ Tridente                40   -10   6/7    PEN                 Asta              
 Vara                    30   +10   4      CON                 Asta                A dos manos                      11      0    30
 Combate desarmado       10   +20   --     CON                 Sin armas           Precisa                          --     -2    --
 Botella rota            15   +10   3      FIL       CON       Arma corta                                            5     -3    15
-Silla                   25   -20   5      CON                 Mandoble A dos manos                                  9      0    20
+Silla                   25   -20   5      CON                 Mandoble            A dos manos                       9      0    20
 Palo de madera          20   +0    4      CON                 Maza                                                  8     -1    10
 Barra metálica          25   -5    5      CON                 Maza                                                 12      2    15
-Jarrón                  15   -10   4      CON                 Maza Lanzable                                         6     -2    20
+Jarrón                  15   -10   4      CON                 Maza                Lanzable                          6     -2    20
 Cuchillo de cocina      25   +10   4      FIL                 Arma corta                                            9     -1    10
 Martillo                30   -20   4      CON                 Maza                                                 12      2    10
-Hacha de leñador        40   -10   5/7    FIL                 Hacha A una o dos manos                              12      3    15
+Hacha de leñador        40   -10   5/7    FIL                 Hacha               A una o dos manos                12      3    15
 Azada                   30   -20   4      FIL       CON       Hacha                                                10      1    15
 Hoz                     35   -10   4      FIL       PEN       Arma corta                                           8       0    15
 Pico                    40   -20   5      PEN                 Arma corta                                           10      3    15

@@ -1,533 +1,3 @@
-// Validate (exp_actual)
-/*
-var nivel = this.getField("nivel");
-var loop = true;
-while(event.value > Number(this.getField("exp_totales").value) && loop) {
-  var nRslt = app.alert ("Has sobrepasado los puntos de experiencia.\n\n"+"¿Quieres subir de nivel?", 2, 2, "Submit Validation");
-    if(nRslt === 4) {
-        nivel.value++;
-        event.value = event.value - Number(this.getField("exp_totales").value);
-    } else {
-      loop = false;
-    }
-}
-loop = true;
-var exp_actual = event.value;
-while(exp_actual < 0 && Number(nivel.value) >= 0 && loop) {
-  var nRslt = app.alert ("Has introducido un valor negativo.\n\n"+"¿Quieres bajar de nivel?", 2, 2, "Submit Validation");
-    if(nRslt === 4) {
-        nivel.value--;
-        event.value = Number(event.value) + Number(this.getField("exp_totales").value);
-        exp_actual = Number(event.value);
-    } else {
-      loop = false;
-    }
-}
-*/
-
-// Validate (pd_ataque)
-/*
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
-if(Number(event.value) <= 0) {
-  event.value = 0;
-} else if((Number(event.value) + pd_parada.value + pd_esquiva.value) > Number(limite_pd_combate)) {
-  event.rc = false;
-}
-*/
-
-// Validate (pd_parada)
-/*
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
-if(Number(event.value) <= 0) {
-  event.value = 0;
-} else if((Number(event.value) + pd_ataque.value + pd_esquiva.value) > Number(limite_pd_combate)) {
-  event.rc = false;
-}
-*/
-
-// Validate (pd_esquiva)
-/*
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
-if(Number(event.value) <= 0) {
-  event.value = 0;
-} else if((Number(event.value) + pd_ataque.value + pd_parada.value) > Number(limite_pd_combate)) {
-  event.rc = false;
-}
-*/
-
-// Validate (pd_llA)
-/*
-var pd_totales = this.getField("pd_totales");
-var limite_pd_llA = Number(pd_totales.value) / 10;
-var pd_llA = this.getField("pd_llA");
-if(Number(event.value) <= 0) {
-  event.value = 0;
-} else if(Number(event.value) > Number(limite_pd_llA)) {
-  event.value = pd_llA.value;
-}
-*/
-
-// Script Ventajas
-/*
-var index = 1;
-while (index <= 8) {
-  var ventajas = [
-    "Al límite",
-    "Ambidiestría",
-    "Armadura natural",
-    "Buena suerte",
-    "Reflejos rápidos",
-    "Reflejos rápidos II",
-    "Reflejos rápidos III",
-    "Regeneración mejorada",
-    "Regeneración mejorada II",
-    "Regeneración mejorada III",
-    "Resistencia física excepcional",
-    "Resistencia física excepcional II",
-    "Sueño ligero",
-    "Tocado por el destino",
-    "--- Solo durante la creación del personaje ---",
-    "Afinidad animal",
-    "Aprendizaje innato en llevar armadura",
-    "Aprendizaje innato en llevar armadura II",
-    "Aprendizaje innato en llevar armadura III",
-    "Conecedor de todas las materias",
-    "Dificil de matar",
-    "Dificil de matar II",
-    "Dificil de matar III",
-    "Encanto",
-    "Fondos iniciales",
-    "Fondos iniciales II",
-    "Fondos iniciales III",
-    "Mente fria",
-    "Inquietante",
-    "Seductor",
-    "Sentidos agudos",
-    "Aprendizaje innato en VIGOR",
-    "Aprendizaje innato en VIGOR II",
-    "Aprendizaje innato en Frialdad",
-    "Aprendizaje innato en Frialdad II",
-    "Aprendizaje innato en Resdolor",
-    "Aprendizaje innato en Resdolor II",
-    "Aprendizaje innato en PERCEPTIVAS",
-    "Aprendizaje innato en PERCEPTIVAS II",
-    "Aprendizaje innato en Escuchar",
-    "Aprendizaje innato en Escuchar II",
-    "Aprendizaje innato en Ver",
-    "Aprendizaje innato en Ver II",
-    "Aprendizaje innato en Buscar",
-    "Aprendizaje innato en Buscar II",
-    "Aprendizaje innato en Rastrear",
-    "Aprendizaje innato en Rastrear II",
-    "Aprendizaje innato en SUBTERFUGIO",
-    "Aprendizaje innato en SUBTERFUGIO II",
-    "Aprendizaje innato en Cerrajeria",
-    "Aprendizaje innato en Cerrajeria II",
-    "Aprendizaje innato en Disfraz",
-    "Aprendizaje innato en Disfraz II",
-    "Aprendizaje innato en Ocultarse",
-    "Aprendizaje innato en Ocultarse II",
-    "Aprendizaje innato en Robo",
-    "Aprendizaje innato en Robo II",
-    "Aprendizaje innato en Sigilo",
-    "Aprendizaje innato en Sigilo II",
-    "Aprendizaje innato en Tramperia",
-    "Aprendizaje innato en Tramperia II",
-    "Aprendizaje innato en Venenos",
-    "Aprendizaje innato en Venenos II",
-    "Aprendizaje innato en INTELECTUALES",
-    "Aprendizaje innato en INTELECTUALES II",
-    "Aprendizaje innato en Animales",
-    "Aprendizaje innato en Animales II",
-    "Aprendizaje innato en Ciencia",
-    "Aprendizaje innato en Ciencia II",
-    "Aprendizaje innato en Herbolaria",
-    "Aprendizaje innato en Herbolaria II",
-    "Aprendizaje innato en Historia",
-    "Aprendizaje innato en Historia II",
-    "Aprendizaje innato en Ley",
-    "Aprendizaje innato en Ley II",
-    "Aprendizaje innato en Medicina",
-    "Aprendizaje innato en Medicina II",
-    "Aprendizaje innato en Memorizar",
-    "Aprendizaje innato en Memorizar II",
-    "Aprendizaje innato en Navegacion",
-    "Aprendizaje innato en Navegacion II",
-    "Aprendizaje innato en Ocultismo",
-    "Aprendizaje innato en Ocultismo II",
-    "Aprendizaje innato en Tasacion",
-    "Aprendizaje innato en Tasacion II",
-    "Aprendizaje innato en ATLETICAS",
-    "Aprendizaje innato en ATLETICAS II",
-    "Aprendizaje innato en Acrobacias",
-    "Aprendizaje innato en Acrobacias II",
-    "Aprendizaje innato en Atletismo",
-    "Aprendizaje innato en Atletismo II",
-    "Aprendizaje innato en Montar",
-    "Aprendizaje innato en Montar II",
-    "Aprendizaje innato en Nadar",
-    "Aprendizaje innato en Nadar II",
-    "Aprendizaje innato en Trepar",
-    "Aprendizaje innato en Trepar II",
-    "Aprendizaje innato en Saltar",
-    "Aprendizaje innato en Saltar II",
-    "Aprendizaje innato en SOCIALES",
-    "Aprendizaje innato en SOCIALES II",
-    "Aprendizaje innato en Comerciar",
-    "Aprendizaje innato en Comerciar II",
-    "Aprendizaje innato en Callejear",
-    "Aprendizaje innato en Callejear II",
-    "Aprendizaje innato en Estilo",
-    "Aprendizaje innato en Estilo II",
-    "Aprendizaje innato en Intimidar",
-    "Aprendizaje innato en Intimidar II",
-    "Aprendizaje innato en Etiqueta",
-    "Aprendizaje innato en Etiqueta II",
-    "Aprendizaje innato en Persuasion",
-    "Aprendizaje innato en Persuasion II",
-    "Aprendizaje innato en Adv. Social",
-    "Aprendizaje innato en Adv. Social II",
-    "Aprendizaje innato en CREATIVAS",
-    "Aprendizaje innato en CREATIVAS II",
-    "Aprendizaje innato en Arte",
-    "Aprendizaje innato en Arte II",
-    "Aprendizaje innato en Baile",
-    "Aprendizaje innato en Baile II",
-    "Aprendizaje innato en Forja",
-    "Aprendizaje innato en Forja II",
-    "Aprendizaje innato en Musica",
-    "Aprendizaje innato en Musica II",
-    "Aprendizaje innato en T. Manos",
-    "Aprendizaje innato en T. Manos II",
-    "Aprendizaje innato en Alquimia",
-    "Aprendizaje innato en Alquimia II",
-    "Aprendizaje innato en Sastreria",
-    "Aprendizaje innato en Sastreria II",
-    "Aprendizaje innato en Joyeria",
-    "Aprendizaje innato en Joyeria II",
-    "Aprendizaje innato en Caligrafia",
-    "Aprendizaje innato en Caligrafia II",
-    "Aprendizaje innato en Mates",
-    "Aprendizaje innato en Mates II",
-    "Aprendizaje innato en Cocina",
-    "Aprendizaje innato en Cocina II",
-    "Apto en VIGOR",
-    "Apto en Frialdad",
-    "Apto en Frialdad II",
-    "Apto en Resdolor",
-    "Apto en Resdolor II",
-    "Apto en PERCEPTIVAS",
-    "Apto en Escuchar",
-    "Apto en Escuchar II",
-    "Apto en Ver",
-    "Apto en Ver II",
-    "Apto en Buscar",
-    "Apto en Buscar II",
-    "Apto en Rastrear",
-    "Apto en Rastrear II",
-    "Apto en SUBTERFUGIO",
-    "Apto en Cerrajeria",
-    "Apto en Cerrajeria II",
-    "Apto en Disfraz",
-    "Apto en Disfraz II",
-    "Apto en Ocultarse",
-    "Apto en Ocultarse II",
-    "Apto en Robo",
-    "Apto en Robo II",
-    "Apto en Sigilo",
-    "Apto en Sigilo II",
-    "Apto en Tramperia",
-    "Apto en Tramperia II",
-    "Apto en Venenos",
-    "Apto en Venenos II",
-    "Apto en INTELECTUALES",
-    "Apto en Animales",
-    "Apto en Animales II",
-    "Apto en Ciencia",
-    "Apto en Ciencia II",
-    "Apto en Herbolaria",
-    "Apto en Herbolaria II",
-    "Apto en Historia",
-    "Apto en Historia II",
-    "Apto en Ley",
-    "Apto en Ley II",
-    "Apto en Medicina",
-    "Apto en Medicina II",
-    "Apto en Memorizar",
-    "Apto en Memorizar II",
-    "Apto en Navegacion",
-    "Apto en Navegacion II",
-    "Apto en Ocultismo",
-    "Apto en Ocultismo II",
-    "Apto en Tasacion",
-    "Apto en Tasacion II",
-    "Apto en ATLETICAS",
-    "Apto en Acrobacias",
-    "Apto en Acrobacias II",
-    "Apto en Atletismo",
-    "Apto en Atletismo II",
-    "Apto en Montar",
-    "Apto en Montar II",
-    "Apto en Nadar",
-    "Apto en Nadar II",
-    "Apto en Trepar",
-    "Apto en Trepar II",
-    "Apto en Saltar",
-    "Apto en Saltar II",
-    "Apto en SOCIALES",
-    "Apto en Comerciar",
-    "Apto en Comerciar II",
-    "Apto en Callejear",
-    "Apto en Callejear II",
-    "Apto en Estilo",
-    "Apto en Estilo II",
-    "Apto en Intimidar",
-    "Apto en Intimidar II",
-    "Apto en Etiqueta",
-    "Apto en Etiqueta II",
-    "Apto en Persuasion",
-    "Apto en Persuasion II",
-    "Apto en Adv. Social",
-    "Apto en Adv. Social II",
-    "Apto en CREATIVAS",
-    "Apto en Arte",
-    "Apto en Arte II",
-    "Apto en Baile",
-    "Apto en Baile II",
-    "Apto en Forja",
-    "Apto en Forja II",
-    "Apto en Musica",
-    "Apto en Musica II",
-    "Apto en T. Manos",
-    "Apto en T. Manos II",
-    "Apto en Alquimia",
-    "Apto en Alquimia II",
-    "Apto en Sastreria",
-    "Apto en Sastreria II",
-    "Apto en Joyeria",
-    "Apto en Joyeria II",
-    "Apto en Caligrafia",
-    "Apto en Caligrafia II",
-    "Apto en Mates",
-    "Apto en Mates II",
-    "Apto en Cocina",
-    "Apto en Cocina II",
-    "--- Solo para categoria Novel ---",
-    "NOVEL: Hab1, Hab2, Hab3, Hab4, Hab5"
-  ];
-  this.getField("ventaja" + index).setItems(ventajas);
-  index++;
-}
-/*
-
-// Validate ventaja
-/*
-var num_ventaja = event.target.name.substr(7,1);
-var repetido = false;
-var ventaja_novel = false;
-var old_target = this.getField(event.target.name).value;
-if(event.value.match(":") || "") {
-  ventaja_novel = true;
-}
-var cond1 = event.value.toLowerCase();
-
-if(cond1.substr(cond1.length-4) === " iii") {
-  cond1 = cond1.substr(0,cond1.length-4);
-} else if (cond1.substr(cond1.length-3) === " ii") {
-  cond1 = cond1.substr(0,cond1.length-3);
-}
-
-for (var l = 1; l < 8 && !repetido; l++) {
-  ventaja = this.getField("ventaja" + (((Number(num_ventaja)+l-1)%8)+1)).value;
-  var cond2 = ventaja.toLowerCase();
-  if(ventaja_novel) {
-    cond1 = cond1.substr(0,5);
-    cond2 = cond2.substr(0,5);
-  }
-
-  if(cond2.substr(ventaja.length-4) === " iii") {
-    cond2 = cond2.substr(0,cond2.length-4);
-  } else if (cond2.substr(ventaja.length-3) === " ii") {
-    cond2 = cond2.substr(0,cond2.length-3);
-  }
-
-  if(cond1 === cond2) {
-    repetido = true;
-    event.rc = false;
-  }
-}
-
-if(!repetido) {
-  if(
-      event.value === "Afinidad animal" ||
-      event.value === "Ambidiestría" ||
-      event.value === "Aprendizaje innato en llevar armadura" ||
-      event.value === "Dificil de matar" ||
-      event.value === "Fondos iniciales" ||
-      event.value === "Mente fria" ||
-      event.value === "Seductor" ||
-      event.value === "Sentidos agudos" ||
-      event.value === "Al límite" ||
-      event.value === "Armadura natural" ||
-      event.value === "Buena suerte" ||
-      event.value === "Reflejos rápidos" ||
-      event.value === "Regeneración mejorada" ||
-      event.value === "Resistencia física excepcional" ||
-      event.value === "Sueño ligero" ||
-      event.value === "Tocado por el destino" 
-    ) 
-    {
-      this.getField("ventaja" + num_ventaja + "_coste").value = 2;
-    } else if (
-      event.value === "Aprendizaje innato en llevar armadura II" ||
-      event.value === "Conecedor de todas las materias" ||
-      event.value === "Dificil de matar II" ||
-      event.value === "Fondos iniciales II" ||
-      event.value === "Reflejos rápidos II" ||
-      event.value === "Regeneración mejorada II" ||
-      event.value === "Resistencia física excepcional II" 
-    ) 
-    {
-      this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-    } else if (
-      event.value === "Aprendizaje innato en llevar armadura III" ||
-      event.value === "Aprendizaje innato en un campo II" ||
-      event.value === "Dificil de matar III" ||
-      event.value === "Fondos iniciales III" ||
-      event.value === "Reflejos rápidos III" ||
-      event.value === "Regeneración mejorada III" 
-    ) 
-    {
-      this.getField("ventaja" + num_ventaja + "_coste").value = 6;
-    } else if (
-      event.value.substr(0,7) === "Apto en" || event.value.substr(0,21) === "Aprendizaje innato en"
-    ) 
-    {
-      // apto en un campo (4)
-      // apto en una materia (2)
-      // apto en una materia II (4)
-
-      // aprendizaje innato en materia (2)
-      // aprendizaje innato en materia II (4)
-      // aprendizaje innato en campo (4)
-      // aprendizaje innato en campo II (6)
-      var ventaja_lC = event.value.toLowerCase();
-      if(ventaja_lC.match("vigor") ||
-        ventaja_lC.match("atleticas") ||
-        ventaja_lC.match("perceptivas") ||
-        ventaja_lC.match("subterfugio") ||
-        ventaja_lC.match("intelectuales") ||
-        ventaja_lC.match("sociales") ||
-        ventaja_lC.match("creativas")
-      ) {
-        // apto en un campo (4)
-        // aprendizaje innato en campo (4)
-        // aprendizaje innato en campo II (6)
-
-        if(ventaja_lC.match(" ii")) {
-          this.getField("ventaja" + num_ventaja + "_coste").value = 6;
-        } else {
-          this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-        }
-      } else {
-        // apto en una materia (2)
-        // apto en una materia II (4)
-        // aprendizaje innato en materia (2)
-        // aprendizaje innato en materia II (4)
-        if(ventaja_lC.match(" ii")) {
-          this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-        } else {
-          this.getField("ventaja" + num_ventaja + "_coste").value = 2;
-        }
-      }
-
-    } else if (ventaja_novel) {
-      this.getField("ventaja" + num_ventaja + "_coste").value = 0;
-    } else
-    {
-      this.getField("ventaja" + num_ventaja + "_coste").value = "";
-    }
-}
-
-*/
-
-// Validate desventaja (1-4)
-/*
-var repetido = false;
-var cond1 = event.value.toLowerCase();
-
-if(cond1.substr(cond1.length-4) === " iii") {
-  cond1 = cond1.substr(0,cond1.length-4);
-} else if (cond1.substr(cond1.length-3) === " ii") {
-  cond1 = cond1.substr(0,cond1.length-3);
-}
-for (var l = 1; l < 4 && !repetido; l++) {
-  var desventaja = this.getField("desventaja" + (((Number(num_ventaja)+l-1)%4)+1)).value;
-  var cond2 = desventaja.toLowerCase();
-  if(cond2.substr(ventaja.length-4) === " iii") {
-    cond2 = cond2.substr(0,cond2.length-4);
-  } else if (cond2.substr(ventaja.length-3) === " ii") {
-    cond2 = cond2.substr(0,cond2.length-3);
-  }
-
-  if(cond1 === cond2) {
-    event.rc = false;
-    repetido = true;
-  }
-  
-}
-if(!repetido) {
-var num_desventaja = event.target.name.substr(10,1);
-if(
-    event.value === "-2 a una característica" ||
-    event.value === "Adicción/vicio grave" ||
-    event.value === "Alergia grave" ||
-    event.value === "Debilidad física" ||
-    event.value === "Desafortunado" ||
-    event.value === "Endeble" ||
-    event.value === "Extremidad atrofiada" ||
-    event.value === "Fobia grave" ||
-    event.value === "Insufrible" ||
-    event.value === "Lenta curación" ||
-    event.value === "Mala suerte" ||
-    event.value === "Maldición" ||
-    event.value === "Miopía" ||
-    event.value === "Mudo" ||
-    event.value === "Patoso" ||
-    event.value === "Reacción lenta" ||
-    event.value === "Salud enfermiza" ||
-    event.value === "Sordo" ||
-    event.value === "Sueño profundo" ||
-    event.value === "Vulnerable a los venenos" ||
-    event.value === "Vulnerable al dolor" ||
-    event.value === "Vulnerable al frío" ||
-    event.value === "Vulnerable al calor" 
-  ) {
-    this.getField("desventaja" + num_desventaja + "_coste").value = 2;
-  } else if(
-    event.value === "Enfermedad grave" ||
-    event.value === "Maldición II" ||
-    event.value === "Reacción lenta II"
-  ) { 
-    this.getField("desventaja" + num_desventaja + "_coste").value = 4;
-  } else {
-    this.getField("desventaja" + num_desventaja + "_coste").value = "";
-  }
-
-*/
-
 var lista_habilidades = [
   // ATLETICAS (0-5)
   "acrobacias",
@@ -647,15 +117,6 @@ var reg_final = 0;
 var reg_normal = this.getField("reg_normal");
 var reg_max = this.getField("reg_max");
 
-// Armas
-var arma1_dbase = this.getField("arma1_dbase");
-var arma2_dbase = this.getField("arma2_dbase");
-var arma1_dfinal = this.getField("arma1_dfinal");
-var arma2_dfinal = this.getField("arma2_dfinal");
-var arma1_vel = this.getField("arma1_vel");
-var arma2_vel = this.getField("arma2_vel");
-var arma_vel = this.getField("arma_vel");
-
 var i = 0;
 var j = 0;
 var k = 0;
@@ -663,6 +124,7 @@ var k = 0;
 while (j < lista_habilidades.length) {
   var habilidad = lista_habilidades[j];
   var esp_habilidad = this.getField("esp_" + habilidad);
+  var pd_habilidad = this.getField("pd_" + habilidad);
   esp_habilidad.value = "";
   j++;
 }
@@ -729,8 +191,7 @@ puntos_gastados =
   Number(this.getField("ventaja7_coste").value) +
   Number(this.getField("desventaja1_coste").value) +
   Number(this.getField("desventaja2_coste").value) +
-  Number(this.getField("desventaja3_coste").value) +
-  Number(this.getField("desventaja4_coste").value);
+  Number(this.getField("desventaja3_coste").value);
 
 // Categorias base
 this.getField("puntos_base").value = 90 - puntos_base;
@@ -746,7 +207,7 @@ pd_totales.value = Number(nivel.value) * (10 * multiplicador) + base;
 switch (categoria.value) {
   case "Guerrero":
     coste_vida.value = multiplicador * 2;
-    cat_vida.value = (multiplicador * 4 * nivel.value) / 2;
+    cat_vida.value = (4 * nivel.value) / 2;
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 1;
     coste_parada.value = 2;
@@ -758,7 +219,7 @@ switch (categoria.value) {
     break;
   case "Guerrero Acróbata":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = 2 * multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = 2 * Math.floor(nivel.value / 2);
     cat_iniciativa.value = 2 * multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 3;
@@ -769,7 +230,7 @@ switch (categoria.value) {
     break;
   case "Paladín":
     coste_vida.value = multiplicador * 3;
-    cat_vida.value = multiplicador * 3 * (nivel.value / 2);
+    cat_vida.value = 3 * (nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
@@ -780,7 +241,7 @@ switch (categoria.value) {
     break;
   case "Paladín Oscuro":
     coste_vida.value = multiplicador * 3;
-    cat_vida.value = multiplicador * 3 * (nivel.value / 2);
+    cat_vida.value = 3 * (nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
@@ -791,7 +252,7 @@ switch (categoria.value) {
     break;
   case "Tao":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * 2 * (nivel.value / 2);
+    cat_vida.value = 2 * (nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
@@ -802,7 +263,7 @@ switch (categoria.value) {
     break;
   case "Explorador":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * 2 * (nivel.value / 2);
+    cat_vida.value = 2 * (nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
@@ -813,7 +274,7 @@ switch (categoria.value) {
     break;
   case "Sombra":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = Math.floor(nivel.value / 2);
     cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 3;
@@ -824,7 +285,7 @@ switch (categoria.value) {
     break;
   case "Ladrón":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = Math.floor(nivel.value / 2);
     cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
@@ -835,7 +296,7 @@ switch (categoria.value) {
     break;
   case "Asesino":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = Math.floor(nivel.value / 2);
     cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
@@ -846,7 +307,7 @@ switch (categoria.value) {
     break;
   case "Ilusionista":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = Math.floor(nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
@@ -857,7 +318,7 @@ switch (categoria.value) {
     break;
   case "Novel":
     coste_vida.value = multiplicador * 4;
-    cat_vida.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_vida.value = Math.floor(nivel.value / 2);
     cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
@@ -1092,13 +553,13 @@ while (i < ventajas_list.length) {
         ctm = true;
         break;
       case "Dificil de matar":
-        esp_vida.value = multiplicador * 2 * (nivel.value / 2);
+        esp_vida.value = 2 * (nivel.value / 2);
         break;
       case "Dificil de matar II":
-        esp_vida.value = multiplicador * 4 * (nivel.value / 2);
+        esp_vida.value = 4 * (nivel.value / 2);
         break;
       case "Dificil de matar III":
-        esp_vida.value = multiplicador * 6 * (nivel.value / 2);
+        esp_vida.value = 6 * (nivel.value / 2);
         break;
       case "Fondos iniciales":
         this.getField("oro").value = 2000;
@@ -1164,26 +625,26 @@ while (i < ventajas_list.length) {
 }
 
 var lista_vida = [
-  multiplicador * 1,
-  multiplicador * 3,
-  multiplicador * 4,
-  multiplicador * 7,
-  multiplicador * 8,
-  multiplicador * 10,
-  multiplicador * 11,
-  multiplicador * 13,
-  multiplicador * 14,
-  multiplicador * 16,
-  multiplicador * 17,
-  multiplicador * 18,
-  multiplicador * 19,
-  multiplicador * 21,
-  multiplicador * 22,
-  multiplicador * 23,
-  multiplicador * 24,
-  multiplicador * 26,
-  multiplicador * 28,
-  multiplicador * 30,
+  1,
+  3,
+  4,
+  7,
+  8,
+  10,
+  11,
+  13,
+  14,
+  16,
+  17,
+  18,
+  19,
+  21,
+  22,
+  23,
+  24,
+  26,
+  28,
+  30,
 ];
 
 base_vida.value = lista_vida[Number(con_actual.value) - 1];
@@ -1210,17 +671,17 @@ var defensa_ataque = ["parada", "esquiva", "ataque"];
 i = 0;
 while (i < defensa_ataque.length) {
   var c = defensa_ataque[i];
-  console.println(c);
+  var pd_defatq = this.getField("pd_"+c);
   // PD
   var pd_restantes =
     pd_totales.value / 2 -
     this.getField("pd_" + defensa_ataque[(i + 1) % defensa_ataque.length])
-      .value -
+    .value -
     this.getField("pd_" + defensa_ataque[(i + 2) % defensa_ataque.length])
-      .value;
-  if (defensa_ataque.value > pd_restantes) {
-    defensa_ataque.value = pd_restantes;
-  }
+    .value;
+  // if (Number(pd_defatq.value) > Number(pd_restantes)) {
+  //   pd_defatq.value = Number(pd_restantes);
+  // }
   // BASE
   if (this.getField("pd_" + c).value && this.getField("coste_" + c).value > 0) {
     this.getField("base_" + c).value = Math.floor(
@@ -1237,28 +698,7 @@ if (Number(pd_llA.value) > Number(limite_pd_llA)) {
   pd_llA.value = Number(limite_pd_llA);
 }
 
-this.getField("final_ataque").value =
-  Number(this.getField("base_ataque").value) +
-  Number(des_bono.value) +
-  Number(this.getField("cat_ataque").value);
 
-this.getField("final_parada").value =
-  Number(this.getField("base_parada").value) +
-  Number(des_bono.value) +
-  Number(this.getField("cat_parada").value);
-
-this.getField("final_esquiva").value =
-  Number(this.getField("base_esquiva").value) +
-  Number(agi_bono.value) +
-  Number(this.getField("cat_esquiva").value);
-
-base_llA.value = Math.floor(Number(pd_llA.value) / Number(coste_llA.value));
-
-this.getField("final_llA").value =
-  Number(base_llA.value) +
-  Number(esp_llA.value) +
-  Number(fue_bono.value) +
-  Number(cat_llA.value);
 // }
 
 // PD Actuales
@@ -1329,7 +769,7 @@ while (i < lista_habilidades.length) {
   if (Number(pd_habilidad.value) > 0) {
     base_habilidad.value = Math.floor(
       Number(pd_habilidad.value) /
-        Number(this.getField("coste_" + habilidad).value)
+      Number(this.getField("coste_" + habilidad).value)
     );
     pd_actuales.value = Number(pd_actuales.value) - Number(pd_habilidad.value);
   } else {
@@ -1352,6 +792,8 @@ while (i < lista_habilidades.length) {
   if (!ctm && Number(base_habilidad.value) === 0) {
     final_habilidad.value -= multiplicador * 6;
   }
+
+  final_habilidad.value = final_habilidad.value * (5/multiplicador);
 
   i++;
 }
@@ -1554,21 +996,7 @@ switch (fue_actual.value) {
     break;
 }
 
-// Armas
-arma_vel.value = Number(arma1_vel.value) + Number(arma2_vel.value);
-arma1_dfinal.value =
-  Number(arma1_dbase.value) + Number(this.getField("fue_bono").value);
-arma2_dfinal.value =
-  Number(arma2_dbase.value) + Number(this.getField("fue_bono").value);
 
-// Iniciativa
-this.getField("final_iniciativa").value =
-  Number(this.getField("armadura_vel").value) +
-  Number(agi_bono.value) +
-  Number(des_bono.value) +
-  Number(this.getField("arma_vel").value) +
-  Number(this.getField("cat_iniciativa").value) +
-  Number(esp_iniciativa.value);
 
 // Presencia
 var presencia = this.getField("presencia");
@@ -1581,3 +1009,127 @@ this.getField("res_enfermedades_final").value =
   presencia.value + Number(con_bono.value) + Number(res_enfermedades_esp.value);
 this.getField("res_venenos_final").value =
   presencia.value + Number(con_bono.value) + Number(res_venenos_esp.value);
+
+// Armas
+var equipo_parada = this.getField("equipo_parada");
+var equipo_esquiva = this.getField("equipo_esquiva");
+var equipo_ataque = this.getField("equipo_ataque");
+var iniciativa_total_arma = this.getField("arma_vel");
+equipo_parada.value = 0;
+equipo_esquiva.value = 0;
+equipo_ataque.value = 0;
+iniciativa_total_arma.value = 0;
+var num_checks_armas = 0;
+var manos_ocupadas = false;
+
+i = 1;
+while ( i < 7) {
+  var clase = this.getField("arma" + i + "_clase");
+  var calidad = this.getField("arma" + i + "_calidad");
+  var check = this.getField("arma" + i + "_check");
+  // check.checkThisBox(0,false);
+  var especial = this.getField("arma" + i + "_especial");
+  if (clase.value === "—") {
+    calidad.readonly = true;
+  } else {
+    calidad.readonly = clase.value === "Escudo" ? true : false;
+    var arma_ataque = this.getField("arma" + i + "_atq");
+    var arma_parada = this.getField("arma" + i + "_par");
+    var arma_esquiva = this.getField("arma" + i + "_esq");
+    var arma_iniciativa = this.getField("arma" + i + "_iniciativa");
+    var arma_freq = this.getField("arma" + i + "_freq");
+    var arma_db = this.getField("arma" + i + "_db");
+    var arma_df = this.getField("arma" + i + "_df");
+
+    arma_ataque.value = Number(arma_ataque.value) + ((multiplicador * 1) * Number(calidad.value));
+    arma_parada.value = Number(arma_parada.value) + ((multiplicador * 1) * Number(calidad.value));
+    arma_iniciativa.value = Number(arma_iniciativa.value) + ((multiplicador * 1) * Number(calidad.value));
+    arma_db.value = Number(arma_db.value) + ((multiplicador * 2) * Number(calidad.value));
+    arma_df.value = Math.ceil(Number(arma_db.value) + Number(fue_bono.value));
+
+    if((num_checks_armas === 1 && especial.value === "A dos manos")) {
+      check.value = "—";
+      check.readonly = true;
+    } else {
+      check.readonly = false;
+    }
+
+    
+    if(manos_ocupadas === false) {
+      if(check.value === "Eq.") {
+        equipo_ataque.value = Number(equipo_ataque.value) + equipo_ataque.value;
+        equipo_parada.value = Number(equipo_parada.value) + arma_parada.value;
+        equipo_esquiva.value = Number(equipo_esquiva.value) + arma_esquiva.value;
+        iniciativa_total_arma.value = Number(iniciativa_total_arma.value) + arma_iniciativa.value;
+        var fue_req_diff = arma_freq.value - fue_actual.value;
+        if(fue_req_diff > 0) {
+          equipo_ataque.value = Number(equipo_ataque.value) - (1 * multiplicador * fue_req_diff);
+          equipo_parada.value = Number(equipo_parada.value) - (1 * multiplicador * fue_req_diff);
+          iniciativa_total_arma.value = Number(iniciativa_total_arma.value) - (1 * multiplicador * fue_req_diff);
+        }
+        num_checks_armas++;
+        if(num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
+          manos_ocupadas = true;
+        }
+      } 
+    }
+    // console.println(
+    //   "\n--- ARMA: " + i + " ---" +
+    //   "\niniciativa_total_arma = " + iniciativa_total_arma.value +
+    //   "\nN(arma_iniciativa) = " + Number(arma_iniciativa.value) +
+    //   "\narma_iniciativa = " + arma_iniciativa.value
+    //   );
+  }
+
+  i++;
+}
+
+// console.println("\n-----------------------------\n");
+// console.println("\n\n *** MANOS OCUPADAS: " + manos_ocupadas + " ***");
+i = 1;
+if(manos_ocupadas === true) {
+  while(i < 7) {
+    var check = this.getField("arma" + i + "_check");
+    if(check.value === "—") {
+      check.readonly = true;
+    }
+    i++;
+  }
+}
+
+// Iniciativa
+this.getField("final_iniciativa").value = (5/multiplicador) * (
+  Number(this.getField("armadura_vel").value) +
+  Number(agi_bono.value) +
+  Number(des_bono.value) +
+  Number(this.getField("arma_vel").value) +
+  Number(this.getField("cat_iniciativa").value) +
+  Number(esp_iniciativa.value));
+
+  // Combate final
+
+  this.getField("final_ataque").value = (5/multiplicador) * (
+  Number(this.getField("base_ataque").value) +
+  Number(this.getField("equipo_ataque").value) +
+  Number(des_bono.value) +
+  Number(this.getField("cat_ataque").value));
+
+this.getField("final_parada").value = (5/multiplicador) * (
+Number(this.getField("base_parada").value) +
+Number(this.getField("equipo_parada").value) +
+Number(des_bono.value) +
+Number(this.getField("cat_parada").value));
+
+this.getField("final_esquiva").value = (5/multiplicador) * (
+Number(this.getField("base_esquiva").value) +
+Number(this.getField("equipo_esquiva").value) +
+Number(agi_bono.value) +
+Number(this.getField("cat_esquiva").value));
+
+base_llA.value = Math.floor(Number(pd_llA.value) / Number(coste_llA.value));
+
+this.getField("final_llA").value = (5/multiplicador) * (
+  Number(base_llA.value) +
+  Number(esp_llA.value) +
+  Number(fue_bono.value) +
+  Number(cat_llA.value));
