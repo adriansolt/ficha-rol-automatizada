@@ -25,57 +25,57 @@ while (exp_actual < 0 && Number(nivel.value) >= 0 && loop) {
 }
 
 
-// Validate (pd_ataque)
+// Validate (md_ataque)
 
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
+var md_totales = this.getField("md_totales");
+var limite_md_combate = Number(md_totales.value) / 2;
+var md_ataque = this.getField("md_ataque");
+var md_parada = this.getField("md_parada");
+var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + pd_parada.value + pd_esquiva.value) > Number(limite_pd_combate)) {
+} else if ((Number(event.value) + md_parada.value + md_esquiva.value) > Number(limite_md_combate)) {
   event.rc = false;
 }
 
 
-// Validate (pd_parada)
+// Validate (md_parada)
 
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
+var md_totales = this.getField("md_totales");
+var limite_md_combate = Number(md_totales.value) / 2;
+var md_ataque = this.getField("md_ataque");
+var md_parada = this.getField("md_parada");
+var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + pd_ataque.value + pd_esquiva.value) > Number(limite_pd_combate)) {
+} else if ((Number(event.value) + md_ataque.value + md_esquiva.value) > Number(limite_md_combate)) {
   event.rc = false;
 }
 
 
-// Validate (pd_esquiva)
+// Validate (md_esquiva)
 
-var pd_totales = this.getField("pd_totales");
-var limite_pd_combate = Number(pd_totales.value) / 2;
-var pd_ataque = this.getField("pd_ataque");
-var pd_parada = this.getField("pd_parada");
-var pd_esquiva = this.getField("pd_esquiva");
+var md_totales = this.getField("md_totales");
+var limite_md_combate = Number(md_totales.value) / 2;
+var md_ataque = this.getField("md_ataque");
+var md_parada = this.getField("md_parada");
+var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + pd_ataque.value + pd_parada.value) > Number(limite_pd_combate)) {
+} else if ((Number(event.value) + md_ataque.value + md_parada.value) > Number(limite_md_combate)) {
   event.rc = false;
 }
 
 
-// Validate (pd_llA)
+// Validate (md_llA)
 
-var pd_totales = this.getField("pd_totales");
-var limite_pd_llA = Number(pd_totales.value) / 10;
-var pd_llA = this.getField("pd_llA");
+var md_totales = this.getField("md_totales");
+var limite_md_llA = Number(md_totales.value) / 10;
+var md_llA = this.getField("md_llA");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if (Number(event.value) > Number(limite_pd_llA)) {
-  event.value = pd_llA.value;
+} else if (Number(event.value) > Number(limite_md_llA)) {
+  event.value = md_llA.value;
 }
 
 
@@ -332,65 +332,6 @@ while (index <= 8) {
 }
 
 
-// Script armas
-
-var arma_lista = [
-  "Red de gladiador",
-  "Lazo",
-  "Combate desarmado",
-  "Jarrón",
-  "Botella rota",
-  "Antorcha",
-  "Palo de madera",
-  "Cadena",
-  "Cestus",
-  "Estilete",
-  "Silla",
-  "Barra metálica",
-  "Cuchillo de cocina",
-  "Garfio",
-  "Garrote",
-  "Daga",
-  "Vara",
-  "Daga de parada",
-  "Martillo",
-  "Azada",
-  "Hoz",
-  "Arpón",
-  "Florete",
-  "Guadaña",
-  "Jabalina",
-  "Látigo",
-  "Hacha de leñador",
-  "Pico",
-  "Lanza",
-  "Espada corta",
-  "Mayal",
-  "Maza",
-  "Estoque",
-  "Tridente",
-  "Hacha de mano",
-  "Sable",
-  "Martillo de guerra",
-  "Cimitarra",
-  "Espada larga",
-  "Espada ancha",
-  "Maza pesada de combate",
-  "Alabarda",
-  "Espada bastarda",
-  "Gran martillo de guerra",
-  "Hacha de guerra",
-  "Lanza de caballería",
-  "Mangual",
-  "Mandoble",
-  "Hacha a dos manos"
-]
-
-for (var i = 1; i <= 6; i++) {
-  this.getField("arma" + i).setItems(arma_lista);
-}
-
-
 // Validate ventaja
 
 var num_ventaja = event.target.name.substr(7, 1);
@@ -584,7 +525,7 @@ if (!repetido) {
 // Script armas
 
 var tabla_arma_list = [
-  "—",
+  "--",
   "ARMAS CORTAS",
   "HACHAS",
   "MAZAS",
@@ -592,9 +533,9 @@ var tabla_arma_list = [
   "MANDOBLES",
   "ASTAS",
   "CUERDAS",
-  "—",
-  "Red de gladiador",
+  "--",
   "Lazo",
+  "Red de gladiador",
   "Combate desarmado",
   "Jarrón",
   "Botella rota",
@@ -648,7 +589,6 @@ var arma_list = [
   "—",
   "Red de gladiador",
   "Lazo",
-  "Combate desarmado",
   "Jarrón",
   "Botella rota",
   "Antorcha",
@@ -701,16 +641,17 @@ var arma_list = [
   "Escudo corporal"
 ]
 
-var i = 0;
-while (i++ < 7) {
+var i = 1;
+while (i < 7) {
   this.getField("arma" + i).setItems(arma_list);
   this.getField("tabla_arma" + i).setItems(tabla_arma_list);
+  i++;
 }
-
-for (var index = 1; index < 7; index++) {
-  this.getField("arma" + index + "_check").setItems(["—", "Eq."]);
-  this.getField("arma" + index + "_calidad").setItems(["-2", "-1", "0", "+1", "+2", "+3"]);
-
+i = 1;
+while (i < 7) {
+  this.getField("arma" + i + "_check").setItems(["—", "Eq."]);
+  this.getField("arma" + i + "_calidad").setItems(["-2", "-1", "0", "+1", "+2", "+3"]);
+  i++;
 }
 
 // Javascript armas_check
@@ -761,504 +702,251 @@ if (manos_ocupadas === false) {
 
 // Validar armas
 
-var multiplicador = this.getField("sistema").value;
-this.getField(event.target.name + "_clase").value = "—";
-this.getField(event.target.name + "_especial").value = "—";
-this.getField(event.target.name + "_calidad").value = 0;
+var arma_clase = this.getField(event.target.name + "_clase");
+var arma_calidad = this.getField(event.target.name + "_calidad");
+var arma_freq = this.getField(event.target.name + "_freq");
+var arma_especial = this.getField(event.target.name + "_especial");
+arma_clase.value = "—";
+arma_especial.value = "—";
+arma_calidad.value = 0;
+arma_calidad.readonly = false;
 
 switch (event.value) {
   case "Lazo":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 1;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Cuerda";
-    this.getField(event.target.name + "_especial").value = "Presa 18";
+    arma_freq.value = "8";
+    arma_clase.value = "Cuerda";
+    arma_especial.value = "Presa 18";
     break;
   case "Red de gladiador":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 1;
-    this.getField(event.target.name + "_iniciativa").value = "+0";
-    this.getField(event.target.name + "_freq").value = "4";
-    this.getField(event.target.name + "_clase").value = "Cuerda";
-    this.getField(event.target.name + "_especial").value = "Presa 20";
-    break;
-  case "Combate desarmado":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 2;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "1";
-    this.getField(event.target.name + "_clase").value = "Sin armas";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "4";
+    arma_clase.value = "Cuerda";
+    arma_especial.value = "Presa 20";
     break;
   case "Jarrón":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 3;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "8";
+    arma_clase.value = "Maza";
     break;
   case "Botella rota":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 3;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
     break;
   case "Antorcha":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 4;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "8";
+    arma_clase.value = "Maza";
     break;
   case "Palo de madera":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 4;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "8";
+    arma_clase.value = "Maza";
     break;
   case "Cadena":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Cuerda";
-    this.getField(event.target.name + "_especial").value = "Presa 16";
+    arma_freq.value = "12";
+    arma_clase.value = "Cuerda";
+    arma_especial.value = "Presa 16";
     break;
   case "Cestus":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
     break;
   case "Estilete":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
+    arma_especial.value = "Precisa";
     break;
   case "Silla":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Mandoble";
+    arma_freq.value = "10";
+    arma_clase.value = "Mandoble";
     break;
   case "Barra metálica":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "10";
+    arma_clase.value = "Maza";
     break;
   case "Cuchillo de cocina":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "8";
+    arma_clase.value = "Arma corta";
     break;
   case "Garfio":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
     break;
   case "Garrote":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "10";
+    arma_clase.value = "Maza";
     break;
   case "Daga":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
+    arma_especial.value = "Precisa";
     break;
   case "Vara":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Asta";
-    this.getField(event.target.name + "_especial").value = "A dos manos";
+    arma_freq.value = "8";
+    arma_clase.value = "Asta";
+    arma_especial.value = "A dos manos";
     break;
   case "Daga de parada":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "6";
+    arma_clase.value = "Arma corta";
+    arma_especial.value = "Precisa";
     break;
   case "Martillo":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "8";
+    arma_clase.value = "Maza";
     break;
   case "Azada":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 6;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Hacha";
+    arma_freq.value = "8";
+    arma_clase.value = "Hacha";
     break;
   case "Hoz":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "8";
+    arma_clase.value = "Arma corta";
     break;
   case "Arpón":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Asta";
+    arma_freq.value = "10";
+    arma_clase.value = "Asta";
     break;
   case "Florete":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "6";
-    this.getField(event.target.name + "_clase").value = "Espada / Arma corta";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "6";
+    arma_clase.value = "Espada";
+    arma_especial.value = "Precisa";
     break;
   case "Guadaña":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Asta / Mandoble";
+    arma_freq.value = "10";
+    arma_clase.value = "Asta";
     break;
   case "Jabalina":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Asta";
+    arma_freq.value = "8";
+    arma_clase.value = "Asta";
     break;
   case "Látigo":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 7;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Cuerda";
-    this.getField(event.target.name + "_especial").value = "Presa 16";
+    arma_freq.value = "8";
+    arma_clase.value = "Cuerda";
+    arma_especial.value = "Presa 16";
     break;
   case "Hacha de leñador":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Hacha";
+    arma_freq.value = "10";
+    arma_clase.value = "Hacha";
     break;
   case "Pico":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 4;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
+    arma_freq.value = "10";
+    arma_clase.value = "Arma corta";
     break;
   case "Lanza":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Asta";
+    arma_freq.value = "8";
+    arma_clase.value = "Asta";
     break;
   case "Espada corta":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Arma corta";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "8";
+    arma_clase.value = "Arma corta";
+    arma_especial.value = "Precisa";
     break;
   case "Mayal":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Maza / Cuerda";
+    arma_freq.value = "12";
+    arma_clase.value = "Cuerda";
     break;
   case "Maza":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "12";
+    arma_clase.value = "Maza";
     break;
   case "Estoque":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "8";
-    this.getField(event.target.name + "_clase").value = "Espada";
-    this.getField(event.target.name + "_especial").value = "Precisa";
+    arma_freq.value = "8";
+    arma_clase.value = "Espada";
+    arma_especial.value = "Precisa";
     break;
   case "Tridente":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 8;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Asta";
-    this.getField(event.target.name + "_especial").value = "Lanzable";
+    arma_freq.value = "12";
+    arma_clase.value = "Asta";
+    arma_especial.value = "Lanzable";
     break;
   case "Hacha de mano":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 9;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Hacha";
+    arma_freq.value = "10";
+    arma_clase.value = "Hacha";
     break;
   case "Sable":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 9;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 2;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Espada";
+    arma_freq.value = "12";
+    arma_clase.value = "Espada";
     break;
   case "Martillo de guerra":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 10;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "12";
+    arma_clase.value = "Maza";
     break;
   case "Cimitarra":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 10;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Espada";
+    arma_freq.value = "10";
+    arma_clase.value = "Espada";
     break;
   case "Espada larga":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 10;
-    this.getField(event.target.name + "_iniciativa").value = "+" + multiplicador * 0;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Espada";
+    arma_freq.value = "12";
+    arma_clase.value = "Espada";
     break;
   case "Espada ancha":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 11;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 1;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Espada";
+    arma_freq.value = "10";
+    arma_clase.value = "Espada";
     break;
   case "Maza pesada de combate":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 12;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Maza / Mandoble";
+    arma_freq.value = "12";
+    arma_clase.value = "Maza";
     break;
   case "Alabarda":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 12;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "12";
-    this.getField(event.target.name + "_clase").value = "Asta / Mandoble";
-    this.getField(event.target.name + "_especial").value = "A dos manos";
+    arma_freq.value = "12";
+    arma_clase.value = "Asta";
+    arma_especial.value = "A dos manos";
     break;
   case "Espada bastarda":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 14;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 6;
-    this.getField(event.target.name + "_freq").value = "14";
-    this.getField(event.target.name + "_clase").value = "Espada / Mandoble";
+    arma_freq.value = "14";
+    arma_clase.value = "Espada";
     break;
   case "Gran martillo de guerra":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 14;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 7;
-    this.getField(event.target.name + "_freq").value = "14";
-    this.getField(event.target.name + "_clase").value = "Maza";
+    arma_freq.value = "14";
+    arma_clase.value = "Maza";
     break;
   case "Hacha de guerra":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 14;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 6;
-    this.getField(event.target.name + "_freq").value = "14";
-    this.getField(event.target.name + "_clase").value = "Hacha";
+    arma_freq.value = "14";
+    arma_clase.value = "Hacha";
     break;
   case "Lanza de caballería":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 16;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 6;
-    this.getField(event.target.name + "_freq").value = "16";
-    this.getField(event.target.name + "_clase").value = "Asta";
+    arma_freq.value = "16";
+    arma_clase.value = "Asta";
     break;
   case "Mangual":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 16;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 10;
-    this.getField(event.target.name + "_freq").value = "16";
-    this.getField(event.target.name + "_clase").value = "Maza / Mandoble";
+    arma_freq.value = "16";
+    arma_clase.value = "Mandoble";
     break;
   case "Mandoble":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 18;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 12;
-    this.getField(event.target.name + "_freq").value = "16";
-    this.getField(event.target.name + "_clase").value = "Mandoble";
+    arma_freq.value = "16";
+    arma_clase.value = "Mandoble";
     break;
   case "Hacha a dos manos":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = 0;
-    this.getField(event.target.name + "_esq").value = 0;
-    this.getField(event.target.name + "_db").value = multiplicador * 20;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 14;
-    this.getField(event.target.name + "_freq").value = "18";
-    this.getField(event.target.name + "_clase").value = "Hacha / Mandoble";
+    arma_freq.value = "18";
+    arma_clase.value = "Hacha";
     break;
   case "Rodela":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = multiplicador * 2;
-    this.getField(event.target.name + "_esq").value = multiplicador * 1;
-    this.getField(event.target.name + "_db").value = multiplicador * 3;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 3;
-    this.getField(event.target.name + "_freq").value = "10";
-    this.getField(event.target.name + "_clase").value = "Escudo";
+    arma_freq.value = "10";
+    arma_clase.value = "Escudo";
+    arma_calidad.readonly = true;
     break;
   case "Escudo":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = multiplicador * 4;
-    this.getField(event.target.name + "_esq").value = multiplicador * 2;
-    this.getField(event.target.name + "_db").value = multiplicador * 4;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 5;
-    this.getField(event.target.name + "_freq").value = "14";
-    this.getField(event.target.name + "_clase").value = "Escudo";
+    arma_freq.value = "14";
+    arma_clase.value = "Escudo";
+    arma_calidad.readonly = true;
     break;
-  case "Escudo completo":
-    this.getField(event.target.name + "_atq").value = 0;
-    this.getField(event.target.name + "_par").value = multiplicador * 6;
-    this.getField(event.target.name + "_esq").value = multiplicador * 3;
-    this.getField(event.target.name + "_db").value = multiplicador * 5;
-    this.getField(event.target.name + "_iniciativa").value = "-" + multiplicador * 8;
-    this.getField(event.target.name + "_freq").value = "20";
-    this.getField(event.target.name + "_clase").value = "Escudo";
+  case "Escudo corporal":
+    arma_freq.value = "20";
+    arma_clase.value = "Escudo";
+    arma_calidad.readonly = true;
     break;
   default:
     this.getField(event.target.name + "_atq").value = "—";
     this.getField(event.target.name + "_par").value = "—";
     this.getField(event.target.name + "_esq").value = "—";
     this.getField(event.target.name + "_db").value = "—";
-    this.getField(event.target.name + "_iniciativa").value = "—";
-    this.getField(event.target.name + "_freq").value = "—";
     this.getField(event.target.name + "_df").value = "—";
-    this.getField(event.target.name + "_calidad").value = "—";
+    this.getField(event.target.name + "_iniciativa").value = "—";
 
+    var check = this.getField(event.target.name + "_check");
+    check.readonly = true;
+    check.value = "—";
+    
+    arma_clase.value = "—";
+    arma_freq.value = "—";
+    arma_calidad.value = "—";
     break;
 }
 
@@ -1266,47 +954,45 @@ switch (event.value) {
 // Validar tabla_arma
 
 var num = Number(event.target.name.substr(event.target.name.length - 1));
-var multiplicador = this.getField("sistema").value;
 var tabla_arma = this.getField(event.target.name);
-var coste_pd = this.getField(event.target.name + "_pd");
-var arma_clase = this.getField(event.target.name + "_clase");
+var coste_md = this.getField(event.target.name + "_md");
+var arma_clase = arma_clase;
 var encontrado = false;
 
-
 switch (event.value) {
-  case "Armas Cortas":
-    arma_clase.value = "Arma Corta";
-    coste_pd.value = multiplicador * 10;
+  case "ARMAS CORTAS":
+    arma_clase.value = "Arma corta";
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Hachas":
+  case "HACHAS":
     arma_clase.value = "Hacha";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Mazas":
+  case "MAZAS":
     arma_clase.value = "Maza";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Espadas":
+  case "ESPADAS":
     arma_clase.value = "Espada";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Mandobles":
+  case "MANDOBLES":
     arma_clase.value = "Mandoble";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Astas":
+  case "ASTAS":
     arma_clase.value = "Asta";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
-  case "Cuerdas":
+  case "CUERDAS":
     arma_clase.value = "Cuerda";
-    coste_pd.value = multiplicador * 10;
+    coste_md.value = 10;
     encontrado = true;
     break;
   case "Lazo":
@@ -1376,10 +1062,10 @@ switch (event.value) {
     arma_clase.value = "Asta";
     break;
   case "Florete":
-    arma_clase.value = "Espada / Arma corta";
+    arma_clase.value = "Espada";
     break;
   case "Guadaña":
-    arma_clase.value = "Asta / Mandoble";
+    arma_clase.value = "Asta";
     break;
   case "Jabalina":
     arma_clase.value = "Asta";
@@ -1400,7 +1086,7 @@ switch (event.value) {
     arma_clase.value = "Arma corta";
     break;
   case "Mayal":
-    arma_clase.value = "Maza / Cuerda";
+    arma_clase.value = "Cuerda";
     break;
   case "Maza":
     arma_clase.value = "Maza";
@@ -1430,13 +1116,13 @@ switch (event.value) {
     arma_clase.value = "Espada";
     break;
   case "Maza pesada de combate":
-    arma_clase.value = "Maza / Mandoble";
+    arma_clase.value = "Maza";
     break;
   case "Alabarda":
-    arma_clase.value = "Asta / Mandoble";
+    arma_clase.value = "Asta";
     break;
   case "Espada bastarda":
-    arma_clase.value = "Espada / Mandoble";
+    arma_clase.value = "Espada";
     break;
   case "Gran martillo de guerra":
     arma_clase.value = "Maza";
@@ -1448,13 +1134,13 @@ switch (event.value) {
     arma_clase.value = "Asta";
     break;
   case "Mangual":
-    arma_clase.value = "Maza / Mandoble";
+    arma_clase.value = "Mandoble";
     break;
   case "Mandoble":
     arma_clase.value = "Mandoble";
     break;
   case "Hacha a dos manos":
-    arma_clase.value = "Hacha / Mandoble";
+    arma_clase.value = "Hacha";
     break;
   case "Rodela":
     arma_clase.value = "Escudo";
@@ -1465,106 +1151,20 @@ switch (event.value) {
   case "Escudo completo":
     arma_clase.value = "Escudo";
     break;
-    default:
+  default:
     arma_clase.value = "—";
-    coste_pd.value = 0;
+    coste_md.value = 0;
     break;
 }
 
 if (arma_clase.value !== "—") {
-  for (var index = 1; index < num && !encontrado; index++) {
-    var tabla_arma_clase = this.getField("tabla_arma" + index + "_clase");
-
-    if (tabla_arma_clase.value === arma_clase.value) {
-      encontrado = true;
-      coste_pd.value = 2 * multiplicador;
-    }
-  }
-
-  if(!encontrado) {
-    coste_pd.value = 4 * multiplicador;
-  }
-
-  if (this.getField("categoria").value === "Guerrero") {
-    coste_pd.value = coste_pd.value / 2;
-  }
-
-  if((num + 1) <= 7) {
+  if ((num + 1) < 7) {
     this.getField("tabla_arma" + (num + 1)).readonly = false;
     event.target.readonly = true;
   }
-
-  //TODO: Eliminar de los siguientes items la opcion seleccionada (deleteItemAt())
 } else {
-  if((num - 1) >= 1) {
+  if ((num - 1) >= 1 && (event.value === "" || event.value === "-")) {
     this.getField("tabla_arma" + (num - 1)).readonly = false;
     event.target.readonly = true;
   }
-}
-
-// Validar sistema
-
-var lista = [
-  this.getField("pd_acrobacias").value = (event.value === "D100") ? this.getField("pd_acrobacias").value * 5 : Math.floor(this.getField("pd_acrobacias").value / 5);
-  this.getField("pd_atletismo").value = (event.value === "D100") ? this.getField("pd_atletismo").value * 5 : Math.floor(this.getField("pd_atletismo").value / 5);
-  this.getField("pd_montar").value = (event.value === "D100") ? this.getField("pd_montar").value * 5 : Math.floor(this.getField("pd_montar").value / 5);
-  this.getField("pd_nadar").value = (event.value === "D100") ? this.getField("pd_nadar").value * 5 : Math.floor(this.getField("pd_nadar").value / 5);
-  this.getField("pd_trepar").value = (event.value === "D100") ? this.getField("pd_trepar").value * 5 : Math.floor(this.getField("pd_trepar").value / 5);
-  this.getField("pd_saltar").value = (event.value === "D100") ? this.getField("pd_saltar").value * 5 : Math.floor(this.getField("pd_saltar").value / 5);
-  this.getField("pd_frialdad").value = (event.value === "D100") ? this.getField("pd_frialdad").value * 5 : Math.floor(this.getField("pd_frialdad").value / 5);
-  this.getField("pd_resdolor").value = (event.value === "D100") ? this.getField("pd_resdolor").value * 5 : Math.floor(this.getField("pd_resdolor").value / 5);
-  this.getField("pd_escuchar").value = (event.value === "D100") ? this.getField("pd_escuchar").value * 5 : Math.floor(this.getField("pd_escuchar").value / 5);
-  this.getField("pd_ver").value = (event.value === "D100") ? this.getField("pd_ver").value * 5 : Math.floor(this.getField("pd_ver").value / 5);
-  this.getField("pd_buscar").value = (event.value === "D100") ? this.getField("pd_buscar").value * 5 : Math.floor(this.getField("pd_buscar").value / 5);
-  this.getField("pd_rastrear").value = (event.value === "D100") ? this.getField("pd_rastrear").value * 5 : Math.floor(this.getField("pd_rastrear").value / 5);
-  this.getField("pd_animales").value = (event.value === "D100") ? this.getField("pd_animales").value * 5 : Math.floor(this.getField("pd_animales").value / 5);
-  this.getField("pd_ciencia").value = (event.value === "D100") ? this.getField("pd_ciencia").value * 5 : Math.floor(this.getField("pd_ciencia").value / 5);
-  this.getField("pd_herbolaria").value = (event.value === "D100") ? this.getField("pd_herbolaria").value * 5 : Math.floor(this.getField("pd_herbolaria").value / 5);
-  this.getField("pd_historia").value = (event.value === "D100") ? this.getField("pd_historia").value * 5 : Math.floor(this.getField("pd_historia").value / 5);
-  this.getField("pd_ley").value = (event.value === "D100") ? this.getField("pd_ley").value * 5 : Math.floor(this.getField("pd_ley").value / 5);
-  this.getField("pd_medicina").value = (event.value === "D100") ? this.getField("pd_medicina").value * 5 : Math.floor(this.getField("pd_medicina").value / 5);
-  this.getField("pd_memorizar").value = (event.value === "D100") ? this.getField("pd_memorizar").value * 5 : Math.floor(this.getField("pd_memorizar").value / 5);
-  this.getField("pd_navegacion").value = (event.value === "D100") ? this.getField("pd_navegacion").value * 5 : Math.floor(this.getField("pd_navegacion").value / 5);
-  this.getField("pd_ocultismo").value = (event.value === "D100") ? this.getField("pd_ocultismo").value * 5 : Math.floor(this.getField("pd_ocultismo").value / 5);
-  this.getField("pd_tasacion").value = (event.value === "D100") ? this.getField("pd_tasacion").value * 5 : Math.floor(this.getField("pd_tasacion").value / 5);
-  this.getField("pd_comerciar").value = (event.value === "D100") ? this.getField("pd_comerciar").value * 5 : Math.floor(this.getField("pd_comerciar").value / 5);
-  this.getField("pd_callejear").value = (event.value === "D100") ? this.getField("pd_callejear").value * 5 : Math.floor(this.getField("pd_callejear").value / 5);
-  this.getField("pd_estilo").value = (event.value === "D100") ? this.getField("pd_estilo").value * 5 : Math.floor(this.getField("pd_estilo").value / 5);
-  this.getField("pd_intimidar").value = (event.value === "D100") ? this.getField("pd_intimidar").value * 5 : Math.floor(this.getField("pd_intimidar").value / 5);
-  this.getField("pd_etiqueta").value = (event.value === "D100") ? this.getField("pd_etiqueta").value * 5 : Math.floor(this.getField("pd_etiqueta").value / 5);
-  this.getField("pd_persuasion").value = (event.value === "D100") ? this.getField("pd_persuasion").value * 5 : Math.floor(this.getField("pd_persuasion").value / 5);
-  this.getField("pd_advsocial").value = (event.value === "D100") ? this.getField("pd_advsocial").value * 5 : Math.floor(this.getField("pd_advsocial").value / 5);
-  this.getField("pd_cerrajeria").value = (event.value === "D100") ? this.getField("pd_cerrajeria").value * 5 : Math.floor(this.getField("pd_cerrajeria").value / 5);
-  this.getField("pd_disfraz").value = (event.value === "D100") ? this.getField("pd_disfraz").value * 5 : Math.floor(this.getField("pd_disfraz").value / 5);
-  this.getField("pd_ocultarse").value = (event.value === "D100") ? this.getField("pd_ocultarse").value * 5 : Math.floor(this.getField("pd_ocultarse").value / 5);
-  this.getField("pd_robo").value = (event.value === "D100") ? this.getField("pd_robo").value * 5 : Math.floor(this.getField("pd_robo").value / 5);
-  this.getField("pd_sigilo").value = (event.value === "D100") ? this.getField("pd_sigilo").value * 5 : Math.floor(this.getField("pd_sigilo").value / 5);
-  this.getField("pd_tramperia").value = (event.value === "D100") ? this.getField("pd_tramperia").value * 5 : Math.floor(this.getField("pd_tramperia").value / 5);
-  this.getField("pd_venenos").value = (event.value === "D100") ? this.getField("pd_venenos").value * 5 : Math.floor(this.getField("pd_venenos").value / 5);
-  this.getField("pd_arte").value = (event.value === "D100") ? this.getField("pd_arte").value * 5 : Math.floor(this.getField("pd_arte").value / 5);
-  this.getField("pd_baile").value = (event.value === "D100") ? this.getField("pd_baile").value * 5 : Math.floor(this.getField("pd_baile").value / 5);
-  this.getField("pd_forja").value = (event.value === "D100") ? this.getField("pd_forja").value * 5 : Math.floor(this.getField("pd_forja").value / 5);
-  this.getField("pd_musica").value = (event.value === "D100") ? this.getField("pd_musica").value * 5 : Math.floor(this.getField("pd_musica").value / 5);
-  this.getField("pd_tmanos").value = (event.value === "D100") ? this.getField("pd_tmanos").value * 5 : Math.floor(this.getField("pd_tmanos").value / 5);
-  this.getField("pd_alquimia").value = (event.value === "D100") ? this.getField("pd_alquimia").value * 5 : Math.floor(this.getField("pd_alquimia").value / 5);
-  this.getField("pd_sastreria").value = (event.value === "D100") ? this.getField("pd_sastreria").value * 5 : Math.floor(this.getField("pd_sastreria").value / 5);
-  this.getField("pd_joyeria").value = (event.value === "D100") ? this.getField("pd_joyeria").value * 5 : Math.floor(this.getField("pd_joyeria").value / 5);
-  this.getField("pd_caligrafia").value = (event.value === "D100") ? this.getField("pd_caligrafia").value * 5 : Math.floor(this.getField("pd_caligrafia").value / 5);
-  this.getField("pd_mates").value = (event.value === "D100") ? this.getField("pd_mates").value * 5 : Math.floor(this.getField("pd_mates").value / 5);
-  this.getField("pd_cocina").value = (event.value === "D100") ? this.getField("pd_cocina").value * 5 : Math.floor(this.getField("pd_cocina").value / 5);
-  this.getField("pd_ataque").value = (event.value === "D100") ? this.getField("pd_ataque").value * 5 : Math.floor(this.getField("pd_ataque").value / 5);
-  this.getField("pd_parada").value = (event.value === "D100") ? this.getField("pd_parada").value * 5 : Math.floor(this.getField("pd_parada").value / 5);
-  this.getField("pd_esquiva").value = (event.value === "D100") ? this.getField("pd_esquiva").value * 5 : Math.floor(this.getField("pd_esquiva").value / 5);
-  this.getField("pd_llA").value = (event.value === "D100") ? this.getField("pd_llA").value * 5 : Math.floor(this.getField("pd_llA").value / 5);
-];
-
-var j = 0;
-
-while (j < lista.length) {
-  var element = this.getField("pd_" + lista[j]);
-  console.println(element.value);
-  if(element.value !== 0) {
-    element.value = (event.value === "D100") ? element.value * 5 : Math.floor(element.value / 5);
-  }
-  j++;
 }

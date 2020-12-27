@@ -66,8 +66,8 @@ var fue_bono = this.getField("fue_bono");
 
 // Vida
 var coste_vida = this.getField("coste_vida");
-var n_multiplos = this.getField("n_multiplos");
-var mult_vida = this.getField("mult_vida");
+var md_vida = this.getField("md_vida");
+var pd_vida = this.getField("pd_vida");
 var base_vida = this.getField("base_vida");
 var cat_vida = this.getField("cat_vida");
 var esp_vida = this.getField("esp_vida");
@@ -84,6 +84,7 @@ var cat_esquiva = this.getField("cat_esquiva");
 
 // Llevar armadura
 var coste_llA = this.getField("coste_llA");
+var md_llA = this.getField("md_llA");
 var pd_llA = this.getField("pd_llA");
 var base_llA = this.getField("base_llA");
 var cat_llA = this.getField("cat_llA");
@@ -102,8 +103,8 @@ var nivel = this.getField("nivel");
 
 var categoria = this.getField("categoria");
 
-var pd_totales = this.getField("pd_totales");
-var pd_actuales = this.getField("pd_actuales");
+var md_totales = this.getField("md_totales");
+var md_actuales = this.getField("md_actuales");
 
 var esp_animales = this.getField("esp_animales");
 var esp_frialdad = this.getField("esp_frialdad");
@@ -120,6 +121,8 @@ var reg_max = this.getField("reg_max");
 var i = 0;
 var j = 0;
 var k = 0;
+
+var valor_multiplo = this.getField("valor_multiplo").value;
 
 while (j < lista_habilidades.length) {
   var habilidad = lista_habilidades[j];
@@ -142,26 +145,26 @@ var puntos_base = 0;
 
 var lista_atr = ["agi", "con", "des", "fue", "int", "per", "pod", "vol"];
 var lista_bonos = [
-  -6 * multiplicador,
-  -5 * multiplicador,
-  -4 * multiplicador,
-  -4 * multiplicador,
-  -3 * multiplicador,
-  -3 * multiplicador,
-  -2 * multiplicador,
-  -1 * multiplicador,
-  -1 * multiplicador,
+  -30,
+  -25,
+  -20,
+  -20,
+  -15,
+  -15,
+  -10,
+  -5,
+  -5,
   0,
-  1 * multiplicador,
-  1 * multiplicador,
-  1 * multiplicador,
-  1 * multiplicador,
-  2 * multiplicador,
-  2 * multiplicador,
-  2 * multiplicador,
-  3 * multiplicador,
-  3 * multiplicador,
-  4 * multiplicador,
+  5,
+  5,
+  5,
+  5,
+  10,
+  10,
+  10,
+  15,
+  15,
+  20,
 ];
 var puntos_gastados = 6 + Math.floor(Number(nivel.value) / 2);
 i = 0;
@@ -180,80 +183,67 @@ while (i < lista_atr.length) {
 }
 i = 0;
 
-puntos_gastados =
-  puntos_gastados -
-  Number(this.getField("ventaja1_coste").value) -
-  Number(this.getField("ventaja2_coste").value) -
-  Number(this.getField("ventaja3_coste").value) -
-  Number(this.getField("ventaja4_coste").value) -
-  Number(this.getField("ventaja5_coste").value) -
-  Number(this.getField("ventaja6_coste").value) -
-  Number(this.getField("ventaja7_coste").value) +
-  Number(this.getField("desventaja1_coste").value) +
-  Number(this.getField("desventaja2_coste").value) +
-  Number(this.getField("desventaja3_coste").value);
-
 // Categorias base
 this.getField("puntos_base").value = 90 - puntos_base;
 
 this.getField("puntos_creacion").value = Number(puntos_gastados);
 
 // Nivel
-var base = Number(nivel.value) == 0 ? 80 * multiplicador : 100 * multiplicador;
-pd_totales.value = Number(nivel.value) * (10 * multiplicador) + base;
+var base = Number(nivel.value) == 0 ? 80 : 100;
+md_totales.value = (Number(nivel.value) * 10) + base;
 
 // Categoria
 
 switch (categoria.value) {
   case "Guerrero":
-    coste_vida.value = multiplicador * 2;
+    coste_vida.value = 5;
     cat_vida.value = (4 * nivel.value) / 2;
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 1;
     coste_parada.value = 2;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_esquiva.value = 0;
-    cat_parada.value = multiplicador * Math.floor(nivel.value / 2);
-    cat_esquiva.value = multiplicador * Math.floor(nivel.value / 2);
-    cat_llA.value = multiplicador * 2 * (nivel.value / 2);
+    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_esquiva.value = Math.floor(nivel.value / 2);
+    cat_llA.value = 2 * (nivel.value / 2);
     break;
   case "Guerrero Acróbata":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = 2 * Math.floor(nivel.value / 2);
-    cat_iniciativa.value = 2 * multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 10 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 3;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
-    cat_esquiva.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_esquiva.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Paladín":
-    coste_vida.value = multiplicador * 3;
+    coste_vida.value = 7;
     cat_vida.value = 3 * (nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
     cat_ataque.value = 0;
     cat_esquiva.value = 0;
-    cat_parada.value = multiplicador * Math.floor(nivel.value / 2);
-    cat_llA.value = multiplicador * 2 * (nivel.value / 2);
+    cat_parada.value = Math.floor(nivel.value / 2);
+    cat_llA.value = 2 * (nivel.value / 2);
     break;
   case "Paladín Oscuro":
-    coste_vida.value = multiplicador * 3;
+    coste_vida.value = 7;
     cat_vida.value = 3 * (nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_esquiva.value = 0;
     cat_parada.value = 0;
-    cat_llA.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_llA.value = Math.floor(nivel.value / 2);
     break;
   case "Tao":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = 2 * (nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
     cat_ataque.value = 0;
@@ -262,64 +252,64 @@ switch (categoria.value) {
     cat_llA.value = 0;
     break;
   case "Explorador":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = 2 * (nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_esquiva.value = 0;
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Sombra":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = Math.floor(nivel.value / 2);
-    cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
+    cat_iniciativa.value = 10 * (nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 3;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
-    cat_esquiva.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
+    cat_esquiva.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Ladrón":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = Math.floor(nivel.value / 2);
-    cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
+    cat_iniciativa.value = 10 * (nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
     cat_ataque.value = 0;
-    cat_esquiva.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_esquiva.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Asesino":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = Math.floor(nivel.value / 2);
-    cat_iniciativa.value = multiplicador * 2 * (nivel.value / 2);
+    cat_iniciativa.value = 10 * (nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
-    cat_ataque.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_ataque.value = Math.floor(nivel.value / 2);
     cat_esquiva.value = 0;
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Ilusionista":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = Math.floor(nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 3;
     coste_parada.value = 3;
     cat_ataque.value = 0;
-    cat_esquiva.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_esquiva.value = Math.floor(nivel.value / 2);
     cat_parada.value = 0;
     cat_llA.value = 0;
     break;
   case "Novel":
-    coste_vida.value = multiplicador * 4;
+    coste_vida.value = 10;
     cat_vida.value = Math.floor(nivel.value / 2);
-    cat_iniciativa.value = multiplicador * Math.floor(nivel.value / 2);
+    cat_iniciativa.value = 5 * Math.floor(nivel.value / 2);
     coste_llA.value = 2;
     coste_parada.value = 2;
     cat_ataque.value = 0;
@@ -461,7 +451,7 @@ while (i < ventajas_list.length) {
     }
     if (i_primera_ventaja !== null || i_ultima_ventaja !== null) {
       // intelectuales
-      var incr = multiplicador * 1 * Number(nivel.value);
+      var incr = 1 * Number(nivel.value);
       if (ventaja_formateada.substr(ventaja_formateada.length - 2) === "ii") {
         incr = incr * 2;
       }
@@ -474,7 +464,7 @@ while (i < ventajas_list.length) {
       }
     } else {
       // tmanos
-      var incr = multiplicador * 2 * Number(nivel.value);
+      var incr = 2 * Number(nivel.value);
       var ventaja_nombre = ventaja_formateada.replace(/\s+/g, "");
       if (ventaja_formateada.substr(ventaja_formateada.length - 2) === "ii") {
         incr = incr * 2;
@@ -520,7 +510,7 @@ while (i < ventajas_list.length) {
     lista_ventajas = lista_ventajas.slice(0, 5);
 
     j = 0;
-    var incr = multiplicador * 2 * Number(nivel.value);
+    var incr = 2 * Number(nivel.value);
     while (j < lista_ventajas.length) {
       var esp_habilidad = this.getField("esp_" + lista_ventajas[j]);
       if (esp_habilidad) {
@@ -532,18 +522,18 @@ while (i < ventajas_list.length) {
   } else {
     switch (ventaja) {
       case "Afinidad animal":
-        esp_animales.value = Number(esp_animales.value) + multiplicador * 12;
+        esp_animales.value = Number(esp_animales.value) + 60;
         break;
       case "Ambidiestria":
       case "Al límite":
       case "Aprendizaje innato en llevar armadura":
-        esp_llA.value = multiplicador * Math.floor(Number(nivel.value / 2));
+        esp_llA.value = 5 * Math.floor(Number(nivel.value / 2));
         break;
       case "Aprendizaje innato en llevar armadura II":
-        esp_llA.value = multiplicador * 2 * Math.floor(Number(nivel.value / 2));
+        esp_llA.value = 10 * Math.floor(Number(nivel.value / 2));
         break;
       case "Aprendizaje innato en llevar armadura III":
-        esp_llA.value = multiplicador * 3 * Math.floor(Number(nivel.value / 2));
+        esp_llA.value = 15 * Math.floor(Number(nivel.value / 2));
         break;
       case "Armadura natural":
         break;
@@ -571,17 +561,17 @@ while (i < ventajas_list.length) {
         this.getField("oro").value = 10000;
         break;
       case "Mente fria":
-        esp_frialdad.value = Number(esp_frialdad.value) + multiplicador * 12;
+        esp_frialdad.value = Number(esp_frialdad.value) + 60;
         break;
       case "Reflejos rápidos":
-        esp_iniciativa.value = Number(esp_iniciativa.value) + multiplicador * 5;
+        esp_iniciativa.value = Number(esp_iniciativa.value) + 25;
         break;
       case "Reflejos rápidos II":
-        esp_iniciativa.value = Number(esp_iniciativa.value) + multiplicador * 9;
+        esp_iniciativa.value = Number(esp_iniciativa.value) + 45;
         break;
       case "Reflejos rápidos III":
         esp_iniciativa.value =
-          Number(esp_iniciativa.value) + multiplicador * 12;
+          Number(esp_iniciativa.value) + 60;
         break;
       case "Regeneración mejorada":
         reg_esp = Number(reg_esp) + 2;
@@ -593,27 +583,27 @@ while (i < ventajas_list.length) {
         reg_esp = Number(reg_esp) + 6;
         break;
       case "Resistencia física excepcional":
-        res_fisica_esp.value = Number(res_fisica_esp.value) + multiplicador * 5;
+        res_fisica_esp.value = Number(res_fisica_esp.value) + 25;
         res_enfermedades_esp.value =
-          Number(res_enfermedades_esp.value) + multiplicador * 5;
+          Number(res_enfermedades_esp.value) + 25;
         res_venenos_esp.value =
-          Number(res_venenos_esp.value) + multiplicador * 5;
+          Number(res_venenos_esp.value) + 25;
         break;
       case "Resistencia física excepcional II":
         res_fisica_esp.value =
-          Number(res_fisica_esp.value) + multiplicador * 10;
+          Number(res_fisica_esp.value) + 50;
         res_enfermedades_esp.value =
-          Number(res_enfermedades_esp.value) + multiplicador * 10;
+          Number(res_enfermedades_esp.value) + 50;
         res_venenos_esp.value =
-          Number(res_venenos_esp.value) + multiplicador * 10;
+          Number(res_venenos_esp.value) + 50;
         break;
       case "Seductor":
         esp_persuasion.value =
-          Number(esp_persuasion.value) + multiplicador * 12;
+          Number(esp_persuasion.value) + 60;
         break;
       case "Sentidos agudos":
-        esp_ver.value = Number(esp_ver.value) + multiplicador * 6;
-        esp_escuchar.value = Number(esp_escuchar.value) + multiplicador * 6;
+        esp_ver.value = Number(esp_ver.value) + 30;
+        esp_escuchar.value = Number(esp_escuchar.value) + 30;
         break;
       case "Sueño ligero":
       case "Tocado por el destino":
@@ -623,6 +613,20 @@ while (i < ventajas_list.length) {
   }
   i++;
 }
+
+
+puntos_gastados =
+  puntos_gastados -
+  Number(this.getField("ventaja1_coste").value) -
+  Number(this.getField("ventaja2_coste").value) -
+  Number(this.getField("ventaja3_coste").value) -
+  Number(this.getField("ventaja4_coste").value) -
+  Number(this.getField("ventaja5_coste").value) -
+  Number(this.getField("ventaja6_coste").value) -
+  Number(this.getField("ventaja7_coste").value) +
+  Number(this.getField("desventaja1_coste").value) +
+  Number(this.getField("desventaja2_coste").value) +
+  Number(this.getField("desventaja3_coste").value);
 
 var lista_vida = [
   1,
@@ -647,16 +651,15 @@ var lista_vida = [
   30,
 ];
 
-base_vida.value = lista_vida[Number(con_actual.value) - 1];
-// biolimite.value = (multiplicador * -1) * Number(con_actual.value);
+pd_vida.value = Number(md_vida.value) * valor_multiplo;
 
-mult_vida.value = n_multiplos.value * con_bono.value;
+base_vida.value = lista_vida[Number(con_actual.value) - 1] + Math.floor(Number(pd_vida.value) / Number(coste_vida.value));
+// biolimite.value = ( -1) * Number(con_actual.value);
 
 totales_vida.value =
   Number(base_vida.value) +
   Number(esp_vida.value) +
-  Number(this.getField("cat_vida").value) +
-  Number(mult_vida.value);
+  Number(this.getField("cat_vida").value);
 
 if (actuales_vida.value > totales_vida.value) {
   actuales_vida.value = totales_vida.value;
@@ -664,42 +667,47 @@ if (actuales_vida.value > totales_vida.value) {
   actuales_vida.value = 0;
 }
 // else if (actuales_vida.value < biolimite.value) {
-//   actuales_vida.value = biolimite.value;
+//  actuales_vida.value = biolimite.value;
 // }
 
 var defensa_ataque = ["parada", "esquiva", "ataque"];
 i = 0;
 while (i < defensa_ataque.length) {
   var c = defensa_ataque[i];
-  var pd_defatq = this.getField("pd_"+c);
-  // PD
-  var pd_restantes =
-    pd_totales.value / 2 -
-    this.getField("pd_" + defensa_ataque[(i + 1) % defensa_ataque.length])
+  var pd_defatq = this.getField("pd_" + c);
+  var md_defatq = this.getField("md_" + c);
+  var base_defatq = this.getField("base_" + c);
+  // MD
+  var md_restantes =
+    md_totales.value / 2 -
+    this.getField("md_" + defensa_ataque[(i + 1) % defensa_ataque.length])
     .value -
-    this.getField("pd_" + defensa_ataque[(i + 2) % defensa_ataque.length])
+    this.getField("md_" + defensa_ataque[(i + 2) % defensa_ataque.length])
     .value;
-  // if (Number(pd_defatq.value) > Number(pd_restantes)) {
-  //   pd_defatq.value = Number(pd_restantes);
-  // }
+  if (Number(md_defatq.value) > Number(md_restantes)) {
+    md_defatq.value = Number(md_restantes);
+  }
+
+  //PD
+  pd_defatq.value = md_defatq.value * valor_multiplo;
+
   // BASE
-  if (this.getField("pd_" + c).value && this.getField("coste_" + c).value > 0) {
-    this.getField("base_" + c).value = Math.floor(
-      this.getField("pd_" + c).value / this.getField("coste_" + c).value
+  if (pd_defatq.value && this.getField("coste_" + c).value > 0) {
+    base_defatq.value = Math.floor(
+      pd_defatq.value / this.getField("coste_" + c).value
     );
   } else {
-    this.getField("base_" + c).value = 0;
+    base_defatq.value = 0;
   }
   i++;
 }
 
-var limite_pd_llA = Number(pd_totales.value) / 10;
-if (Number(pd_llA.value) > Number(limite_pd_llA)) {
-  pd_llA.value = Number(limite_pd_llA);
+var limite_md_llA = Number(md_totales.value) / 10;
+if (Number(md_llA.value) > Number(limite_md_llA)) {
+  md_llA.value = Number(limite_md_llA);
 }
 
-
-// }
+pd_llA.value = Number(md_llA.value) * valor_multiplo;
 
 // PD Actuales
 
@@ -753,47 +761,43 @@ var lista_habilidades_atributos = [
   "des",
 ];
 
-pd_actuales.value =
-  Number(pd_totales.value) -
+md_actuales.value =
+  Number(md_totales.value) -
   Number(this.getField("pd_ataque").value) -
   Number(this.getField("pd_parada").value) -
   Number(this.getField("pd_esquiva").value) -
-  Number(pd_llA.value) -
-  Number(this.getField("coste_vida").value) * Number(n_multiplos.value);
+  Number(md_llA.value) -
+  Number(md_vida.value);
 
 i = 0;
 while (i < lista_habilidades.length) {
   var habilidad = lista_habilidades[i];
+  var md_habilidad = this.getField("md_" + habilidad);
   var pd_habilidad = this.getField("pd_" + habilidad);
   var base_habilidad = this.getField("base_" + habilidad);
+  pd_habilidad.value = Number(md_habilidad.value) * valor_multiplo;
   if (Number(pd_habilidad.value) > 0) {
     base_habilidad.value = Math.floor(
       Number(pd_habilidad.value) /
       Number(this.getField("coste_" + habilidad).value)
     );
-    pd_actuales.value = Number(pd_actuales.value) - Number(pd_habilidad.value);
+    md_actuales.value = Number(md_actuales.value) - Number(md_habilidad.value);
   } else {
-    base_habilidad.value = "";
+    base_habilidad.value = ctm ? 0 : -30;
   }
   var bono = this.getField(lista_habilidades_atributos[i] + "_bono");
   var esp = this.getField("esp_" + habilidad);
   var cat_nivel = this.getField("cat_nivel_" + habilidad);
   var final_habilidad = this.getField("final_" + habilidad);
   if (ctm) {
-    esp.value = Number(esp.value) + multiplicador * 2;
+    esp.value = Number(esp.value) + 2;
   }
-  // var base_hab_final =
-  // base_habilidad.value === "" ? -6 : Number(base_habilidad.value);
+
   final_habilidad.value =
     Number(base_habilidad.value) +
     Number(bono.value) +
     Number(esp.value) +
     Number(cat_nivel.value);
-  if (!ctm && Number(base_habilidad.value) === 0) {
-    final_habilidad.value -= multiplicador * 6;
-  }
-
-  final_habilidad.value = final_habilidad.value * (5/multiplicador);
 
   i++;
 }
@@ -813,40 +817,40 @@ reg_final = Number(reg_esp) + Number(reg_base);
 
 switch (reg_final) {
   case 1:
-    reg_max.value = 2 * multiplicador;
-    reg_normal.value = 1 * multiplicador;
+    reg_max.value = 2;
+    reg_normal.value = 1;
     break;
   case 2:
-    reg_max.value = 4 * multiplicador;
-    reg_normal.value = 2 * multiplicador;
+    reg_max.value = 4;
+    reg_normal.value = 2;
     break;
   case 3:
-    reg_max.value = 6 * multiplicador;
-    reg_normal.value = 3 * multiplicador;
+    reg_max.value = 6;
+    reg_normal.value = 3;
     break;
   case 4:
-    reg_max.value = 8 * multiplicador;
-    reg_normal.value = 4 * multiplicador;
+    reg_max.value = 8;
+    reg_normal.value = 4;
     break;
   case 5:
-    reg_max.value = 10 * multiplicador;
-    reg_normal.value = 5 * multiplicador;
+    reg_max.value = 10;
+    reg_normal.value = 5;
     break;
   case 6:
-    reg_max.value = 15 * multiplicador;
-    reg_normal.value = 6 * multiplicador;
+    reg_max.value = 15;
+    reg_normal.value = 6;
     break;
   case 7:
-    reg_max.value = 20 * multiplicador;
-    reg_normal.value = 10 * multiplicador;
+    reg_max.value = 20;
+    reg_normal.value = 10;
     break;
   case 8:
-    reg_max.value = 50 * multiplicador;
-    reg_normal.value = 20 * multiplicador;
+    reg_max.value = 50;
+    reg_normal.value = 20;
     break;
   case 9:
-    reg_max.value = 100 * multiplicador;
-    reg_normal.value = 40 * multiplicador;
+    reg_max.value = 100;
+    reg_normal.value = 40;
     break;
   default:
     break;
@@ -1000,7 +1004,7 @@ switch (fue_actual.value) {
 
 // Presencia
 var presencia = this.getField("presencia");
-presencia.value = multiplicador * 5 + multiplicador * nivel.value;
+presencia.value = 25 + nivel.value;
 
 // Resistencias
 this.getField("res_fisica_final").value =
@@ -1011,6 +1015,53 @@ this.getField("res_venenos_final").value =
   presencia.value + Number(con_bono.value) + Number(res_venenos_esp.value);
 
 // Armas
+
+var combate_desarmado = false;
+
+for (i = 1; i < 7; i++) {
+  var tabla_arma_clase_i = this.getField("tabla_arma" + i + "_clase");
+  var tabla_arma_clase_i_md = this.getField("tabla_arma" + i + "_md");
+  if (tabla_arma_clase_i.value !== "—") {
+    if (!combate_desarmado && tabla_arma_clase_i.value === "Sin armas") {
+      combate_desarmado = true;
+    }
+    var tabla_arma_i = this.getField("tabla_arma" + i);
+    var encontrado = false;
+    for (j = 1; j < i && !encontrado; j++) {
+      var tabla_arma_j = this.getField("tabla_arma" + j);
+      var tabla_arma_clase_j = this.getField("tabla_arma" + j + "_clase");
+      if (tabla_arma_clase_i.value === tabla_arma_clase_j.value && tabla_arma_i.value !== tabla_arma_i.value.toUpperCase()) {
+        if (
+          tabla_arma_i.value === tabla_arma_j.value || tabla_arma_j.value !== tabla_arma_j.value.toUpperCase()
+        ) {
+          tabla_arma_clase_i_md.value = 0;
+        } else {
+          // similar
+          tabla_arma_clase_i_md.value = 2;
+        }
+        encontrado = true;
+      }
+    }
+    if (!encontrado) {
+      if (tabla_arma_i.value === tabla_arma_i.value.toUpperCase()) {
+        tabla_arma_clase_i_md.value = 10;
+      } else {
+        tabla_arma_clase_i_md.value = 4;
+      }
+    }
+    if (this.getField("categoria").value === "Guerrero") {
+      tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
+    }
+  } else {
+    i = 7;
+  }
+}
+
+this.getField("tabla_arma1_md").value = 0;
+
+
+
+
 var equipo_parada = this.getField("equipo_parada");
 var equipo_esquiva = this.getField("equipo_esquiva");
 var equipo_ataque = this.getField("equipo_ataque");
@@ -1021,18 +1072,17 @@ equipo_ataque.value = 0;
 iniciativa_total_arma.value = 0;
 var num_checks_armas = 0;
 var manos_ocupadas = false;
+var manos_libres = true;
 
 i = 1;
-while ( i < 7) {
+while (i < 7) {
   var clase = this.getField("arma" + i + "_clase");
   var calidad = this.getField("arma" + i + "_calidad");
   var check = this.getField("arma" + i + "_check");
-  // check.checkThisBox(0,false);
   var especial = this.getField("arma" + i + "_especial");
-  if (clase.value === "—") {
-    calidad.readonly = true;
-  } else {
-    calidad.readonly = clase.value === "Escudo" ? true : false;
+
+  if (clase.value !== "—") {
+    check.readonly = false;
     var arma_ataque = this.getField("arma" + i + "_atq");
     var arma_parada = this.getField("arma" + i + "_par");
     var arma_esquiva = this.getField("arma" + i + "_esq");
@@ -1040,96 +1090,417 @@ while ( i < 7) {
     var arma_freq = this.getField("arma" + i + "_freq");
     var arma_db = this.getField("arma" + i + "_db");
     var arma_df = this.getField("arma" + i + "_df");
+    var arma = this.getField("arma" + i);
 
-    arma_ataque.value = Number(arma_ataque.value) + ((multiplicador * 1) * Number(calidad.value));
-    arma_parada.value = Number(arma_parada.value) + ((multiplicador * 1) * Number(calidad.value));
-    arma_iniciativa.value = Number(arma_iniciativa.value) + ((multiplicador * 1) * Number(calidad.value));
-    arma_db.value = Number(arma_db.value) + ((multiplicador * 2) * Number(calidad.value));
+    actualizarDatosArma(i);
+
     arma_df.value = Math.ceil(Number(arma_db.value) + Number(fue_bono.value));
 
-    if((num_checks_armas === 1 && especial.value === "A dos manos")) {
-      check.value = "—";
-      check.readonly = true;
-    } else {
-      check.readonly = false;
-    }
 
-    
-    if(manos_ocupadas === false) {
-      if(check.value === "Eq.") {
-        equipo_ataque.value = Number(equipo_ataque.value) + equipo_ataque.value;
-        equipo_parada.value = Number(equipo_parada.value) + arma_parada.value;
-        equipo_esquiva.value = Number(equipo_esquiva.value) + arma_esquiva.value;
-        iniciativa_total_arma.value = Number(iniciativa_total_arma.value) + arma_iniciativa.value;
-        var fue_req_diff = arma_freq.value - fue_actual.value;
-        if(fue_req_diff > 0) {
-          equipo_ataque.value = Number(equipo_ataque.value) - (1 * multiplicador * fue_req_diff);
-          equipo_parada.value = Number(equipo_parada.value) - (1 * multiplicador * fue_req_diff);
-          iniciativa_total_arma.value = Number(iniciativa_total_arma.value) - (1 * multiplicador * fue_req_diff);
-        }
+    if (manos_ocupadas === false) {
+      check.readonly = false;
+      if (check.value === "Eq.") {
+        arma_df.textSize = 12;
+        manos_libres = false;
+        iniciativa_total_arma.value = Number(iniciativa_total_arma.value) + Number(arma_iniciativa.value);
+
+        // Negativos por no saber usar el arma
+        aplicarNegativosPorTabla(i);
+
+        // Negativos por no tener fuerza requerida
+        aplicarNegativosPorFueReq(i);
+
+        this.getField("equipo_ataque").value = Number(arma_ataque.value);
+        this.getField("equipo_parada").value = Number(arma_ataque.value);
+        this.getField("equipo_esquiva").value = Number(arma_ataque.value);
+
         num_checks_armas++;
-        if(num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
+
+        // Ocupar manos si se seleccionan dos armas o una a dos manos
+        if (num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
           manos_ocupadas = true;
         }
-      } 
-    }
-    // console.println(
-    //   "\n--- ARMA: " + i + " ---" +
-    //   "\niniciativa_total_arma = " + iniciativa_total_arma.value +
-    //   "\nN(arma_iniciativa) = " + Number(arma_iniciativa.value) +
-    //   "\narma_iniciativa = " + arma_iniciativa.value
-    //   );
-  }
 
+      } else {
+        arma_df.textSize = 8;
+      }
+    } else {
+      check.readonly = true;
+    }
+  }
   i++;
 }
-
-// console.println("\n-----------------------------\n");
-// console.println("\n\n *** MANOS OCUPADAS: " + manos_ocupadas + " ***");
 i = 1;
-if(manos_ocupadas === true) {
-  while(i < 7) {
+
+// Acciones primer arma (desarmado)
+
+if (manos_ocupadas === true) {
+  this.getField("arma0_df").textSize = 8;
+  this.getField("arma0_check").value = "—";
+  while (i < 7) {
     var check = this.getField("arma" + i + "_check");
-    if(check.value === "—") {
+    if (check.value !== "Eq.") {
       check.readonly = true;
     }
     i++;
   }
+} else if (manos_libres === true) {
+
+  actualizarPrimerArma();
+
+  equipo_ataque.value += this.getField("arma0_atq").value;
+  equipo_parada.value += this.getField("arma0_par").value;
+  iniciativa_total_arma.value += arma_iniciativa.value;
+
+} else {
+  this.getField("arma0_df").textSize = 8;
+  this.getField("arma0_check").value = "—";
 }
 
 // Iniciativa
-this.getField("final_iniciativa").value = (5/multiplicador) * (
+this.getField("final_iniciativa").value =
   Number(this.getField("armadura_vel").value) +
   Number(agi_bono.value) +
   Number(des_bono.value) +
   Number(this.getField("arma_vel").value) +
   Number(this.getField("cat_iniciativa").value) +
-  Number(esp_iniciativa.value));
+  Number(esp_iniciativa.value);
 
-  // Combate final
+// Combate final
 
-  this.getField("final_ataque").value = (5/multiplicador) * (
+this.getField("final_ataque").value =
   Number(this.getField("base_ataque").value) +
   Number(this.getField("equipo_ataque").value) +
   Number(des_bono.value) +
-  Number(this.getField("cat_ataque").value));
+  Number(this.getField("cat_ataque").value);
 
-this.getField("final_parada").value = (5/multiplicador) * (
-Number(this.getField("base_parada").value) +
-Number(this.getField("equipo_parada").value) +
-Number(des_bono.value) +
-Number(this.getField("cat_parada").value));
+this.getField("final_parada").value =
+  Number(this.getField("base_parada").value) +
+  Number(this.getField("equipo_parada").value) +
+  Number(des_bono.value) +
+  Number(this.getField("cat_parada").value);
 
-this.getField("final_esquiva").value = (5/multiplicador) * (
-Number(this.getField("base_esquiva").value) +
-Number(this.getField("equipo_esquiva").value) +
-Number(agi_bono.value) +
-Number(this.getField("cat_esquiva").value));
+this.getField("final_esquiva").value =
+  Number(this.getField("base_esquiva").value) +
+  Number(this.getField("equipo_esquiva").value) +
+  Number(agi_bono.value) +
+  Number(this.getField("cat_esquiva").value);
 
 base_llA.value = Math.floor(Number(pd_llA.value) / Number(coste_llA.value));
 
-this.getField("final_llA").value = (5/multiplicador) * (
+this.getField("final_llA").value =
   Number(base_llA.value) +
   Number(esp_llA.value) +
   Number(fue_bono.value) +
-  Number(cat_llA.value));
+  Number(cat_llA.value);
+
+
+// FUNCIONES
+
+function actualizarDatosArma(numero_arma) {
+  var arma_par = this.getField("arma" + numero_arma + "_par");
+  var arma_esq = this.getField("arma" + numero_arma + "_esq");
+  var arma_atq = this.getField("arma" + numero_arma + "_atq");
+  var arma_iniciativa = this.getField("arma" + numero_arma + "_iniciativa");
+  var arma_db = this.getField("arma" + numero_arma + "_db");
+  var arma_calidad = this.getField("arma" + numero_arma + "_calidad");
+
+  arma_atq.value = 5 * Number(arma_calidad.value);
+  arma_par.value = 5 * Number(arma_calidad.value);
+  arma_esq.value = 0;
+  arma_iniciativa.value = 5 * Number(arma_calidad.value);
+  arma_db.value = 10 * Number(arma_calidad.value);
+
+  switch (this.getField("arma" + numero_arma).value) {
+    case "Lazo":
+      arma_db.value += 5;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Red de gladiador":
+      arma_db.value += 5;
+      arma_iniciativa.value = "+" + Number(arma_db.value);
+      break;
+    case "Combate desarmado":
+      arma_db.value += 10;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 20);
+      break;
+    case "Jarrón":
+      arma_db.value += 15;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 10);
+      break;
+    case "Botella rota":
+      arma_db.value += 15;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Antorcha":
+      arma_db.value += 20;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 10);
+      break;
+    case "Palo de madera":
+      arma_db.value += 20;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Cadena":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Cestus":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Estilete":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 20);
+      break;
+    case "Silla":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 20);
+      break;
+    case "Barra metálica":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 5);
+      break;
+    case "Cuchillo de cocina":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Garfio":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Garrote":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Daga":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 20);
+      break;
+    case "Vara":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 10);
+      break;
+    case "Daga de parada":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 15);
+      break;
+    case "Martillo":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 20);
+      break;
+    case "Azada":
+      arma_db.value += 30;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 20);
+      break;
+    case "Hoz":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 10);
+      break;
+    case "Arpón":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 5);
+      break;
+    case "Florete":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 15);
+      break;
+    case "Guadaña":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Jabalina":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 5);
+      break;
+    case "Látigo":
+      arma_db.value += 35;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 20);
+      break;
+    case "Hacha de leñador":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 10);
+      break;
+    case "Pico":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 20);
+      break;
+    case "Lanza":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 5);
+      break;
+    case "Espada corta":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 15);
+      break;
+    case "Mayal":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Maza":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Estoque":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) + 15);
+      break;
+    case "Tridente":
+      arma_db.value += 40;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 10);
+      break;
+    case "Hacha de mano":
+      arma_db.value += 45;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Sable":
+      arma_db.value += 45;
+      arma_iniciativa.value = "+" + (Number(arma_iniciativa.value) + 10);
+      break;
+    case "Martillo de guerra":
+      arma_db.value += 50;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 5);
+      break;
+    case "Cimitarra":
+      arma_db.value += 50;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 5);
+      break;
+    case "Espada larga":
+      arma_db.value += 50;
+      arma_iniciativa.value = "+" + (Number(arma_db.value));
+      break;
+    case "Espada ancha":
+      arma_db.value += 55;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 5);
+      break;
+    case "Maza pesada de combate":
+      arma_db.value += 60;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 15);
+      break;
+    case "Alabarda":
+      arma_db.value += 60;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 15);
+      break;
+    case "Espada bastarda":
+      arma_db.value += 70;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 30);
+      break;
+    case "Gran martillo de guerra":
+      arma_db.value += 70;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 35);
+      break;
+    case "Hacha de guerra":
+      arma_db.value += 70;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 30);
+      break;
+    case "Lanza de caballería":
+      arma_db.value += 80;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 30);
+      break;
+    case "Mangual":
+      arma_db.value += 80;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 50);
+      break;
+    case "Mandoble":
+      arma_db.value += 90;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 60);
+      break;
+    case "Hacha a dos manos":
+      arma_db.value += 100;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 70);
+      break;
+    case "Rodela":
+      arma_db.value += 15;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 15);
+      arma_par.value += 10;
+      arma_esq.value += 5;
+      break;
+    case "Escudo":
+      arma_db.value += 20;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 25);
+      arma_par.value += 20;
+      arma_esq.value += 10;
+      break;
+    case "Escudo corporal":
+      arma_db.value += 25;
+      arma_iniciativa.value = "+" + (Number(arma_db.value) - 40);
+      arma_par.value += 30;
+      arma_esq.value += 15;
+      break;
+    default:
+      break;
+  }
+}
+
+function aplicarNegativosPorTabla(numero_arma) {
+  var arma_clase = this.getField("arma" + numero_arma + "_clase");
+  if (arma_clase.value !== "Escudo") {
+    var arma = this.getField("arma" + numero_arma);
+    var arma_ataque = this.getField("arma" + numero_arma + "_atq");
+    var arma_parada = this.getField("arma" + numero_arma + "_par");
+    var tabla_arma = this.getField("tabla_" + numero_arma);
+    var tabla_arma_clase = this.getField("tabla_" + numero_arma + "_clase");
+
+    var similar = false;
+    var encontrado = false;
+
+    var j = 1;
+    while (j < 7 && !encontrado) {
+      var tabla_arma = this.getField("tabla_arma" + j);
+      var tabla_arma_clase = this.getField("tabla_arma" + j + "_clase");
+      if (arma.value === tabla_arma.value ||
+        (arma_clase.value === tabla_arma_clase.value && tabla_arma.value === tabla_arma.value.toUpperCase())
+      ) {
+        encontrado = true;
+      } else if (arma_clase.value === tabla_arma_clase.value) {
+        similar = true;
+      }
+      j++;
+    }
+
+    if (!encontrado) {
+      if (similar) {
+        arma_ataque.value -= 20;
+        arma_parada.value -= 20;
+      } else {
+        arma_ataque.value -= 60;
+        arma_parada.value -= 60;
+      }
+    }
+  }
+}
+
+function aplicarNegativosPorFueReq(numero_arma) {
+  var arma_freq = this.getField("arma" + numero_arma + "_freq");
+  var arma_ataque = this.getField("arma" + numero_arma + "_atq");
+  var arma_parada = this.getField("arma" + numero_arma + "_par");
+
+  var fue_req_diff = Number(arma_freq.value) - Number(fue_actual.value);
+  if (fue_req_diff > 0) {
+    arma_ataque.value -= 5 * fue_req_diff;
+    arma_parada.value -= 5 * fue_req_diff;
+  }
+}
+
+function actualizarPrimerArma() {
+  var arma_ataque = this.getField("arma0_atq");
+  var arma_parada = this.getField("arma0_par");
+  var arma_iniciativa = this.getField("arma0_iniciativa");
+  var arma_db = this.getField("arma0_db");
+  var arma_df = this.getField("arma0_df");
+  var calidad = this.getField("arma0_calidad");
+  var check = this.getField("arma0_check");
+
+  check.value = "Eq.";
+  arma_df.textSize = 12;
+  arma_ataque.value = 5 * Number(calidad.value);
+  arma_parada.value = 5 * Number(calidad.value);
+  arma_iniciativa.value = 20 + (5 * Number(calidad.value));
+  arma_db.value = 10 + (5 * Number(calidad.value));
+  arma_df.value = Math.ceil(Number(arma_db.value) + Number(fue_bono.value));
+
+  if (!combate_desarmado) {
+    arma_ataque.value -= 60;
+    arma_parada.value -= 60;
+  }
+
+}
