@@ -49,30 +49,29 @@ Hoz                     35   -10   4      FIL       PEN       Arma corta        
 Pico                    40   -20   5      PEN                 Arma corta                                           10      3    15
 Antorcha                20   -10   4      CON       CAL       Maza                                                 10     -2    20
 
-NOMBRE                      REQ. DE ARMADURA   PENALIZADOR NATURAL   RESTR. AL MOV.   ENTEREZA   PRESEN.   CLASE
-Camisola acolchada          0                  -5                    0                10         25        Blanda
-Camisola de cuero           0                   0                    0                12         25        Blanda
-Gabardina completa          0                  -5                    0                10         25        Blanda
-Camisola de piel            10                 -10                   0                10         25        Blanda
-Completa de cuero           10                  0                    1                12         25        Blanda
-Pero de cuero endurecido    20                 -10                   0                13         25        Dura
-Peto de cuero tachonado     25                 -10                   1                14         25        Dura
-Mallas completa             30                 -15                   1                15         30        Blanda
-Peto de metal               40                 -15                   1                16         30        Dura
-Completa de piezas          50                 -20                   2                15         30        Dura
-Camisola de anillas         60                 -20                   2                15         30        Blanda
-Semicompleta de metal       70                 -20                   3                16         35        Dura
-Escamas completa            80                 -25                   3                17         35        Dura
-Placas completa             90                 -35                   4                17         40        Dura
-Completa                    100                -50                   4                18         45        Dura
-Completa pesada             120                -60                   5                19         45        Dura
-Completa de campaña pesada  150                -70                   6                20         50        Dura
+NOMBRE                      REQ. DE ARMADURA   MOV.      DUREZA
+Camisola acolchada          0                   0        Blanda
+Camisola de cuero           0                   0        Blanda
+Completa gabardina          0                   0        Blanda
+Camisola de piel            10                 -1        Blanda
+Completa de cuero           10                 -1        Blanda
+Peto de cuero endurecido    20                 -1        Dura
+Peto de cuero tachonado     25                 -1        Dura
+Completa de mallas          30                 -1        Blanda
+Peto de metal               40                 -1        Dura
+Completa de piezas          50                 -2        Dura
+Camisola de anillas         60                 -2        Blanda
+Completa de metal           70                 -3        Dura
+Completa con escamas        80                 -3        Dura
+Completa de placas          110                -4        Dura
+Completa de placas pesada   120                -5        Dura
+Completa de campaña pesada  150                -6        Dura
 
-NOMBRE                      REQ. DE ARMADURA   PENALIZADOR PERCEPCION  ENTEREZA   PRESENCIA CLASE
-Anillas                     0                   0                      8          15        Dura
-Frentón                     0                   0                      12         15        Dura
-Coronilla                   0                   0                      12         15        Dura
-Capucha de cuero            0                   0                      10         15        Blanda
-Capucha de maya             0                  -10                     13         20        Blanda
-Completo abierto            5                  -20                     16         25        Dura
-Completo cerrado            10                 -30                     16         25        Dura
+NOMBRE                      REQ. DE ARMADURA   PERCEPCION  CLASE
+Yelmo de anillas            0                   0          Dura
+Yelmo frentón               0                   0          Dura
+Yelmo coronilla             0                   0          Dura
+Yelmo de cuero              0                   0          Blanda
+Yelmo de maya               0                  -10         Blanda
+Yelmo completo abierto      5                  -20         Dura
+Yelmo completo cerrado      10                 -30         Dura

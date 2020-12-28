@@ -1168,3 +1168,6 @@ if (arma_clase.value !== "—") {
     event.target.readonly = true;
   }
 }
+
+// Validar armaduras
+
