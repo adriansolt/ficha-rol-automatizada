@@ -84,6 +84,7 @@ if (Number(event.value) <= 0) {
 var index = 1;
 while (index <= 8) {
   var ventajas = [
+    "-",
     "Al límite",
     "Ambidiestría",
     "Armadura natural",
@@ -331,195 +332,218 @@ while (index <= 8) {
   index++;
 }
 
+// Idiomas
+
+this.getField("idioma1_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma1_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+
+this.getField("idioma2_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma2_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+
+this.getField("idioma3_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma3_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+
+this.getField("idioma4_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma4_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+
+this.getField("idioma5_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma5_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
 
 // Validate ventaja
 
-var num_ventaja = event.target.name.substr(7, 1);
-var repetido = false;
-var ventaja_novel = false;
-var old_target = this.getField(event.target.name).value;
-if (event.value.match(":") || "") {
-  ventaja_novel = true;
-}
-var cond1 = event.value.toLowerCase();
+if (event.value !== " " && event.value !== "" && event.value !== "-") {
+  var num_ventaja = event.target.name.substr(7, 1);
+  var repetido = false;
+  var ventaja_novel = false;
+  var old_target = this.getField(event.target.name).value;
+  if (event.value.match(":") || "") {
+    ventaja_novel = true;
+  }
+  var cond1 = event.value.toLowerCase();
 
-if (cond1.substr(cond1.length - 4) === " iii") {
-  cond1 = cond1.substr(0, cond1.length - 4);
-} else if (cond1.substr(cond1.length - 3) === " ii") {
-  cond1 = cond1.substr(0, cond1.length - 3);
-}
-
-for (var l = 1; l < 8 && !repetido; l++) {
-  ventaja = this.getField("ventaja" + (((Number(num_ventaja) + l - 1) % 8) + 1)).value;
-  var cond2 = ventaja.toLowerCase();
-  if (ventaja_novel) {
-    cond1 = cond1.substr(0, 5);
-    cond2 = cond2.substr(0, 5);
+  if (cond1.substr(cond1.length - 4) === " iii") {
+    cond1 = cond1.substr(0, cond1.length - 4);
+  } else if (cond1.substr(cond1.length - 3) === " ii") {
+    cond1 = cond1.substr(0, cond1.length - 3);
   }
 
-  if (cond2.substr(ventaja.length - 4) === " iii") {
-    cond2 = cond2.substr(0, cond2.length - 4);
-  } else if (cond2.substr(ventaja.length - 3) === " ii") {
-    cond2 = cond2.substr(0, cond2.length - 3);
-  }
+  for (var l = 1; l <= 6 && !repetido; l++) {
 
-  if (cond1 === cond2) {
-    repetido = true;
-    event.rc = false;
-  }
-}
-
-if (!repetido) {
-  if (
-    event.value === "Afinidad animal" ||
-    event.value === "Ambidiestría" ||
-    event.value === "Aprendizaje innato en llevar armadura" ||
-    event.value === "Dificil de matar" ||
-    event.value === "Fondos iniciales" ||
-    event.value === "Mente fria" ||
-    event.value === "Seductor" ||
-    event.value === "Sentidos agudos" ||
-    event.value === "Al límite" ||
-    event.value === "Armadura natural" ||
-    event.value === "Buena suerte" ||
-    event.value === "Reflejos rápidos" ||
-    event.value === "Regeneración mejorada" ||
-    event.value === "Resistencia física excepcional" ||
-    event.value === "Sueño ligero" ||
-    event.value === "Tocado por el destino"
-  ) {
-    this.getField("ventaja" + num_ventaja + "_coste").value = 2;
-  } else if (
-    event.value === "Aprendizaje innato en llevar armadura II" ||
-    event.value === "Conecedor de todas las materias" ||
-    event.value === "Dificil de matar II" ||
-    event.value === "Fondos iniciales II" ||
-    event.value === "Reflejos rápidos II" ||
-    event.value === "Regeneración mejorada II" ||
-    event.value === "Resistencia física excepcional II"
-  ) {
-    this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-  } else if (
-    event.value === "Aprendizaje innato en llevar armadura III" ||
-    event.value === "Aprendizaje innato en un campo II" ||
-    event.value === "Dificil de matar III" ||
-    event.value === "Fondos iniciales III" ||
-    event.value === "Reflejos rápidos III" ||
-    event.value === "Regeneración mejorada III"
-  ) {
-    this.getField("ventaja" + num_ventaja + "_coste").value = 6;
-  } else if (
-    event.value.substr(0, 7) === "Apto en" || event.value.substr(0, 21) === "Aprendizaje innato en"
-  ) {
-    // apto en un campo (4)
-    // apto en una materia (2)
-    // apto en una materia II (4)
-
-    // aprendizaje innato en materia (2)
-    // aprendizaje innato en materia II (4)
-    // aprendizaje innato en campo (4)
-    // aprendizaje innato en campo II (6)
-    var ventaja_lC = event.value.toLowerCase();
-    if (ventaja_lC.match("vigor") ||
-      ventaja_lC.match("atleticas") ||
-      ventaja_lC.match("perceptivas") ||
-      ventaja_lC.match("subterfugio") ||
-      ventaja_lC.match("intelectuales") ||
-      ventaja_lC.match("sociales") ||
-      ventaja_lC.match("creativas")
-    ) {
-      // apto en un campo (4)
-      // aprendizaje innato en campo (4)
-      // aprendizaje innato en campo II (6)
-
-      if (ventaja_lC.match(" ii")) {
-        this.getField("ventaja" + num_ventaja + "_coste").value = 6;
-      } else {
-        this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-      }
-    } else {
-      // apto en una materia (2)
-      // apto en una materia II (4)
-      // aprendizaje innato en materia (2)
-      // aprendizaje innato en materia II (4)
-      if (ventaja_lC.match(" ii")) {
-        this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-      } else {
-        this.getField("ventaja" + num_ventaja + "_coste").value = 2;
-      }
+    ventaja = this.getField("ventaja" + (((Number(num_ventaja) + l - 1) % 7) + 1)).value;
+    var cond2 = ventaja.toLowerCase();
+    if (ventaja_novel) {
+      cond1 = cond1.substr(0, 5);
+      cond2 = cond2.substr(0, 5);
     }
 
-  } else if (ventaja_novel) {
-    this.getField("ventaja" + num_ventaja + "_coste").value = 0;
-  } else {
-    this.getField("ventaja" + num_ventaja + "_coste").value = "";
+    if (cond2.substr(ventaja.length - 4) === " iii") {
+      cond2 = cond2.substr(0, cond2.length - 4);
+    } else if (cond2.substr(ventaja.length - 3) === " ii") {
+      cond2 = cond2.substr(0, cond2.length - 3);
+    }
+
+    if (cond1 === cond2) {
+      repetido = true;
+      event.rc = false;
+    }
   }
+
+  if (!repetido) {
+    if (
+      event.value === "Afinidad animal" ||
+      event.value === "Ambidiestría" ||
+      event.value === "Aprendizaje innato en llevar armadura" ||
+      event.value === "Dificil de matar" ||
+      event.value === "Fondos iniciales" ||
+      event.value === "Mente fria" ||
+      event.value === "Seductor" ||
+      event.value === "Sentidos agudos" ||
+      event.value === "Al límite" ||
+      event.value === "Armadura natural" ||
+      event.value === "Buena suerte" ||
+      event.value === "Reflejos rápidos" ||
+      event.value === "Regeneración mejorada" ||
+      event.value === "Resistencia física excepcional" ||
+      event.value === "Sueño ligero" ||
+      event.value === "Tocado por el destino"
+    ) {
+      this.getField("ventaja" + num_ventaja + "_coste").value = 2;
+    } else if (
+      event.value === "Aprendizaje innato en llevar armadura II" ||
+      event.value === "Conecedor de todas las materias" ||
+      event.value === "Dificil de matar II" ||
+      event.value === "Fondos iniciales II" ||
+      event.value === "Reflejos rápidos II" ||
+      event.value === "Regeneración mejorada II" ||
+      event.value === "Resistencia física excepcional II"
+    ) {
+      this.getField("ventaja" + num_ventaja + "_coste").value = 4;
+    } else if (
+      event.value === "Aprendizaje innato en llevar armadura III" ||
+      event.value === "Aprendizaje innato en un campo II" ||
+      event.value === "Dificil de matar III" ||
+      event.value === "Fondos iniciales III" ||
+      event.value === "Reflejos rápidos III" ||
+      event.value === "Regeneración mejorada III"
+    ) {
+      this.getField("ventaja" + num_ventaja + "_coste").value = 6;
+    } else if (
+      event.value.substr(0, 7) === "Apto en" || event.value.substr(0, 21) === "Aprendizaje innato en"
+    ) {
+      // apto en un campo (4)
+      // apto en una materia (2)
+      // apto en una materia II (4)
+
+      // aprendizaje innato en materia (2)
+      // aprendizaje innato en materia II (4)
+      // aprendizaje innato en campo (4)
+      // aprendizaje innato en campo II (6)
+      var ventaja_lC = event.value.toLowerCase();
+      if (ventaja_lC.match("vigor") ||
+        ventaja_lC.match("atleticas") ||
+        ventaja_lC.match("perceptivas") ||
+        ventaja_lC.match("subterfugio") ||
+        ventaja_lC.match("intelectuales") ||
+        ventaja_lC.match("sociales") ||
+        ventaja_lC.match("creativas")
+      ) {
+        // apto en un campo (4)
+        // aprendizaje innato en campo (4)
+        // aprendizaje innato en campo II (6)
+
+        if (ventaja_lC.match(" ii")) {
+          this.getField("ventaja" + num_ventaja + "_coste").value = 6;
+        } else {
+          this.getField("ventaja" + num_ventaja + "_coste").value = 4;
+        }
+      } else {
+        // apto en una materia (2)
+        // apto en una materia II (4)
+        // aprendizaje innato en materia (2)
+        // aprendizaje innato en materia II (4)
+        if (ventaja_lC.match(" ii")) {
+          this.getField("ventaja" + num_ventaja + "_coste").value = 4;
+        } else {
+          this.getField("ventaja" + num_ventaja + "_coste").value = 2;
+        }
+      }
+
+    } else if (ventaja_novel) {
+      this.getField("ventaja" + num_ventaja + "_coste").value = 0;
+    } else {
+      this.getField("ventaja" + num_ventaja + "_coste").value = "";
+    }
+  }
+} else {
+  this.getField("ventaja" + num_ventaja + "_coste").value = "";
 }
-
-
 
 // Validate desventaja (1-3)
 
-var repetido = false;
-var cond1 = event.value.toLowerCase();
-
-if (cond1.substr(cond1.length - 3) === " iii") {
-  cond1 = cond1.substr(0, cond1.length - 3);
-} else if (cond1.substr(cond1.length - 3) === " ii") {
-  cond1 = cond1.substr(0, cond1.length - 3);
-}
-for (var l = 1; l < 3 && !repetido; l++) {
-  var desventaja = this.getField("desventaja" + (((Number(num_ventaja) + l - 1) % 3) + 1)).value;
-  var cond2 = desventaja.toLowerCase();
-  if (cond2.substr(ventaja.length - 3) === " iii") {
-    cond2 = cond2.substr(0, cond2.length - 3);
-  } else if (cond2.substr(ventaja.length - 3) === " ii") {
-    cond2 = cond2.substr(0, cond2.length - 3);
-  }
-
-  if (cond1 === cond2) {
-    event.rc = false;
-    repetido = true;
-  }
-
-}
-if (!repetido) {
+if (event.value !== " " && event.value !== "" && event.value !== "-") {
+  var repetido = false;
+  var cond1 = event.value.toLowerCase();
   var num_desventaja = event.target.name.substr(10, 1);
-  if (
-    event.value === "-2 a una característica" ||
-    event.value === "Adicción/vicio grave" ||
-    event.value === "Alergia grave" ||
-    event.value === "Debilidad física" ||
-    event.value === "Desafortunado" ||
-    event.value === "Endeble" ||
-    event.value === "Extremidad atrofiada" ||
-    event.value === "Fobia grave" ||
-    event.value === "Insufrible" ||
-    event.value === "Lenta curación" ||
-    event.value === "Mala suerte" ||
-    event.value === "Maldición" ||
-    event.value === "Miopía" ||
-    event.value === "Mudo" ||
-    event.value === "Patoso" ||
-    event.value === "Reacción lenta" ||
-    event.value === "Salud enfermiza" ||
-    event.value === "Sordo" ||
-    event.value === "Sueño profundo" ||
-    event.value === "Vulnerable a los venenos" ||
-    event.value === "Vulnerable al dolor" ||
-    event.value === "Vulnerable al frío" ||
-    event.value === "Vulnerable al calor"
-  ) {
-    this.getField("desventaja" + num_desventaja + "_coste").value = 2;
-  } else if (
-    event.value === "Enfermedad grave" ||
-    event.value === "Maldición II" ||
-    event.value === "Reacción lenta II"
-  ) {
-    this.getField("desventaja" + num_desventaja + "_coste").value = 4;
-  } else {
-    this.getField("desventaja" + num_desventaja + "_coste").value = "";
+
+  if (cond1.substr(cond1.length - 3) === " iii") {
+    cond1 = cond1.substr(0, cond1.length - 3);
+  } else if (cond1.substr(cond1.length - 3) === " ii") {
+    cond1 = cond1.substr(0, cond1.length - 3);
   }
+  for (var l = 1; l <= 2 && !repetido; l++) {
+    var desventaja = this.getField("desventaja" + (((Number(num_desventaja) + l - 1) % 3) + 1)).value;
+    var cond2 = desventaja.toLowerCase();
+    if (cond2.substr(ventaja.length - 3) === " iii") {
+      cond2 = cond2.substr(0, cond2.length - 3);
+    } else if (cond2.substr(ventaja.length - 3) === " ii") {
+      cond2 = cond2.substr(0, cond2.length - 3);
+    }
+
+    if (cond1 === cond2) {
+      event.rc = false;
+      repetido = true;
+
+    }
+  }
+  if (!repetido) {
+    var num_desventaja = event.target.name.substr(10, 1);
+    if (
+      event.value.substr(0, 11) === "Vicio grave" ||
+      event.value.substr(0, 13) === "Alergia grave" ||
+      event.value.substr(0, 16) === "Debilidad física" ||
+      event.value === "Desafortunado" ||
+      event.value === "Endeble" ||
+      event.value.substr(0, 20) === "Extremidad atrofiada" ||
+      event.value.substr(0, 11) === "Fobia grave" ||
+      event.value === "Insufrible" ||
+      event.value === "Lenta curación" ||
+      event.value === "Mala suerte" ||
+      event.value === "Maldición" ||
+      event.value === "Miopía" ||
+      event.value === "Mudo" ||
+      event.value === "Patoso" ||
+      event.value === "Reacción lenta" ||
+      event.value === "Salud enfermiza" ||
+      event.value === "Sordo" ||
+      event.value === "Sueño profundo" ||
+      event.value === "Vulnerable a los venenos" ||
+      event.value === "Vulnerable al dolor" ||
+      event.value === "Vulnerable al frío" ||
+      event.value === "Vulnerable al calor"
+    ) {
+      this.getField("desventaja" + num_desventaja + "_coste").value = 2;
+    } else if (
+      event.value === "Enfermedad grave" ||
+      event.value === "Maldición II" ||
+      event.value === "Reacción lenta II"
+    ) {
+      this.getField("desventaja" + num_desventaja + "_coste").value = 4;
+    } else {
+      this.getField("desventaja" + num_desventaja + "_coste").value = "";
+    }
+  }
+} else {
+  this.getField("desventaja" + num_desventaja + "_coste").value = "";
 }
 
 // Script armas
@@ -943,7 +967,7 @@ switch (event.value) {
     var check = this.getField(event.target.name + "_check");
     check.readonly = true;
     check.value = "—";
-    
+
     arma_clase.value = "—";
     arma_freq.value = "—";
     arma_calidad.value = "—";
@@ -1169,5 +1193,124 @@ if (arma_clase.value !== "—") {
   }
 }
 
+// Script armaduras
+
+var lista_armaduras = [
+  "Peto de cuero endurecido",
+  "Peto de cuero tachonado",
+  "Peto de metal",
+  "Camisola acolchada",
+  "Camisola de cuero",
+  "Camisola de piel",
+  "Camisola de anillas",
+  "Completa gabardina",
+  "Completa de cuero",
+  "Completa de mallas",
+  "Completa de piezas",
+  "Completa de metal",
+  "Completa con escamas",
+  "Completa de placas",
+  "Completa de placas pesada",
+  "Completa de campaña pesada",
+  "Yelmo de anillas",
+  "Yelmo frentón",
+  "Yelmo coronilla",
+  "Yelmo de cuero",
+  "Yelmo de maya",
+  "Yelmo completo abierto",
+  "Yelmo completo cerrado",
+]
+var i = 0;
+while (i < 7) {
+  this.getField("armadura" + i).setItems(lista_armaduras);
+  i++;
+}
+
 // Validar armaduras
 
+var dureza = this.getField(event.target.name + "_dureza");
+var check = this.getField(event.target.name + "_check");
+var calidad = this.getField(event.target.name + "_calidad");
+check.value = "—";
+calidad.value = 0;
+if (
+  event.value === "Peto de cuero endurecido" ||
+  event.value === "Peto de cuero tachonado" ||
+  event.value === "Peto de metal" ||
+  event.value === "Completa de piezas" ||
+  event.value === "Completa de metal" ||
+  event.value === "Completa con escamas" ||
+  event.value === "Completa de placas" ||
+  event.value === "Completa de placas pesada" ||
+  event.value === "Completa de campaña pesada" ||
+  event.value === "Yelmo de anillas" ||
+  event.value === "Yelmo frentón" ||
+  event.value === "Yelmo coronilla" ||
+  event.value === "Yelmo completo abierto" ||
+  event.value === "Yelmo completo cerrado"
+) {
+  dureza.value = "Dura";
+  check.readonly = false;
+  calidad.readonly = false;
+} else if (
+  event.value === "Camisola acolchada" ||
+  event.value === "Camisola de cuero" ||
+  event.value === "Camisola de piel" ||
+  event.value === "Camisola de anillas" ||
+  event.value === "Completa gabardina" ||
+  event.value === "Completa de cuero" ||
+  event.value === "Completa de mallas" ||
+  event.value === "Yelmo de cuero" ||
+  event.value === "Yelmo de maya"
+) {
+  dureza.value = "Blanda";
+  check.readonly = false;
+  calidad.readonly = false;
+} else {
+  check.readonly = true;
+  calidad.readonly = true;
+  dureza.value = "—";
+  this.getField(event.target.name + "_def").value = "—";
+  this.getField(event.target.name + "_reqarm").value = "—";
+  this.getField(event.target.name + "_advertir").value = "—";
+  this.getField(event.target.name + "_mov").value = "—";
+}
+
+// Validar idiomas hablados
+var num = event.target.name.substr(6, 1);
+var coste_idioma = this.getField("idioma" + num + "_md");
+
+switch (event.value) {
+  case "Bajo":
+    coste_idioma.value = 2;
+    break;
+  case "Medio":
+    coste_idioma.value = 3;
+    break;
+  case "Alto":
+    coste_idioma.value = 4;
+    break;
+  case "Nativo":
+    coste_idioma.value = 5;
+    break;
+    default:
+    coste_idioma.value = 0;
+    break;
+}
+
+switch (this.getField("idioma" + num + "_escrito").value) {
+  case "Bajo":
+    coste_idioma.value += 2;
+    break;
+  case "Medio":
+    coste_idioma.value += 3;
+    break;
+  case "Alto":
+    coste_idioma.value += 4;
+    break;
+  case "Nativo":
+    coste_idioma.value += 5;
+    break;
+  default:
+    break;
+}

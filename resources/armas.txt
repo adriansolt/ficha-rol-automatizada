@@ -50,17 +50,17 @@ Pico                    40   -20   5      PEN                 Arma corta        
 Antorcha                20   -10   4      CON       CAL       Maza                                                 10     -2    20
 
 NOMBRE                      REQ. DE ARMADURA   MOV.      DUREZA
-Camisola acolchada          0                   0        Blanda
-Camisola de cuero           0                   0        Blanda
-Completa gabardina          0                   0        Blanda
-Camisola de piel            10                 -1        Blanda
-Completa de cuero           10                 -1        Blanda
 Peto de cuero endurecido    20                 -1        Dura
 Peto de cuero tachonado     25                 -1        Dura
-Completa de mallas          30                 -1        Blanda
 Peto de metal               40                 -1        Dura
-Completa de piezas          50                 -2        Dura
+Camisola acolchada          0                   0        Blanda
+Camisola de cuero           0                   0        Blanda
+Camisola de piel            10                 -1        Blanda
 Camisola de anillas         60                 -2        Blanda
+Completa gabardina          0                   0        Blanda
+Completa de cuero           10                 -1        Blanda
+Completa de mallas          30                 -1        Blanda
+Completa de piezas          50                 -2        Dura
 Completa de metal           70                 -3        Dura
 Completa con escamas        80                 -3        Dura
 Completa de placas          110                -4        Dura
