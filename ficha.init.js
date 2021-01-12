@@ -88,7 +88,6 @@ var nivel = this.getField("nivel");
 
 var categoria = this.getField("categoria");
 
-var md_totales = this.getField("md_totales");
 
 var esp_animales = this.getField("esp_animales");
 var esp_frialdad = this.getField("esp_frialdad");
@@ -103,6 +102,11 @@ var reg_esp = 0;
 var reg_final = 0;
 var reg_normal = this.getField("reg_normal");
 var reg_max = this.getField("reg_max");
+
+var md_totales = this.getField("md_totales");
+var md_actuales = this.getField("md_actuales");
+md_actuales.value = Number(md_totales.value);
+
 
 var i = 0;
 var j = 0;
@@ -993,8 +997,8 @@ while (i < 7) {
                 arma_df.textSize = 8;
             }
         }
+        i++;
     }
-    i++;
 i = 1;
 
 // Acciones primer arma (desarmado)

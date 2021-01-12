@@ -704,7 +704,7 @@ if (mov_total < 1) {
 this.getField("mov_restr").value = (mov_max.value - mov_base.value);
 
 md_actuales.value =
-  Number(this.getField("md_totales").value) -
+  Number(md_actuales.value) -
   Number(this.getField("md_ataque").value) -
   Number(this.getField("md_parada").value) -
   Number(this.getField("md_esquiva").value) -
