@@ -730,247 +730,248 @@ var arma_clase = this.getField(event.target.name + "_clase");
 var arma_calidad = this.getField(event.target.name + "_calidad");
 var arma_freq = this.getField(event.target.name + "_freq");
 var arma_especial = this.getField(event.target.name + "_especial");
+var arma_check = this.getField(event.target.name + "_check");
 arma_clase.value = "—";
 arma_especial.value = "—";
 arma_calidad.value = 0;
 arma_calidad.readonly = false;
+arma_check.readonly = false;
 
 switch (event.value) {
   case "Lazo":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 18";
     break;
   case "Red de gladiador":
-    arma_freq.value = "4";
+    arma_freq.value = 4;
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 20";
     break;
   case "Jarrón":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Maza";
     break;
   case "Botella rota":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     break;
   case "Antorcha":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Maza";
     break;
   case "Palo de madera":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Maza";
     break;
   case "Cadena":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 16";
     break;
   case "Cestus":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     break;
   case "Estilete":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     arma_especial.value = "Precisa";
     break;
   case "Silla":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Mandoble";
     break;
   case "Barra metálica":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Maza";
     break;
   case "Cuchillo de cocina":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Arma corta";
     break;
   case "Garfio":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     break;
   case "Garrote":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Maza";
     break;
   case "Daga":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     arma_especial.value = "Precisa";
     break;
   case "Vara":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Asta";
     arma_especial.value = "A dos manos";
     break;
   case "Daga de parada":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     arma_especial.value = "Precisa";
     break;
   case "Martillo":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Maza";
     break;
   case "Azada":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Hacha";
     break;
   case "Hoz":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Arma corta";
     break;
   case "Arpón":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Asta";
     break;
   case "Florete":
-    arma_freq.value = "6";
+    arma_freq.value = 6;
     arma_clase.value = "Espada";
     arma_especial.value = "Precisa";
     break;
   case "Guadaña":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Asta";
     break;
   case "Jabalina":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Asta";
     break;
   case "Látigo":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 16";
     break;
   case "Hacha de leñador":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Hacha";
     break;
   case "Pico":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Arma corta";
     break;
   case "Lanza":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Asta";
     break;
   case "Espada corta":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Arma corta";
     arma_especial.value = "Precisa";
     break;
   case "Mayal":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Cuerda";
     break;
   case "Maza":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Maza";
     break;
   case "Estoque":
-    arma_freq.value = "8";
+    arma_freq.value = 8;
     arma_clase.value = "Espada";
     arma_especial.value = "Precisa";
     break;
   case "Tridente":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Asta";
     arma_especial.value = "Lanzable";
     break;
   case "Hacha de mano":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Hacha";
     break;
   case "Sable":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Espada";
     break;
   case "Martillo de guerra":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Maza";
     break;
   case "Cimitarra":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Espada";
     break;
   case "Espada larga":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Espada";
     break;
   case "Espada ancha":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Espada";
     break;
   case "Maza pesada de combate":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Maza";
     break;
   case "Alabarda":
-    arma_freq.value = "12";
+    arma_freq.value = 12;
     arma_clase.value = "Asta";
     arma_especial.value = "A dos manos";
     break;
   case "Espada bastarda":
-    arma_freq.value = "14";
+    arma_freq.value = 14;
     arma_clase.value = "Espada";
     break;
   case "Gran martillo de guerra":
-    arma_freq.value = "14";
+    arma_freq.value = 14;
     arma_clase.value = "Maza";
     break;
   case "Hacha de guerra":
-    arma_freq.value = "14";
+    arma_freq.value = 14;
     arma_clase.value = "Hacha";
     break;
   case "Lanza de caballería":
-    arma_freq.value = "16";
+    arma_freq.value = 16;
     arma_clase.value = "Asta";
     break;
   case "Mangual":
-    arma_freq.value = "16";
+    arma_freq.value = 16;
     arma_clase.value = "Mandoble";
     break;
   case "Mandoble":
-    arma_freq.value = "16";
+    arma_freq.value = 16;
     arma_clase.value = "Mandoble";
     break;
   case "Hacha a dos manos":
-    arma_freq.value = "18";
+    arma_freq.value = 18;
     arma_clase.value = "Hacha";
     break;
   case "Rodela":
-    arma_freq.value = "10";
+    arma_freq.value = 10;
     arma_clase.value = "Escudo";
     arma_calidad.readonly = true;
     break;
   case "Escudo":
-    arma_freq.value = "14";
+    arma_freq.value = 14;
     arma_clase.value = "Escudo";
     arma_calidad.readonly = true;
     break;
   case "Escudo corporal":
-    arma_freq.value = "20";
+    arma_freq.value = 20;
     arma_clase.value = "Escudo";
     arma_calidad.readonly = true;
     break;
-  default:
-    this.getField(event.target.name + "_atq").value = "—";
-    this.getField(event.target.name + "_par").value = "—";
-    this.getField(event.target.name + "_esq").value = "—";
-    this.getField(event.target.name + "_db").value = "—";
-    this.getField(event.target.name + "_df").value = "—";
-    this.getField(event.target.name + "_iniciativa").value = "—";
-
-    var check = this.getField(event.target.name + "_check");
-    check.readonly = true;
-    check.value = "—";
-
-    arma_clase.value = "—";
-    arma_freq.value = "—";
-    arma_calidad.value = "—";
+    default:
+      this.getField(event.target.name + "_atq").value = "—";
+      this.getField(event.target.name + "_par").value = "—";
+      this.getField(event.target.name + "_esq").value = "—";
+      this.getField(event.target.name + "_db").value = "—";
+      this.getField(event.target.name + "_df").value = "—";
+      this.getField(event.target.name + "_iniciativa").value = "—";
+      
+      check.readonly = true;
+      check.value = "—";
+      
+      arma_clase.value = "—";
+      arma_freq.value = "—";
+      arma_calidad.readonly = true;
     break;
 }
 
