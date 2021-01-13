@@ -261,7 +261,7 @@ while (i < armadura_cabeza_lista.length) {
 armadura_cabeza_lista = [];
 
 i = armadura_cabeza_total;
-// armadura_cabeza.display = Number(i) === 0 ? 1 : 0;
+armadura_cabeza.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_cabeza) === Number(i)) {
@@ -286,7 +286,7 @@ while (i < armadura_pecho_lista.length) {
 armadura_pecho_lista = [];
 
 i = armadura_pecho_total;
-// armadura_pecho.display = Number(i) === 0 ? 1 : 0;
+armadura_pecho.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_pecho) === Number(i)) {
@@ -312,7 +312,7 @@ while (i < armadura_espalda_lista.length) {
 armadura_espalda_lista = [];
 
 i = armadura_espalda_total;
-// armadura_espalda.display = Number(i) === 0 ? 1 : 0;
+armadura_espalda.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_espalda) === Number(i)) {
@@ -338,7 +338,7 @@ while (i < armadura_hombro_der_lista.length) {
 armadura_hombro_der_lista = [];
 
 i = armadura_hombro_der_total;
-// armadura_hombro_der.display = Number(i) === 0 ? 1 : 0;
+armadura_hombro_der.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_hombro_der) === Number(i)) {
@@ -364,7 +364,7 @@ while (i < armadura_hombro_izq_lista.length) {
 armadura_hombro_izq_lista = [];
 
 i = armadura_hombro_izq_total;
-// armadura_hombro_izq.display = Number(i) === 0 ? 1 : 0;
+armadura_hombro_izq.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_hombro_izq) === Number(i)) {
@@ -390,7 +390,7 @@ while (i < armadura_brazo_der_lista.length) {
 armadura_brazo_der_lista = [];
 
 i = armadura_brazo_der_total;
-// armadura_brazo_der.display = Number(i) === 0 ? 1 : 0;
+armadura_brazo_der.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_brazo_der) === Number(i)) {
@@ -416,7 +416,7 @@ while (i < armadura_brazo_izq_lista.length) {
 armadura_brazo_izq_lista = [];
 
 i = armadura_brazo_izq_total;
-// armadura_brazo_izq.display = Number(i) === 0 ? 1 : 0;
+armadura_brazo_izq.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_brazo_izq) === Number(i)) {
@@ -442,7 +442,7 @@ while (i < armadura_mano_der_lista.length) {
 armadura_mano_der_lista = [];
 
 i = armadura_mano_der_total;
-// armadura_mano_der.display = Number(i) === 0 ? 1 : 0;
+armadura_mano_der.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_mano_der) === Number(i)) {
@@ -468,7 +468,7 @@ while (i < armadura_mano_izq_lista.length) {
 armadura_mano_izq_lista = [];
 
 i = armadura_mano_izq_total;
-// armadura_mano_izq.display = Number(i) === 0 ? 1 : 0;
+armadura_mano_izq.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_mano_izq) === Number(i)) {
@@ -494,7 +494,7 @@ while (i < armadura_pierna_der_lista.length) {
 armadura_pierna_der_lista = [];
 
 i = armadura_pierna_der_total;
-// armadura_pierna_der.display = Number(i) === 0 ? 1 : 0;
+armadura_pierna_der.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_pierna_der) === Number(i)) {
@@ -520,7 +520,7 @@ while (i < armadura_pierna_izq_lista.length) {
 armadura_pierna_izq_lista = [];
 
 i = armadura_pierna_izq_total;
-// armadura_pierna_izq.display = Number(i) === 0 ? 1 : 0;
+armadura_pierna_izq.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_pierna_izq) === Number(i)) {
@@ -546,7 +546,7 @@ while (i < armadura_pie_der_lista.length) {
 armadura_pie_der_lista = [];
 
 i = armadura_pie_der_total;
-// armadura_pie_der.display = Number(i) === 0 ? 1 : 0;
+armadura_pie_der.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_pie_der) === Number(i)) {
@@ -572,7 +572,7 @@ while (i < armadura_pie_izq_lista.length) {
 armadura_pie_izq_lista = [];
 
 i = armadura_pie_izq_total;
-// armadura_pie_izq.display = Number(i) === 0 ? 1 : 0;
+armadura_pie_izq.readonly = Number(i) === 0 ? true : false;
 
 while (i >= 0) {
   if (Number(seleccionado_armadura_pie_izq) === Number(i)) {
