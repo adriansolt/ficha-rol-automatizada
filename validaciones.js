@@ -3,7 +3,13 @@
 var nivel = this.getField("nivel");
 var loop = true;
 while (event.value > Number(this.getField("exp_totales").value) && loop) {
-  var nRslt = app.alert("Has sobrepasado los puntos de experiencia.\n\n" + "¿Quieres subir de nivel?", 2, 2, "Submit Validation");
+  var nRslt = app.alert(
+    "Has sobrepasado los puntos de experiencia.\n\n" +
+      "¿Quieres subir de nivel?",
+    2,
+    2,
+    "Submit Validation"
+  );
   if (nRslt === 4) {
     nivel.value++;
     event.value = event.value - Number(this.getField("exp_totales").value);
@@ -14,16 +20,21 @@ while (event.value > Number(this.getField("exp_totales").value) && loop) {
 loop = true;
 var exp_actual = event.value;
 while (exp_actual < 0 && Number(nivel.value) >= 0 && loop) {
-  var nRslt = app.alert("Has introducido un valor negativo.\n\n" + "¿Quieres bajar de nivel?", 2, 2, "Submit Validation");
+  var nRslt = app.alert(
+    "Has introducido un valor negativo.\n\n" + "¿Quieres bajar de nivel?",
+    2,
+    2,
+    "Submit Validation"
+  );
   if (nRslt === 4) {
     nivel.value--;
-    event.value = Number(event.value) + Number(this.getField("exp_totales").value);
+    event.value =
+      Number(event.value) + Number(this.getField("exp_totales").value);
     exp_actual = Number(event.value);
   } else {
     loop = false;
   }
 }
-
 
 // Validate (md_ataque)
 
@@ -34,10 +45,12 @@ var md_parada = this.getField("md_parada");
 var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + md_parada.value + md_esquiva.value) > Number(limite_md_combate)) {
+} else if (
+  Number(event.value) + md_parada.value + md_esquiva.value >
+  Number(limite_md_combate)
+) {
   event.rc = false;
 }
-
 
 // Validate (md_parada)
 
@@ -48,10 +61,12 @@ var md_parada = this.getField("md_parada");
 var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + md_ataque.value + md_esquiva.value) > Number(limite_md_combate)) {
+} else if (
+  Number(event.value) + md_ataque.value + md_esquiva.value >
+  Number(limite_md_combate)
+) {
   event.rc = false;
 }
-
 
 // Validate (md_esquiva)
 
@@ -62,10 +77,12 @@ var md_parada = this.getField("md_parada");
 var md_esquiva = this.getField("md_esquiva");
 if (Number(event.value) <= 0) {
   event.value = 0;
-} else if ((Number(event.value) + md_ataque.value + md_parada.value) > Number(limite_md_combate)) {
+} else if (
+  Number(event.value) + md_ataque.value + md_parada.value >
+  Number(limite_md_combate)
+) {
   event.rc = false;
 }
-
 
 // Validate (md_llA)
 
@@ -77,7 +94,6 @@ if (Number(event.value) <= 0) {
 } else if (Number(event.value) > Number(limite_md_llA)) {
   event.value = md_llA.value;
 }
-
 
 // Script Ventajas
 
@@ -326,7 +342,7 @@ while (index <= 8) {
     "Apto en Cocina",
     "Apto en Cocina II",
     "--- Solo para categoria Novel ---",
-    "NOVEL: Hab1, Hab2, Hab3, Hab4, Hab5"
+    "NOVEL: Hab1, Hab2, Hab3, Hab4, Hab5",
   ];
   this.getField("ventaja" + index).setItems(ventajas);
   index++;
@@ -334,20 +350,80 @@ while (index <= 8) {
 
 // Idiomas
 
-this.getField("idioma1_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
-this.getField("idioma1_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma1_escrito").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
+this.getField("idioma1_hablado").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
 
-this.getField("idioma2_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
-this.getField("idioma2_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma2_escrito").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
+this.getField("idioma2_hablado").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
 
-this.getField("idioma3_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
-this.getField("idioma3_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma3_escrito").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
+this.getField("idioma3_hablado").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
 
-this.getField("idioma4_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
-this.getField("idioma4_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma4_escrito").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
+this.getField("idioma4_hablado").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
 
-this.getField("idioma5_escrito").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
-this.getField("idioma5_hablado").setItems(["Nada", "Bajo", "Medio", "Alto", "Nativo"]);
+this.getField("idioma5_escrito").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
+this.getField("idioma5_hablado").setItems([
+  "Nada",
+  "Bajo",
+  "Medio",
+  "Alto",
+  "Nativo",
+]);
 
 // Validate ventaja
 
@@ -368,8 +444,9 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
   }
 
   for (var l = 1; l <= 6 && !repetido; l++) {
-
-    ventaja = this.getField("ventaja" + (((Number(num_ventaja) + l - 1) % 7) + 1)).value;
+    var ventaja = this.getField(
+      "ventaja" + (((Number(num_ventaja) + l - 1) % 7) + 1)
+    ).value;
     var cond2 = ventaja.toLowerCase();
     if (ventaja_novel) {
       cond1 = cond1.substr(0, 5);
@@ -408,6 +485,10 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Tocado por el destino"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 2;
+      if(event.value === "Fondos iniciales") {
+        var oro = this.getField("oro");
+        oro.value = Number(oro.value) + 200;
+      }
     } else if (
       event.value === "Aprendizaje innato en llevar armadura II" ||
       event.value === "Conecedor de todas las materias" ||
@@ -418,6 +499,10 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Resistencia física excepcional II"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 4;
+      if(event.value === "Fondos iniciales II") {
+        var oro = this.getField("oro");
+        oro.value = Number(oro.value) + 500;
+      }
     } else if (
       event.value === "Aprendizaje innato en llevar armadura III" ||
       event.value === "Aprendizaje innato en un campo II" ||
@@ -427,8 +512,13 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Regeneración mejorada III"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 6;
+      if(event.value === "Fondos iniciales III") {
+        var oro = this.getField("oro");
+        oro.value = Number(oro.value) + 1000;
+      }
     } else if (
-      event.value.substr(0, 7) === "Apto en" || event.value.substr(0, 21) === "Aprendizaje innato en"
+      event.value.substr(0, 7) === "Apto en" ||
+      event.value.substr(0, 21) === "Aprendizaje innato en"
     ) {
       // apto en un campo (4)
       // apto en una materia (2)
@@ -439,7 +529,8 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       // aprendizaje innato en campo (4)
       // aprendizaje innato en campo II (6)
       var ventaja_lC = event.value.toLowerCase();
-      if (ventaja_lC.match("vigor") ||
+      if (
+        ventaja_lC.match("vigor") ||
         ventaja_lC.match("atleticas") ||
         ventaja_lC.match("perceptivas") ||
         ventaja_lC.match("subterfugio") ||
@@ -467,7 +558,6 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
           this.getField("ventaja" + num_ventaja + "_coste").value = 2;
         }
       }
-
     } else if (ventaja_novel) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 0;
     } else {
@@ -491,7 +581,9 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
     cond1 = cond1.substr(0, cond1.length - 3);
   }
   for (var l = 1; l <= 2 && !repetido; l++) {
-    var desventaja = this.getField("desventaja" + (((Number(num_desventaja) + l - 1) % 3) + 1)).value;
+    var desventaja = this.getField(
+      "desventaja" + (((Number(num_desventaja) + l - 1) % 3) + 1)
+    ).value;
     var cond2 = desventaja.toLowerCase();
     if (cond2.substr(ventaja.length - 3) === " iii") {
       cond2 = cond2.substr(0, cond2.length - 3);
@@ -502,7 +594,6 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
     if (cond1 === cond2) {
       event.rc = false;
       repetido = true;
-
     }
   }
   if (!repetido) {
@@ -607,7 +698,7 @@ var tabla_arma_list = [
   "Mangual",
   "Mandoble",
   "Hacha a dos manos",
-]
+];
 
 var arma_list = [
   "—",
@@ -662,8 +753,8 @@ var arma_list = [
   "--- ESCUDOS ---",
   "Rodela",
   "Escudo",
-  "Escudo corporal"
-]
+  "Escudo corporal",
+];
 
 var i = 1;
 while (i < 7) {
@@ -674,7 +765,14 @@ while (i < 7) {
 i = 1;
 while (i < 7) {
   this.getField("arma" + i + "_check").setItems(["—", "Eq."]);
-  this.getField("arma" + i + "_calidad").setItems(["-2", "-1", "0", "+1", "+2", "+3"]);
+  this.getField("arma" + i + "_calidad").setItems([
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+  ]);
   i++;
 }
 
@@ -684,7 +782,7 @@ var manos_ocupadas = false;
 var num_arma = event.target.name.substr(4, 1);
 
 var i = 0;
-if (event.target.value = "On") {
+if ((event.target.value = "On")) {
   if (this.getField("arma" + num_arma + "_especial").value === "A dos manos") {
     while (i < 5) {
       var check = this.getField("arma" + (((num_arma + i) % 6) + 1) + "_check");
@@ -711,14 +809,16 @@ if (event.target.value = "On") {
         i++;
       }
     }
-
   }
 }
 
 if (manos_ocupadas === false) {
   if (check.value === "On") {
     num_checks_armas = num_checks_armas + 1;
-    if (num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
+    if (
+      num_checks_armas === 2 ||
+      (num_checks_armas === 1 && especial.value === "A dos manos")
+    ) {
       manos_ocupadas = true;
     }
   }
@@ -748,19 +848,15 @@ switch (event.value) {
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 20";
     break;
-  case "Jarrón":
-    arma_freq.value = 8;
-    arma_clase.value = "Maza";
-    break;
   case "Botella rota":
     arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     break;
   case "Antorcha":
+  case "Palo de madera":
+  case "Jarrón":
     arma_freq.value = 8;
     arma_clase.value = "Maza";
-    break;
-  case "Palo de madera":
     arma_freq.value = 8;
     arma_clase.value = "Maza";
     break;
@@ -770,10 +866,8 @@ switch (event.value) {
     arma_especial.value = "Presa 16";
     break;
   case "Cestus":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    break;
   case "Estilete":
+  case "Daga de parada":
     arma_freq.value = 6;
     arma_clase.value = "Arma corta";
     arma_especial.value = "Precisa";
@@ -783,35 +877,15 @@ switch (event.value) {
     arma_clase.value = "Mandoble";
     break;
   case "Barra metálica":
-    arma_freq.value = 10;
-    arma_clase.value = "Maza";
-    break;
-  case "Cuchillo de cocina":
-    arma_freq.value = 8;
-    arma_clase.value = "Arma corta";
-    break;
-  case "Garfio":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    break;
   case "Garrote":
     arma_freq.value = 10;
     arma_clase.value = "Maza";
     break;
   case "Daga":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    arma_especial.value = "Precisa";
-    break;
   case "Vara":
     arma_freq.value = 8;
     arma_clase.value = "Asta";
     arma_especial.value = "A dos manos";
-    break;
-  case "Daga de parada":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    arma_especial.value = "Precisa";
     break;
   case "Martillo":
     arma_freq.value = 8;
@@ -821,11 +895,13 @@ switch (event.value) {
     arma_freq.value = 8;
     arma_clase.value = "Hacha";
     break;
+  case "Cuchillo de cocina":
   case "Hoz":
     arma_freq.value = 8;
     arma_clase.value = "Arma corta";
     break;
   case "Arpón":
+  case "Guadaña":
     arma_freq.value = 10;
     arma_clase.value = "Asta";
     break;
@@ -834,28 +910,17 @@ switch (event.value) {
     arma_clase.value = "Espada";
     arma_especial.value = "Precisa";
     break;
-  case "Guadaña":
-    arma_freq.value = 10;
-    arma_clase.value = "Asta";
-    break;
-  case "Jabalina":
-    arma_freq.value = 8;
-    arma_clase.value = "Asta";
-    break;
   case "Látigo":
     arma_freq.value = 8;
     arma_clase.value = "Cuerda";
     arma_especial.value = "Presa 16";
-    break;
-  case "Hacha de leñador":
-    arma_freq.value = 10;
-    arma_clase.value = "Hacha";
     break;
   case "Pico":
     arma_freq.value = 10;
     arma_clase.value = "Arma corta";
     break;
   case "Lanza":
+  case "Jabalina":
     arma_freq.value = 8;
     arma_clase.value = "Asta";
     break;
@@ -869,6 +934,7 @@ switch (event.value) {
     arma_clase.value = "Cuerda";
     break;
   case "Maza":
+  case "Maza pesada de combate":
     arma_freq.value = 12;
     arma_clase.value = "Maza";
     break;
@@ -883,33 +949,21 @@ switch (event.value) {
     arma_especial.value = "Lanzable";
     break;
   case "Hacha de mano":
+  case "Hacha de leñador":
     arma_freq.value = 10;
     arma_clase.value = "Hacha";
     break;
-  case "Sable":
-    arma_freq.value = 12;
-    arma_clase.value = "Espada";
-    break;
-  case "Martillo de guerra":
-    arma_freq.value = 12;
-    arma_clase.value = "Maza";
-    break;
   case "Cimitarra":
-    arma_freq.value = 10;
-    arma_clase.value = "Espada";
-    break;
-  case "Espada larga":
-    arma_freq.value = 12;
-    arma_clase.value = "Espada";
-    break;
   case "Espada ancha":
     arma_freq.value = 10;
     arma_clase.value = "Espada";
     break;
-  case "Maza pesada de combate":
+  case "Sable":
+  case "Espada larga":
     arma_freq.value = 12;
-    arma_clase.value = "Maza";
+    arma_clase.value = "Espada";
     break;
+  case "Martillo de guerra":
   case "Alabarda":
     arma_freq.value = 12;
     arma_clase.value = "Asta";
@@ -958,23 +1012,22 @@ switch (event.value) {
     arma_clase.value = "Escudo";
     arma_calidad.readonly = true;
     break;
-    default:
-      this.getField(event.target.name + "_atq").value = "—";
-      this.getField(event.target.name + "_par").value = "—";
-      this.getField(event.target.name + "_esq").value = "—";
-      this.getField(event.target.name + "_db").value = "—";
-      this.getField(event.target.name + "_df").value = "—";
-      this.getField(event.target.name + "_iniciativa").value = "—";
-      
-      check.readonly = true;
-      check.value = "—";
-      
-      arma_clase.value = "—";
-      arma_freq.value = "—";
-      arma_calidad.readonly = true;
+  default:
+    this.getField(event.target.name + "_atq").value = "—";
+    this.getField(event.target.name + "_par").value = "—";
+    this.getField(event.target.name + "_esq").value = "—";
+    this.getField(event.target.name + "_db").value = "—";
+    this.getField(event.target.name + "_df").value = "—";
+    this.getField(event.target.name + "_iniciativa").value = "—";
+
+    check.readonly = true;
+    check.value = "—";
+
+    arma_clase.value = "—";
+    arma_freq.value = "—";
+    arma_calidad.readonly = true;
     break;
 }
-
 
 // Validar tabla_arma
 
@@ -1183,12 +1236,12 @@ switch (event.value) {
 }
 
 if (arma_clase.value !== "—") {
-  if ((num + 1) < 7) {
+  if (num + 1 < 7) {
     this.getField("tabla_arma" + (num + 1)).readonly = false;
     event.target.readonly = true;
   }
 } else {
-  if ((num - 1) >= 1 && (event.value === "" || event.value === "-")) {
+  if (num - 1 >= 1 && (event.value === "" || event.value === "-")) {
     this.getField("tabla_arma" + (num - 1)).readonly = false;
     event.target.readonly = true;
   }
@@ -1220,7 +1273,7 @@ var lista_armaduras = [
   "Yelmo de maya",
   "Yelmo completo abierto",
   "Yelmo completo cerrado",
-]
+];
 var i = 0;
 while (i < 7) {
   this.getField("armadura" + i).setItems(lista_armaduras);
@@ -1294,7 +1347,7 @@ switch (event.value) {
   case "Nativo":
     coste_idioma.value = 5;
     break;
-    default:
+  default:
     coste_idioma.value = 0;
     break;
 }

@@ -754,18 +754,15 @@ function actualizarDatosArmadura(numero_armadura) {
       armadura_advertir.value = 0;
       break;
     case "Camisola acolchada":
-      armadura_def.value = 10 + (10 * Number(armadura_calidad.value));
-      armadura_reqarm.value = 0;
-      armadura_mov.value = 0;
-      armadura_advertir.value = 0;
-      break;
     case "Camisola de cuero":
+    case "Completa gabardina":
       armadura_def.value = 10 + (10 * Number(armadura_calidad.value));
       armadura_reqarm.value = 0;
       armadura_mov.value = 0;
       armadura_advertir.value = 0;
       break;
     case "Camisola de piel":
+      case "Completa de cuero":
       armadura_def.value = 20 + (10 * Number(armadura_calidad.value));
       armadura_reqarm.value = Math.max(0, (10 - (5 * Number(armadura_calidad.value))));
       armadura_mov.value = Math.min(0, (-10 + (5 * Number(armadura_calidad.value))));
@@ -775,18 +772,6 @@ function actualizarDatosArmadura(numero_armadura) {
       armadura_def.value = 40 + (10 * Number(armadura_calidad.value));
       armadura_reqarm.value = Math.max(0, (60 - (5 * Number(armadura_calidad.value))));
       armadura_mov.value = Math.min(0, (-20 + (5 * Number(armadura_calidad.value))));
-      armadura_advertir.value = 0;
-      break;
-    case "Completa gabardina":
-      armadura_def.value = 10 + (10 * Number(armadura_calidad.value));
-      armadura_reqarm.value = 0;
-      armadura_mov.value = 0;
-      armadura_advertir.value = 0;
-      break;
-    case "Completa de cuero":
-      armadura_def.value = 20 + (10 * Number(armadura_calidad.value));
-      armadura_reqarm.value = Math.max(0, (10 - (5 * Number(armadura_calidad.value))));
-      armadura_mov.value = Math.min(0, (-10 + (5 * Number(armadura_calidad.value))));
       armadura_advertir.value = 0;
       break;
     case "Completa de mallas":
@@ -832,6 +817,7 @@ function actualizarDatosArmadura(numero_armadura) {
       armadura_advertir.value = 0;
       break;
     case "Yelmo de anillas":
+    case "Yelmo coronilla":
       armadura_def.value = 20 + (10 * Number(armadura_calidad.value));
       armadura_reqarm.value = 0;
       armadura_mov.value = 0;
@@ -839,12 +825,6 @@ function actualizarDatosArmadura(numero_armadura) {
       break;
     case "Yelmo frentón":
       armadura_def.value = 30 + (10 * Number(armadura_calidad.value));
-      armadura_reqarm.value = 0;
-      armadura_mov.value = 0;
-      armadura_advertir.value = 0;
-      break;
-    case "Yelmo coronilla":
-      armadura_def.value = 20 + (10 * Number(armadura_calidad.value));
       armadura_reqarm.value = 0;
       armadura_mov.value = 0;
       armadura_advertir.value = 0;
