@@ -485,7 +485,7 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Tocado por el destino"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 2;
-      if(event.value === "Fondos iniciales") {
+      if (event.value === "Fondos iniciales") {
         var oro = this.getField("oro");
         oro.value = Number(oro.value) + 200;
       }
@@ -499,7 +499,7 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Resistencia física excepcional II"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 4;
-      if(event.value === "Fondos iniciales II") {
+      if (event.value === "Fondos iniciales II") {
         var oro = this.getField("oro");
         oro.value = Number(oro.value) + 500;
       }
@@ -512,7 +512,7 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       event.value === "Regeneración mejorada III"
     ) {
       this.getField("ventaja" + num_ventaja + "_coste").value = 6;
-      if(event.value === "Fondos iniciales III") {
+      if (event.value === "Fondos iniciales III") {
         var oro = this.getField("oro");
         oro.value = Number(oro.value) + 1000;
       }
@@ -1368,3 +1368,25 @@ switch (this.getField("idioma" + num + "_escrito").value) {
   default:
     break;
 }
+
+// validate dinero
+var moneda = "";
+var moneda_field = event.target.name === "bronce" ? this.getField("plata") : this.getField("oro");
+if (!event.value || event.value === "") {
+  event.rc = false;
+} else {
+  moneda = Math.floor(Math.abs(event.value / 100));
+  if (event.value > 99) {
+    moneda_field.value = Number(moneda_field.value) + moneda;
+  } else if (event.value < 0) {
+    if (moneda_field.value >= moneda + 1) {
+      moneda_field.value -= moneda + 1;
+      event.value = (100 * (moneda + 1)) + Number(event.value);
+    } else {
+      event.rc = false;
+    }
+  }
+}
+
+// Tengo 30, quito 40 -> -10. Me queda 90. Plata -1
+// Tengo 30, quito 140 -> -110. Me queda 90. Plata -2
