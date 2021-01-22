@@ -981,44 +981,29 @@ switch (event.value) {
 var num = Number(event.target.name.substr(event.target.name.length - 1));
 var tabla_arma = this.getField(event.target.name);
 var coste_md = this.getField(event.target.name + "_md");
-var arma_clase = arma_clase;
-var encontrado = false;
+var arma_clase = this.getField(event.target.name + "_clase");
 
 switch (event.value) {
   case "ARMAS CORTAS":
     arma_clase.value = "Arma corta";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "HACHAS":
     arma_clase.value = "Hacha";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "MAZAS":
     arma_clase.value = "Maza";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "ESPADAS":
     arma_clase.value = "Espada";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "MANDOBLES":
     arma_clase.value = "Mandoble";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "ASTAS":
     arma_clase.value = "Asta";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "CUERDAS":
     arma_clase.value = "Cuerda";
-    coste_md.value = 10;
-    encontrado = true;
     break;
   case "Lazo":
     arma_clase.value = "Cuerda";
@@ -1177,19 +1162,22 @@ switch (event.value) {
     arma_clase.value = "Escudo";
     break;
   default:
+    event.value = "—";
     arma_clase.value = "—";
     coste_md.value = 0;
     break;
 }
 
-if (arma_clase.value !== "—") {
-  if ((num + 1) < 7) {
-    this.getField("tabla_arma" + (num + 1)).readonly = false;
+if (event.value === "—") {
+  // tabla no valida
+  if ((num - 1) >= 1) {
+    this.getField("tabla_arma" + (num - 1)).readonly = false;
     event.target.readonly = true;
   }
 } else {
-  if ((num - 1) >= 1 && (event.value === "" || event.value === "-")) {
-    this.getField("tabla_arma" + (num - 1)).readonly = false;
+  // tabla valida
+  if ((num + 1) <= 7) {
+    this.getField("tabla_arma" + (num + 1)).readonly = false;
     event.target.readonly = true;
   }
 }

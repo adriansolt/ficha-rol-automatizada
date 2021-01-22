@@ -618,6 +618,10 @@ while (i < defensa_ataque.length) {
         md_defatq.value = Number(md_restantes);
     }
 
+    if (Number(md_defatq.value) > md_totales.value / 4) {
+        md_defatq.value = Math.floor(md_totales.value / 4);
+    }
+
     //PD
     pd_defatq.value = md_defatq.value * valor_multiplo;
 
@@ -853,46 +857,44 @@ switch (fue_actual.value) {
 var combate_desarmado = false;
 
 var num_tablas = 7;
-
-for (i = 1; i <= num_tablas; i++) {
-    var tabla_arma_i = this.getField("tabla_arma" + i);
+i = 1;
+while (i <= 7 && this.getField("tabla_arma" + i).value !== "—") {
     var tabla_arma_clase_i = this.getField("tabla_arma" + i + "_clase");
     var tabla_arma_clase_i_md = this.getField("tabla_arma" + i + "_md");
-    if (tabla_arma_clase_i.value !== "—") {
-        if (!combate_desarmado && tabla_arma_clase_i.value === "Sin armas") {
-            combate_desarmado = true;
-        }
-        var tabla_arma_i = this.getField("tabla_arma" + i);
-        var encontrado = false;
-        for (j = 1; j < i && !encontrado; j++) {
-            var tabla_arma_j = this.getField("tabla_arma" + j);
-            var tabla_arma_clase_j = this.getField("tabla_arma" + j + "_clase");
-            if (tabla_arma_clase_i.value === tabla_arma_clase_j.value && tabla_arma_i.value !== tabla_arma_i.value.toUpperCase()) {
-                if (
-                    tabla_arma_i.value === tabla_arma_j.value || tabla_arma_j.value !== tabla_arma_j.value.toUpperCase()
-                ) {
-                    tabla_arma_clase_i_md.value = 0;
-                } else {
-                    // similar
-                    tabla_arma_clase_i_md.value = 2;
-                }
-                encontrado = true;
-            }
-        }
-        if (!encontrado) {
-            if (tabla_arma_i.value === tabla_arma_i.value.toUpperCase()) {
-                tabla_arma_clase_i_md.value = 10;
-            } else {
-                tabla_arma_clase_i_md.value = 4;
-            }
-        }
-        if (this.getField("categoria").value === "Guerrero") {
-            tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
-        }
-    } else {
-        i = num_tablas + 1;
+    var tabla_arma_i = this.getField("tabla_arma" + i);
+    if (!combate_desarmado && tabla_arma_clase_i.value === "Sin armas") {
+        combate_desarmado = true;
     }
+    var encontrado = false;
+    var similar = false;
+    for (j = 1; j < i && !encontrado; j++) {
+        var tabla_arma_j = this.getField("tabla_arma" + j);
+        var tabla_arma_clase_j = this.getField("tabla_arma" + j + "_clase");
+        if (tabla_arma_i.value === tabla_arma_i.value.toUpperCase()) {
+            tabla_arma_clase_i_md.value = 10;
+            encontrado = true;
+        } else if (tabla_arma_clase_i.value === tabla_arma_clase_j.value) {
+            // clases iguales
+            if (tabla_arma_i.value === tabla_arma_j.value || tabla_arma_j.value === tabla_arma_j.value.toUpperCase()) {
+                // tabla de clase
+                tabla_arma_clase_i_md.value = 0;
+                encontrado = true;
+            } else {
+                // similar
+                similar = true;
+                tabla_arma_clase_i_md.value = 2;
+            }
+        } 
+    }
+    if (!encontrado) {
+        tabla_arma_clase_i_md.value = similar ? 2 : 4;
+    }
+    if (this.getField("categoria").value === "Guerrero") {
+        tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
+    }
+    i++;
 }
+
 
 this.getField("tabla_arma1_md").value = 0;
 
@@ -918,6 +920,7 @@ while (i < 7) {
     var especial = this.getField("arma" + i + "_especial");
 
     if (clase.value !== "—") {
+        check.readonly = false;
         var arma_ataque = this.getField("arma" + i + "_atq");
         var arma_parada = this.getField("arma" + i + "_par");
         var arma_esquiva = this.getField("arma" + i + "_esq");
@@ -926,8 +929,243 @@ while (i < 7) {
         var arma_df = this.getField("arma" + i + "_df");
         var arma = this.getField("arma" + i);
 
-       actualizarDatosArma(i);
+        var arma_par = this.getField("arma" + i + "_par");
+        var arma_esq = this.getField("arma" + i + "_esq");
+        var arma_atq = this.getField("arma" + i + "_atq");
+        var arma_iniciativa = this.getField("arma" + i + "_iniciativa");
+        var arma_db = this.getField("arma" + i + "_db");
+        var arma_calidad = this.getField("arma" + i + "_calidad");
 
+        arma_atq.value = 5 * Number(arma_calidad.value);
+        arma_par.value = 5 * Number(arma_calidad.value);
+        arma_esq.value = 0;
+        arma_iniciativa.value = 5 * Number(arma_calidad.value);
+        arma_db.value = 10 * Number(arma_calidad.value);
+
+        switch (this.getField("arma" + i).value) {
+            case "Lazo":
+                arma_db.value += 5;
+                arma_iniciativa.value += +10;
+                break;
+            case "Red de gladiador":
+                arma_db.value += 5;
+                arma_iniciativa.value += 0;
+                break;
+            case "Combate desarmado":
+                arma_db.value += 10;
+                arma_iniciativa.value += 20;
+                break;
+            case "Jarrón":
+                arma_db.value += 15;
+                arma_iniciativa.value -= 10;
+                break;
+            case "Botella rota":
+                arma_db.value += 15;
+                arma_iniciativa.value += 10;
+                break;
+            case "Antorcha":
+                arma_db.value += 20;
+                arma_iniciativa.value -= 10;
+                break;
+            case "Palo de madera":
+                arma_db.value += 20;
+                arma_iniciativa.value += 0;
+                break;
+            case "Cadena":
+                arma_db.value += 25;
+                arma_iniciativa.value += 0;
+                break;
+            case "Cestus":
+                arma_db.value += 25;
+                arma_iniciativa.value += 10;
+                break;
+            case "Estilete":
+                arma_db.value += 25;
+                arma_iniciativa.value += 20;
+                break;
+            case "Silla":
+                arma_db.value += 25;
+                arma_iniciativa.value -= 20;
+                break;
+            case "Barra metálica":
+                arma_db.value += 25;
+                arma_iniciativa.value -= 5;
+                break;
+            case "Cuchillo de cocina":
+                arma_db.value += 25;
+                arma_iniciativa.value += 10;
+                break;
+            case "Garfio":
+                arma_db.value += 30;
+                arma_iniciativa.value += 10;
+                break;
+            case "Garrote":
+                arma_db.value += 30;
+                arma_iniciativa.value += 0;
+                break;
+            case "Daga":
+                arma_db.value += 30;
+                arma_iniciativa.value += 20;
+                break;
+            case "Vara":
+                arma_db.value += 30;
+                arma_iniciativa.value += 10;
+                break;
+            case "Daga de parada":
+                arma_db.value += 30;
+                arma_iniciativa.value += 15;
+                break;
+            case "Martillo":
+                arma_db.value += 30;
+                arma_iniciativa.value -= 20;
+                break;
+            case "Azada":
+                arma_db.value += 30;
+                arma_iniciativa.value -= 20;
+                break;
+            case "Hoz":
+                arma_db.value += 35;
+                arma_iniciativa.value -= 10;
+                break;
+            case "Arpón":
+                arma_db.value += 35;
+                arma_iniciativa.value -= 5;
+                break;
+            case "Florete":
+                arma_db.value += 35;
+                arma_iniciativa.value += 15;
+                break;
+            case "Guadaña":
+                arma_db.value += 35;
+                arma_iniciativa.value += 0;
+                break;
+            case "Jabalina":
+                arma_db.value += 35;
+                arma_iniciativa.value += 5;
+                break;
+            case "Látigo":
+                arma_db.value += 35;
+                arma_iniciativa.value -= 20;
+                break;
+            case "Hacha de leñador":
+                arma_db.value += 40;
+                arma_iniciativa.value -= 10;
+                break;
+            case "Pico":
+                arma_db.value += 40;
+                arma_iniciativa.value -= 20;
+                break;
+            case "Lanza":
+                arma_db.value += 40;
+                arma_iniciativa.value += 5;
+                break;
+            case "Espada corta":
+                arma_db.value += 40;
+                arma_iniciativa.value += 15;
+                break;
+            case "Mayal":
+                arma_db.value += 40;
+                arma_iniciativa.value += 0;
+                break;
+            case "Maza":
+                arma_db.value += 40;
+                arma_iniciativa.value += 0;
+                break;
+            case "Estoque":
+                arma_db.value += 40;
+                arma_iniciativa.value += 15;
+                break;
+            case "Tridente":
+                arma_db.value += 40;
+                arma_iniciativa.value -= 10;
+                break;
+            case "Hacha de mano":
+                arma_db.value += 45;
+                arma_iniciativa.value += 0;
+                break;
+            case "Sable":
+                arma_db.value += 45;
+                arma_iniciativa.value += 10;
+                break;
+            case "Martillo de guerra":
+                arma_db.value += 50;
+                arma_iniciativa.value -= 5;
+                break;
+            case "Cimitarra":
+                arma_db.value += 50;
+                arma_iniciativa.value -= 5;
+                break;
+            case "Espada larga":
+                arma_db.value += 50;
+                arma_iniciativa.value += 0;
+                break;
+            case "Espada ancha":
+                arma_db.value += 55;
+                arma_iniciativa.value -= 5;
+                break;
+            case "Maza pesada de combate":
+                arma_db.value += 60;
+                arma_iniciativa.value -= 15;
+                break;
+            case "Alabarda":
+                arma_db.value += 60;
+                arma_iniciativa.value -= 15;
+                break;
+            case "Espada bastarda":
+                arma_db.value += 70;
+                arma_iniciativa.value -= 30;
+                break;
+            case "Gran martillo de guerra":
+                arma_db.value += 70;
+                arma_iniciativa.value -= 35;
+                break;
+            case "Hacha de guerra":
+                arma_db.value += 70;
+                arma_iniciativa.value -= 30;
+                break;
+            case "Lanza de caballería":
+                arma_db.value += 80;
+                arma_iniciativa.value -= 30;
+                break;
+            case "Mangual":
+                arma_db.value += 80;
+                arma_iniciativa.value -= 50;
+                break;
+            case "Mandoble":
+                arma_db.value += 90;
+                arma_iniciativa.value -= 60;
+                break;
+            case "Hacha a dos manos":
+                arma_db.value += 100;
+                arma_iniciativa.value -= 70;
+                break;
+            case "Rodela":
+                arma_db.value += 15;
+                arma_iniciativa.value -= 15;
+                arma_par.value += 10;
+                arma_esq.value += 5;
+                break;
+            case "Escudo":
+                arma_db.value += 20;
+                arma_iniciativa.value -= 25;
+                arma_par.value += 20;
+                arma_esq.value += 10;
+                break;
+            case "Escudo corporal":
+                arma_db.value += 25;
+                arma_iniciativa.value -= 40;
+                arma_par.value += 30;
+                arma_esq.value += 15;
+                break;
+            default:
+                break;
+        }
+
+        arma_df.value = Math.ceil(Number(arma_db.value) + Number(fue_bono.value));
+
+
+        if (manos_ocupadas === false) {
+            check.readonly = false;
             if (check.value === "Eq.") {
                 arma_df.textSize = 12;
                 manos_libres = false;
@@ -989,17 +1227,25 @@ while (i < 7) {
 
                 num_checks_armas++;
 
+                // Ocupar manos si se seleccionan dos armas o una a dos manos
+                if (num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
+                    manos_ocupadas = true;
+                }
+
             } else {
                 arma_df.textSize = 8;
             }
+        } else {
+            check.readonly = true;
         }
     }
     i++;
+}
 i = 1;
 
 // Acciones primer arma (desarmado)
 
-if (num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A dos manos")) {
+if (manos_ocupadas === true) {
     this.getField("arma0_df").textSize = 8;
     this.getField("arma0_check").value = "—";
     while (i < 7) {
@@ -1009,7 +1255,7 @@ if (num_checks_armas === 2 || (num_checks_armas === 1 && especial.value === "A d
         }
         i++;
     }
-} else if (num_checks_armas === 0) {
+} else if (manos_libres === true) {
 
     var arma0_ataque = this.getField("arma0_atq");
     var arma0_parada = this.getField("arma0_par");
@@ -1109,243 +1355,6 @@ while (i < lista_habilidades.length) {
         Number(cat_nivel.value);
 
     i++;
-}
-
-function actualizarDatosArma(i) {
-    var arma_par = this.getField("arma" + i + "_par");
-    var arma_esq = this.getField("arma" + i + "_esq");
-    var arma_atq = this.getField("arma" + i + "_atq");
-    var arma_iniciativa = this.getField("arma" + i + "_iniciativa");
-    var arma_db = this.getField("arma" + i + "_db");
-    var arma_df = this.getField("arma" + i + "_df");
-    var arma_calidad = this.getField("arma" + i + "_calidad");
-
-    arma_atq.value = 5 * Number(arma_calidad.value);
-    arma_par.value = 5 * Number(arma_calidad.value);
-    arma_esq.value = 0;
-    arma_iniciativa.value = 5 * Number(arma_calidad.value);
-    arma_db.value = 10 * Number(arma_calidad.value);
-
-    switch (this.getField("arma" + i).value) {
-        case "Lazo":
-            arma_db.value += 5;
-            arma_iniciativa.value += +10;
-            break;
-        case "Red de gladiador":
-            arma_db.value += 5;
-            arma_iniciativa.value += 0;
-            break;
-        case "Combate desarmado":
-            arma_db.value += 10;
-            arma_iniciativa.value += 20;
-            break;
-        case "Jarrón":
-            arma_db.value += 15;
-            arma_iniciativa.value -= 10;
-            break;
-        case "Botella rota":
-            arma_db.value += 15;
-            arma_iniciativa.value += 10;
-            break;
-        case "Antorcha":
-            arma_db.value += 20;
-            arma_iniciativa.value -= 10;
-            break;
-        case "Palo de madera":
-            arma_db.value += 20;
-            arma_iniciativa.value += 0;
-            break;
-        case "Cadena":
-            arma_db.value += 25;
-            arma_iniciativa.value += 0;
-            break;
-        case "Cestus":
-            arma_db.value += 25;
-            arma_iniciativa.value += 10;
-            break;
-        case "Estilete":
-            arma_db.value += 25;
-            arma_iniciativa.value += 20;
-            break;
-        case "Silla":
-            arma_db.value += 25;
-            arma_iniciativa.value -= 20;
-            break;
-        case "Barra metálica":
-            arma_db.value += 25;
-            arma_iniciativa.value -= 5;
-            break;
-        case "Cuchillo de cocina":
-            arma_db.value += 25;
-            arma_iniciativa.value += 10;
-            break;
-        case "Garfio":
-            arma_db.value += 30;
-            arma_iniciativa.value += 10;
-            break;
-        case "Garrote":
-            arma_db.value += 30;
-            arma_iniciativa.value += 0;
-            break;
-        case "Daga":
-            arma_db.value += 30;
-            arma_iniciativa.value += 20;
-            break;
-        case "Vara":
-            arma_db.value += 30;
-            arma_iniciativa.value += 10;
-            break;
-        case "Daga de parada":
-            arma_db.value += 30;
-            arma_iniciativa.value += 15;
-            break;
-        case "Martillo":
-            arma_db.value += 30;
-            arma_iniciativa.value -= 20;
-            break;
-        case "Azada":
-            arma_db.value += 30;
-            arma_iniciativa.value -= 20;
-            break;
-        case "Hoz":
-            arma_db.value += 35;
-            arma_iniciativa.value -= 10;
-            break;
-        case "Arpón":
-            arma_db.value += 35;
-            arma_iniciativa.value -= 5;
-            break;
-        case "Florete":
-            arma_db.value += 35;
-            arma_iniciativa.value += 15;
-            break;
-        case "Guadaña":
-            arma_db.value += 35;
-            arma_iniciativa.value += 0;
-            break;
-        case "Jabalina":
-            arma_db.value += 35;
-            arma_iniciativa.value += 5;
-            break;
-        case "Látigo":
-            arma_db.value += 35;
-            arma_iniciativa.value -= 20;
-            break;
-        case "Hacha de leñador":
-            arma_db.value += 40;
-            arma_iniciativa.value -= 10;
-            break;
-        case "Pico":
-            arma_db.value += 40;
-            arma_iniciativa.value -= 20;
-            break;
-        case "Lanza":
-            arma_db.value += 40;
-            arma_iniciativa.value += 5;
-            break;
-        case "Espada corta":
-            arma_db.value += 40;
-            arma_iniciativa.value += 15;
-            break;
-        case "Mayal":
-            arma_db.value += 40;
-            arma_iniciativa.value += 0;
-            break;
-        case "Maza":
-            arma_db.value += 40;
-            arma_iniciativa.value += 0;
-            break;
-        case "Estoque":
-            arma_db.value += 40;
-            arma_iniciativa.value += 15;
-            break;
-        case "Tridente":
-            arma_db.value += 40;
-            arma_iniciativa.value -= 10;
-            break;
-        case "Hacha de mano":
-            arma_db.value += 45;
-            arma_iniciativa.value += 0;
-            break;
-        case "Sable":
-            arma_db.value += 45;
-            arma_iniciativa.value += 10;
-            break;
-        case "Martillo de guerra":
-            arma_db.value += 50;
-            arma_iniciativa.value -= 5;
-            break;
-        case "Cimitarra":
-            arma_db.value += 50;
-            arma_iniciativa.value -= 5;
-            break;
-        case "Espada larga":
-            arma_db.value += 50;
-            arma_iniciativa.value += 0;
-            break;
-        case "Espada ancha":
-            arma_db.value += 55;
-            arma_iniciativa.value -= 5;
-            break;
-        case "Maza pesada de combate":
-            arma_db.value += 60;
-            arma_iniciativa.value -= 15;
-            break;
-        case "Alabarda":
-            arma_db.value += 60;
-            arma_iniciativa.value -= 15;
-            break;
-        case "Espada bastarda":
-            arma_db.value += 70;
-            arma_iniciativa.value -= 30;
-            break;
-        case "Gran martillo de guerra":
-            arma_db.value += 70;
-            arma_iniciativa.value -= 35;
-            break;
-        case "Hacha de guerra":
-            arma_db.value += 70;
-            arma_iniciativa.value -= 30;
-            break;
-        case "Lanza de caballería":
-            arma_db.value += 80;
-            arma_iniciativa.value -= 30;
-            break;
-        case "Mangual":
-            arma_db.value += 80;
-            arma_iniciativa.value -= 50;
-            break;
-        case "Mandoble":
-            arma_db.value += 90;
-            arma_iniciativa.value -= 60;
-            break;
-        case "Hacha a dos manos":
-            arma_db.value += 100;
-            arma_iniciativa.value -= 70;
-            break;
-        case "Rodela":
-            arma_db.value += 15;
-            arma_iniciativa.value -= 15;
-            arma_par.value += 10;
-            arma_esq.value += 5;
-            break;
-        case "Escudo":
-            arma_db.value += 20;
-            arma_iniciativa.value -= 25;
-            arma_par.value += 20;
-            arma_esq.value += 10;
-            break;
-        case "Escudo corporal":
-            arma_db.value += 25;
-            arma_iniciativa.value -= 40;
-            arma_par.value += 30;
-            arma_esq.value += 15;
-            break;
-        default:
-            break;
-    }
-
-    arma_df.value = Math.ceil(Number(arma_db.value) + Number(this.getField("fue_bono").value));
 }
 
 function log(k, v) {
