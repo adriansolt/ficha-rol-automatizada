@@ -856,49 +856,42 @@ switch (fue_actual.value) {
 var combate_desarmado = false;
 
 var num_tablas = 7;
-
-for (i = 1; i <= num_tablas; i++) {
-  var tabla_arma_i = this.getField("tabla_arma" + i);
-  var tabla_arma_clase_i = this.getField("tabla_arma" + i + "_clase");
-  var tabla_arma_clase_i_md = this.getField("tabla_arma" + i + "_md");
-  if (tabla_arma_clase_i.value !== "—") {
-    if (!combate_desarmado && tabla_arma_clase_i.value === "Sin armas") {
-      combate_desarmado = true;
-    }
+i = 1;
+while (i <= 7 && this.getField("tabla_arma" + i).value !== "—") {
+    var tabla_arma_clase_i = this.getField("tabla_arma" + i + "_clase");
+    var tabla_arma_clase_i_md = this.getField("tabla_arma" + i + "_md");
     var tabla_arma_i = this.getField("tabla_arma" + i);
+    if (!combate_desarmado && tabla_arma_clase_i.value === "Sin armas") {
+        combate_desarmado = true;
+    }
     var encontrado = false;
+    var similar = false;
     for (j = 1; j < i && !encontrado; j++) {
-      var tabla_arma_j = this.getField("tabla_arma" + j);
-      var tabla_arma_clase_j = this.getField("tabla_arma" + j + "_clase");
-      if (
-        tabla_arma_clase_i.value === tabla_arma_clase_j.value &&
-        tabla_arma_i.value !== tabla_arma_i.value.toUpperCase()
-      ) {
-        if (
-          tabla_arma_i.value === tabla_arma_j.value ||
-          tabla_arma_j.value !== tabla_arma_j.value.toUpperCase()
-        ) {
-          tabla_arma_clase_i_md.value = 0;
-        } else {
-          // similar
-          tabla_arma_clase_i_md.value = 2;
-        }
-        encontrado = true;
-      }
+        var tabla_arma_j = this.getField("tabla_arma" + j);
+        var tabla_arma_clase_j = this.getField("tabla_arma" + j + "_clase");
+        if (tabla_arma_i.value === tabla_arma_i.value.toUpperCase()) {
+            tabla_arma_clase_i_md.value = 10;
+            encontrado = true;
+        } else if (tabla_arma_clase_i.value === tabla_arma_clase_j.value) {
+            // clases iguales
+            if (tabla_arma_i.value === tabla_arma_j.value || tabla_arma_j.value === tabla_arma_j.value.toUpperCase()) {
+                // tabla de clase
+                tabla_arma_clase_i_md.value = 0;
+                encontrado = true;
+            } else {
+                // similar
+                similar = true;
+                tabla_arma_clase_i_md.value = 2;
+            }
+        } 
     }
     if (!encontrado) {
-      if (tabla_arma_i.value === tabla_arma_i.value.toUpperCase()) {
-        tabla_arma_clase_i_md.value = 10;
-      } else {
-        tabla_arma_clase_i_md.value = 4;
-      }
+        tabla_arma_clase_i_md.value = similar ? 2 : 4;
     }
     if (this.getField("categoria").value === "Guerrero") {
-      tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
+        tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
     }
-  } else {
-    i = num_tablas + 1;
-  }
+    i++;
 }
 
 this.getField("tabla_arma1_md").value = 0;
@@ -923,9 +916,10 @@ while (i < 7) {
   var calidad = this.getField("arma" + i + "_calidad");
   var check = this.getField("arma" + i + "_check");
   var especial = this.getField("arma" + i + "_especial");
-
+  
+  actualizarDatosArma(i);
   if (clase.value !== "—") {
-    actualizarDatosArma(i);
+    check.readonly = false;
     if (check.value === "Eq.") {
       var arma_ataque = this.getField("arma" + i + "_atq");
       var arma_parada = this.getField("arma" + i + "_par");
@@ -997,6 +991,8 @@ while (i < 7) {
     } else {
       arma_df.textSize = 8;
     }
+  } else {
+      check.readonly = true;
   }
   i++;
 }
