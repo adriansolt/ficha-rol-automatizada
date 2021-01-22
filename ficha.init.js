@@ -618,6 +618,10 @@ while (i < defensa_ataque.length) {
     md_defatq.value = Number(md_restantes);
   }
 
+  if (Number(md_defatq.value) > md_totales.value / 4) {
+    md_defatq.value = Math.floor(md_totales.value / 4);
+    }
+
   //PD
   pd_defatq.value = md_defatq.value * valor_multiplo;
 

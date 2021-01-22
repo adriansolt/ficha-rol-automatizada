@@ -710,12 +710,10 @@ md_actuales.value =
   Number(this.getField("md_esquiva").value) -
   Number(this.getField("md_llA").value) -
   Number(this.getField("md_vida").value) -
-  Number(this.getField("idioma1_md").value) -
   Number(this.getField("idioma2_md").value) -
   Number(this.getField("idioma3_md").value) -
   Number(this.getField("idioma4_md").value) -
   Number(this.getField("idioma5_md").value) -
-  Number(this.getField("tabla_arma1_md").value) -
   Number(this.getField("tabla_arma2_md").value) -
   Number(this.getField("tabla_arma3_md").value) -
   Number(this.getField("tabla_arma4_md").value) -
