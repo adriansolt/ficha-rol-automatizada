@@ -637,10 +637,10 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
   this.getField("desventaja" + num_desventaja + "_coste").value = "";
 }
 
-// Script armas
+// Script armas / tabla de armas
 
 var tabla_arma_list = [
-  "--",
+  "—",
   "ARMAS CORTAS",
   "HACHAS",
   "MAZAS",
@@ -648,7 +648,7 @@ var tabla_arma_list = [
   "MANDOBLES",
   "ASTAS",
   "CUERDAS",
-  "--",
+  "—",
   "Lazo",
   "Red de gladiador",
   "Combate desarmado",
@@ -756,10 +756,15 @@ var arma_list = [
   "Escudo corporal",
 ];
 
-var i = 1;
+this.getField("tabla_arma1").setItems(tabla_arma_list.slice(8 ));
+var i = 2;
 while (i < 7) {
-  this.getField("arma" + i).setItems(arma_list);
   this.getField("tabla_arma" + i).setItems(tabla_arma_list);
+  i++;
+}
+i = 1;
+while(i < 7) {
+  this.getField("arma" + i).setItems(arma_list);
   i++;
 }
 i = 1;
@@ -826,208 +831,11 @@ if (manos_ocupadas === false) {
 
 // Validar armas
 
-var arma_clase = this.getField(event.target.name + "_clase");
 var arma_calidad = this.getField(event.target.name + "_calidad");
-var arma_freq = this.getField(event.target.name + "_freq");
-var arma_especial = this.getField(event.target.name + "_especial");
 var arma_check = this.getField(event.target.name + "_check");
-arma_clase.value = "—";
-arma_especial.value = "—";
+
 arma_calidad.value = 0;
-arma_calidad.readonly = false;
-arma_check.readonly = false;
-
-switch (event.value) {
-  case "Lazo":
-    arma_freq.value = 8;
-    arma_clase.value = "Cuerda";
-    arma_especial.value = "Presa 18";
-    break;
-  case "Red de gladiador":
-    arma_freq.value = 4;
-    arma_clase.value = "Cuerda";
-    arma_especial.value = "Presa 20";
-    break;
-  case "Botella rota":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    break;
-  case "Antorcha":
-  case "Palo de madera":
-  case "Jarrón":
-    arma_freq.value = 8;
-    arma_clase.value = "Maza";
-    arma_freq.value = 8;
-    arma_clase.value = "Maza";
-    break;
-  case "Cadena":
-    arma_freq.value = 12;
-    arma_clase.value = "Cuerda";
-    arma_especial.value = "Presa 16";
-    break;
-  case "Cestus":
-  case "Estilete":
-  case "Daga de parada":
-    arma_freq.value = 6;
-    arma_clase.value = "Arma corta";
-    arma_especial.value = "Precisa";
-    break;
-  case "Silla":
-    arma_freq.value = 10;
-    arma_clase.value = "Mandoble";
-    break;
-  case "Barra metálica":
-  case "Garrote":
-    arma_freq.value = 10;
-    arma_clase.value = "Maza";
-    break;
-  case "Daga":
-  case "Vara":
-    arma_freq.value = 8;
-    arma_clase.value = "Asta";
-    arma_especial.value = "A dos manos";
-    break;
-  case "Martillo":
-    arma_freq.value = 8;
-    arma_clase.value = "Maza";
-    break;
-  case "Azada":
-    arma_freq.value = 8;
-    arma_clase.value = "Hacha";
-    break;
-  case "Cuchillo de cocina":
-  case "Hoz":
-    arma_freq.value = 8;
-    arma_clase.value = "Arma corta";
-    break;
-  case "Arpón":
-  case "Guadaña":
-    arma_freq.value = 10;
-    arma_clase.value = "Asta";
-    break;
-  case "Florete":
-    arma_freq.value = 6;
-    arma_clase.value = "Espada";
-    arma_especial.value = "Precisa";
-    break;
-  case "Látigo":
-    arma_freq.value = 8;
-    arma_clase.value = "Cuerda";
-    arma_especial.value = "Presa 16";
-    break;
-  case "Pico":
-    arma_freq.value = 10;
-    arma_clase.value = "Arma corta";
-    break;
-  case "Lanza":
-  case "Jabalina":
-    arma_freq.value = 8;
-    arma_clase.value = "Asta";
-    break;
-  case "Espada corta":
-    arma_freq.value = 8;
-    arma_clase.value = "Arma corta";
-    arma_especial.value = "Precisa";
-    break;
-  case "Mayal":
-    arma_freq.value = 12;
-    arma_clase.value = "Cuerda";
-    break;
-  case "Maza":
-  case "Maza pesada de combate":
-    arma_freq.value = 12;
-    arma_clase.value = "Maza";
-    break;
-  case "Estoque":
-    arma_freq.value = 8;
-    arma_clase.value = "Espada";
-    arma_especial.value = "Precisa";
-    break;
-  case "Tridente":
-    arma_freq.value = 12;
-    arma_clase.value = "Asta";
-    arma_especial.value = "Lanzable";
-    break;
-  case "Hacha de mano":
-  case "Hacha de leñador":
-    arma_freq.value = 10;
-    arma_clase.value = "Hacha";
-    break;
-  case "Cimitarra":
-  case "Espada ancha":
-    arma_freq.value = 10;
-    arma_clase.value = "Espada";
-    break;
-  case "Sable":
-  case "Espada larga":
-    arma_freq.value = 12;
-    arma_clase.value = "Espada";
-    break;
-  case "Martillo de guerra":
-  case "Alabarda":
-    arma_freq.value = 12;
-    arma_clase.value = "Asta";
-    arma_especial.value = "A dos manos";
-    break;
-  case "Espada bastarda":
-    arma_freq.value = 14;
-    arma_clase.value = "Espada";
-    break;
-  case "Gran martillo de guerra":
-    arma_freq.value = 14;
-    arma_clase.value = "Maza";
-    break;
-  case "Hacha de guerra":
-    arma_freq.value = 14;
-    arma_clase.value = "Hacha";
-    break;
-  case "Lanza de caballería":
-    arma_freq.value = 16;
-    arma_clase.value = "Asta";
-    break;
-  case "Mangual":
-    arma_freq.value = 16;
-    arma_clase.value = "Mandoble";
-    break;
-  case "Mandoble":
-    arma_freq.value = 16;
-    arma_clase.value = "Mandoble";
-    break;
-  case "Hacha a dos manos":
-    arma_freq.value = 18;
-    arma_clase.value = "Hacha";
-    break;
-  case "Rodela":
-    arma_freq.value = 10;
-    arma_clase.value = "Escudo";
-    arma_calidad.readonly = true;
-    break;
-  case "Escudo":
-    arma_freq.value = 14;
-    arma_clase.value = "Escudo";
-    arma_calidad.readonly = true;
-    break;
-  case "Escudo corporal":
-    arma_freq.value = 20;
-    arma_clase.value = "Escudo";
-    arma_calidad.readonly = true;
-    break;
-  default:
-    this.getField(event.target.name + "_atq").value = "—";
-    this.getField(event.target.name + "_par").value = "—";
-    this.getField(event.target.name + "_esq").value = "—";
-    this.getField(event.target.name + "_db").value = "—";
-    this.getField(event.target.name + "_df").value = "—";
-    this.getField(event.target.name + "_iniciativa").value = "—";
-
-    check.readonly = true;
-    check.value = "—";
-
-    arma_clase.value = "—";
-    arma_freq.value = "—";
-    arma_calidad.readonly = true;
-    break;
-}
+arma_check.value = "—";
 
 // Validar tabla_arma
 
@@ -1238,6 +1046,7 @@ if (event.value === "—") {
 // Script armaduras
 
 var lista_armaduras = [
+  "—",
   "Peto de cuero endurecido",
   "Peto de cuero tachonado",
   "Peto de metal",
@@ -1358,21 +1167,24 @@ switch (this.getField("idioma" + num + "_escrito").value) {
 }
 
 // validate dinero
-var moneda = "";
-var moneda_field = event.target.name === "bronce" ? this.getField("plata") : this.getField("oro");
+var moneda = this.getField(event.target.name.substr(3));
+var moneda_up = event.target.name.substr(3) === "bronce" ? this.getField("plata") : this.getField("oro");
+var moneda_sum;
 if (!event.value || event.value === "") {
   event.rc = false;
 } else {
-  moneda = Math.floor(Math.abs(event.value / 100));
-  if (event.value > 99) {
-    moneda_field.value = Number(moneda_field.value) + moneda;
-  } else if (event.value < 0) {
-    if (moneda_field.value >= moneda + 1) {
-      moneda_field.value -= moneda + 1;
-      event.value = (100 * (moneda + 1)) + Number(event.value);
-    } else {
-      event.rc = false;
-    }
+  moneda_sum = Number(moneda.value) + Number(event.value);
+  moneda_centenas = Number(Math.floor(moneda_sum/100)*100);
+  if (Number(event.value) < 0 && moneda_up.value >= (Number(moneda_centenas)/100)) {
+    moneda.value = Math.abs(Number(event.value) + Number(moneda.value));
+    moneda_up.value = Number(moneda_up.value) + Number(moneda_centenas/100);
+    event.value = 0;
+  } else if ((Number(event.value) + Number(moneda.value)) > 99) {
+    moneda_up.value = Number(moneda_up.value) + Math.floor(Number(moneda_sum)/100);
+    moneda.value = Number(moneda_sum) - Number(moneda_centenas);
+    event.value = 0;
+  } else {
+    event.rc = false;
   }
 }
 
