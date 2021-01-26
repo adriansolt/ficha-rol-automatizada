@@ -1165,28 +1165,3 @@ switch (this.getField("idioma" + num + "_escrito").value) {
   default:
     break;
 }
-
-// validate dinero
-var moneda = this.getField(event.target.name.substr(3));
-var moneda_up = event.target.name.substr(3) === "bronce" ? this.getField("plata") : this.getField("oro");
-var moneda_sum;
-if (!event.value || event.value === "") {
-  event.rc = false;
-} else {
-  moneda_sum = Number(moneda.value) + Number(event.value);
-  moneda_centenas = Number(Math.floor(moneda_sum/100)*100);
-  if (Number(event.value) < 0 && moneda_up.value >= (Number(moneda_centenas)/100)) {
-    moneda.value = Math.abs(Number(event.value) + Number(moneda.value));
-    moneda_up.value = Number(moneda_up.value) + Number(moneda_centenas/100);
-    event.value = 0;
-  } else if ((Number(event.value) + Number(moneda.value)) > 99) {
-    moneda_up.value = Number(moneda_up.value) + Math.floor(Number(moneda_sum)/100);
-    moneda.value = Number(moneda_sum) - Number(moneda_centenas);
-    event.value = 0;
-  } else {
-    event.rc = false;
-  }
-}
-
-// Tengo 30, quito 40 -> -10. Me queda 90. Plata -1
-// Tengo 30, quito 140 -> -110. Me queda 90. Plata -2
