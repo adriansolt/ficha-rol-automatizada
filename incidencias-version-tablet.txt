@@ -1,0 +1,5 @@
+- No cambia el readonly de los desplegables de las armas al cambiar los valores del check
+- No muestra el input de mano predominante al quitar ambidiestria
+- No actualiza los valores de los desplegables de Jake al cambiar de armadura
+- No cambia el readonly de los desplegables de las armaduras en Jake
+- No cambia el readonly de los desplegables de la tabla de armas

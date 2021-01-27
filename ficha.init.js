@@ -360,7 +360,7 @@ while (i < ventajas_list.length) {
         }
       }
     }
-  } else if (ventaja.match("Aprendizaje innato en")) {
+  } else if (ventaja.match("Aprendizaje innato en") && !ventaja.match("Aprendizaje innato en llevar armadura")) {
     var ventaja_formateada = ventaja
       .substr(22)
       .replace(/\./g, "")
@@ -1834,37 +1834,40 @@ var op_oro_1 = this.getField("op_oro_1");
 var op_plata_1 = this.getField("op_plata_1");
 var op_bronce_1 = this.getField("op_bronce_1");
 
+var op_oro_2 = this.getField("op_oro_2");
+var op_plata_2 = this.getField("op_plata_2");
+var op_bronce_2 = this.getField("op_bronce_2");
+
+// Operaciones oro
+// 1
 if (
   Number(op_oro_1.value) !== 0 &&
   Number(op_oro_1.value) !== "-" &&
-  Number(op_oro_1.value) !== "+"
+  Number(op_oro_1.value) !== "+" &&
+  (Number(op_oro_1.value) > 0 || (Number(oro.value) + Number(op_oro_1.value) >= 0))
 ) {
-  if (Number(op_oro_1.value) > 0) {
     oro.value = Number(oro.value) + Number(op_oro_1.value);
-  } else {
-    if (Number(oro.value) + Number(op_oro_1.value) >= 0) {
-      oro.value = Number(oro.value) + Number(op_oro_1.value);
-    }
-  }
 }
 
+// 2
+if (
+  Number(op_oro_2.value) !== 0 &&
+  Number(op_oro_2.value) !== "-" &&
+  Number(op_oro_2.value) !== "+" &&
+  (Number(oro.value) + Number(op_oro_2.value) >= 0)
+) {
+    oro.value = Number(oro.value) + Number(op_oro_2.value);
+}
+
+// Operaciones plata
+// 1
 if (
   Number(op_plata_1.value) !== 0 &&
   Number(op_plata_1.value) !== "-" &&
   Number(op_plata_1.value) !== "+"
 ) {
-  if (Number(op_plata_1.value) > 0) {
-    plata.value = Number(plata.value) + Number(op_plata_1.value);
-    if (plata.value > 100) {
-      var oro_up = Math.floor(plata.value / 100);
-      oro.value = Number(oro.value) + oro_up;
-      plata.value = Number(plata.value) - oro_up * 100;
-      while (plata.value > 100) {
-        oro.value = Number(oro.value) + 1;
-        plata.value = Number(plata.value) - 100;
-      }
-    }
-  } else {
+  plata.value = Number(plata.value) + Number(op_plata_1.value);
+  if(plata.value < 0) {
     var oro_down = Math.floor(
       Number(plata.value) + Number(op_plata_1.value) / 100
     );
@@ -1877,26 +1880,61 @@ if (
         plata.value -= 100;
       }
     }
+  } else if(plata.value >= 100) {
+    if (plata.value > 100) {
+      var oro_up = Math.floor(plata.value / 100);
+      oro.value = Number(oro.value) + oro_up;
+      plata.value = Number(plata.value) - oro_up * 100;
+      while (plata.value > 100) {
+        oro.value = Number(oro.value) + 1;
+        plata.value = Number(plata.value) - 100;
+      }
+    }
   }
 }
+
+// 2
+if (
+  Number(op_plata_2.value) !== 0 &&
+  Number(op_plata_2.value) !== "-" &&
+  Number(op_plata_2.value) !== "+"
+) {
+  plata.value = Number(plata.value) + Number(op_plata_2.value);
+  if(plata.value < 0) {
+    var oro_down = Math.floor(
+      Number(plata.value) + Number(op_plata_2.value) / 100
+    );
+    if (oro_down <= Number(oro.value)) {
+      plata.value = Math.abs(Number(plata.value) + Number(op_plata_2.value));
+      if (plata.value < 0) {
+        while (plata.value > 0) {
+          plata.value = Number(plata.value) + 100;
+        }
+        plata.value -= 100;
+      }
+    }
+  } else if(plata.value >= 100) {
+    if (plata.value > 100) {
+      var oro_up = Math.floor(plata.value / 100);
+      oro.value = Number(oro.value) + oro_up;
+      plata.value = Number(plata.value) - oro_up * 100;
+      while (plata.value > 100) {
+        oro.value = Number(oro.value) + 1;
+        plata.value = Number(plata.value) - 100;
+      }
+    }
+  }
+}
+
+// Operaciones bronce
 
 if (
   Number(op_bronce_1.value) !== 0 &&
   Number(op_bronce_1.value) !== "-" &&
   Number(op_bronce_1.value) !== "+"
 ) {
-  if (Number(op_bronce_1.value) > 0) {
-    bronce.value = Number(bronce.value) + Number(op_bronce_1.value);
-    if (bronce.value > 100) {
-      var plata_up = Math.floor(bronce.value / 100);
-      plata.value = Number(plata.value) + plata_up;
-      bronce.value = Number(bronce.value) - plata_up * 100;
-      while (bronce.value > 100) {
-        plata.value = Number(plata.value) + 1;
-        bronce.value = Number(bronce.value) - 100;
-      }
-    }
-  } else {
+  bronce.value = Number(bronce.value) + Number(op_bronce_1.value);
+  if(bronce.value < 0) {
     var plata_down = Math.floor(
       Number(bronce.value) + Number(op_bronce_1.value) / 100
     );
@@ -1909,54 +1947,14 @@ if (
         bronce.value -= 100;
       }
     }
-  }
-}
-
-var op_oro_2 = this.getField("op_oro_2");
-var op_plata_2 = this.getField("op_plata_2");
-var op_bronce_2 = this.getField("op_bronce_2");
-
-if (
-  Number(op_oro_2.value) !== 0 &&
-  Number(op_oro_2.value) !== "-" &&
-  Number(op_oro_2.value) !== "+"
-) {
-  if (Number(op_oro_2.value) > 0) {
-    oro.value = Number(oro.value) + Number(op_oro_2.value);
-  } else {
-    if (Number(oro.value) + Number(op_oro_2.value) >= 0) {
-      oro.value = Number(oro.value) + Number(op_oro_2.value);
-    }
-  }
-}
-
-if (
-  Number(op_plata_2.value) !== 0 &&
-  Number(op_plata_2.value) !== "-" &&
-  Number(op_plata_2.value) !== "+"
-) {
-  if (Number(op_plata_2.value) > 0) {
-    plata.value = Number(plata.value) + Number(op_plata_2.value);
-    if (plata.value > 100) {
-      var oro_2_up = Math.floor(plata.value / 100);
-      oro.value = Number(oro.value) + oro_2_up;
-      plata.value = Number(plata.value) - oro_2_up * 100;
-      while (plata.value > 100) {
-        oro.value = Number(oro.value) + 1;
-        plata.value = Number(plata.value) - 100;
-      }
-    }
-  } else {
-    var oro_2_down = Math.floor(
-      Number(plata.value) + Number(op_plata_2.value) / 100
-    );
-    if (oro_2_down <= Number(oro.value)) {
-      plata.value = Math.abs(Number(plata.value) + Number(op_plata_2.value));
-      if (plata.value < 0) {
-        while (plata.value > 0) {
-          plata.value = Number(plata.value) + 100;
-        }
-        plata.value -= 100;
+  } else if(bronce.value >= 100) {
+    if (bronce.value > 100) {
+      var plata_up = Math.floor(bronce.value / 100);
+      plata.value = Number(plata.value) + plata_up;
+      bronce.value = Number(bronce.value) - plata_up * 100;
+      while (bronce.value > 100) {
+        plata.value = Number(plata.value) + 1;
+        bronce.value = Number(bronce.value) - 100;
       }
     }
   }
@@ -1967,22 +1965,12 @@ if (
   Number(op_bronce_2.value) !== "-" &&
   Number(op_bronce_2.value) !== "+"
 ) {
-  if (Number(op_bronce_2.value) > 0) {
-    bronce.value = Number(bronce.value) + Number(op_bronce_2.value);
-    if (bronce.value > 100) {
-      var plata_2_up = Math.floor(bronce.value / 100);
-      plata.value = Number(plata.value) + plata_2_up;
-      bronce.value = Number(bronce.value) - plata_2_up * 100;
-      while (bronce.value > 100) {
-        plata.value = Number(plata.value) + 1;
-        bronce.value = Number(bronce.value) - 100;
-      }
-    }
-  } else {
-    var plata_2_down = Math.floor(
+  bronce.value = Number(bronce.value) + Number(op_bronce_2.value);
+  if(bronce.value < 0) {
+    var plata_down = Math.floor(
       Number(bronce.value) + Number(op_bronce_2.value) / 100
     );
-    if (plata_2_down <= Number(plata.value)) {
+    if (plata_down <= Number(plata.value)) {
       bronce.value = Math.abs(Number(bronce.value) + Number(op_bronce_2.value));
       if (bronce.value < 0) {
         while (bronce.value > 0) {
@@ -1991,8 +1979,20 @@ if (
         bronce.value -= 100;
       }
     }
+  } else if(bronce.value >= 100) {
+    if (bronce.value > 100) {
+      var plata_up = Math.floor(bronce.value / 100);
+      plata.value = Number(plata.value) + plata_up;
+      bronce.value = Number(bronce.value) - plata_up * 100;
+      while (bronce.value > 100) {
+        plata.value = Number(plata.value) + 1;
+        bronce.value = Number(bronce.value) - 100;
+      }
+    }
   }
 }
+
+
 
 function log(k, v) {
   if (v === undefined) {
