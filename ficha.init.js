@@ -360,7 +360,10 @@ while (i < ventajas_list.length) {
         }
       }
     }
-  } else if (ventaja.match("Aprendizaje innato en") && !ventaja.match("Aprendizaje innato en llevar armadura")) {
+  } else if (
+    ventaja.match("Aprendizaje innato en") &&
+    !ventaja.match("Aprendizaje innato en llevar armadura")
+  ) {
     var ventaja_formateada = ventaja
       .substr(22)
       .replace(/\./g, "")
@@ -818,15 +821,30 @@ presencia.value = 25 + 5 * nivel.value;
 
 // Resistencias
 res_fisica_final.value =
-  presencia.value + Number(con_bono.value) + Number(res_fisica_esp.value) + Number(res_fisica_mod.value);
+  presencia.value +
+  Number(con_bono.value) +
+  Number(res_fisica_esp.value) +
+  Number(res_fisica_mod.value);
 res_enfermedades_final.value =
-  presencia.value + Number(con_bono.value) + Number(res_enfermedades_esp.value) + Number(res_enfermedades_mod.value);
+  presencia.value +
+  Number(con_bono.value) +
+  Number(res_enfermedades_esp.value) +
+  Number(res_enfermedades_mod.value);
 res_venenos_final.value =
-  presencia.value + Number(con_bono.value) + Number(res_venenos_esp.value) + Number(res_venenos_mod.value);
+  presencia.value +
+  Number(con_bono.value) +
+  Number(res_venenos_esp.value) +
+  Number(res_venenos_mod.value);
 res_frio_final.value =
-  presencia.value + Number(con_bono.value) + Number(res_frio_esp.value) + Number(res_frio_mod.value);
+  presencia.value +
+  Number(con_bono.value) +
+  Number(res_frio_esp.value) +
+  Number(res_frio_mod.value);
 res_calor_final.value =
-  presencia.value + Number(con_bono.value) + Number(res_calor_esp.value) + Number(res_calor_mod.value);
+  presencia.value +
+  Number(con_bono.value) +
+  Number(res_calor_esp.value) +
+  Number(res_calor_mod.value);
 
 // Carga
 
@@ -1479,7 +1497,7 @@ while (i < 7) {
               arma_atq.value += -20;
               arma_par.value += -20;
               break;
-              case "M":
+            case "M":
               arma_atq.value += -30;
               arma_par.value += -30;
               break;
@@ -1487,24 +1505,23 @@ while (i < 7) {
               arma_atq.value += -40;
               arma_par.value += -40;
               break;
-              default:
-                break;
-              }
+            default:
+              break;
+          }
           if (arma_check.value === "I") {
             mano_i_ocupada = true;
             equipo_ataque_i.value += Number(arma_atq.value);
             equipo_parada_i.value += Number(arma_par.value);
-    
           } else {
             mano_d_ocupada = true;
             equipo_ataque_d.value += Number(arma_atq.value);
-            equipo_parada_d.value += Number(arma_par.value);    
+            equipo_parada_d.value += Number(arma_par.value);
           }
         }
 
         if (arma_check.value === "D+I") {
           equipo_ataque_d.value += Number(arma_atq.value);
-          equipo_parada_d.value += Number(arma_par.value); 
+          equipo_parada_d.value += Number(arma_par.value);
           equipo_ataque_i.value += Number(arma_atq.value);
           equipo_parada_i.value += Number(arma_par.value);
         }
@@ -1628,7 +1645,8 @@ while (i < 7) {
 
   if (
     (arma_check.value === "D" || arma_check.value === "I") &&
-    arma_check.value !== mano_dominante.value.substr(0, 1) && !ambidiestria
+    arma_check.value !== mano_dominante.value.substr(0, 1) &&
+    !ambidiestria
   ) {
     // mano no dominante
     if (arma_check.value === "D") {
@@ -1665,7 +1683,7 @@ if (manos_libres) {
   if (
     arma0_check.value !== mano_dominante.value.substr(0, 1) &&
     !ambidiestria
-    ) {
+  ) {
     bon_atq = -30;
   } else {
     bon_atq = 0;
@@ -1732,7 +1750,7 @@ this.getField("final_llA").value =
 
 // Combate final
 
-if ((this.getField("equipo_ataque_i").value) !== "—") {
+if (this.getField("equipo_ataque_i").value !== "—") {
   this.getField("final_ataque_i").value =
     Number(this.getField("base_ataque").value) +
     Number(this.getField("equipo_ataque_i").value) +
@@ -1743,7 +1761,7 @@ if ((this.getField("equipo_ataque_i").value) !== "—") {
   this.getField("final_ataque_i").value = "—";
 }
 
-if ((this.getField("equipo_parada_i").value) !== "—") {
+if (this.getField("equipo_parada_i").value !== "—") {
   this.getField("final_parada_i").value =
     Number(this.getField("base_parada").value) +
     Number(this.getField("equipo_parada_i").value) +
@@ -1753,7 +1771,7 @@ if ((this.getField("equipo_parada_i").value) !== "—") {
 } else {
   this.getField("final_parada_i").value = "—";
 }
-if ((this.getField("equipo_ataque_d").value) !== "—") {
+if (this.getField("equipo_ataque_d").value !== "—") {
   this.getField("final_ataque_d").value =
     Number(this.getField("base_ataque").value) +
     Number(this.getField("equipo_ataque_d").value) +
@@ -1763,7 +1781,7 @@ if ((this.getField("equipo_ataque_d").value) !== "—") {
 } else {
   this.getField("final_ataque_d").value = "—";
 }
-if ((this.getField("equipo_parada_d").value) !== "—") {
+if (this.getField("equipo_parada_d").value !== "—") {
   this.getField("final_parada_d").value =
     Number(this.getField("base_parada").value) +
     Number(this.getField("equipo_parada_d").value) +
@@ -1838,161 +1856,84 @@ var op_oro_2 = this.getField("op_oro_2");
 var op_plata_2 = this.getField("op_plata_2");
 var op_bronce_2 = this.getField("op_bronce_2");
 
+// Operaciones bronce
+if (
+  (Number(op_bronce_1.value) !== 0 &&
+    op_bronce_1.value !== "-" &&
+    op_bronce_1.value !== "+") ||
+  (Number(op_bronce_2.value) !== 0 &&
+    op_bronce_2.value !== "-" &&
+    op_bronce_2.value !== "+")
+) {
+  if (
+    Number(op_bronce_2.value) !== 0 &&
+    op_bronce_2.value !== "-" &&
+    op_bronce_2.value !== "+"
+  ) {
+    bronce.value = Number(bronce.value) + Number(op_bronce_2.value);
+  } else {
+    bronce.value = Number(bronce.value) + Number(op_bronce_1.value);
+  }
+  if (bronce.value >= 100) {
+    var plata_up = Math.floor(bronce.value / 100);
+    plata.value = Number(plata.value) + plata_up;
+    bronce.value = Number(bronce.value) - plata_up * 100;
+  } else if (bronce.value < 0) {
+    bronce.value = 0;
+  }
+}
+
+// Operaciones plata
+if (
+  (Number(op_plata_2.value) !== 0 &&
+    op_plata_2.value !== "-" &&
+    op_plata_2.value !== "+") ||
+  (Number(op_plata_1.value) !== 0 &&
+    op_plata_1.value !== "-" &&
+    op_plata_1.value !== "+") ||
+  plata.value > 99
+) {
+  if (
+    Number(op_plata_1.value) !== 0 &&
+    op_plata_1.value !== "-" &&
+    op_plata_1.value !== "+"
+  ) {
+    plata.value = Number(plata.value) + Number(op_plata_1.value);
+  } else if (
+    Number(op_plata_2.value) !== 0 &&
+    op_plata_2.value !== "-" &&
+    op_plata_2.value !== "+"
+  ) {
+    plata.value = Number(plata.value) + Number(op_plata_2.value);
+  }
+  var oro_update = Math.floor(plata.value / 100);
+  if ((oro_update < 0 && oro_update <= Number(oro.value)) || oro_update > 0) {
+    plata.value = Math.abs(oro_update * 100) - Math.abs(plata.value);
+    oro.value = Number(oro.value) + oro_update;
+  }
+}
+
 // Operaciones oro
 // 1
 if (
   Number(op_oro_1.value) !== 0 &&
   Number(op_oro_1.value) !== "-" &&
   Number(op_oro_1.value) !== "+" &&
-  (Number(op_oro_1.value) > 0 || (Number(oro.value) + Number(op_oro_1.value) >= 0))
+  (Number(op_oro_1.value) > 0 ||
+    Number(oro.value) + Number(op_oro_1.value) >= 0)
 ) {
-    oro.value = Number(oro.value) + Number(op_oro_1.value);
+  oro.value = Number(oro.value) + Number(op_oro_1.value);
 }
 
 // 2
 if (
   Number(op_oro_2.value) !== 0 &&
-  Number(op_oro_2.value) !== "-" &&
-  Number(op_oro_2.value) !== "+" &&
-  (Number(oro.value) + Number(op_oro_2.value) >= 0)
+  op_oro_2.value !== "-" &&
+  op_oro_2.value !== "+" &&
+  Number(oro.value) + Number(op_oro_2.value) >= 0
 ) {
-    oro.value = Number(oro.value) + Number(op_oro_2.value);
+  oro.value = Number(oro.value) + Number(op_oro_2.value);
 }
-
-// Operaciones plata
-// 1
-if (
-  Number(op_plata_1.value) !== 0 &&
-  Number(op_plata_1.value) !== "-" &&
-  Number(op_plata_1.value) !== "+"
-) {
-  plata.value = Number(plata.value) + Number(op_plata_1.value);
-  if(plata.value < 0) {
-    var oro_down = Math.floor(
-      Number(plata.value) + Number(op_plata_1.value) / 100
-    );
-    if (oro_down <= Number(oro.value)) {
-      plata.value = Math.abs(Number(plata.value) + Number(op_plata_1.value));
-      if (plata.value < 0) {
-        while (plata.value > 0) {
-          plata.value = Number(plata.value) + 100;
-        }
-        plata.value -= 100;
-      }
-    }
-  } else if(plata.value >= 100) {
-    if (plata.value > 100) {
-      var oro_up = Math.floor(plata.value / 100);
-      oro.value = Number(oro.value) + oro_up;
-      plata.value = Number(plata.value) - oro_up * 100;
-      while (plata.value > 100) {
-        oro.value = Number(oro.value) + 1;
-        plata.value = Number(plata.value) - 100;
-      }
-    }
-  }
-}
-
-// 2
-if (
-  Number(op_plata_2.value) !== 0 &&
-  Number(op_plata_2.value) !== "-" &&
-  Number(op_plata_2.value) !== "+"
-) {
-  plata.value = Number(plata.value) + Number(op_plata_2.value);
-  if(plata.value < 0) {
-    var oro_down = Math.floor(
-      Number(plata.value) + Number(op_plata_2.value) / 100
-    );
-    if (oro_down <= Number(oro.value)) {
-      plata.value = Math.abs(Number(plata.value) + Number(op_plata_2.value));
-      if (plata.value < 0) {
-        while (plata.value > 0) {
-          plata.value = Number(plata.value) + 100;
-        }
-        plata.value -= 100;
-      }
-    }
-  } else if(plata.value >= 100) {
-    if (plata.value > 100) {
-      var oro_up = Math.floor(plata.value / 100);
-      oro.value = Number(oro.value) + oro_up;
-      plata.value = Number(plata.value) - oro_up * 100;
-      while (plata.value > 100) {
-        oro.value = Number(oro.value) + 1;
-        plata.value = Number(plata.value) - 100;
-      }
-    }
-  }
-}
-
-// Operaciones bronce
-
-if (
-  Number(op_bronce_1.value) !== 0 &&
-  Number(op_bronce_1.value) !== "-" &&
-  Number(op_bronce_1.value) !== "+"
-) {
-  bronce.value = Number(bronce.value) + Number(op_bronce_1.value);
-  if(bronce.value < 0) {
-    var plata_down = Math.floor(
-      Number(bronce.value) + Number(op_bronce_1.value) / 100
-    );
-    if (plata_down <= Number(plata.value)) {
-      bronce.value = Math.abs(Number(bronce.value) + Number(op_bronce_1.value));
-      if (bronce.value < 0) {
-        while (bronce.value > 0) {
-          bronce.value = Number(bronce.value) + 100;
-        }
-        bronce.value -= 100;
-      }
-    }
-  } else if(bronce.value >= 100) {
-    if (bronce.value > 100) {
-      var plata_up = Math.floor(bronce.value / 100);
-      plata.value = Number(plata.value) + plata_up;
-      bronce.value = Number(bronce.value) - plata_up * 100;
-      while (bronce.value > 100) {
-        plata.value = Number(plata.value) + 1;
-        bronce.value = Number(bronce.value) - 100;
-      }
-    }
-  }
-}
-
-if (
-  Number(op_bronce_2.value) !== 0 &&
-  Number(op_bronce_2.value) !== "-" &&
-  Number(op_bronce_2.value) !== "+"
-) {
-  bronce.value = Number(bronce.value) + Number(op_bronce_2.value);
-  if(bronce.value < 0) {
-    var plata_down = Math.floor(
-      Number(bronce.value) + Number(op_bronce_2.value) / 100
-    );
-    if (plata_down <= Number(plata.value)) {
-      bronce.value = Math.abs(Number(bronce.value) + Number(op_bronce_2.value));
-      if (bronce.value < 0) {
-        while (bronce.value > 0) {
-          bronce.value = Number(bronce.value) + 100;
-        }
-        bronce.value -= 100;
-      }
-    }
-  } else if(bronce.value >= 100) {
-    if (bronce.value > 100) {
-      var plata_up = Math.floor(bronce.value / 100);
-      plata.value = Number(plata.value) + plata_up;
-      bronce.value = Number(bronce.value) - plata_up * 100;
-      while (bronce.value > 100) {
-        plata.value = Number(plata.value) + 1;
-        bronce.value = Number(bronce.value) - 100;
-      }
-    }
-  }
-}
-
-
 
 function log(k, v) {
   if (v === undefined) {
