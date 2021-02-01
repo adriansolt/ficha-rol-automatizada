@@ -224,9 +224,6 @@ switch (categoria.value) {
   case "Paladín Oscuro":
     actualizarDatosCategoria(7, 3, 5, 2, 2, 5, 0, 0, 5);
     break;
-  case "Tao":
-    actualizarDatosCategoria(10, 2, 5, 2, 2, 0, 0, 0, 0);
-    break;
   case "Explorador":
     actualizarDatosCategoria(10, 2, 5, 2, 2, 5, 0, 0, 0);
     break;
@@ -972,11 +969,13 @@ while (i <= 7 && this.getField("tabla_arma" + i).value !== "—") {
       }
     }
   }
-  if (!encontrado) {
-    tabla_arma_clase_i_md.value = similar ? 2 : 4;
-  }
-  if (this.getField("categoria").value === "Guerrero") {
-    tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
+  if(i > 1) {
+    if (!encontrado) {
+      tabla_arma_clase_i_md.value = similar ? 2 : 4;
+    }
+    if (this.getField("categoria").value === "Guerrero") {
+      tabla_arma_clase_i_md.value = tabla_arma_clase_i_md.value / 2;
+    }
   }
   i++;
 }

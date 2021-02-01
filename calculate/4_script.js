@@ -1,4 +1,4 @@
-i = 1;
+i = 0;
 var diferencia = 10;
 var diff_x = this.getField("diff_x");
 var a1_x = this.getField("a1_x");
@@ -13,10 +13,12 @@ while (i < 7) {
   var arma_par = this.getField("arma" + i + "_par");
   var arma_tam = this.getField("arma" + i + "_tam");
   if (arma_check.value === "D+I") {
-    var arma_fue_bono = this.getField("arma" + i + "_fue_bono");
-    // duplicar el bono de fuerza si lleva el arma con las dos manos
-    arma_df.value += arma_fue_bono.value;
-    arma_fue_bono.value = arma_fue_bono.value * 2;
+    if(i !== 0) {
+      var arma_fue_bono = this.getField("arma" + i + "_fue_bono");
+      // duplicar el bono de fuerza si lleva el arma con las dos manos
+      arma_df.value += arma_fue_bono.value;
+      arma_fue_bono.value = arma_fue_bono.value * 2;
+    }
     arma_check.setItems(["D+I", "D", "I", "—"]);
     diferencia = 10;
     while (diferencia <= 200) {
@@ -37,6 +39,11 @@ while (i < 7) {
         (Number(arma_df.value) * Number(diff_x.value)) / 500
       );
     }
+
+    equipo_ataque_i.value += Number(arma_atq.value);
+    equipo_parada_i.value += Number(arma_par.value);
+    equipo_ataque_d.value += Number(arma_atq.value);
+    equipo_parada_d.value += Number(arma_par.value);
   } else if (arma_check.value === "D") {
     diferencia = 10;
     while (diferencia <= 200) {

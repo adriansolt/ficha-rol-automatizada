@@ -60,23 +60,6 @@ if (manos_libres === true) {
     }
   }
 
-  diferencia = 10;
-  while (diferencia <= 200) {
-    this.getField("a1_" + diferencia).value = Math.round(
-      (arma_df * diferencia) / 500
-    );
-    this.getField("a2_" + diferencia).value = Math.round(
-      (arma_df * diferencia) / 500
-    );
-
-    diferencia = diferencia + 10;
-  }
-  
-  equipo_ataque_i.value += Number(arma_atq.value);
-  equipo_parada_i.value += Number(arma_par.value);
-  equipo_ataque_d.value += Number(arma_atq.value);
-  equipo_parada_d.value += Number(arma_par.value);
-
 } else {
   event.value = "—"
 }
