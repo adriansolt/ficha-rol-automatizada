@@ -981,8 +981,6 @@ while (i <= 7 && this.getField("tabla_arma" + i).value !== "—") {
   i++;
 }
 
-this.getField("tabla_arma1_md").value = 0;
-
 // Armas
 /*
 Llevar un arma pequeña -> -10

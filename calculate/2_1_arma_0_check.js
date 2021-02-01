@@ -76,7 +76,6 @@ if (manos_libres === true) {
   equipo_parada_i.value += Number(arma_par.value);
   equipo_ataque_d.value += Number(arma_atq.value);
   equipo_parada_d.value += Number(arma_par.value);
-  iniciativa_total_arma.value = +Number(arma0_iniciativa.value);
 
 } else {
   event.value = "—"

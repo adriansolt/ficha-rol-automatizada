@@ -3,6 +3,12 @@ var tabla_arma = this.getField(event.target.name);
 var coste_md = this.getField(event.target.name + "_md");
 var arma_clase = this.getField(event.target.name + "_clase");
 
+
+if(num > 1 && this.getField("tabla_arma" + (num-1)).value === "—") {
+    event.rc = false;
+    event.value = "—";
+}
+
 switch (event.value) {
   case "ARMAS CORTAS":
     arma_clase.value = "Arma corta";
@@ -186,18 +192,4 @@ switch (event.value) {
     arma_clase.value = "—";
     coste_md.value = 0;
     break;
-}
-
-if (event.value === "—") {
-  // tabla no valida
-  if ((num - 1) >= 1) {
-    this.getField("tabla_arma" + (num - 1)).readonly = false;
-    event.target.readonly = true;
-  }
-} else {
-  // tabla valida
-  if ((num + 1) <= 7) {
-    this.getField("tabla_arma" + (num + 1)).readonly = false;
-    event.target.readonly = true;
-  }
 }

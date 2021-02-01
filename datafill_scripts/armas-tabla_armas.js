@@ -115,9 +115,9 @@ var tabla_arma_list = [
     "Escudo corporal",
   ];
   
-  this.getField("tabla_arma1").setItems(tabla_arma_list.slice(8 ));
+  this.getField("tabla_arma1").setItems(tabla_arma_list.slice(8));
   var i = 2;
-  while (i < 7) {
+  while (i <= 7) {
     this.getField("tabla_arma" + i).setItems(tabla_arma_list);
     i++;
   }

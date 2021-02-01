@@ -440,16 +440,13 @@ if (arma.value !== "—") {
         arma_par.value -= 5 * fue_req_diff;
       }
     }
-
-    if (manos_libres === true) {
+    if (manos_libres) {
       manos_libres = false;
     }
 
     if (event.value === "D+I" || (mano_d_ocupada && mano_i_ocupada)) {
       manos_ocupadas = true;
     }
-
-    iniciativa_total_arma.value += Number(arma_iniciativa.value);
     equipo_esquiva.value += Number(arma_esq.value);
 
 
