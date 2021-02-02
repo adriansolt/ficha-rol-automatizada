@@ -241,9 +241,7 @@ while (index <= 8) {
     "Apto en Mates",
     "Apto en Mates II",
     "Apto en Cocina",
-    "Apto en Cocina II",
-    "--- Solo para categoria Novel ---",
-    "NOVEL: Hab1, Hab2, Hab3, Hab4, Hab5",
+    "Apto en Cocina II"
   ];
   this.getField("ventaja" + index).setItems(ventajas);
   index++;

@@ -24,43 +24,4 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
         repetido = true;
       }
     }
-    if (!repetido) {
-      var num_desventaja = event.target.name.substr(10, 1);
-      if (
-        event.value.substr(0, 11) === "Vicio grave" ||
-        event.value.substr(0, 13) === "Alergia grave" ||
-        event.value.substr(0, 16) === "Debilidad física" ||
-        event.value === "Desafortunado" ||
-        event.value === "Endeble" ||
-        event.value.substr(0, 20) === "Extremidad atrofiada" ||
-        event.value.substr(0, 11) === "Fobia grave" ||
-        event.value === "Insufrible" ||
-        event.value === "Lenta curación" ||
-        event.value === "Mala suerte" ||
-        event.value === "Maldición" ||
-        event.value === "Miopía" ||
-        event.value === "Mudo" ||
-        event.value === "Patoso" ||
-        event.value === "Reacción lenta" ||
-        event.value === "Salud enfermiza" ||
-        event.value === "Sordo" ||
-        event.value === "Sueño profundo" ||
-        event.value === "Vulnerable a los venenos" ||
-        event.value === "Vulnerable al dolor" ||
-        event.value === "Vulnerable al frío" ||
-        event.value === "Vulnerable al calor"
-      ) {
-        this.getField("desventaja" + num_desventaja + "_coste").value = 2;
-      } else if (
-        event.value === "Enfermedad grave" ||
-        event.value === "Maldición II" ||
-        event.value === "Reacción lenta II"
-      ) {
-        this.getField("desventaja" + num_desventaja + "_coste").value = 4;
-      } else {
-        this.getField("desventaja" + num_desventaja + "_coste").value = 0;
-      }
-    }
-  } else {
-    this.getField("desventaja" + num_desventaja + "_coste").value = 0;
   }

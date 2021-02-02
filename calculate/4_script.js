@@ -75,7 +75,6 @@ while (i < 7) {
           break;
       }
       
-      // arma_check.setItems(["D", "—"]);
     } else {
       switch (arma_tam.value) {
         case "S":
@@ -93,7 +92,6 @@ while (i < 7) {
         default:
           break;
       }
-      // arma_check.setItems(["D", "D+I", "I", "—"]);
     }
     equipo_ataque_d.value += Number(arma_atq.value);
     equipo_parada_d.value += Number(arma_par.value);
@@ -128,7 +126,6 @@ while (i < 7) {
         default:
           break;
       }
-      // arma_check.setItems(["I", "—"]);
     } else {
       switch (arma_tam.value) {
         case "S":
@@ -146,23 +143,9 @@ while (i < 7) {
         default:
           break;
       }
-      // arma_check.setItems(["I", "D+I", "D", "—"]);
     }
     equipo_ataque_i.value += Number(arma_atq.value);
     equipo_parada_i.value += Number(arma_par.value);
-  } else {
-    if (manos_ocupadas) {
-      // arma_check.readonly = true;
-      // arma_check.setItems(["—"]);
-    } else {
-      if (mano_d_ocupada) {
-        // arma_check.setItems(["—", "I"]);
-      } else if (mano_i_ocupada) {
-        // arma_check.setItems(["—", "D"]);
-      } else {
-        // arma_check.setItems(["—", "D", "I", "D+I"]);
-      }
-    }
   }
 
   if (
@@ -383,3 +366,59 @@ if (
 ) {
   oro.value = Number(oro.value) + Number(op_oro_2.value);
 }
+
+var agi_actual = this.getField("agi_actual");
+var md_actuales = this.getField("md_actuales");
+
+// Armaduras
+
+var armadura_vel = this.getField("armadura_vel");
+armadura_vel.value = 0;
+var restriccion_mov_armadura = 0;
+
+var armadura_cabeza_lista = [];
+var armadura_espalda_lista = [];
+var armadura_hombro_der_lista = [];
+var armadura_hombro_izq_lista = [];
+var armadura_pecho_lista = [];
+var armadura_brazo_der_lista = [];
+var armadura_brazo_izq_lista = [];
+var armadura_mano_der_lista = [];
+var armadura_mano_izq_lista = [];
+var armadura_pierna_der_lista = [];
+var armadura_pierna_izq_lista = [];
+var armadura_pie_der_lista = [];
+var armadura_pie_izq_lista = [];
+
+
+var cuerpo_def = this.getField("armadura0_def").value;
+
+if (cuerpo_def > 0) {
+  armadura_pecho_lista.push(cuerpo_def);
+  armadura_espalda_lista.push(cuerpo_def);
+  armadura_hombro_der_lista.push(cuerpo_def);
+  armadura_hombro_izq_lista.push(cuerpo_def);
+  armadura_brazo_der_lista.push(cuerpo_def);
+  armadura_brazo_izq_lista.push(cuerpo_def);
+  armadura_mano_der_lista.push(cuerpo_def);
+  armadura_mano_izq_lista.push(cuerpo_def);
+  armadura_pierna_der_lista.push(cuerpo_def);
+  armadura_pierna_izq_lista.push(cuerpo_def);
+  armadura_pie_der_lista.push(cuerpo_def);
+  armadura_pie_izq_lista.push(cuerpo_def);
+  armadura_cabeza_lista.push(cuerpo_def);
+}
+
+var armadura_peto = [];
+var armadura_camisola = [];
+var armadura_completa = [];
+var armadura_yelmo = [];
+
+
+var armadura_dura_full = false;
+var armadura_blanda_full = false;
+var yelmo_dura_full = false;
+var yelmo_blanda_full = false;
+
+var yelmo_blanda_eq = false;
+var armadura_blanda_eq = false;

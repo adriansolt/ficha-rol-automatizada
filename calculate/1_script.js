@@ -194,8 +194,6 @@ this.getField("armadura0_def").value =
 // Categorias base
 this.getField("puntos_base").value = 70 - puntos_base;
 
-this.getField("puntos_creacion").value = Number(puntos_gastados);
-
 // Nivel
 var base = Number(nivel.value) == 0 ? 80 : 100;
 md_totales.value = Number(nivel.value) * 10 + base;
@@ -284,7 +282,6 @@ while (i < 8) {
 }
 
 i = 0;
-var ventaja_novel = categoria.value === "Novel" ? true : false;
 while (i < ventajas_list.length) {
   var ventaja = ventajas_list[i];
   if (ventaja.match("Apto en")) {
@@ -429,50 +426,6 @@ while (i < ventajas_list.length) {
         esp_ventaja.value = Number(esp_ventaja.value) + incr;
       }
     }
-  } else if (ventaja.toLowerCase().match("novel") && ventaja_novel) {
-    var ventajas = ventaja
-      .split(":")[1]
-      .replace(/\s+/g, "")
-      .replace(/\./g, "")
-      .toLowerCase()
-      .split(",");
-
-    var lista_ventajas = [];
-
-    for (var l = 0; l < ventajas.length; l++) {
-      var ventaja = ventajas[l];
-      for (var j = 0; j < lista_habilidades.length; j++) {
-        var habilidad = lista_habilidades[j];
-        if (ventaja === habilidad.substr(0, ventaja.length)) {
-          lista_ventajas.push(habilidad);
-          j = lista_habilidades.length;
-        }
-      }
-    }
-
-    var index = {};
-    for (var l = lista_ventajas.length - 1; l >= 0; l--) {
-      if (lista_ventajas[l] in index) {
-        // remove this item
-        lista_ventajas.splice(l, 1);
-      } else {
-        // add this value to index
-        index[lista_ventajas[l]] = true;
-      }
-    }
-
-    lista_ventajas = lista_ventajas.slice(0, 5);
-
-    j = 0;
-    var incr = 2 * Number(nivel.value);
-    while (j < lista_ventajas.length) {
-      var esp_habilidad = this.getField("esp_" + lista_ventajas[j]);
-      if (esp_habilidad) {
-        esp_habilidad.value = Number(esp_habilidad.value) + incr;
-      }
-      j++;
-    }
-    ventaja_novel = false;
   } else {
     switch (ventaja) {
       case "Afinidad animal":
@@ -577,6 +530,8 @@ puntos_gastados =
   Number(this.getField("desventaja1_coste").value) +
   Number(this.getField("desventaja2_coste").value) +
   Number(this.getField("desventaja3_coste").value);
+
+this.getField("puntos_creacion").value = Number(puntos_gastados);
 
 var lista_vida = [
   1,
