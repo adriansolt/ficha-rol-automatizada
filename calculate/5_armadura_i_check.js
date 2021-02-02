@@ -8,11 +8,11 @@ var armadura_reqarm = this.getField("armadura" + i + "_reqarm");
 var armadura_clase = this.getField("armadura" + i).value.split(" ")[0];
 
 if (
-  armadura.value === "—" || yelmo_blanda_full || armadura_blanda_full ||
+  armadura.value === "-" || yelmo_blanda_full || armadura_blanda_full ||
   (armadura_dura_full && armadura_dureza.value === "Dura" && armadura_clase !== "Yelmo") ||
   (yelmo_dura_full && armadura_dureza.value === "Dura" && armadura_clase === "Yelmo")
 ){
-  event.value = "—";
+  event.value = "-";
 }
 
 if (
@@ -45,14 +45,14 @@ if (
 ) {
   armadura_dureza.value = "Blanda";
 } else {
-  armadura_dureza.value = "—";
-  armadura_def.value = "—";
-  armadura_reqarm.value = "—";
-  armadura_advertir.value = "—";
-  armadura_mov.value = "—";
+  armadura_dureza.value = "-";
+  armadura_def.value = "-";
+  armadura_reqarm.value = "-";
+  armadura_advertir.value = "-";
+  armadura_mov.value = "-";
 }
 
-if (armadura_dureza.value !== "—") {
+if (armadura_dureza.value !== "-") {
   var armadura_calidad = this.getField("armadura" + i + "_calidad");
   switch (armadura.value) {
     case "Peto de cuero endurecido":
@@ -298,7 +298,7 @@ if (armadura_dureza.value !== "—") {
     log("armadura_blanda_full",armadura_blanda_full)
     log("armadura_dura_full",armadura_dura_full)
     log("yelmo_dura_full",yelmo_dura_full+"\n")
-    
+
     var diff_reqarm =
       Number(this.getField("final_llA").value) -
       Number(this.getField("armadura" + i + "_reqarm").value);

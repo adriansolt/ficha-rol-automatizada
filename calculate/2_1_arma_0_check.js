@@ -61,5 +61,5 @@ if (manos_libres === true) {
   }
 
 } else {
-  event.value = "—"
+  event.value = "-"
 }

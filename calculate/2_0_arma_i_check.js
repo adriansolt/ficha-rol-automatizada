@@ -15,18 +15,18 @@ var arma_tam = this.getField("arma" + i + "_tam");
 var arma_fue_bono = this.getField("arma" + i + "_fue_bono");
 
 if(mano_d_ocupada && (event.value === "D" || event.value === "D+I")) {
-    event.value = "—";
+    event.value = "-";
 }
 
 if(mano_i_ocupada && (event.value === "I" || event.value === "D+I")) {
-    event.value = "—";
+    event.value = "-";
 }
 
 if(manos_ocupadas) {
-  event.value = "—";
+  event.value = "-";
 }
 
-if (arma.value !== "—") {
+if (arma.value !== "-") {
   arma_atq.value = 0;
   arma_par.value = 0;
   arma_esq.value = 0;
@@ -53,8 +53,8 @@ if (arma.value !== "—") {
     case "Combate desarmado":
       arma_db.value += 10;
       arma_iniciativa.value += 20;
-      arma_freq.value = "—";
-      arma_tam.value = "—";
+      arma_freq.value = "-";
+      arma_tam.value = "-";
       arma_clase.value = "Sin armas";
       arma_especial.value = "Precisa";
       break;
@@ -381,7 +381,7 @@ if (arma.value !== "—") {
       arma_esq.value += 5;
       arma_freq.value = 10;
       arma_clase.value = "Escudo";
-      arma_tam.value = "—";
+      arma_tam.value = "-";
       break;
     case "Escudo":
       arma_db.value += 20;
@@ -389,7 +389,7 @@ if (arma.value !== "—") {
       arma_par.value += 20;
       arma_esq.value += 10;
       arma_freq.value = 10;
-      arma_tam.value = "—";
+      arma_tam.value = "-";
       arma_clase.value = "Escudo";
       break;
     case "Escudo corporal":
@@ -398,7 +398,7 @@ if (arma.value !== "—") {
       arma_par.value += 30;
       arma_esq.value += 15;
       arma_freq.value = 10;
-      arma_tam.value = "—";
+      arma_tam.value = "-";
       arma_clase.value = "Escudo";
       break;
     default:
@@ -407,7 +407,7 @@ if (arma.value !== "—") {
 
   arma_df.value = Math.ceil(Number(arma_db.value) + arma_fue_bono.value);
 
-  if (event.value !== "—") {
+  if (event.value !== "-") {
     // Arma equipada
 
     // Negativos por no saber usar el arma
@@ -445,7 +445,7 @@ if (arma.value !== "—") {
     }
 
     // Negativos por no tener fuerza requerida
-    if (arma_freq.value !== "—") {
+    if (arma_freq.value !== "-") {
       var fue_req_diff =
         Number(arma_freq.value) - Number(this.getField("fue_actual").value);
       if (fue_req_diff > 0) {
@@ -466,14 +466,14 @@ if (arma.value !== "—") {
     num_checks_armas++;
   }
 } else {
-  event.value = "—";
-  arma_atq.value = "—";
-  arma_par.value = "—";
-  arma_esq.value = "—";
-  arma_db.value = "—";
-  arma_iniciativa.value = "—";
-  arma_clase.value = "—";
-  arma_tam.value = "—";
-  arma_especial.value = "—";
-  arma_df.value = "—";
+  event.value = "-";
+  arma_atq.value = "-";
+  arma_par.value = "-";
+  arma_esq.value = "-";
+  arma_db.value = "-";
+  arma_iniciativa.value = "-";
+  arma_clase.value = "-";
+  arma_tam.value = "-";
+  arma_especial.value = "-";
+  arma_df.value = "-";
 }

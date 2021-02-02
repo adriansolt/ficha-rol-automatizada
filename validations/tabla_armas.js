@@ -4,9 +4,9 @@ var coste_md = this.getField(event.target.name + "_md");
 var arma_clase = this.getField(event.target.name + "_clase");
 
 
-if(num > 1 && this.getField("tabla_arma" + (num-1)).value === "—") {
+if(num > 1 && this.getField("tabla_arma" + (num-1)).value === "-") {
     event.rc = false;
-    event.value = "—";
+    event.value = "-";
 }
 
 switch (event.value) {
@@ -188,8 +188,8 @@ switch (event.value) {
     arma_clase.value = "Escudo";
     break;
   default:
-    event.value = "—";
-    arma_clase.value = "—";
+    event.value = "-";
+    arma_clase.value = "-";
     coste_md.value = 0;
     break;
 }

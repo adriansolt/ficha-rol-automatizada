@@ -1,5 +1,5 @@
 var lista_armaduras = [
-    "—",
+    "-",
     "Peto de cuero endurecido",
     "Peto de cuero tachonado",
     "Peto de metal",
@@ -24,8 +24,10 @@ var lista_armaduras = [
     "Yelmo completo abierto",
     "Yelmo completo cerrado",
   ];
-  var i = 0;
+  var armaduras_check = ["-", "Eq."];
+  var i = 1;
   while (i < 7) {
     this.getField("armadura" + i).setItems(lista_armaduras);
+    this.getField("armadura" + i + "_check").setItems(armaduras_check);
     i++;
   }

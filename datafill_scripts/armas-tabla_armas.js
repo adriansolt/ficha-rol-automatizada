@@ -1,5 +1,5 @@
 var tabla_arma_list = [
-    "—",
+    "-",
     "ARMAS CORTAS",
     "HACHAS",
     "MAZAS",
@@ -7,7 +7,7 @@ var tabla_arma_list = [
     "MANDOBLES",
     "ASTAS",
     "CUERDAS",
-    "—",
+    "-",
     "Lazo",
     "Red de gladiador",
     "Combate desarmado",
@@ -60,7 +60,7 @@ var tabla_arma_list = [
   ];
   
   var arma_list = [
-    "—",
+    "-",
     "Red de gladiador",
     "Lazo",
     "Jarrón",
@@ -128,7 +128,7 @@ var tabla_arma_list = [
   }
   i = 1;
   while (i < 7) {
-    this.getField("arma" + i + "_check").setItems(["—", "Eq."]);
+    this.getField("arma" + i + "_check").setItems(["-", "Eq."]);
     this.getField("arma" + i + "_calidad").setItems([
       "-2",
       "-1",

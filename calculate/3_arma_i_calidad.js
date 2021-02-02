@@ -8,7 +8,7 @@ var arma_iniciativa = this.getField("arma" + i + "_iniciativa");
 var arma_db = this.getField("arma" + i + "_db");
 var arma_check = this.getField("arma" + i + "_check");
 
-if(arma_clase.value === "Escudo" || arma_clase.value === "—") {
+if(arma_clase.value === "Escudo" || arma_clase.value === "-") {
     event.value = "0";
 } else {
   arma_atq.value = Number(arma_atq.value) + (5 * Number(event.value));

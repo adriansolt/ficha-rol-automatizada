@@ -893,7 +893,7 @@ var combate_desarmado = false;
 
 var num_tablas = 7;
 i = 1;
-while (i <= 7 && this.getField("tabla_arma" + i).value !== "—") {
+while (i <= 7 && this.getField("tabla_arma" + i).value !== "-") {
   var tabla_arma_clase_i = this.getField("tabla_arma" + i + "_clase");
   var tabla_arma_clase_i_md = this.getField("tabla_arma" + i + "_md");
   var tabla_arma_i = this.getField("tabla_arma" + i);

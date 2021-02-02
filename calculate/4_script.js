@@ -3,8 +3,8 @@ var diferencia = 10;
 var diff_x = this.getField("diff_x");
 var a1_x = this.getField("a1_x");
 var a2_x = this.getField("a2_x");
-a1_x.value = "—";
-a2_x.value = "—";
+a1_x.value = "-";
+a2_x.value = "-";
 while (i < 7) {
   var arma_check = this.getField("arma" + i + "_check");
   var arma_especial = this.getField("arma" + i + "_especial");
@@ -182,7 +182,7 @@ this.getField("final_llA").value =
 
 // Combate final
 
-if (this.getField("equipo_ataque_i").value !== "—") {
+if (this.getField("equipo_ataque_i").value !== "-") {
   this.getField("final_ataque_i").value =
     Number(this.getField("base_ataque").value) +
     Number(this.getField("equipo_ataque_i").value) +
@@ -190,10 +190,10 @@ if (this.getField("equipo_ataque_i").value !== "—") {
     Number(des_bono.value) +
     Number(this.getField("cat_ataque").value);
 } else {
-  this.getField("final_ataque_i").value = "—";
+  this.getField("final_ataque_i").value = "-";
 }
 
-if (this.getField("equipo_parada_i").value !== "—") {
+if (this.getField("equipo_parada_i").value !== "-") {
   this.getField("final_parada_i").value =
     Number(this.getField("base_parada").value) +
     Number(this.getField("equipo_parada_i").value) +
@@ -201,9 +201,9 @@ if (this.getField("equipo_parada_i").value !== "—") {
     Number(des_bono.value) +
     Number(this.getField("cat_parada").value);
 } else {
-  this.getField("final_parada_i").value = "—";
+  this.getField("final_parada_i").value = "-";
 }
-if (this.getField("equipo_ataque_d").value !== "—") {
+if (this.getField("equipo_ataque_d").value !== "-") {
   this.getField("final_ataque_d").value =
     Number(this.getField("base_ataque").value) +
     Number(this.getField("equipo_ataque_d").value) +
@@ -211,9 +211,9 @@ if (this.getField("equipo_ataque_d").value !== "—") {
     Number(des_bono.value) +
     Number(this.getField("cat_ataque").value);
 } else {
-  this.getField("final_ataque_d").value = "—";
+  this.getField("final_ataque_d").value = "-";
 }
-if (this.getField("equipo_parada_d").value !== "—") {
+if (this.getField("equipo_parada_d").value !== "-") {
   this.getField("final_parada_d").value =
     Number(this.getField("base_parada").value) +
     Number(this.getField("equipo_parada_d").value) +
@@ -221,7 +221,7 @@ if (this.getField("equipo_parada_d").value !== "—") {
     Number(des_bono.value) +
     Number(this.getField("cat_parada").value);
 } else {
-  this.getField("final_parada_d").value = "—";
+  this.getField("final_parada_d").value = "-";
 }
 this.getField("final_esquiva").value =
   Number(this.getField("base_esquiva").value) +
