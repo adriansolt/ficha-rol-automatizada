@@ -2,7 +2,6 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
     var num_ventaja = event.target.name.substr(7, 1);
     var repetido = false;
     var ventaja_novel = false;
-    var old_target = this.getField(event.target.name).value;
     if (event.value.match(":") || "") {
       ventaja_novel = true;
     }
@@ -132,9 +131,9 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       } else if (ventaja_novel) {
         this.getField("ventaja" + num_ventaja + "_coste").value = 0;
       } else {
-        this.getField("ventaja" + num_ventaja + "_coste").value = "";
+        this.getField("ventaja" + num_ventaja + "_coste").value = 0;
       }
     }
   } else {
-    this.getField("ventaja" + num_ventaja + "_coste").value = "";
+    this.getField("ventaja" + num_ventaja + "_coste").value = 0;
   }

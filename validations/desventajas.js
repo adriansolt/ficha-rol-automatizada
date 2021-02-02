@@ -58,9 +58,9 @@ if (event.value !== " " && event.value !== "" && event.value !== "-") {
       ) {
         this.getField("desventaja" + num_desventaja + "_coste").value = 4;
       } else {
-        this.getField("desventaja" + num_desventaja + "_coste").value = "";
+        this.getField("desventaja" + num_desventaja + "_coste").value = 0;
       }
     }
   } else {
-    this.getField("desventaja" + num_desventaja + "_coste").value = "";
+    this.getField("desventaja" + num_desventaja + "_coste").value = 0;
   }

@@ -13,6 +13,19 @@ var arma_clase = this.getField("arma" + i + "_clase");
 var arma_especial = this.getField("arma" + i + "_especial");
 var arma_tam = this.getField("arma" + i + "_tam");
 var arma_fue_bono = this.getField("arma" + i + "_fue_bono");
+
+if(mano_d_ocupada && (event.value === "D" || event.value === "D+I")) {
+    event.value = "—";
+}
+
+if(mano_i_ocupada && (event.value === "I" || event.value === "D+I")) {
+    event.value = "—";
+}
+
+if(manos_ocupadas) {
+  event.value = "—";
+}
+
 if (arma.value !== "—") {
   arma_atq.value = 0;
   arma_par.value = 0;

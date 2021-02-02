@@ -19,7 +19,6 @@ while (i < 7) {
       arma_df.value += arma_fue_bono.value;
       arma_fue_bono.value = arma_fue_bono.value * 2;
     }
-    arma_check.setItems(["D+I", "D", "I", "—"]);
     diferencia = 10;
     while (diferencia <= 200) {
       // diferencia => diferencia
@@ -75,7 +74,8 @@ while (i < 7) {
         default:
           break;
       }
-      arma_check.setItems(["D", "—"]);
+      
+      // arma_check.setItems(["D", "—"]);
     } else {
       switch (arma_tam.value) {
         case "S":
@@ -93,7 +93,7 @@ while (i < 7) {
         default:
           break;
       }
-      arma_check.setItems(["D", "D+I", "I", "—"]);
+      // arma_check.setItems(["D", "D+I", "I", "—"]);
     }
     equipo_ataque_d.value += Number(arma_atq.value);
     equipo_parada_d.value += Number(arma_par.value);
@@ -128,7 +128,7 @@ while (i < 7) {
         default:
           break;
       }
-      arma_check.setItems(["I", "—"]);
+      // arma_check.setItems(["I", "—"]);
     } else {
       switch (arma_tam.value) {
         case "S":
@@ -146,21 +146,21 @@ while (i < 7) {
         default:
           break;
       }
-      arma_check.setItems(["I", "D+I", "D", "—"]);
+      // arma_check.setItems(["I", "D+I", "D", "—"]);
     }
     equipo_ataque_i.value += Number(arma_atq.value);
     equipo_parada_i.value += Number(arma_par.value);
   } else {
     if (manos_ocupadas) {
       // arma_check.readonly = true;
-      arma_check.setItems(["—"]);
+      // arma_check.setItems(["—"]);
     } else {
       if (mano_d_ocupada) {
-        arma_check.setItems(["—", "I"]);
+        // arma_check.setItems(["—", "I"]);
       } else if (mano_i_ocupada) {
-        arma_check.setItems(["—", "D"]);
+        // arma_check.setItems(["—", "D"]);
       } else {
-        arma_check.setItems(["—", "D", "I", "D+I"]);
+        // arma_check.setItems(["—", "D", "I", "D+I"]);
       }
     }
   }
