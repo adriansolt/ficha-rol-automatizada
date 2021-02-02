@@ -8,10 +8,16 @@ var armadura_reqarm = this.getField("armadura" + i + "_reqarm");
 var armadura_clase = this.getField("armadura" + i).value.split(" ")[0];
 
 if (
-  armadura.value === "-" || yelmo_blanda_full || armadura_blanda_full ||
-  (armadura_dura_full && armadura_dureza.value === "Dura" && armadura_clase !== "Yelmo") ||
-  (yelmo_dura_full && armadura_dureza.value === "Dura" && armadura_clase === "Yelmo")
-){
+  armadura.value === "-" ||
+  yelmo_blanda_full ||
+  armadura_blanda_full ||
+  (armadura_dura_full &&
+    armadura_dureza.value === "Dura" &&
+    armadura_clase !== "Yelmo") ||
+  (yelmo_dura_full &&
+    armadura_dureza.value === "Dura" &&
+    armadura_clase === "Yelmo")
+) {
   event.value = "-";
 }
 
@@ -260,16 +266,44 @@ if (armadura_dureza.value !== "-") {
       break;
   }
 
-  // var armadura_dura_full = false;
-  // var armadura_blanda_full = false;
-  // var yelmo_dura_full = false;
-  // var yelmo_blanda_full = false;
-
-  // var yelmo_blanda_eq = false;
-  // var armadura_blanda_eq = false;
-
-
   if (event.value === "Eq.") {
+    
+    reqarm_total -= Number(this.getField("armadura" + i + "_reqarm").value);
+
+    if (armadura_clase === "Yelmo") {
+      // Yelmos
+      // Tiene req armadura suficiente
+      if (reqarm_total >= 0) {
+        armadura_advertir.value = Math.min(
+          0,
+          Number(armadura_advertir.value) + Math.floor(reqarm_total / 50) * 10
+        );
+      } else {
+        // No tiene req armadura suficiente
+        armadura_advertir.value = Number(armadura_advertir.value) + reqarm_total;
+      }
+      // Varias equipadas
+      if (yelmo_blanda_eq || (armadura_clase === "Yelmo" && yelmo_dura_full)) {
+        armadura_advertir.value += -20;
+      }
+    } else {
+      // Armaduras
+      // Tiene req armadura suficiente
+      if (reqarm_total >= 0) {
+        armadura_mov.value = Math.min(
+          0,
+          Number(armadura_mov.value) + Math.floor(reqarm_total / 50) * 10
+        );
+      } else {
+        // No tiene req armadura suficiente
+        armadura_mov.value = Number(armadura_mov.value) + reqarm_total;
+      }
+      // Varias equipadas
+      if (armadura_blanda_eq || (armadura_clase !== "Yelmo" && armadura_dura_full)) {
+        armadura_mov.value += -20;
+      }
+    }
+
     if (armadura_dureza.value === "Dura") {
       if (armadura_clase === "Yelmo") {
         yelmo_dura_full = true;
@@ -278,62 +312,18 @@ if (armadura_dureza.value !== "-") {
       }
     } else {
       // armadura_dureza.value === "Blanda"
-      if(armadura_clase === "Yelmo") {
-        if(yelmo_blanda_eq) {
+      if (armadura_clase === "Yelmo") {
+        if (yelmo_blanda_eq) {
           yelmo_blanda_full = true;
         } else {
           yelmo_blanda_eq = true;
         }
       } else {
-        if(armadura_blanda_eq) {
+        if (armadura_blanda_eq) {
           armadura_blanda_full = true;
         } else {
           armadura_blanda_eq = true;
         }
-      }
-    }
-
-    log(i)
-    log("yelmo_blanda_full",yelmo_blanda_full)
-    log("armadura_blanda_full",armadura_blanda_full)
-    log("armadura_dura_full",armadura_dura_full)
-    log("yelmo_dura_full",yelmo_dura_full+"\n")
-
-    var diff_reqarm =
-      Number(this.getField("final_llA").value) -
-      Number(this.getField("armadura" + i + "_reqarm").value);
-
-    if (armadura_clase === "Yelmo") {
-      // Yelmos
-      // Tiene req armadura suficiente
-      if (diff_reqarm >= 0) {
-        armadura_advertir.value = Math.min(
-          0,
-          Number(armadura_advertir.value) + Math.floor(diff_reqarm / 50) * 10
-        );
-      } else {
-        // No tiene req armadura suficiente
-        armadura_advertir.value = Number(armadura_advertir.value) + diff_reqarm;
-      }
-      // Varias equipadas
-      if (yelmos_blandos_eq + yelmos_duros_eq > 1) {
-        armadura_advertir.value += -20;
-      }
-    } else {
-      // Armaduras
-      // Tiene req armadura suficiente
-      if (diff_reqarm >= 0) {
-        armadura_mov.value = Math.min(
-          0,
-          Number(armadura_mov.value) + Math.floor(diff_reqarm / 50) * 10
-        );
-      } else {
-        // No tiene req armadura suficiente
-        armadura_mov.value = Number(armadura_mov.value) + diff_reqarm;
-      }
-      // Varias equipadas
-      if (armaduras_duras_eq + armaduras_blandas_eq > 1) {
-        armadura_mov.value += -20;
       }
     }
 
@@ -342,80 +332,63 @@ if (armadura_dureza.value !== "-") {
     restriccion_mov_armadura += Math.floor(
       (Number(armadura_mov.value) * 2) / 10
     );
+  }
+  this.getField("esp_acrobacias").value += Number(armadura_mov.value);
+  this.getField("esp_atletismo").value += Number(armadura_mov.value);
+  this.getField("esp_montar").value += Number(armadura_mov.value);
+  this.getField("esp_nadar").value += Number(armadura_mov.value);
+  this.getField("esp_trepar").value += Number(armadura_mov.value);
+  this.getField("esp_saltar").value += Number(armadura_mov.value);
 
-    this.getField("esp_acrobacias").value += Number(armadura_mov.value);
-    this.getField("esp_atletismo").value += Number(armadura_mov.value);
-    this.getField("esp_montar").value += Number(armadura_mov.value);
-    this.getField("esp_nadar").value += Number(armadura_mov.value);
-    this.getField("esp_trepar").value += Number(armadura_mov.value);
-    this.getField("esp_saltar").value += Number(armadura_mov.value);
+  this.getField("esp_ver").value += Number(armadura_advertir.value);
+  this.getField("esp_escuchar").value += Number(armadura_advertir.value);
+  this.getField("esp_buscar").value += Number(armadura_advertir.value);
 
-    this.getField("esp_ver").value += Number(armadura_advertir.value);
-    this.getField("esp_escuchar").value += Number(armadura_advertir.value);
-    this.getField("esp_buscar").value += Number(armadura_advertir.value);
+  this.getField("final_acrobacias").value += Number(armadura_mov.value);
+  this.getField("final_atletismo").value += Number(armadura_mov.value);
+  this.getField("final_montar").value += Number(armadura_mov.value);
+  this.getField("final_nadar").value += Number(armadura_mov.value);
+  this.getField("final_trepar").value += Number(armadura_mov.value);
+  this.getField("final_saltar").value += Number(armadura_mov.value);
 
-    this.getField("final_acrobacias").value += Number(armadura_mov.value);
-    this.getField("final_atletismo").value += Number(armadura_mov.value);
-    this.getField("final_montar").value += Number(armadura_mov.value);
-    this.getField("final_nadar").value += Number(armadura_mov.value);
-    this.getField("final_trepar").value += Number(armadura_mov.value);
-    this.getField("final_saltar").value += Number(armadura_mov.value);
+  this.getField("final_ver").value += Number(armadura_advertir.value);
+  this.getField("final_escuchar").value += Number(armadura_advertir.value);
+  this.getField("final_buscar").value += Number(armadura_advertir.value);
 
-    this.getField("final_ver").value += Number(armadura_advertir.value);
-    this.getField("final_escuchar").value += Number(armadura_advertir.value);
-    this.getField("final_buscar").value += Number(armadura_advertir.value);
-
-    var armadura_def = this.getField("armadura" + i + "_def");
-    switch (armadura_clase) {
-      case "Peto":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        break;
-      case "Camisola":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        armadura_hombro_der_lista.push(armadura_def.value);
-        armadura_hombro_izq_lista.push(armadura_def.value);
-        armadura_brazo_der_lista.push(armadura_def.value);
-        armadura_brazo_izq_lista.push(armadura_def.value);
-        armadura_mano_der_lista.push(armadura_def.value);
-        armadura_mano_izq_lista.push(armadura_def.value);
-        break;
-      case "Completa":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        armadura_hombro_der_lista.push(armadura_def.value);
-        armadura_hombro_izq_lista.push(armadura_def.value);
-        armadura_brazo_der_lista.push(armadura_def.value);
-        armadura_brazo_izq_lista.push(armadura_def.value);
-        armadura_mano_der_lista.push(armadura_def.value);
-        armadura_mano_izq_lista.push(armadura_def.value);
-        armadura_pierna_der_lista.push(armadura_def.value);
-        armadura_pierna_izq_lista.push(armadura_def.value);
-        armadura_pie_der_lista.push(armadura_def.value);
-        armadura_pie_izq_lista.push(armadura_def.value);
-        break;
-      case "Yelmo":
-        armadura_cabeza_lista.push(armadura_def.value);
-        break;
-      default:
-        break;
-    }
-
-    // if (armadura_clase === "Yelmo") {
-    //   // Yelmo
-    //   if (armadura_dureza.value === "Dura") {
-    //     yelmos_duros_eq++;
-    //   } else {
-    //     yelmos_blandos_eq++;
-    //   }
-    // } else {
-    //   // Armadura
-    //   if (armadura_dureza.value === "Dura") {
-    //     armaduras_duras_eq++;
-    //   } else {
-    //     armaduras_blandas_eq++;
-    //   }
-    // }
+  var armadura_def = this.getField("armadura" + i + "_def");
+  switch (armadura_clase) {
+    case "Peto":
+      armadura_pecho_lista.push(armadura_def.value);
+      armadura_espalda_lista.push(armadura_def.value);
+      break;
+    case "Camisola":
+      armadura_pecho_lista.push(armadura_def.value);
+      armadura_espalda_lista.push(armadura_def.value);
+      armadura_hombro_der_lista.push(armadura_def.value);
+      armadura_hombro_izq_lista.push(armadura_def.value);
+      armadura_brazo_der_lista.push(armadura_def.value);
+      armadura_brazo_izq_lista.push(armadura_def.value);
+      armadura_mano_der_lista.push(armadura_def.value);
+      armadura_mano_izq_lista.push(armadura_def.value);
+      break;
+    case "Completa":
+      armadura_pecho_lista.push(armadura_def.value);
+      armadura_espalda_lista.push(armadura_def.value);
+      armadura_hombro_der_lista.push(armadura_def.value);
+      armadura_hombro_izq_lista.push(armadura_def.value);
+      armadura_brazo_der_lista.push(armadura_def.value);
+      armadura_brazo_izq_lista.push(armadura_def.value);
+      armadura_mano_der_lista.push(armadura_def.value);
+      armadura_mano_izq_lista.push(armadura_def.value);
+      armadura_pierna_der_lista.push(armadura_def.value);
+      armadura_pierna_izq_lista.push(armadura_def.value);
+      armadura_pie_der_lista.push(armadura_def.value);
+      armadura_pie_izq_lista.push(armadura_def.value);
+      break;
+    case "Yelmo":
+      armadura_cabeza_lista.push(armadura_def.value);
+      break;
+    default:
+      break;
   }
 }

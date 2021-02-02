@@ -422,3 +422,5 @@ var yelmo_blanda_full = false;
 
 var yelmo_blanda_eq = false;
 var armadura_blanda_eq = false;
+
+var reqarm_total = Number(this.getField("final_llA").value);
