@@ -374,7 +374,6 @@ var md_actuales = this.getField("md_actuales");
 
 var armadura_vel = this.getField("armadura_vel");
 armadura_vel.value = 0;
-var restriccion_mov_armadura = 0;
 
 var armadura_cabeza_lista = [];
 var armadura_espalda_lista = [];
@@ -423,4 +422,4 @@ var yelmo_blanda_full = false;
 var yelmo_blanda_eq = false;
 var armadura_blanda_eq = false;
 
-var reqarm_total = Number(this.getField("final_llA").value);
+
