@@ -7,17 +7,7 @@ var armadura = this.getField("armadura" + i);
 var armadura_reqarm = this.getField("armadura" + i + "_reqarm");
 var armadura_clase = this.getField("armadura" + i).value.split(" ")[0];
 
-if (
-  armadura.value === "-" ||
-  yelmo_blanda_full ||
-  armadura_blanda_full ||
-  (armadura_dura_full &&
-    armadura_dureza.value === "Dura" &&
-    armadura_clase !== "Yelmo") ||
-  (yelmo_dura_full &&
-    armadura_dureza.value === "Dura" &&
-    armadura_clase === "Yelmo")
-) {
+if (armadura.value === "-") {
   event.value = "-";
 }
 
@@ -285,29 +275,6 @@ if (armadura_dureza.value !== "-") {
           0,
           Number(armadura_mov.value) + Math.floor(reqarm_total / 50) * 10
         );
-      }
-    }
-
-    if (armadura_dureza.value === "Dura") {
-      if (armadura_clase === "Yelmo") {
-        yelmo_dura_full = true;
-      } else {
-        armadura_dura_full = true;
-      }
-    } else {
-      // armadura_dureza.value === "Blanda"
-      if (armadura_clase === "Yelmo") {
-        if (yelmo_blanda_eq) {
-          yelmo_blanda_full = true;
-        } else {
-          yelmo_blanda_eq = true;
-        }
-      } else {
-        if (armadura_blanda_eq) {
-          armadura_blanda_full = true;
-        } else {
-          armadura_blanda_eq = true;
-        }
       }
     }
 

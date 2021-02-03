@@ -3,6 +3,7 @@ var req_yelmo_total = 0;
 var i = 1;
 var armadura_count = 0;
 var yelmo_count = 0;
+
 var restriccion_mov_armadura = 0;
 while (i <= 6) {
   var armadura_check = this.getField("armadura" + i + "_check");
@@ -11,6 +12,7 @@ while (i <= 6) {
     var armadura_clase = this.getField("armadura" + i).value.split(" ")[0];
     var armadura_mov = this.getField("armadura" + i + "_mov");
     var armadura_reqarm = this.getField("armadura" + i + "_reqarm");
+    var armadura_dureza = this.getField("armadura" + i + "_dureza");
     if (armadura_clase === "Yelmo") {
       req_yelmo_total += Number(armadura_reqarm.value);
       // Varias equipadas

@@ -412,14 +412,3 @@ var armadura_peto = [];
 var armadura_camisola = [];
 var armadura_completa = [];
 var armadura_yelmo = [];
-
-
-var armadura_dura_full = false;
-var armadura_blanda_full = false;
-var yelmo_dura_full = false;
-var yelmo_blanda_full = false;
-
-var yelmo_blanda_eq = false;
-var armadura_blanda_eq = false;
-
-
