@@ -128,7 +128,7 @@ var tabla_arma_list = [
   }
   i = 1;
   while (i < 7) {
-    this.getField("arma" + i + "_check").setItems(["-", "Eq."]);
+    this.getField("arma" + i + "_check").setItems(["-", "I", "D", "D+I"]);
     this.getField("arma" + i + "_calidad").setItems([
       "-2",
       "-1",
