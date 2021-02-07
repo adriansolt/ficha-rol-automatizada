@@ -76,13 +76,8 @@ Yelmo de maya               0                  -10         Blanda
 Yelmo completo abierto      5                  -20         Dura
 Yelmo completo cerrado      10                 -30         Dura
 
-
-Ballesta 
-Ballesta de repetición
-Ballesta Pesada
-Ballesta de mano
-Arco corto
-Arco largo 
-Arco compuesto
-Dardos de mano
-Cerbatana
+                    dmg turno F.R
+Ballesta de mano    30  +10   3
+Ballesta Pesada     60  -20   10
+Arco corto          30  -10   4
+Arco largo          40  -30   7

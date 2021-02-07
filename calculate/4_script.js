@@ -240,6 +240,32 @@ this.getField("final_iniciativa").value =
   Number(this.getField("mod_iniciativa").value) +
   Number(this.getField("esp_iniciativa").value);
 
+if(ventaja_limite && actuales_vida.value <= Math.floor(Number(totales_vida.value)/4)) {
+  j = 0;
+  while (j < lista_habilidades.length) {
+    var habilidad = lista_habilidades[j];
+    var esp_habilidad = this.getField("esp_" + habilidad);
+    esp_habilidad.value = Number(esp_habilidad.value) + 20;
+    j++;
+  }
+  this.getField("final_iniciativa").value = Number(this.getField("final_iniciativa").value) + 20;
+
+  this.getField("final_esquiva").value = Number(this.getField("final_esquiva").value) + 20;
+
+  if(this.getField("final_parada_i").value !== "-") {
+    this.getField("final_parada_i").value = Number(this.getField("final_parada_i").value) + 20;
+  }
+  if(this.getField("final_parada_d").value !== "-") {
+    this.getField("final_parada_d").value = Number(this.getField("final_parada_d").value) + 20;
+  }
+  if(this.getField("final_ataque_d").value !== "-") {
+    this.getField("final_ataque_d").value = Number(this.getField("final_ataque_d").value) + 20;
+  }
+  if(this.getField("final_ataque_i").value !== "-") {
+    this.getField("final_ataque_i").value = Number(this.getField("final_ataque_i").value) + 20;
+  }
+}
+
 // Habilidades
 
 i = 0;
@@ -345,6 +371,10 @@ if (
   }
 }
 
+if(Number(oro.value) + Number(op_oro_2.value) < 0 || Number(oro.value) + Number(op_oro_1.value) < 0) {
+  oro.value = 0;
+}
+
 // Operaciones oro
 // 1
 if (
@@ -370,45 +400,3 @@ if (
 var agi_actual = this.getField("agi_actual");
 var md_actuales = this.getField("md_actuales");
 
-// Armaduras
-
-var armadura_vel = this.getField("armadura_vel");
-armadura_vel.value = 0;
-
-var armadura_cabeza_lista = [];
-var armadura_espalda_lista = [];
-var armadura_hombro_der_lista = [];
-var armadura_hombro_izq_lista = [];
-var armadura_pecho_lista = [];
-var armadura_brazo_der_lista = [];
-var armadura_brazo_izq_lista = [];
-var armadura_mano_der_lista = [];
-var armadura_mano_izq_lista = [];
-var armadura_pierna_der_lista = [];
-var armadura_pierna_izq_lista = [];
-var armadura_pie_der_lista = [];
-var armadura_pie_izq_lista = [];
-
-
-var cuerpo_def = this.getField("armadura0_def").value;
-
-if (cuerpo_def > 0) {
-  armadura_pecho_lista.push(cuerpo_def);
-  armadura_espalda_lista.push(cuerpo_def);
-  armadura_hombro_der_lista.push(cuerpo_def);
-  armadura_hombro_izq_lista.push(cuerpo_def);
-  armadura_brazo_der_lista.push(cuerpo_def);
-  armadura_brazo_izq_lista.push(cuerpo_def);
-  armadura_mano_der_lista.push(cuerpo_def);
-  armadura_mano_izq_lista.push(cuerpo_def);
-  armadura_pierna_der_lista.push(cuerpo_def);
-  armadura_pierna_izq_lista.push(cuerpo_def);
-  armadura_pie_der_lista.push(cuerpo_def);
-  armadura_pie_izq_lista.push(cuerpo_def);
-  armadura_cabeza_lista.push(cuerpo_def);
-}
-
-var armadura_peto = [];
-var armadura_camisola = [];
-var armadura_completa = [];
-var armadura_yelmo = [];

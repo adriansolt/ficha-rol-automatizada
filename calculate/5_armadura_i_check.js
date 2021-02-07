@@ -264,7 +264,7 @@ if (armadura_dureza.value !== "-") {
       if (final_llA_v >= armadura_reqarm.value) {
         armadura_advertir.value = Math.min(
           0,
-          Number(armadura_advertir.value) + Math.floor(reqarm_total / 50) * 10
+          Number(armadura_advertir.value) + Math.floor((final_llA_v - armadura_reqarm.value) / 50) * 10
         );
       }
     } else {
@@ -273,46 +273,11 @@ if (armadura_dureza.value !== "-") {
       if (final_llA_v >= armadura_reqarm.value) {
         armadura_mov.value = Math.min(
           0,
-          Number(armadura_mov.value) + Math.floor(reqarm_total / 50) * 10
+          Number(armadura_mov.value) + Math.floor((final_llA_v - armadura_reqarm.value) / 50) * 10
         );
       }
     }
 
-    var armadura_def = this.getField("armadura" + i + "_def");
-    switch (armadura_clase) {
-      case "Peto":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        break;
-      case "Camisola":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        armadura_hombro_der_lista.push(armadura_def.value);
-        armadura_hombro_izq_lista.push(armadura_def.value);
-        armadura_brazo_der_lista.push(armadura_def.value);
-        armadura_brazo_izq_lista.push(armadura_def.value);
-        armadura_mano_der_lista.push(armadura_def.value);
-        armadura_mano_izq_lista.push(armadura_def.value);
-        break;
-      case "Completa":
-        armadura_pecho_lista.push(armadura_def.value);
-        armadura_espalda_lista.push(armadura_def.value);
-        armadura_hombro_der_lista.push(armadura_def.value);
-        armadura_hombro_izq_lista.push(armadura_def.value);
-        armadura_brazo_der_lista.push(armadura_def.value);
-        armadura_brazo_izq_lista.push(armadura_def.value);
-        armadura_mano_der_lista.push(armadura_def.value);
-        armadura_mano_izq_lista.push(armadura_def.value);
-        armadura_pierna_der_lista.push(armadura_def.value);
-        armadura_pierna_izq_lista.push(armadura_def.value);
-        armadura_pie_der_lista.push(armadura_def.value);
-        armadura_pie_izq_lista.push(armadura_def.value);
-        break;
-      case "Yelmo":
-        armadura_cabeza_lista.push(armadura_def.value);
-        break;
-      default:
-        break;
-    }
+
   }
 }

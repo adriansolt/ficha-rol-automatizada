@@ -4,6 +4,44 @@ var i = 1;
 var armadura_count = 0;
 var yelmo_count = 0;
 
+var armadura_cabeza_lista = [];
+var armadura_espalda_lista = [];
+var armadura_hombro_der_lista = [];
+var armadura_hombro_izq_lista = [];
+var armadura_pecho_lista = [];
+var armadura_brazo_der_lista = [];
+var armadura_brazo_izq_lista = [];
+var armadura_mano_der_lista = [];
+var armadura_mano_izq_lista = [];
+var armadura_pierna_der_lista = [];
+var armadura_pierna_izq_lista = [];
+var armadura_pie_der_lista = [];
+var armadura_pie_izq_lista = [];
+
+
+var cuerpo_def = this.getField("armadura0_def").value;
+
+if (cuerpo_def > 0) {
+  armadura_pecho_lista.push(cuerpo_def);
+  armadura_espalda_lista.push(cuerpo_def);
+  armadura_hombro_der_lista.push(cuerpo_def);
+  armadura_hombro_izq_lista.push(cuerpo_def);
+  armadura_brazo_der_lista.push(cuerpo_def);
+  armadura_brazo_izq_lista.push(cuerpo_def);
+  armadura_mano_der_lista.push(cuerpo_def);
+  armadura_mano_izq_lista.push(cuerpo_def);
+  armadura_pierna_der_lista.push(cuerpo_def);
+  armadura_pierna_izq_lista.push(cuerpo_def);
+  armadura_pie_der_lista.push(cuerpo_def);
+  armadura_pie_izq_lista.push(cuerpo_def);
+  armadura_cabeza_lista.push(cuerpo_def);
+}
+
+var armadura_peto = [];
+var armadura_camisola = [];
+var armadura_completa = [];
+var armadura_yelmo = [];
+
 var restriccion_mov_armadura = 0;
 while (i <= 6) {
   var armadura_check = this.getField("armadura" + i + "_check");
@@ -56,6 +94,43 @@ while (i <= 6) {
       this.getField("final_saltar").value += Number(armadura_mov.value);
   
     }
+    
+    var armadura_def = this.getField("armadura" + i + "_def");
+    switch (armadura_clase) {
+      case "Peto":
+        armadura_pecho_lista.push(armadura_def.value);
+        armadura_espalda_lista.push(armadura_def.value);
+        break;
+      case "Camisola":
+        armadura_pecho_lista.push(armadura_def.value);
+        armadura_espalda_lista.push(armadura_def.value);
+        armadura_hombro_der_lista.push(armadura_def.value);
+        armadura_hombro_izq_lista.push(armadura_def.value);
+        armadura_brazo_der_lista.push(armadura_def.value);
+        armadura_brazo_izq_lista.push(armadura_def.value);
+        armadura_mano_der_lista.push(armadura_def.value);
+        armadura_mano_izq_lista.push(armadura_def.value);
+        break;
+      case "Completa":
+        armadura_pecho_lista.push(armadura_def.value);
+        armadura_espalda_lista.push(armadura_def.value);
+        armadura_hombro_der_lista.push(armadura_def.value);
+        armadura_hombro_izq_lista.push(armadura_def.value);
+        armadura_brazo_der_lista.push(armadura_def.value);
+        armadura_brazo_izq_lista.push(armadura_def.value);
+        armadura_mano_der_lista.push(armadura_def.value);
+        armadura_mano_izq_lista.push(armadura_def.value);
+        armadura_pierna_der_lista.push(armadura_def.value);
+        armadura_pierna_izq_lista.push(armadura_def.value);
+        armadura_pie_der_lista.push(armadura_def.value);
+        armadura_pie_izq_lista.push(armadura_def.value);
+        break;
+      case "Yelmo":
+        armadura_cabeza_lista.push(armadura_def.value);
+        break;
+      default:
+        break;
+    }
   }
   i++;
 }
@@ -75,7 +150,6 @@ if (diff_yelmo < 0) {
 
 // Armaduras
 if (diff_armadura < 0) {
-  log(diff_armadura);
   this.getField("armadura_vel").value += Number(diff_armadura);
   this.getField("final_iniciativa").value += Number(diff_armadura);
 

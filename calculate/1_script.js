@@ -107,8 +107,10 @@ var categoria = this.getField("categoria");
 var esp_animales = this.getField("esp_animales");
 var esp_frialdad = this.getField("esp_frialdad");
 var esp_persuasion = this.getField("esp_persuasion");
+var esp_intimidar = this.getField("esp_intimidar");
 var esp_ver = this.getField("esp_ver");
 var esp_escuchar = this.getField("esp_escuchar");
+var esp_buscar = this.getField("esp_buscar");
 
 var valor_multiplo = this.getField("valor_multiplo").value;
 
@@ -117,6 +119,7 @@ var reg_esp = 0;
 var reg_final = 0;
 var reg_normal = this.getField("reg_normal");
 var reg_max = this.getField("reg_max");
+var armadura_vel = this.getField("armadura_vel");
 
 var md_totales = this.getField("md_totales");
 var md_actuales = this.getField("md_actuales");
@@ -128,6 +131,19 @@ var ambidiestria = false;
 var i = 0;
 var j = 0;
 var k = 0;
+
+var ventaja_limite = false;
+
+// Ventajas
+i = 1;
+var ventajas_list = [];
+while (i < 8) {
+  var ventaja = this.getField("ventaja" + i);
+  if (ventaja.value) {
+    ventajas_list.push(ventaja.value);
+  }
+  i++;
+}
 
 while (j < lista_habilidades.length) {
   var habilidad = lista_habilidades[j];
@@ -143,6 +159,10 @@ reg_esp = 0;
 res_fisica_esp.value = 0;
 res_enfermedades_esp.value = 0;
 res_venenos_esp.value = 0;
+res_frio_esp.value = 0;
+res_calor_esp.value = 0;
+armadura_vel.value = 0;
+
 j = 0;
 
 var ctm = false;
@@ -270,16 +290,6 @@ function actualizarDatosCategoria(
   this.getField("cat_llA").value = cat_llA_v * Math.floor(nivel.value / 2);
 }
 
-// Ventajas
-i = 1;
-var ventajas_list = [];
-while (i < 8) {
-  var ventaja = this.getField("ventaja" + i);
-  if (ventaja.value) {
-    ventajas_list.push(ventaja.value);
-  }
-  i++;
-}
 
 i = 0;
 while (i < ventajas_list.length) {
@@ -435,6 +445,7 @@ while (i < ventajas_list.length) {
         ambidiestria = true;
         break;
       case "Al límite":
+        ventaja_limite = true;
         break;
       case "Aprendizaje innato en llevar armadura":
         esp_llA.value = 5 * Math.floor(Number(nivel.value / 2));
@@ -474,6 +485,9 @@ while (i < ventajas_list.length) {
       case "Mente fria":
         esp_frialdad.value = Number(esp_frialdad.value) + 60;
         break;
+      case "Inquietante":
+        esp_intimidar.value = Number(esp_intimidar.value) + 60;
+        break;
       case "Reflejos rápidos":
         esp_iniciativa.value = Number(esp_iniciativa.value) + 25;
         break;
@@ -508,6 +522,7 @@ while (i < ventajas_list.length) {
       case "Sentidos agudos":
         esp_ver.value = Number(esp_ver.value) + 30;
         esp_escuchar.value = Number(esp_escuchar.value) + 30;
+        esp_buscar.value = Number(esp_buscar.value) + 30;
         break;
       case "Sueño ligero":
       case "Tocado por el destino":

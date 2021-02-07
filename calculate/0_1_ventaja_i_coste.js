@@ -8,6 +8,7 @@
       ventaja === "Dificil de matar" ||
       ventaja === "Fondos iniciales" ||
       ventaja === "Mente fria" ||
+      ventaja === "Inquietante" ||
       ventaja === "Seductor" ||
       ventaja === "Sentidos agudos" ||
       ventaja === "Al límite" ||

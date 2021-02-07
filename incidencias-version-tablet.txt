@@ -1,1 +1,1 @@
-- No actualiza coste ventaja/desventaja
+- Actualiza de manera rara el valor de actual_vida (escribiendolo directamente)

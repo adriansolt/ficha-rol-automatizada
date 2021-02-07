@@ -7,13 +7,13 @@ if (event.value === "Eq.") {
   var armadura_clase = this.getField("armadura" + num).value.split(" ")[0];
   var armadura_dureza = this.getField("armadura" + num + "_dureza");
   if(armadura_dureza.value === "Dura") {
-      if(armadura_clase.value === "Yelmo") {
+      if(armadura_clase === "Yelmo") {
         yelmo_duro_count++;
       } else {
         armadura_duro_count++;
       }
   } else {
-    if(armadura_clase.value === "Yelmo") {
+    if(armadura_clase === "Yelmo") {
         yelmo_blando_count++;
       } else {
         armadura_blando_count++;
@@ -41,7 +41,6 @@ if (event.value === "Eq.") {
     }
     i++;
   }
-
   if(
         armadura_duro_count > 1 || 
         yelmo_duro_count > 1 || 
