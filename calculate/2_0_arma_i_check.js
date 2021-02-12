@@ -14,15 +14,11 @@ var arma_especial = this.getField("arma" + i + "_especial");
 var arma_tam = this.getField("arma" + i + "_tam");
 var arma_fue_bono = this.getField("arma" + i + "_fue_bono");
 
-if(mano_d_ocupada && (event.value === "D" || event.value === "D+I")) {
-    event.value = "-";
-}
-
-if(mano_i_ocupada && (event.value === "I" || event.value === "D+I")) {
-    event.value = "-";
-}
-
-if(manos_ocupadas) {
+if (
+  (mano_d_ocupada && (event.value === "D" || event.value === "D+I")) || 
+  (mano_i_ocupada && (event.value === "I" || event.value === "D+I")) || 
+  (manos_ocupadas) || 
+  (arma_clase.value === "A. de proyectil") && (event.value === "I" || event.value === "D")) {
   event.value = "-";
 }
 
@@ -372,6 +368,35 @@ if (arma.value !== "-") {
       arma_iniciativa.value -= 70;
       arma_freq.value = 18;
       arma_clase.value = "Hacha";
+      arma_tam.value = "L";
+      break;
+    case "Ballesta de mano":
+      arma_db.value += 30;
+      arma_iniciativa.value += 10;
+      arma_freq.value = 6;
+      arma_clase.value = "A. de proyectil";
+      arma_tam.value = "S";
+      break;
+    case "Ballesta Pesada":
+      arma_db.value += 60;
+      arma_iniciativa.value -= 20;
+      arma_freq.value = 20;
+      arma_clase.value = "A. de proyectil";
+      arma_tam.value = "L";
+      arma_especial.value = "Recarga";
+      break;
+    case "Arco corto":
+      arma_db.value += 30;
+      arma_iniciativa.value -= 10;
+      arma_freq.value = 8;
+      arma_clase.value = "A. de proyectil";
+      arma_tam.value = "S";
+      break;
+    case "Arco largo":
+      arma_db.value += 40;
+      arma_iniciativa.value -= 30;
+      arma_freq.value = 7;
+      arma_clase.value = "A. de proyectil";
       arma_tam.value = "L";
       break;
     case "Rodela":

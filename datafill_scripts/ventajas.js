@@ -25,7 +25,6 @@ while (index <= 8) {
     "Dificil de matar",
     "Dificil de matar II",
     "Dificil de matar III",
-    "Encanto",
     "Fondos iniciales",
     "Fondos iniciales II",
     "Fondos iniciales III",

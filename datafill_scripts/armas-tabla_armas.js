@@ -7,6 +7,8 @@ var tabla_arma_list = [
     "MANDOBLES",
     "ASTAS",
     "CUERDAS",
+    "A. DE PROYECTIL",
+    "ESCUDOS",
     "-",
     "Lazo",
     "Red de gladiador",
@@ -57,6 +59,10 @@ var tabla_arma_list = [
     "Mangual",
     "Mandoble",
     "Hacha a dos manos",
+    "Ballesta de mano",
+    "Ballesta Pesada",
+    "Arco corto",
+    "Arco largo"
   ];
   
   var arma_list = [
@@ -109,13 +115,16 @@ var tabla_arma_list = [
     "Mangual",
     "Mandoble",
     "Hacha a dos manos",
-    "--- ESCUDOS ---",
+    "Ballesta de mano",
+    "Ballesta Pesada",
+    "Arco corto",
+    "Arco largo",
     "Rodela",
     "Escudo",
     "Escudo corporal",
   ];
   
-  this.getField("tabla_arma1").setItems(tabla_arma_list.slice(8));
+  this.getField("tabla_arma1").setItems(tabla_arma_list.slice(9));
   var i = 2;
   while (i <= 7) {
     this.getField("tabla_arma" + i).setItems(tabla_arma_list);

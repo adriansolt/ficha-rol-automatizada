@@ -119,11 +119,8 @@ Tocado por el destino
 
 --- Desventajas ---
 
--2 a una característica
-Adicción/vicio grave
 Alergia grave
 Debilidad física
-Desafortunado
 Endeble
 Enfermedad grave
 Extremidad atrofiada
@@ -141,6 +138,7 @@ Reacción lenta II
 Salud enfermiza
 Sordo
 Sueño profundo
+Vicio grave
 Vulnerable a los venenos
 Vulnerable al dolor
 Vulnerable al frío
