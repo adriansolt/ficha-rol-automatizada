@@ -28,7 +28,6 @@ if (arma.value !== "-") {
   arma_esq.value = 0;
   arma_db.value = 0;
   arma_iniciativa.value = 0;
-  arma_fue_bono.value = Number(this.getField("fue_bono").value);
   switch (arma.value) {
     case "Lazo":
       arma_db.value += 5;
@@ -429,6 +428,11 @@ if (arma.value !== "-") {
     default:
       break;
   }
+  if(arma_clase.value !== "A. de proyectil") {
+    arma_fue_bono.value = Number(this.getField("fue_bono").value);
+  } else {
+    arma_fue_bono.value = 0;
+  }
 
   arma_df.value = Math.ceil(Number(arma_db.value) + arma_fue_bono.value);
 
@@ -495,10 +499,13 @@ if (arma.value !== "-") {
   arma_atq.value = "-";
   arma_par.value = "-";
   arma_esq.value = "-";
+  arma_freq.value = "-";
   arma_db.value = "-";
   arma_iniciativa.value = "-";
   arma_clase.value = "-";
   arma_tam.value = "-";
   arma_especial.value = "-";
   arma_df.value = "-";
+  arma_fue_bono.value = "-";
+  
 }

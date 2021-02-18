@@ -1,5 +1,4 @@
 --- Ventajas (Coste 2) ---
-Afinidad animal
 Ambidiestría
 Aprendizaje innato en llevar armadura 
 Aprendizaje innato en una materia
@@ -75,7 +74,6 @@ Maldición II
 Reacción lenta II
 
 --- Ventajas solo durante la creación del personaje ---
-Afinidad animal
 Aprendizaje innato en una materia
 Aprendizaje innato en una materia II
 Aprendizaje innato en un campo

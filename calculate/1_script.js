@@ -438,9 +438,6 @@ while (i < ventajas_list.length) {
     }
   } else {
     switch (ventaja) {
-      case "Afinidad animal":
-        esp_animales.value = Number(esp_animales.value) + 60;
-        break;
       case "Ambidiestría":
         ambidiestria = true;
         break;
@@ -482,12 +479,6 @@ while (i < ventajas_list.length) {
       case "Fondos iniciales III":
         this.getField("oro").value = 10000;
         break;
-      case "Mente fria":
-        esp_frialdad.value = Number(esp_frialdad.value) + 60;
-        break;
-      case "Inquietante":
-        esp_intimidar.value = Number(esp_intimidar.value) + 60;
-        break;
       case "Reflejos rápidos":
         esp_iniciativa.value = Number(esp_iniciativa.value) + 25;
         break;
@@ -515,14 +506,6 @@ while (i < ventajas_list.length) {
         res_fisica_esp.value = Number(res_fisica_esp.value) + 50;
         res_enfermedades_esp.value = Number(res_enfermedades_esp.value) + 50;
         res_venenos_esp.value = Number(res_venenos_esp.value) + 50;
-        break;
-      case "Seductor":
-        esp_persuasion.value = Number(esp_persuasion.value) + 60;
-        break;
-      case "Sentidos agudos":
-        esp_ver.value = Number(esp_ver.value) + 30;
-        esp_escuchar.value = Number(esp_escuchar.value) + 30;
-        esp_buscar.value = Number(esp_buscar.value) + 30;
         break;
       case "Sueño ligero":
       case "Tocado por el destino":

@@ -15,7 +15,6 @@ if (
     desventaja === "Maldición" ||
     desventaja === "Miopía" ||
     desventaja === "Mudo" ||
-    desventaja === "Patoso" ||
     desventaja === "Reacción lenta" ||
     desventaja === "Salud enfermiza" ||
     desventaja === "Sordo" ||

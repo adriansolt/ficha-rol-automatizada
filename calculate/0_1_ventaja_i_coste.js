@@ -2,15 +2,10 @@
     var num = event.target.name.substr(7,1);
     var ventaja = this.getField("ventaja" + num).value;
     if (
-      ventaja === "Afinidad animal" ||
       ventaja === "Ambidiestría" ||
       ventaja === "Aprendizaje innato en llevar armadura" ||
       ventaja === "Dificil de matar" ||
       ventaja === "Fondos iniciales" ||
-      ventaja === "Mente fria" ||
-      ventaja === "Inquietante" ||
-      ventaja === "Seductor" ||
-      ventaja === "Sentidos agudos" ||
       ventaja === "Al límite" ||
       ventaja === "Armadura natural" ||
       ventaja === "Buena suerte" ||
