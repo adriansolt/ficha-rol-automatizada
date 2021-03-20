@@ -1,3 +1,5 @@
-- Añadir tabla desventajas y sus descripciones
-- Añadir javascript desventajas
-- Añadir arcos y ballestas
+-Quitar categorias (dejar Novel como la por defecto)
+-Quitar ventajas y desventajas y dejar solo los bonificadores, haciendolos seleccionables desde cada respectiva tabla.
+-Añadir más tablas de armas, entre ellas Ambidiestria, Apuntado...
+-Valorar la posibilidad de alcanzar atributos inhumanos para hacer la ficha más genérica
+-Pasar codigo a funciones declaradas en el script del documento
