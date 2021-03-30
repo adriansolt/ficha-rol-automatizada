@@ -218,19 +218,19 @@ var bronce;
 var agi_actual = this.getField("agi_actual");
 var md_actuales = this.getField("md_actuales");
 
-var armadura_cabeza_total = 0;
-var armadura_espalda_total = 0;
-var armadura_hombro_der_total = 0;
-var armadura_hombro_izq_total = 0;
-var armadura_pecho_total = 0;
-var armadura_brazo_der_total = 0;
-var armadura_brazo_izq_total = 0;
-var armadura_mano_der_total = 0;
-var armadura_mano_izq_total = 0;
-var armadura_pierna_der_total = 0;
-var armadura_pierna_izq_total = 0;
-var armadura_pie_der_total = 0;
-var armadura_pie_izq_total = 0;
+var armadura_cabeza_total;
+var armadura_espalda_total;
+var armadura_hombro_der_total;
+var armadura_hombro_izq_total;
+var armadura_pecho_total;
+var armadura_brazo_der_total;
+var armadura_brazo_izq_total;
+var armadura_mano_der_total;
+var armadura_mano_izq_total;
+var armadura_pierna_der_total;
+var armadura_pierna_izq_total;
+var armadura_pie_der_total;
+var armadura_pie_izq_total;
 
 var armadura_cabeza = this.getField("armadura_cabeza");
 var armadura_espalda = this.getField("armadura_espalda");
@@ -259,6 +259,20 @@ var mod_armadura_pierna_der = this.getField("mod_armadura_pierna_der");
 var mod_armadura_pierna_izq = this.getField("mod_armadura_pierna_izq");
 var mod_armadura_pie_der = this.getField("mod_armadura_pie_der");
 var mod_armadura_pie_izq = this.getField("mod_armadura_pie_izq");
+
+var armadura_cabeza_lista;
+var armadura_espalda_lista;
+var armadura_hombro_der_lista;
+var armadura_hombro_izq_lista;
+var armadura_pecho_lista;
+var armadura_brazo_der_lista;
+var armadura_brazo_izq_lista;
+var armadura_mano_der_lista;
+var armadura_mano_izq_lista;
+var armadura_pierna_der_lista;
+var armadura_pierna_izq_lista;
+var armadura_pie_der_lista;
+var armadura_pie_izq_lista;
 
 var lista_habilidades_atributos = [
   // ATLETICAS
@@ -2497,19 +2511,33 @@ function main3() {
   var armadura_count = 0;
   var yelmo_count = 0;
 
-  var armadura_cabeza_lista = [];
-  var armadura_espalda_lista = [];
-  var armadura_hombro_der_lista = [];
-  var armadura_hombro_izq_lista = [];
-  var armadura_pecho_lista = [];
-  var armadura_brazo_der_lista = [];
-  var armadura_brazo_izq_lista = [];
-  var armadura_mano_der_lista = [];
-  var armadura_mano_izq_lista = [];
-  var armadura_pierna_der_lista = [];
-  var armadura_pierna_izq_lista = [];
-  var armadura_pie_der_lista = [];
-  var armadura_pie_izq_lista = [];
+  armadura_cabeza_lista = [];
+  armadura_espalda_lista = [];
+  armadura_hombro_der_lista = [];
+  armadura_hombro_izq_lista = [];
+  armadura_pecho_lista = [];
+  armadura_brazo_der_lista = [];
+  armadura_brazo_izq_lista = [];
+  armadura_mano_der_lista = [];
+  armadura_mano_izq_lista = [];
+  armadura_pierna_der_lista = [];
+  armadura_pierna_izq_lista = [];
+  armadura_pie_der_lista = [];
+  armadura_pie_izq_lista = [];
+
+  armadura_cabeza_total = 0;
+  armadura_espalda_total = 0;
+  armadura_hombro_der_total = 0;
+  armadura_hombro_izq_total = 0;
+  armadura_pecho_total = 0;
+  armadura_brazo_der_total = 0;
+  armadura_brazo_izq_total = 0;
+  armadura_mano_der_total = 0;
+  armadura_mano_izq_total = 0;
+  armadura_pierna_der_total = 0;
+  armadura_pierna_izq_total = 0;
+  armadura_pie_der_total = 0;
+  armadura_pie_izq_total = 0;
 
 
   var cuerpo_def = this.getField("armadura0_def").value;
@@ -2663,10 +2691,6 @@ function main3() {
     );
   }
 
-
-
-
-
   armadura_pecho_lista.sort().reverse();
   armadura_espalda_lista.sort().reverse();
   armadura_hombro_der_lista.sort().reverse();
@@ -2709,7 +2733,6 @@ function main3() {
     }
     i++;
   }
-
   var diff_armadura_pecho = armadura_pecho_total - mod_armadura_pecho.value;
   armadura_pecho.value = Math.max(0, diff_armadura_pecho);
 
