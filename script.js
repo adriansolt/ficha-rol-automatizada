@@ -1206,7 +1206,7 @@ for (i = 1; i <= 6; i++) {
   }
 }
 
-var lista_armas_equipadas = {
+var armas_equipadas = {
   D: null,
   I: null,
   "D+I": null,
@@ -1215,7 +1215,7 @@ var lista_armas_equipadas = {
 for (i = 1; i <= 6; i++) {
   var arma_checked = this.getField("arma" + i + "_check").value;
   if (arma_checked === "D" || arma_checked === "I" || arma_checked === "D+I") {
-    lista_armas_equipadas[arma_checked] = {
+    armas_equipadas[arma_checked] = {
       posicion: i,
       arma: this.getField("arma" + i).value,
       atq: Number(this.getField("arma" + i + "_atq").value),
@@ -1231,8 +1231,8 @@ for (i = 1; i <= 6; i++) {
     };
 
     if (
-      lista_armas_equipadas["D+I"] ||
-      (lista_armas_equipadas["I"] && lista_armas_equipadas["D"])
+      armas_equipadas["D+I"] ||
+      (armas_equipadas["I"] && armas_equipadas["D"])
     ) {
       // break;
       i = 7;
@@ -1624,24 +1624,24 @@ function v_arma_check(event) {
     arma.value === "-" ||
     (arma_clase.value === "A. de proyectil" &&
       (event.value === "D" || event.value === "I")) ||
-    (lista_armas_equipadas["D"] &&
+    (armas_equipadas["D"] &&
       (event.value === "D" || event.value === "D+I") &&
-      Number(lista_armas_equipadas["D"].posicion) !== Number(posicion)) ||
-    (lista_armas_equipadas["I"] &&
+      Number(armas_equipadas["D"].posicion) !== Number(posicion)) ||
+    (armas_equipadas["I"] &&
       (event.value === "I" || event.value === "D+I") &&
-      Number(lista_armas_equipadas["I"].posicion) !== Number(posicion)) ||
-    (lista_armas_equipadas["D+I"] &&
+      Number(armas_equipadas["I"].posicion) !== Number(posicion)) ||
+    (armas_equipadas["D+I"] &&
       (event.value === "I" || event.value === "D" || event.value === "D+I"))
   ) {
     event.rc = false;
   } else if (event.value === "-") {
-    lista_armas_equipadas[mano_a_desequipar] = null;
+    armas_equipadas[mano_a_desequipar] = null;
     resetAtributosArma(posicion);
 
     if (
-      !lista_armas_equipadas["D"] &&
-      !lista_armas_equipadas["I"] &&
-      !lista_armas_equipadas["D+I"]
+      !armas_equipadas["D"] &&
+      !armas_equipadas["I"] &&
+      !armas_equipadas["D+I"]
     ) {
       // Combate desarmado
 
@@ -1656,40 +1656,40 @@ function v_arma_check(event) {
     }
   } else {
     if (mano_a_desequipar !== "-") {
-      lista_armas_equipadas[mano_a_desequipar] = null;
+      armas_equipadas[mano_a_desequipar] = null;
     }
 
-    // if (lista_armas_equipadas["D"]) {
+    // if (armas_equipadas["D"]) {
     //   if (event.value === "D" || event.value === "D+I") {
-    //     if (Number(lista_armas_equipadas["D"].posicion) !== Number(posicion)) {
+    //     if (Number(armas_equipadas["D"].posicion) !== Number(posicion)) {
     //       this.getField(
-    //         "arma" + lista_armas_equipadas["D"].posicion + "_check"
+    //         "arma" + armas_equipadas["D"].posicion + "_check"
     //       ).value = "-";
     //     }
-    //     // resetAtributosArma(lista_armas_equipadas["D"].posicion);
-    //     // lista_armas_equipadas["D"] = null;
+    //     // resetAtributosArma(armas_equipadas["D"].posicion);
+    //     // armas_equipadas["D"] = null;
     //   }
     // }
 
-    // if (lista_armas_equipadas["I"]) {
+    // if (armas_equipadas["I"]) {
     //   if (event.value === "I" || event.value === "D+I") {
-    //     if (Number(lista_armas_equipadas["I"].posicion) !== Number(posicion)) {
+    //     if (Number(armas_equipadas["I"].posicion) !== Number(posicion)) {
     //       this.getField(
-    //         "arma" + lista_armas_equipadas["I"].posicion + "_check"
+    //         "arma" + armas_equipadas["I"].posicion + "_check"
     //       ).value = "-";
     //     }
-    //     // resetAtributosArma(lista_armas_equipadas["I"].posicion);
+    //     // resetAtributosArma(armas_equipadas["I"].posicion);
 
-    //     // lista_armas_equipadas["I"] = null;
+    //     // armas_equipadas["I"] = null;
     //   }
     // }
 
-    // if (lista_armas_equipadas["D+I"]) {
+    // if (armas_equipadas["D+I"]) {
     //   this.getField(
-    //     "arma" + lista_armas_equipadas["D+I"].posicion + "_check"
+    //     "arma" + armas_equipadas["D+I"].posicion + "_check"
     //   ).value = "-";
-    //   // resetAtributosArma(lista_armas_equipadas["D+I"].posicion);
-    //   // lista_armas_equipadas["D+I"] = null;
+    //   // resetAtributosArma(armas_equipadas["D+I"].posicion);
+    //   // armas_equipadas["D+I"] = null;
     // }
 
     /*
@@ -1728,7 +1728,7 @@ function v_arma_check(event) {
     resetAtributosArma(posicion);
     aplicarNegativosAlArma(posicion, event.value);
 
-    lista_armas_equipadas[event.value] = {
+    armas_equipadas[event.value] = {
       posicion: posicion,
       arma: arma.value,
       atq: Number(this.getField("arma" + posicion + "_atq").value),
@@ -2050,55 +2050,47 @@ function v_tabla_arma(event) {
       }
     }
 
-    if (lista_armas_equipadas["D"]) {
-      resetAtributosArma(lista_armas_equipadas["D"].posicion);
-      aplicarNegativosAlArma(lista_armas_equipadas["D"].posicion, "D");
+    if (armas_equipadas["D"]) {
+      resetAtributosArma(armas_equipadas["D"].posicion);
+      aplicarNegativosAlArma(armas_equipadas["D"].posicion, "D");
 
-      lista_armas_equipadas["D"].atq = Number(
-        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq")
-          .value
+      armas_equipadas["D"].atq = Number(
+        this.getField("arma" + armas_equipadas["D"].posicion + "_atq").value
       );
-      lista_armas_equipadas["D"].par = Number(
-        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par")
-          .value
+      armas_equipadas["D"].par = Number(
+        this.getField("arma" + armas_equipadas["D"].posicion + "_par").value
       );
     }
 
-    if (lista_armas_equipadas["I"]) {
-      resetAtributosArma(lista_armas_equipadas["I"].posicion);
-      aplicarNegativosAlArma(lista_armas_equipadas["I"].posicion, "I");
+    if (armas_equipadas["I"]) {
+      resetAtributosArma(armas_equipadas["I"].posicion);
+      aplicarNegativosAlArma(armas_equipadas["I"].posicion, "I");
 
-      lista_armas_equipadas["I"].atq = Number(
-        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq")
-          .value
+      armas_equipadas["I"].atq = Number(
+        this.getField("arma" + armas_equipadas["I"].posicion + "_atq").value
       );
-      lista_armas_equipadas["I"].par = Number(
-        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par")
-          .value
+      armas_equipadas["I"].par = Number(
+        this.getField("arma" + armas_equipadas["I"].posicion + "_par").value
       );
     }
 
-    if (lista_armas_equipadas["D+I"]) {
-      resetAtributosArma(lista_armas_equipadas["I"].posicion);
-      aplicarNegativosAlArma(lista_armas_equipadas["I"].posicion, "I");
-      resetAtributosArma(lista_armas_equipadas["D"].posicion);
-      aplicarNegativosAlArma(lista_armas_equipadas["D"].posicion, "D");
+    if (armas_equipadas["D+I"]) {
+      resetAtributosArma(armas_equipadas["I"].posicion);
+      aplicarNegativosAlArma(armas_equipadas["I"].posicion, "I");
+      resetAtributosArma(armas_equipadas["D"].posicion);
+      aplicarNegativosAlArma(armas_equipadas["D"].posicion, "D");
 
-      lista_armas_equipadas["D"].atq = Number(
-        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq")
-          .value
+      armas_equipadas["D"].atq = Number(
+        this.getField("arma" + armas_equipadas["D"].posicion + "_atq").value
       );
-      lista_armas_equipadas["D"].par = Number(
-        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par")
-          .value
+      armas_equipadas["D"].par = Number(
+        this.getField("arma" + armas_equipadas["D"].posicion + "_par").value
       );
-      lista_armas_equipadas["I"].atq = Number(
-        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq")
-          .value
+      armas_equipadas["I"].atq = Number(
+        this.getField("arma" + armas_equipadas["I"].posicion + "_atq").value
       );
-      lista_armas_equipadas["I"].par = Number(
-        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par")
-          .value
+      armas_equipadas["I"].par = Number(
+        this.getField("arma" + armas_equipadas["I"].posicion + "_par").value
       );
     }
 
@@ -2487,8 +2479,8 @@ function aplicarNegativosAlArma(posicion, check) {
 
   // Negativos según el tamaño si no se usa con las dos manos
   if (
-    (check === "D" && lista_armas_equipadas["I"]) ||
-    (check === "I" && lista_armas_equipadas["D"])
+    (check === "D" && armas_equipadas["I"]) ||
+    (check === "I" && armas_equipadas["D"])
   ) {
     switch (arma_tam.value) {
       case "S":
@@ -2507,8 +2499,8 @@ function aplicarNegativosAlArma(posicion, check) {
         break;
     }
   } else if (
-    (check === "D" && !lista_armas_equipadas["I"]) ||
-    (check === "I" && !lista_armas_equipadas["D"])
+    (check === "D" && !armas_equipadas["I"]) ||
+    (check === "I" && !armas_equipadas["D"])
   ) {
     switch (arma_tam.value) {
       case "S":
@@ -2728,24 +2720,18 @@ function equiparArmaduraYelmo(armadura_yelmo, clase, dureza) {
 }
 
 function actualizarIniciativa() {
-  if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
-    arma_iniciativa_total.value = Number(lista_armas_equipadas["D"].iniciativa);
-  } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
-    arma_iniciativa_total.value = Number(lista_armas_equipadas["I"].iniciativa);
-  } else if (
-    lista_armas_equipadas["I"] !== null &&
-    lista_armas_equipadas["D"] !== null
-  ) {
+  if (armas_equipadas["D"] && !armas_equipadas["I"]) {
+    arma_iniciativa_total.value = Number(armas_equipadas["D"].iniciativa);
+  } else if (!armas_equipadas["D"] && armas_equipadas["I"]) {
+    arma_iniciativa_total.value = Number(armas_equipadas["I"].iniciativa);
+  } else if (armas_equipadas["I"] !== null && armas_equipadas["D"] !== null) {
     equipo_esquiva.value =
-      Number(lista_armas_equipadas["I"].esq) +
-      Number(lista_armas_equipadas["D"].esq);
+      Number(armas_equipadas["I"].esq) + Number(armas_equipadas["D"].esq);
     arma_iniciativa_total.value =
-      Number(lista_armas_equipadas["I"].iniciativa) +
-      Number(lista_armas_equipadas["D"].iniciativa);
-  } else if (lista_armas_equipadas["D+I"] !== null) {
-    arma_iniciativa_total.value = Number(
-      lista_armas_equipadas["D+I"].iniciativa
-    );
+      Number(armas_equipadas["I"].iniciativa) +
+      Number(armas_equipadas["D"].iniciativa);
+  } else if (armas_equipadas["D+I"] !== null) {
+    arma_iniciativa_total.value = Number(armas_equipadas["D+I"].iniciativa);
   } else {
     arma_iniciativa_total.value = Number(arma0_iniciativa.value);
   }
@@ -2767,21 +2753,18 @@ function actualizarVida() {
 }
 
 function actualizarAtaque() {
-  if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
-    equipo_ataque_d.value = lista_armas_equipadas["D"].atq;
+  if (armas_equipadas["D"] && !armas_equipadas["I"]) {
+    equipo_ataque_d.value = armas_equipadas["D"].atq;
     equipo_ataque_i.value = "-";
-  } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
+  } else if (!armas_equipadas["D"] && armas_equipadas["I"]) {
     equipo_ataque_d.value = "-";
-    equipo_ataque_i.value = lista_armas_equipadas["I"].atq;
-  } else if (
-    lista_armas_equipadas["I"] !== null &&
-    lista_armas_equipadas["D"] !== null
-  ) {
-    equipo_ataque_d.value = lista_armas_equipadas["D"].atq;
-    equipo_ataque_i.value = lista_armas_equipadas["I"].atq;
-  } else if (lista_armas_equipadas["D+I"] !== null) {
-    equipo_ataque_d.value = lista_armas_equipadas["D+I"].atq;
-    equipo_ataque_i.value = lista_armas_equipadas["D+I"].atq;
+    equipo_ataque_i.value = armas_equipadas["I"].atq;
+  } else if (armas_equipadas["I"] !== null && armas_equipadas["D"] !== null) {
+    equipo_ataque_d.value = armas_equipadas["D"].atq;
+    equipo_ataque_i.value = armas_equipadas["I"].atq;
+  } else if (armas_equipadas["D+I"] !== null) {
+    equipo_ataque_d.value = armas_equipadas["D+I"].atq;
+    equipo_ataque_i.value = armas_equipadas["D+I"].atq;
   } else {
     equipo_ataque_d.value = Number(arma0_atq.value);
     equipo_ataque_i.value = Number(arma0_atq.value);
@@ -2810,21 +2793,18 @@ function actualizarAtaque() {
 }
 
 function actualizarParada() {
-  if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
-    equipo_parada_d.value = lista_armas_equipadas["D"].atq;
+  if (armas_equipadas["D"] && !armas_equipadas["I"]) {
+    equipo_parada_d.value = armas_equipadas["D"].atq;
     equipo_parada_i.value = "-";
-  } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
+  } else if (!armas_equipadas["D"] && armas_equipadas["I"]) {
     equipo_parada_d.value = "-";
-    equipo_parada_i.value = lista_armas_equipadas["I"].atq;
-  } else if (
-    lista_armas_equipadas["I"] !== null &&
-    lista_armas_equipadas["D"] !== null
-  ) {
-    equipo_parada_d.value = lista_armas_equipadas["D"].atq;
-    equipo_parada_i.value = lista_armas_equipadas["I"].atq;
-  } else if (lista_armas_equipadas["D+I"] !== null) {
-    equipo_parada_d.value = lista_armas_equipadas["D+I"].atq;
-    equipo_parada_i.value = lista_armas_equipadas["D+I"].atq;
+    equipo_parada_i.value = armas_equipadas["I"].atq;
+  } else if (armas_equipadas["I"] !== null && armas_equipadas["D"] !== null) {
+    equipo_parada_d.value = armas_equipadas["D"].atq;
+    equipo_parada_i.value = armas_equipadas["I"].atq;
+  } else if (armas_equipadas["D+I"] !== null) {
+    equipo_parada_d.value = armas_equipadas["D+I"].atq;
+    equipo_parada_i.value = armas_equipadas["D+I"].atq;
   } else {
     equipo_parada_d.value = Number(arma0_atq.value);
     equipo_parada_i.value = Number(arma0_atq.value);
@@ -2853,19 +2833,15 @@ function actualizarParada() {
 }
 
 function actualizarEsquiva() {
-  if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
-    equipo_esquiva.value = lista_armas_equipadas["D"].esq;
-  } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
-    equipo_esquiva.value = lista_armas_equipadas["I"].esq;
-  } else if (
-    lista_armas_equipadas["I"] !== null &&
-    lista_armas_equipadas["D"] !== null
-  ) {
+  if (armas_equipadas["D"] && !armas_equipadas["I"]) {
+    equipo_esquiva.value = armas_equipadas["D"].esq;
+  } else if (!armas_equipadas["D"] && armas_equipadas["I"]) {
+    equipo_esquiva.value = armas_equipadas["I"].esq;
+  } else if (armas_equipadas["I"] !== null && armas_equipadas["D"] !== null) {
     equipo_esquiva.value =
-      Number(lista_armas_equipadas["I"].esq) +
-      Number(lista_armas_equipadas["D"].esq);
-  } else if (lista_armas_equipadas["D+I"] !== null) {
-    equipo_esquiva.value = Number(lista_armas_equipadas["D+I"].esq);
+      Number(armas_equipadas["I"].esq) + Number(armas_equipadas["D"].esq);
+  } else if (armas_equipadas["D+I"] !== null) {
+    equipo_esquiva.value = Number(armas_equipadas["D+I"].esq);
   } else {
     equipo_esquiva.value = Number(arma0_esq.value);
   }
@@ -2923,22 +2899,16 @@ function actualizarTablaDiferencias() {
     var a1 = this.getField("a1_" + i); // Izquierda
     var a2 = this.getField("a2_" + i); // Derecha
 
-    if (lista_armas_equipadas["D+I"]) {
-      if (lista_armas_equipadas["D+I"])
-        a1.value = Math.round(
-          (Number(lista_armas_equipadas["D+I"].df) * i) / 500
-        );
+    if (armas_equipadas["D+I"]) {
+      if (armas_equipadas["D+I"])
+        a1.value = Math.round((Number(armas_equipadas["D+I"].df) * i) / 500);
 
-      a2.value = Math.round(
-        (Number(lista_armas_equipadas["D+I"].df) * i) / 500
-      );
+      a2.value = Math.round((Number(armas_equipadas["D+I"].df) * i) / 500);
     } else {
-      if (lista_armas_equipadas["I"]) {
-        a1.value = Math.round(
-          (Number(lista_armas_equipadas["I"].df) * i) / 500
-        );
+      if (armas_equipadas["I"]) {
+        a1.value = Math.round((Number(armas_equipadas["I"].df) * i) / 500);
       } else {
-        if (!lista_armas_equipadas["D"]) {
+        if (!armas_equipadas["D"]) {
           // combate desarmado
           a1.value = Math.round((Number(arma0_df.value) * i) / 500);
 
@@ -2948,10 +2918,8 @@ function actualizarTablaDiferencias() {
         }
       }
 
-      if (lista_armas_equipadas["D"]) {
-        a2.value = Math.round(
-          (Number(lista_armas_equipadas["D"].df) * i) / 500
-        );
+      if (armas_equipadas["D"]) {
+        a2.value = Math.round((Number(armas_equipadas["D"].df) * i) / 500);
       } else {
         a2.value = "-";
       }
@@ -2964,21 +2932,21 @@ function actualizarTablaDiferencias() {
 function actualizarDiffX(event) {
   var diff_x_e = event ? event : diff_x;
 
-  if (lista_armas_equipadas["D+I"]) {
+  if (armas_equipadas["D+I"]) {
     a1_x.value = Math.round(
-      (Number(lista_armas_equipadas["D+I"].df) * diff_x_e.value) / 500
+      (Number(armas_equipadas["D+I"].df) * diff_x_e.value) / 500
     );
 
     a2_x.value = Math.round(
-      (Number(lista_armas_equipadas["D+I"].df) * diff_x_e.value) / 500
+      (Number(armas_equipadas["D+I"].df) * diff_x_e.value) / 500
     );
   } else {
-    if (lista_armas_equipadas["I"]) {
+    if (armas_equipadas["I"]) {
       a1_x.value = Math.round(
-        (Number(lista_armas_equipadas["I"].df) * diff_x_e.value) / 500
+        (Number(armas_equipadas["I"].df) * diff_x_e.value) / 500
       );
     } else {
-      if (!lista_armas_equipadas["D"]) {
+      if (!armas_equipadas["D"]) {
         // combate desarmado
         a1_x.value = Math.round(
           (Number(arma0_df.value) * diff_x_e.value) / 500
@@ -2992,25 +2960,12 @@ function actualizarDiffX(event) {
       }
     }
 
-    if (lista_armas_equipadas["D"]) {
+    if (armas_equipadas["D"]) {
       a2_x.value = Math.round(
-        (Number(lista_armas_equipadas["D"].df) * diff_x_e.value) / 500
+        (Number(armas_equipadas["D"].df) * diff_x_e.value) / 500
       );
-    } else if (lista_armas_equipadas["I"]) {
+    } else if (armas_equipadas["I"]) {
       a2_x.value = "-";
     }
   }
-}
-
-function armas_equipadas() {
-  var str = "\n";
-  for (var z in lista_armas_equipadas) {
-    const element_z = lista_armas_equipadas[z];
-    str += z + ": {\n";
-    for (var v in element_z) {
-      str += v + ": " + element_z[v] + ",\n";
-    }
-    str += "}\n";
-  }
-  log(str);
 }
