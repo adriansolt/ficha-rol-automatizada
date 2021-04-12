@@ -1,2 +1,1 @@
-- Actualiza de manera rara el valor de actual_vida (escribiendolo directamente)
-- El negativo de las armaduras a las habilidades atleticas en el final de la habilidad se acumula en vez de reiniciarse
+No pone a 0 los negativos de las armas al desequiparse automaticamente porque se selecciona otra
