@@ -1,54 +1,56 @@
 var i, j, k, posicion;
 
-
 var lista_habilidades = {
-  sensoriales: [{
+  sensoriales: [
+    {
       habilidad: "escuchar",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "ver",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "buscar",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "rastrear",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "sigilo",
-      atributo: "per"
-    }
+      atributo: "per",
+    },
   ],
-  corporales: [{
+  corporales: [
+    {
       habilidad: "atletismo",
-      atributo: "agi"
+      atributo: "agi",
     },
     {
       habilidad: "acrobacias",
-      atributo: "agi"
+      atributo: "agi",
     },
     {
       habilidad: "trepar",
-      atributo: "fue"
+      atributo: "fue",
     },
     {
       habilidad: "montar",
-      atributo: "con"
+      atributo: "con",
     },
     {
       habilidad: "nadar",
-      atributo: "con"
+      atributo: "con",
     },
     {
       habilidad: "resdolor",
-      atributo: "agi"
+      atributo: "agi",
     },
   ],
-  creativas: [{
+  creativas: [
+    {
       habilidad: "arte",
       atributo: "int",
     },
@@ -79,93 +81,89 @@ var lista_habilidades = {
     {
       habilidad: "venenos",
       atributo: "int",
-    }
+    },
   ],
-  sociales: [{
+  sociales: [
+    {
       habilidad: "orientarse",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "ocultarse",
-      atributo: "agi"
+      atributo: "agi",
     },
     {
       habilidad: "robo",
-      atributo: "per"
+      atributo: "per",
     },
     {
       habilidad: "frialdad",
-      atributo: "con"
+      atributo: "con",
     },
     {
       habilidad: "etiqueta",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "animales",
-      atributo: "int"
+      atributo: "int",
     },
   ],
-  culturales: [{
+  culturales: [
+    {
       habilidad: "medicina",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "historia",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "ocultismo",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "navegar",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "mates",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "tasacion",
-      atributo: "int"
+      atributo: "int",
     },
   ],
-  profesiones: [{
+  profesiones: [
+    {
       habilidad: "ingenieria",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "joyeria",
-      atributo: "des"
+      atributo: "des",
     },
     {
       habilidad: "forja",
-      atributo: "fue"
+      atributo: "fue",
     },
     {
       habilidad: "sastreria",
-      atributo: "des"
+      atributo: "des",
     },
     {
       habilidad: "alquimia",
-      atributo: "int"
+      atributo: "int",
     },
     {
       habilidad: "herbolaria",
-      atributo: "int"
+      atributo: "int",
     },
-  ]
-}
+  ],
+};
 
-var lista_atr = [
-  "agi",
-  "con",
-  "des",
-  "fue",
-  "int",
-  "per"
-];
+var lista_atr = ["agi", "con", "des", "fue", "int", "per"];
 
 var lista_bonos = [
   -30, // 1
@@ -187,7 +185,7 @@ var lista_bonos = [
   10, // 17
   15, // 18
   15, // 19
-  20 // 20
+  20, // 20
 ];
 
 var lista_vida_base_por_nivel = [
@@ -213,7 +211,8 @@ var lista_vida_base_por_nivel = [
   30, // 20
 ];
 
-var lista_armas = [{
+var lista_armas = [
+  {
     arma: "Lazo",
     arma_db: 5,
     arma_iniciativa: 10,
@@ -223,7 +222,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Cuerda",
     arma_tam: "S",
-    arma_especial: "Presa 18"
+    arma_especial: "Presa 18",
   },
   {
     arma: "Red de gladiador",
@@ -235,7 +234,7 @@ var lista_armas = [{
     arma_freq: 4,
     arma_clase: "Cuerda",
     arma_tam: "M",
-    arma_especial: "Presa 20"
+    arma_especial: "Presa 20",
   },
   {
     arma: "Combate desarmado",
@@ -247,7 +246,7 @@ var lista_armas = [{
     arma_freq: "-",
     arma_tam: "-",
     arma_clase: "Sin armas",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Jarrón",
@@ -259,8 +258,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Maza",
     arma_tam: "S",
-    arma_especial: "-"
-
+    arma_especial: "-",
   },
   {
     arma: "Botella rota",
@@ -272,8 +270,7 @@ var lista_armas = [{
     arma_freq: 6,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "-"
-
+    arma_especial: "-",
   },
   {
     arma: "Antorcha",
@@ -285,7 +282,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Maza",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Palo de madera",
@@ -297,7 +294,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Maza",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Cadena",
@@ -309,7 +306,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Cuerda",
     arma_tam: "M",
-    arma_especial: "Presa 16"
+    arma_especial: "Presa 16",
   },
   {
     arma: "Estilete",
@@ -321,7 +318,7 @@ var lista_armas = [{
     arma_freq: 6,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Silla",
@@ -333,7 +330,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Mandoble",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Barra metálica",
@@ -345,7 +342,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Maza",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Cestus",
@@ -369,7 +366,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Garrote",
@@ -381,7 +378,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Maza",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Daga",
@@ -393,7 +390,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Vara",
@@ -405,7 +402,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Garfio",
@@ -417,7 +414,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Daga de parada",
@@ -429,7 +426,7 @@ var lista_armas = [{
     arma_freq: 6,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Azada",
@@ -441,7 +438,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Hacha",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Hoz",
@@ -453,7 +450,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Arpón",
@@ -465,7 +462,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Asta",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Florete",
@@ -477,7 +474,7 @@ var lista_armas = [{
     arma_freq: 6,
     arma_clase: "Espada",
     arma_especial: "Precisa",
-    arma_tam: "S"
+    arma_tam: "S",
   },
   {
     arma: "Guadaña",
@@ -489,7 +486,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Jabalina",
@@ -501,7 +498,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Látigo",
@@ -513,7 +510,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Cuerda",
     arma_tam: "M",
-    arma_especial: "Presa 16"
+    arma_especial: "Presa 16",
   },
   {
     arma: "Tridente",
@@ -525,7 +522,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Hacha de leñador",
@@ -537,7 +534,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Hacha",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Pico",
@@ -549,7 +546,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Lanza",
@@ -559,7 +556,7 @@ var lista_armas = [{
     arma_par: 0,
     arma_esq: 0,
     arma_freq: 8,
-    arma_clase: "Asta"
+    arma_clase: "Asta",
   },
   {
     arma: "Estoque",
@@ -570,7 +567,7 @@ var lista_armas = [{
     arma_esq: 0,
     arma_freq: 8,
     arma_clase: "Espada",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Espada corta",
@@ -582,7 +579,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "Arma corta",
     arma_tam: "S",
-    arma_especial: "Precisa"
+    arma_especial: "Precisa",
   },
   {
     arma: "Mayal",
@@ -594,7 +591,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Maza",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Maza",
@@ -606,7 +603,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Maza",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Hacha de mano",
@@ -618,7 +615,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Hacha",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Sable",
@@ -630,7 +627,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Espada",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Martillo de guerra",
@@ -642,7 +639,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Asta",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Cimitarra",
@@ -654,7 +651,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Espada",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Espada larga",
@@ -666,7 +663,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Espada",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Espada ancha",
@@ -678,7 +675,7 @@ var lista_armas = [{
     arma_freq: 10,
     arma_clase: "Espada",
     arma_tam: "M",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Maza pesada de combate",
@@ -690,7 +687,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Maza",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Alabarda",
@@ -702,7 +699,7 @@ var lista_armas = [{
     arma_freq: 12,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Espada bastarda",
@@ -714,7 +711,7 @@ var lista_armas = [{
     arma_freq: 14,
     arma_clase: "Espada",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Hacha de guerra",
@@ -726,7 +723,7 @@ var lista_armas = [{
     arma_freq: 14,
     arma_clase: "Hacha",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Gran martillo de guerra",
@@ -738,7 +735,7 @@ var lista_armas = [{
     arma_freq: 14,
     arma_clase: "Maza",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Lanza de caballería",
@@ -750,7 +747,7 @@ var lista_armas = [{
     arma_freq: 16,
     arma_clase: "Asta",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Mangual",
@@ -762,7 +759,7 @@ var lista_armas = [{
     arma_freq: 16,
     arma_clase: "Mandoble",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Mandoble",
@@ -774,7 +771,7 @@ var lista_armas = [{
     arma_freq: 16,
     arma_clase: "Mandoble",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Hacha a dos manos",
@@ -786,7 +783,7 @@ var lista_armas = [{
     arma_freq: 18,
     arma_clase: "Hacha",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Ballesta de mano",
@@ -798,7 +795,7 @@ var lista_armas = [{
     arma_freq: 6,
     arma_clase: "A. de proyectil",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Ballesta Pesada",
@@ -810,7 +807,7 @@ var lista_armas = [{
     arma_freq: 20,
     arma_clase: "A. de proyectil",
     arma_tam: "L",
-    arma_especial: "Recarga"
+    arma_especial: "Recarga",
   },
   {
     arma: "Arco corto",
@@ -822,7 +819,7 @@ var lista_armas = [{
     arma_freq: 8,
     arma_clase: "A. de proyectil",
     arma_tam: "S",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Arco largo",
@@ -834,7 +831,7 @@ var lista_armas = [{
     arma_freq: 7,
     arma_clase: "A. de proyectil",
     arma_tam: "L",
-    arma_especial: "-"
+    arma_especial: "-",
   },
   {
     arma: "Rodela",
@@ -856,7 +853,7 @@ var lista_armas = [{
     arma_esq: 10,
     arma_freq: 10,
     arma_tam: "-",
-    arma_clase: "Escudo"
+    arma_clase: "Escudo",
   },
   {
     arma: "Escudo corporal",
@@ -867,18 +864,19 @@ var lista_armas = [{
     arma_esq: 15,
     arma_freq: 10,
     arma_tam: "-",
-    arma_clase: "Escudo"
-  }
+    arma_clase: "Escudo",
+  },
 ];
 
-var lista_armaduras = [{
+var lista_armaduras = [
+  {
     armadura: "Peto de cuero endurecido",
     def: 20,
     reqarm: 20,
     advertir: "-",
     mov: -10,
     dureza: "Duro",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Peto de cuero tachonado",
@@ -887,7 +885,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -10,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Peto de metal",
@@ -896,7 +894,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -10,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Camisola acolchada",
@@ -905,7 +903,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: 0,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Camisola de cuero",
@@ -914,7 +912,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: 0,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Camisola de piel",
@@ -923,7 +921,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -10,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Camisola de anillas",
@@ -932,7 +930,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -20,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa gabardina",
@@ -941,7 +939,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: 0,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de cuero",
@@ -950,7 +948,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -10,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de mallas",
@@ -959,7 +957,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -10,
     dureza: "Blando",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de piezas",
@@ -968,7 +966,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -20,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de metal",
@@ -977,7 +975,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -30,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa con escamas",
@@ -986,7 +984,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -30,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de placas",
@@ -995,7 +993,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -40,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de placas pesada",
@@ -1004,7 +1002,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -50,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Completa de campaña pesada",
@@ -1013,7 +1011,7 @@ var lista_armaduras = [{
     advertir: "-",
     mov: -60,
     dureza: "Dura",
-    clase: "Armadura"
+    clase: "Armadura",
   },
   {
     armadura: "Yelmo de anillas",
@@ -1022,7 +1020,7 @@ var lista_armaduras = [{
     advertir: 0,
     mov: "-",
     dureza: "Dura",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo frentón",
@@ -1031,7 +1029,7 @@ var lista_armaduras = [{
     advertir: 0,
     mov: "-",
     dureza: "Dura",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo coronilla",
@@ -1040,7 +1038,7 @@ var lista_armaduras = [{
     advertir: 0,
     mov: "-",
     dureza: "Dura",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo de cuero",
@@ -1049,7 +1047,7 @@ var lista_armaduras = [{
     advertir: 0,
     mov: "-",
     dureza: "Blando",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo de maya",
@@ -1058,7 +1056,7 @@ var lista_armaduras = [{
     advertir: -10,
     mov: "-",
     dureza: "Blando",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo completo abierto",
@@ -1067,7 +1065,7 @@ var lista_armaduras = [{
     advertir: -20,
     mov: "-",
     dureza: "Dura",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
   {
     armadura: "Yelmo completo cerrado",
@@ -1076,66 +1074,70 @@ var lista_armaduras = [{
     advertir: -30,
     mov: "-",
     dureza: "Dura",
-    clase: "Yelmo"
+    clase: "Yelmo",
   },
 ];
 
-var lista_tabla_armas_estilos = [{
+var lista_tabla_armas_estilos = [
+  {
     tabla: "ARMAS CORTAS",
-    clase: "Arma corta"
+    clase: "Arma corta",
   },
   {
     tabla: "HACHAS",
-    clase: "Hacha"
+    clase: "Hacha",
   },
   {
     tabla: "MAZAS",
-    clase: "Maza"
+    clase: "Maza",
   },
   {
     tabla: "ESPADAS",
-    clase: "Espada"
+    clase: "Espada",
   },
   {
     tabla: "MANDOBLES",
-    clase: "Mandoble"
+    clase: "Mandoble",
   },
   {
     tabla: "ASTAS",
-    clase: "Asta"
+    clase: "Asta",
   },
   {
     tabla: "CUERDAS",
-    clase: "Cuerda"
+    clase: "Cuerda",
   },
   {
     tabla: "A. DE PROYECTIL",
-    clase: "A. de proyectil"
+    clase: "A. de proyectil",
   },
   {
     tabla: "ESCUDOS",
-    clase: "Escudo"
+    clase: "Escudo",
   },
   {
     tabla: "E. Ambidiestria",
-    clase: "Otro"
+    clase: "Otro",
   },
   {
     tabla: "E. Área",
-    clase: "Otro"
+    clase: "Otro",
   },
   {
     tabla: "E. Precisión",
-    clase: "Otro"
+    clase: "Otro",
   },
   {
     tabla: "E. Desarme",
-    clase: "Otro"
-  }
-]
+    clase: "Otro",
+  },
+];
 
 var lista_movimiento = [
-  1, 1, 1, 1, // 1-4
+  1,
+  1,
+  1,
+  1, // 1-4
   2, // 5
   3, // 6
   4, // 7
@@ -1147,22 +1149,22 @@ var lista_movimiento = [
   10, // 17
   11, // 18-19
   12, // 20
-]
+];
 
 var armaduras_equipadas = {
-  "Dura": null,
-  "Blanda": {
+  Dura: null,
+  Blanda: {
     1: null,
-    2: null
-  }
+    2: null,
+  },
 };
 
 var yelmos_equipados = {
-  "Dura": null,
-  "Blanda": {
+  Dura: null,
+  Blanda: {
     1: null,
-    2: null
-  }
+    2: null,
+  },
 };
 
 for (i = 1; i <= 6; i++) {
@@ -1191,9 +1193,13 @@ for (i = 1; i <= 6; i++) {
         }
       } else {
         if (armadura_clase === "Yelmo") {
-          yelmos_equipados.Blanda[yelmos_equipados.Blanda[1] ? 2 : 1] = armadura_t;
+          yelmos_equipados.Blanda[
+            yelmos_equipados.Blanda[1] ? 2 : 1
+          ] = armadura_t;
         } else {
-          armaduras_equipadas.Blanda[armaduras_equipadas.Blanda[1] ? 2 : 1] = armadura_t;
+          armaduras_equipadas.Blanda[
+            armaduras_equipadas.Blanda[1] ? 2 : 1
+          ] = armadura_t;
         }
       }
     }
@@ -1201,9 +1207,9 @@ for (i = 1; i <= 6; i++) {
 }
 
 var lista_armas_equipadas = {
-  "D": null,
-  "I": null,
-  "D+I": null
+  D: null,
+  I: null,
+  "D+I": null,
 };
 
 for (i = 1; i <= 6; i++) {
@@ -1224,7 +1230,10 @@ for (i = 1; i <= 6; i++) {
       calidad: Number(this.getField("arma" + i + "_calidad").value),
     };
 
-    if (lista_armas_equipadas["D+I"] || (lista_armas_equipadas["I"] && lista_armas_equipadas["D"])) {
+    if (
+      lista_armas_equipadas["D+I"] ||
+      (lista_armas_equipadas["I"] && lista_armas_equipadas["D"])
+    ) {
       // break;
       i = 7;
     }
@@ -1244,7 +1253,7 @@ for (i = 1; i <= 7; i++) {
     tablas_armas_actual.push({
       arma: tabla_arma.value,
       arma_clase: tabla_arma_clase.value,
-      arma_pd: tabla_arma_pd.value
+      arma_pd: tabla_arma_pd.value,
     });
   }
 }
@@ -1273,7 +1282,6 @@ var pd_totales = this.getField("pd_totales");
 
 var mano_dominante = this.getField("mano_dominante");
 var ambidiestria;
-
 
 // Atributos
 
@@ -1377,7 +1385,7 @@ var pventaja_llA = this.getField("pventaja_llA");
 var esp_llA = this.getField("esp_llA");
 var final_llA = this.getField("final_llA");
 
-// Esquiva 
+// Esquiva
 
 var pd_esquiva = this.getField("pd_esquiva");
 var nventaja_esquiva = this.getField("nventaja_esquiva");
@@ -1428,15 +1436,23 @@ var armadura_pie_izq = this.getField("armadura_pie_izq");
 
 var negativo_armadura_cabeza = this.getField("negativo_armadura_cabeza");
 var negativo_armadura_espalda = this.getField("negativo_armadura_espalda");
-var negativo_armadura_hombro_der = this.getField("negativo_armadura_hombro_der");
-var negativo_armadura_hombro_izq = this.getField("negativo_armadura_hombro_izq");
+var negativo_armadura_hombro_der = this.getField(
+  "negativo_armadura_hombro_der"
+);
+var negativo_armadura_hombro_izq = this.getField(
+  "negativo_armadura_hombro_izq"
+);
 var negativo_armadura_pecho = this.getField("negativo_armadura_pecho");
 var negativo_armadura_brazo_der = this.getField("negativo_armadura_brazo_der");
 var negativo_armadura_brazo_izq = this.getField("negativo_armadura_brazo_izq");
 var negativo_armadura_mano_der = this.getField("negativo_armadura_mano_der");
 var negativo_armadura_mano_izq = this.getField("negativo_armadura_mano_izq");
-var negativo_armadura_pierna_der = this.getField("negativo_armadura_pierna_der");
-var negativo_armadura_pierna_izq = this.getField("negativo_armadura_pierna_izq");
+var negativo_armadura_pierna_der = this.getField(
+  "negativo_armadura_pierna_der"
+);
+var negativo_armadura_pierna_izq = this.getField(
+  "negativo_armadura_pierna_izq"
+);
 var negativo_armadura_pie_der = this.getField("negativo_armadura_pie_der");
 var negativo_armadura_pie_izq = this.getField("negativo_armadura_pie_izq");
 
@@ -1494,7 +1510,6 @@ var equipo_escuchar = this.getField("equipo_escuchar");
 var equipo_buscar = this.getField("equipo_buscar");
 var equipo_rastrear = this.getField("equipo_rastrear");
 
-
 var armadura_cabeza_total,
   armadura_espalda_total,
   armadura_hombro_der_total,
@@ -1525,7 +1540,6 @@ var armadura_cabeza_lista,
 
 var puntos_base_v, restriccion_mov_armadura;
 
-
 function log(k, v) {
   if (v === undefined) {
     console.println(k);
@@ -1542,10 +1556,20 @@ function v_armadura_check(event) {
   var armadura_dureza = this.getField("armadura" + posicion + "_dureza").value;
   if (event.value === "Eq.") {
     if (
-      (armadura_clase === "Yelmo" && armadura_dureza === "Dura" && yelmos_equipados.Dura) ||
-      (armadura_clase === "Yelmo" && armadura_dureza === "Blanda" && yelmos_equipados.Blanda[1] && yelmos_equipados.Blanda[2]) ||
-      (armadura_clase !== "Yelmo" && armadura_dureza === "Dura" && armaduras_equipadas.Dura) ||
-      (armadura_clase !== "Yelmo" && armadura_dureza === "Blanda" && armaduras_equipadas.Blanda[1] && armaduras_equipadas.Blanda[2])
+      (armadura_clase === "Yelmo" &&
+        armadura_dureza === "Dura" &&
+        yelmos_equipados.Dura) ||
+      (armadura_clase === "Yelmo" &&
+        armadura_dureza === "Blanda" &&
+        yelmos_equipados.Blanda[1] &&
+        yelmos_equipados.Blanda[2]) ||
+      (armadura_clase !== "Yelmo" &&
+        armadura_dureza === "Dura" &&
+        armaduras_equipadas.Dura) ||
+      (armadura_clase !== "Yelmo" &&
+        armadura_dureza === "Blanda" &&
+        armaduras_equipadas.Blanda[1] &&
+        armaduras_equipadas.Blanda[2])
     ) {
       event.rc = false;
     } else {
@@ -1553,17 +1577,21 @@ function v_armadura_check(event) {
 
       aplicarNegativosArmadura(posicion);
 
-      equiparArmaduraYelmo({
-        posicion: posicion,
-        armadura: this.getField("armadura" + posicion).value,
-        def: this.getField("armadura" + posicion + "_def").value,
-        reqarm: this.getField("armadura" + posicion + "_reqarm").value,
-        advertir: this.getField("armadura" + posicion + "_advertir").value,
-        mov: this.getField("armadura" + posicion + "_mov").value,
-        dureza: armadura_dureza,
-        clase: armadura_clase,
-        calidad: this.getField("armadura" + posicion + "_calidad").value,
-      }, armadura_clase, armadura_dureza);
+      equiparArmaduraYelmo(
+        {
+          posicion: posicion,
+          armadura: this.getField("armadura" + posicion).value,
+          def: this.getField("armadura" + posicion + "_def").value,
+          reqarm: this.getField("armadura" + posicion + "_reqarm").value,
+          advertir: this.getField("armadura" + posicion + "_advertir").value,
+          mov: this.getField("armadura" + posicion + "_mov").value,
+          dureza: armadura_dureza,
+          clase: armadura_clase,
+          calidad: this.getField("armadura" + posicion + "_calidad").value,
+        },
+        armadura_clase,
+        armadura_dureza
+      );
     }
   } else {
     resetAtributosArmadura(posicion);
@@ -1593,8 +1621,18 @@ function v_arma_check(event) {
   var arma = this.getField("arma" + posicion);
   var arma_clase = this.getField("arma" + posicion + "_clase");
   if (
-    (arma.value === "-") ||
-    (arma_clase.value === "A. de proyectil" && (event.value === "D" || event.value === "I"))) {
+    arma.value === "-" ||
+    (arma_clase.value === "A. de proyectil" &&
+      (event.value === "D" || event.value === "I")) ||
+    (lista_armas_equipadas["D"] &&
+      (event.value === "D" || event.value === "D+I") &&
+      Number(lista_armas_equipadas["D"].posicion) !== Number(posicion)) ||
+    (lista_armas_equipadas["I"] &&
+      (event.value === "I" || event.value === "D+I") &&
+      Number(lista_armas_equipadas["I"].posicion) !== Number(posicion)) ||
+    (lista_armas_equipadas["D+I"] &&
+      (event.value === "I" || event.value === "D" || event.value === "D+I"))
+  ) {
     event.rc = false;
   } else if (event.value === "-") {
     lista_armas_equipadas[mano_a_desequipar] = null;
@@ -1603,7 +1641,9 @@ function v_arma_check(event) {
     if (
       !lista_armas_equipadas["D"] &&
       !lista_armas_equipadas["I"] &&
-      !lista_armas_equipadas["D+I"]) { // Combate desarmado
+      !lista_armas_equipadas["D+I"]
+    ) {
+      // Combate desarmado
 
       arma0_check.value = "D+I";
       resetAtributosArma(0);
@@ -1613,43 +1653,44 @@ function v_arma_check(event) {
       actualizarAtaque();
       actualizarParada();
       actualizarEsquiva();
-
     }
   } else {
     if (mano_a_desequipar !== "-") {
       lista_armas_equipadas[mano_a_desequipar] = null;
     }
 
-    if (lista_armas_equipadas["D"]) {
-      if (event.value === "D" || event.value === "D+I") {
-        if (this.getField("arma" + lista_armas_equipadas["D"].posicion) === posicion) {
-          event.value = "-"
-        } else {
-          this.getField("arma" + lista_armas_equipadas["D"].posicion + "_check").value = "-";
-        }
-        resetAtributosArma(lista_armas_equipadas["D"].posicion);
-        lista_armas_equipadas["D"] = null;
-      }
-    }
+    // if (lista_armas_equipadas["D"]) {
+    //   if (event.value === "D" || event.value === "D+I") {
+    //     if (Number(lista_armas_equipadas["D"].posicion) !== Number(posicion)) {
+    //       this.getField(
+    //         "arma" + lista_armas_equipadas["D"].posicion + "_check"
+    //       ).value = "-";
+    //     }
+    //     // resetAtributosArma(lista_armas_equipadas["D"].posicion);
+    //     // lista_armas_equipadas["D"] = null;
+    //   }
+    // }
 
-    if (lista_armas_equipadas["I"]) {
-      if (event.value === "I" || event.value === "D+I") {
-        if (this.getField("arma" + lista_armas_equipadas["I"].posicion) === posicion) {
-          event.value = "-"
-        } else {
-          this.getField("arma" + lista_armas_equipadas["I"].posicion + "_check").value = "-";
-        }
-        resetAtributosArma(lista_armas_equipadas["I"].posicion);
+    // if (lista_armas_equipadas["I"]) {
+    //   if (event.value === "I" || event.value === "D+I") {
+    //     if (Number(lista_armas_equipadas["I"].posicion) !== Number(posicion)) {
+    //       this.getField(
+    //         "arma" + lista_armas_equipadas["I"].posicion + "_check"
+    //       ).value = "-";
+    //     }
+    //     // resetAtributosArma(lista_armas_equipadas["I"].posicion);
 
-        lista_armas_equipadas["I"] = null;
-      }
-    }
+    //     // lista_armas_equipadas["I"] = null;
+    //   }
+    // }
 
-    if (lista_armas_equipadas["D+I"]) {
-      this.getField("arma" + lista_armas_equipadas["D+I"].posicion + "_check").value = "-";
-      lista_armas_equipadas["D+I"] = null;
-      resetAtributosArma(lista_armas_equipadas["D+I"].posicion);
-    }
+    // if (lista_armas_equipadas["D+I"]) {
+    //   this.getField(
+    //     "arma" + lista_armas_equipadas["D+I"].posicion + "_check"
+    //   ).value = "-";
+    //   // resetAtributosArma(lista_armas_equipadas["D+I"].posicion);
+    //   // lista_armas_equipadas["D+I"] = null;
+    // }
 
     /*
   
@@ -1684,7 +1725,6 @@ function v_arma_check(event) {
 
     arma0_check.value = "-";
 
-
     resetAtributosArma(posicion);
     aplicarNegativosAlArma(posicion, event.value);
 
@@ -1695,7 +1735,9 @@ function v_arma_check(event) {
       par: Number(this.getField("arma" + posicion + "_par").value),
       esq: Number(this.getField("arma" + posicion + "_esq").value),
       db: Number(this.getField("arma" + posicion + "_db").value),
-      iniciativa: Number(this.getField("arma" + posicion + "_iniciativa").value),
+      iniciativa: Number(
+        this.getField("arma" + posicion + "_iniciativa").value
+      ),
       freq: Number(this.getField("arma" + posicion + "_freq").value),
       clase: arma_clase.value,
       tam: this.getField("arma" + posicion + "_tam").value,
@@ -1716,13 +1758,8 @@ function v_arma_check(event) {
     actualizarAtaque();
     actualizarParada();
     actualizarEsquiva();
-
-
   }
-
 }
-
-
 
 function v_arma(event) {
   this.getField(event.target.name + "_calidad").value = 0;
@@ -1730,11 +1767,8 @@ function v_arma(event) {
 
   var posicion = event.target.name.substr(4, 1);
 
-
   resetAtributosArma(posicion, event.value);
 }
-
-
 
 function v_arma_calidad(event) {
   var i = event.target.name.substr(4, 1);
@@ -1881,11 +1915,12 @@ function v_pd_ataque(event) {
   if (Number(event.value) <= 0) {
     event.value = 0;
   } else if (
-    (
-      Number(event.value) +
+    Number(event.value) +
       Number(pd_parada.value) +
       Number(pd_esquiva.value) +
-      Number(pd_llA.value) > limite_pd_combate) || Number(event.value) > limite_pd_combate / 4
+      Number(pd_llA.value) >
+      limite_pd_combate ||
+    Number(event.value) > limite_pd_combate / 4
   ) {
     event.rc = false;
   } else {
@@ -1903,8 +1938,12 @@ function v_pd_esquiva(event) {
   if (Number(event.value) <= 0) {
     event.value = 0;
   } else if (
-    (Number(event.value) + Number(pd_ataque.value) + Number(pd_parada.value) + Number(pd_llA.value)) >
-    limite_pd_combate || Number(event.value) > limite_pd_combate / 4
+    Number(event.value) +
+      Number(pd_ataque.value) +
+      Number(pd_parada.value) +
+      Number(pd_llA.value) >
+      limite_pd_combate ||
+    Number(event.value) > limite_pd_combate / 4
   ) {
     event.rc = false;
   } else {
@@ -1921,8 +1960,12 @@ function v_pd_parada(event) {
   if (Number(event.value) <= 0) {
     event.value = 0;
   } else if (
-    Number(event.value) + Number(pd_ataque.value) + Number(pd_esquiva.value) + Number(pd_llA.value) >
-    limite_pd_combate || Number(event.value) > limite_pd_combate / 4
+    Number(event.value) +
+      Number(pd_ataque.value) +
+      Number(pd_esquiva.value) +
+      Number(pd_llA.value) >
+      limite_pd_combate ||
+    Number(event.value) > limite_pd_combate / 4
   ) {
     event.rc = false;
   } else {
@@ -1939,8 +1982,12 @@ function v_pd_llA(event) {
   if (Number(event.value) <= 0) {
     event.value = 0;
   } else if (
-    Number(event.value) + Number(pd_ataque.value) + Number(pd_esquiva.value) + Number(pd_parada.value) >
-    limite_pd_combate || Number(event.value) > limite_pd_combate / 10
+    Number(event.value) +
+      Number(pd_ataque.value) +
+      Number(pd_esquiva.value) +
+      Number(pd_parada.value) >
+      limite_pd_combate ||
+    Number(event.value) > limite_pd_combate / 10
   ) {
     event.rc = false;
   } else {
@@ -1953,14 +2000,21 @@ function v_tabla_arma(event) {
   var coste_pd = this.getField(event.target.name + "_pd");
   var arma_clase = this.getField(event.target.name + "_clase");
 
-  if ((posicion > 1 && this.getField("tabla_arma" + (posicion - 1)).value === "-") || (posicion < 7 && this.getField("tabla_arma" + (posicion + 1)).value !== "-")) {
+  if (
+    (posicion > 1 &&
+      this.getField("tabla_arma" + (posicion - 1)).value === "-") ||
+    (posicion < 7 && this.getField("tabla_arma" + (posicion + 1)).value !== "-")
+  ) {
     event.rc = false;
   } else {
     if (event.value === "-") {
       coste_pd.value = 0;
       arma_clase.value = "-";
       tablas_armas_actual.pop();
-    } else if (event.value === event.value.toUpperCase() || event.value.substr(0, 3) === "E. ") {
+    } else if (
+      event.value === event.value.toUpperCase() ||
+      event.value.substr(0, 3) === "E. "
+    ) {
       coste_pd.value = 25;
       lista_tabla_armas_estilos.some(function (tabla_arma) {
         if (tabla_arma.tabla === event.value) {
@@ -2000,17 +2054,28 @@ function v_tabla_arma(event) {
       resetAtributosArma(lista_armas_equipadas["D"].posicion);
       aplicarNegativosAlArma(lista_armas_equipadas["D"].posicion, "D");
 
-      lista_armas_equipadas["D"].atq = Number(this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq").value);
-      lista_armas_equipadas["D"].par = Number(this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par").value);
-
+      lista_armas_equipadas["D"].atq = Number(
+        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq")
+          .value
+      );
+      lista_armas_equipadas["D"].par = Number(
+        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par")
+          .value
+      );
     }
 
     if (lista_armas_equipadas["I"]) {
       resetAtributosArma(lista_armas_equipadas["I"].posicion);
       aplicarNegativosAlArma(lista_armas_equipadas["I"].posicion, "I");
 
-      lista_armas_equipadas["I"].atq = Number(this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq").value);
-      lista_armas_equipadas["I"].par = Number(this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par").value);
+      lista_armas_equipadas["I"].atq = Number(
+        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq")
+          .value
+      );
+      lista_armas_equipadas["I"].par = Number(
+        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par")
+          .value
+      );
     }
 
     if (lista_armas_equipadas["D+I"]) {
@@ -2019,37 +2084,55 @@ function v_tabla_arma(event) {
       resetAtributosArma(lista_armas_equipadas["D"].posicion);
       aplicarNegativosAlArma(lista_armas_equipadas["D"].posicion, "D");
 
-      lista_armas_equipadas["D"].atq = Number(this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq").value);
-      lista_armas_equipadas["D"].par = Number(this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par").value);
-      lista_armas_equipadas["I"].atq = Number(this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq").value);
-      lista_armas_equipadas["I"].par = Number(this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par").value);
+      lista_armas_equipadas["D"].atq = Number(
+        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_atq")
+          .value
+      );
+      lista_armas_equipadas["D"].par = Number(
+        this.getField("arma" + lista_armas_equipadas["D"].posicion + "_par")
+          .value
+      );
+      lista_armas_equipadas["I"].atq = Number(
+        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_atq")
+          .value
+      );
+      lista_armas_equipadas["I"].par = Number(
+        this.getField("arma" + lista_armas_equipadas["I"].posicion + "_par")
+          .value
+      );
     }
 
     actualizarAtaque();
     actualizarParada();
-
   }
 }
 
 function v_atributo(event) {
   var atributo = event.target.name.substr(0, 3);
-  var atributo_puntos = event.target.name === atributo + "_puntos" ? Number(event.value) : Number(this.getField(atributo + "_puntos").value);
-  var atributo_base = event.target.name === atributo + "_base" ? Number(event.value) : Number(this.getField(atributo + "_base").value);
+  var atributo_puntos =
+    event.target.name === atributo + "_puntos"
+      ? Number(event.value)
+      : Number(this.getField(atributo + "_puntos").value);
+  var atributo_base =
+    event.target.name === atributo + "_base"
+      ? Number(event.value)
+      : Number(this.getField(atributo + "_base").value);
   var atributo_actual = this.getField(atributo + "_actual");
   var atributo_bono = this.getField(atributo + "_bono");
 
   if (
     atributo_puntos < 0 ||
     pventaja_restantes.value - atributo_puntos < 0 ||
-    atributo_base > 20 || atributo_base < 1
+    atributo_base > 20 ||
+    atributo_base < 1
   ) {
     event.rc = false;
   } else {
-    pventaja_restantes.value = Number(pventaja_restantes.value) - atributo_puntos;
+    pventaja_restantes.value =
+      Number(pventaja_restantes.value) - atributo_puntos;
     atributo_actual.value = Number(atributo_base) + atributo_puntos;
 
     atributo_bono.value = lista_bonos[Number(atributo_actual.value)];
-
 
     switch (atributo) {
       case "agi":
@@ -2157,7 +2240,6 @@ function v_atributo(event) {
             break;
         }
 
-
         for (var i = 0; i <= 6; i++) {
           var arma_fue_bono = this.getField("arma" + i + "arma_fue_bono");
           var arma_check = this.getField("arma" + i + "arma_check");
@@ -2173,11 +2255,11 @@ function v_atributo(event) {
             } else {
               arma_fue_bono.value = Number(fue_bono.value);
             }
-
           }
 
-          arma_df.value = Math.ceil(Number(arma_db.value) + arma_fue_bono.value);
-
+          arma_df.value = Math.ceil(
+            Number(arma_db.value) + arma_fue_bono.value
+          );
         }
 
         actualizarTablaDiferencias();
@@ -2204,7 +2286,10 @@ function v_atributo(event) {
 function v_nventaja_combate(event) {
   var pventaja = this.getField("p" + event.target.name.substr(1));
 
-  pventaja.value = Math.min(50, Number(event.value) * 5 * Math.floor(Number(nivel.value) / 2));
+  pventaja.value = Math.min(
+    50,
+    Number(event.value) * 5 * Math.floor(Number(nivel.value) / 2)
+  );
 
   switch (event.target.name.substr(9)) {
     case "ataque":
@@ -2224,7 +2309,8 @@ function v_nventaja_combate(event) {
 function v_nventaja_llA(event) {
   var pventaja = this.getField("pventaja_llA");
 
-  pventaja.value = Number(event.value) * 5 * Math.floor(Number(nivel.value) / 2);
+  pventaja.value =
+    Number(event.value) * 5 * Math.floor(Number(nivel.value) / 2);
 
   actualizarLlA();
 }
@@ -2269,12 +2355,17 @@ function resetAtributosArma(posicion, arma_nueva) {
   } else {
     lista_armas.some(function (l_arma) {
       if (l_arma.arma === arma) {
-        arma_atq.value = Number(l_arma.arma_atq) + (5 * Number(arma_calidad.value));
-        arma_par.value = Number(l_arma.arma_par) + (5 * Number(arma_calidad.value));
+        arma_atq.value =
+          Number(l_arma.arma_atq) + 5 * Number(arma_calidad.value);
+        arma_par.value =
+          Number(l_arma.arma_par) + 5 * Number(arma_calidad.value);
         arma_esq.value = l_arma.arma_esq;
-        arma_db.value = Number(l_arma.arma_db) + (10 * Number(arma_calidad.value));
-        arma_fue_bono.value = arma_clase.value === "A. de proyectil" ? 0 : Number(fue_bono.value);
-        arma_iniciativa.value = Number(l_arma.arma_iniciativa) + (5 * Number(arma_calidad.value));
+        arma_db.value =
+          Number(l_arma.arma_db) + 10 * Number(arma_calidad.value);
+        arma_fue_bono.value =
+          arma_clase.value === "A. de proyectil" ? 0 : Number(fue_bono.value);
+        arma_iniciativa.value =
+          Number(l_arma.arma_iniciativa) + 5 * Number(arma_calidad.value);
         arma_freq.value = l_arma.arma_freq;
         arma_clase.value = l_arma.arma_clase;
         arma_tam.value = l_arma.arma_tam;
@@ -2288,7 +2379,9 @@ function resetAtributosArma(posicion, arma_nueva) {
 }
 
 function resetAtributosArmadura(posicion, armadura_nueva) {
-  var armadura = armadura_nueva ? armadura_nueva : this.getField("armadura" + posicion).value;
+  var armadura = armadura_nueva
+    ? armadura_nueva
+    : this.getField("armadura" + posicion).value;
   var armadura_def = this.getField("armadura" + posicion + "_def");
   var armadura_reqarm = this.getField("armadura" + posicion + "_reqarm");
   var armadura_advertir = this.getField("armadura" + posicion + "_advertir");
@@ -2310,21 +2403,31 @@ function resetAtributosArmadura(posicion, armadura_nueva) {
   } else {
     lista_armaduras.some(function (l_armadura) {
       if (l_armadura.armadura === armadura) {
-        armadura_def.value = l_armadura.def + (10 * Number(armadura_calidad.value));
-        armadura_reqarm.value = Math.max(0, Number(l_armadura.reqarm) - 5 * Number(armadura_calidad.value));
-        armadura_advertir.value = l_armadura.advertir === "-" ? "-" : Math.min(
+        armadura_def.value =
+          l_armadura.def + 10 * Number(armadura_calidad.value);
+        armadura_reqarm.value = Math.max(
           0,
-          Number(l_armadura.advertir) + 5 * Number(armadura_calidad.value)
+          Number(l_armadura.reqarm) - 5 * Number(armadura_calidad.value)
         );
-        armadura_mov.value = l_armadura.mov === "-" ? "-" : Math.min(
-          0,
-          Number(l_armadura.mov) + 5 * Number(armadura_calidad.value)
-        );
+        armadura_advertir.value =
+          l_armadura.advertir === "-"
+            ? "-"
+            : Math.min(
+                0,
+                Number(l_armadura.advertir) + 5 * Number(armadura_calidad.value)
+              );
+        armadura_mov.value =
+          l_armadura.mov === "-"
+            ? "-"
+            : Math.min(
+                0,
+                Number(l_armadura.mov) + 5 * Number(armadura_calidad.value)
+              );
         armadura_dureza.value = l_armadura.dureza;
 
         return true;
       }
-    })
+    });
   }
 }
 
@@ -2369,8 +2472,7 @@ function aplicarNegativosAlArma(posicion, check) {
 
   // Negativos por no tener fuerza requerida
   if (arma_freq.value !== "-") {
-    var fue_req_diff =
-      Number(arma_freq.value) - Number(fue_actual.value);
+    var fue_req_diff = Number(arma_freq.value) - Number(fue_actual.value);
     if (fue_req_diff > 0) {
       arma_atq.value -= 5 * fue_req_diff;
       arma_par.value -= 5 * fue_req_diff;
@@ -2384,7 +2486,10 @@ function aplicarNegativosAlArma(posicion, check) {
   }
 
   // Negativos según el tamaño si no se usa con las dos manos
-  if (check === "D" && lista_armas_equipadas["I"] || check === "I" && lista_armas_equipadas["D"]) {
+  if (
+    (check === "D" && lista_armas_equipadas["I"]) ||
+    (check === "I" && lista_armas_equipadas["D"])
+  ) {
     switch (arma_tam.value) {
       case "S":
         arma_atq.value += -20;
@@ -2401,7 +2506,10 @@ function aplicarNegativosAlArma(posicion, check) {
       default:
         break;
     }
-  } else if (check === "D" && !lista_armas_equipadas["I"] || check === "I" && !lista_armas_equipadas["D"]) {
+  } else if (
+    (check === "D" && !lista_armas_equipadas["I"]) ||
+    (check === "I" && !lista_armas_equipadas["D"])
+  ) {
     switch (arma_tam.value) {
       case "S":
         arma_atq.value += -10;
@@ -2430,9 +2538,13 @@ function aplicarNegativosArmadura(posicion) {
 
   if (armadura_reqarm.value > final_llA.value) {
     if (armadura_clase === "Yelmo") {
-      armadura_advertir.value = Number(armadura_advertir.value) - (Number(armadura_reqarm.value) - Number(final_llA.value));
+      armadura_advertir.value =
+        Number(armadura_advertir.value) -
+        (Number(armadura_reqarm.value) - Number(final_llA.value));
     } else {
-      armadura_mov.value = Number(armadura_mov.value) - (Number(armadura_reqarm.value) - Number(final_llA.value));
+      armadura_mov.value =
+        Number(armadura_mov.value) -
+        (Number(armadura_reqarm.value) - Number(final_llA.value));
     }
     equipo_ver.value = armadura_advertir.value;
     equipo_escuchar.value = armadura_advertir.value;
@@ -2447,13 +2559,14 @@ function aplicarNegativosArmadura(posicion) {
     if (armadura_clase === "Yelmo") {
       armadura_advertir.value = Math.min(
         0,
-        Number(armadura_advertir.value) + Math.floor((final_llA_v.value - armadura_reqarm.value) / 50) * 10
+        Number(armadura_advertir.value) +
+          Math.floor((final_llA_v.value - armadura_reqarm.value) / 50) * 10
       );
-
     } else {
       armadura_mov.value = Math.min(
         0,
-        Number(armadura_mov.value) + Math.floor((final_llA_v.value - armadura_reqarm.value) / 50) * 10
+        Number(armadura_mov.value) +
+          Math.floor((final_llA_v.value - armadura_reqarm.value) / 50) * 10
       );
     }
     equipo_acrobacias.value = armadura_mov.value;
@@ -2470,7 +2583,6 @@ function aplicarNegativosArmadura(posicion) {
     actualizarHabilidad("ocultarse");
     actualizarHabilidad("sigilo");
   }
-
 }
 
 function actualizarHabilidad(habilidad) {
@@ -2494,25 +2606,33 @@ function actualizarHabilidad(habilidad) {
         return true;
       }
     });
-
   }
 
-
-  final_habilidad.value = Number(base_habilidad.value) + bono + Number(pventaja_habilidad.value) + Number(equipo_habilidad.value);
+  final_habilidad.value =
+    Number(base_habilidad.value) +
+    bono +
+    Number(pventaja_habilidad.value) +
+    Number(equipo_habilidad.value);
 }
 
 function desequiparArmaduraYelmo(posicion) {
   var encontrado = false;
   var clase = "";
 
-  if (armaduras_equipadas.Dura && armaduras_equipadas.Dura.posicion === posicion) {
+  if (
+    armaduras_equipadas.Dura &&
+    armaduras_equipadas.Dura.posicion === posicion
+  ) {
     clase = "Armadura";
     armaduras_equipadas.Dura = null;
     encontrado = true;
   }
 
   if (!encontrado) {
-    if (armaduras_equipadas.Blanda[1] && armaduras_equipadas.Blanda[1].posicion === posicion) {
+    if (
+      armaduras_equipadas.Blanda[1] &&
+      armaduras_equipadas.Blanda[1].posicion === posicion
+    ) {
       clase = "Armadura";
       armaduras_equipadas.Blanda[1] = null;
       encontrado = true;
@@ -2520,7 +2640,10 @@ function desequiparArmaduraYelmo(posicion) {
   }
 
   if (!encontrado) {
-    if (armaduras_equipadas.Blanda[2] && armaduras_equipadas.Blanda[2].posicion === posicion) {
+    if (
+      armaduras_equipadas.Blanda[2] &&
+      armaduras_equipadas.Blanda[2].posicion === posicion
+    ) {
       clase = "Armadura";
       armaduras_equipadas.Blanda[2] = null;
       encontrado = true;
@@ -2536,7 +2659,10 @@ function desequiparArmaduraYelmo(posicion) {
   }
 
   if (!encontrado) {
-    if (yelmos_equipados.Blanda[1] && yelmos_equipados.Blanda[1].posicion === posicion) {
+    if (
+      yelmos_equipados.Blanda[1] &&
+      yelmos_equipados.Blanda[1].posicion === posicion
+    ) {
       clase = "Yelmo";
       yelmos_equipados.Blanda[1] = null;
       encontrado = true;
@@ -2544,7 +2670,10 @@ function desequiparArmaduraYelmo(posicion) {
   }
 
   if (!encontrado) {
-    if (yelmos_equipados.Blanda[2] && yelmos_equipados.Blanda[2].posicion === posicion) {
+    if (
+      yelmos_equipados.Blanda[2] &&
+      yelmos_equipados.Blanda[2].posicion === posicion
+    ) {
       clase = "Yelmo";
       yelmos_equipados.Blanda[2] = null;
       encontrado = true;
@@ -2562,7 +2691,6 @@ function desequiparArmaduraYelmo(posicion) {
     actualizarHabilidad("buscar");
     actualizarHabilidad("rastrear");
   } else {
-
     equipo_acrobacias.value = 0;
     equipo_atletismo.value = 0;
     equipo_nadar.value = 0;
@@ -2577,36 +2705,47 @@ function desequiparArmaduraYelmo(posicion) {
     actualizarHabilidad("ocultarse");
     actualizarHabilidad("sigilo");
   }
-
 }
 
 function equiparArmaduraYelmo(armadura_yelmo, clase, dureza) {
   if (clase === "Yelmo") {
     if (dureza === "Blanda") {
-      yelmos_equipados.Blanda[yelmos_equipados.Blanda[1] ? 2 : 1] = armadura_yelmo;
+      yelmos_equipados.Blanda[
+        yelmos_equipados.Blanda[1] ? 2 : 1
+      ] = armadura_yelmo;
     } else {
       yelmos_equipados.Dura = armadura_yelmo;
     }
   } else {
     if (dureza === "Blanda") {
-      armaduras_equipadas.Blanda[armaduras_equipadas.Blanda[1] ? 2 : 1] = armadura_yelmo;
+      armaduras_equipadas.Blanda[
+        armaduras_equipadas.Blanda[1] ? 2 : 1
+      ] = armadura_yelmo;
     } else {
       armaduras_equipadas.Dura = armadura_yelmo;
     }
   }
 }
 
-
 function actualizarIniciativa() {
   if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
     arma_iniciativa_total.value = Number(lista_armas_equipadas["D"].iniciativa);
   } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
     arma_iniciativa_total.value = Number(lista_armas_equipadas["I"].iniciativa);
-  } else if (lista_armas_equipadas["I"] !== null && lista_armas_equipadas["D"] !== null) {
-    equipo_esquiva.value = Number(lista_armas_equipadas["I"].esq) + Number(lista_armas_equipadas["D"].esq);
-    arma_iniciativa_total.value = Number(lista_armas_equipadas["I"].iniciativa) + Number(lista_armas_equipadas["D"].iniciativa);
+  } else if (
+    lista_armas_equipadas["I"] !== null &&
+    lista_armas_equipadas["D"] !== null
+  ) {
+    equipo_esquiva.value =
+      Number(lista_armas_equipadas["I"].esq) +
+      Number(lista_armas_equipadas["D"].esq);
+    arma_iniciativa_total.value =
+      Number(lista_armas_equipadas["I"].iniciativa) +
+      Number(lista_armas_equipadas["D"].iniciativa);
   } else if (lista_armas_equipadas["D+I"] !== null) {
-    arma_iniciativa_total.value = Number(lista_armas_equipadas["D+I"].iniciativa);
+    arma_iniciativa_total.value = Number(
+      lista_armas_equipadas["D+I"].iniciativa
+    );
   } else {
     arma_iniciativa_total.value = Number(arma0_iniciativa.value);
   }
@@ -2634,7 +2773,10 @@ function actualizarAtaque() {
   } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
     equipo_ataque_d.value = "-";
     equipo_ataque_i.value = lista_armas_equipadas["I"].atq;
-  } else if (lista_armas_equipadas["I"] !== null && lista_armas_equipadas["D"] !== null) {
+  } else if (
+    lista_armas_equipadas["I"] !== null &&
+    lista_armas_equipadas["D"] !== null
+  ) {
     equipo_ataque_d.value = lista_armas_equipadas["D"].atq;
     equipo_ataque_i.value = lista_armas_equipadas["I"].atq;
   } else if (lista_armas_equipadas["D+I"] !== null) {
@@ -2665,7 +2807,6 @@ function actualizarAtaque() {
       Number(equipo_ataque_i.value) +
       Number(esp_ataque_i.value);
   }
-
 }
 
 function actualizarParada() {
@@ -2675,7 +2816,10 @@ function actualizarParada() {
   } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
     equipo_parada_d.value = "-";
     equipo_parada_i.value = lista_armas_equipadas["I"].atq;
-  } else if (lista_armas_equipadas["I"] !== null && lista_armas_equipadas["D"] !== null) {
+  } else if (
+    lista_armas_equipadas["I"] !== null &&
+    lista_armas_equipadas["D"] !== null
+  ) {
     equipo_parada_d.value = lista_armas_equipadas["D"].atq;
     equipo_parada_i.value = lista_armas_equipadas["I"].atq;
   } else if (lista_armas_equipadas["D+I"] !== null) {
@@ -2708,14 +2852,18 @@ function actualizarParada() {
   }
 }
 
-
 function actualizarEsquiva() {
   if (lista_armas_equipadas["D"] && !lista_armas_equipadas["I"]) {
     equipo_esquiva.value = lista_armas_equipadas["D"].esq;
   } else if (!lista_armas_equipadas["D"] && lista_armas_equipadas["I"]) {
     equipo_esquiva.value = lista_armas_equipadas["I"].esq;
-  } else if (lista_armas_equipadas["I"] !== null && lista_armas_equipadas["D"] !== null) {
-    equipo_esquiva.value = Number(lista_armas_equipadas["I"].esq) + Number(lista_armas_equipadas["D"].esq);
+  } else if (
+    lista_armas_equipadas["I"] !== null &&
+    lista_armas_equipadas["D"] !== null
+  ) {
+    equipo_esquiva.value =
+      Number(lista_armas_equipadas["I"].esq) +
+      Number(lista_armas_equipadas["D"].esq);
   } else if (lista_armas_equipadas["D+I"] !== null) {
     equipo_esquiva.value = Number(lista_armas_equipadas["D+I"].esq);
   } else {
@@ -2730,12 +2878,14 @@ function actualizarEsquiva() {
 }
 
 function actualizarLlA(event) {
-  var pd_llA_e = (event && event.target.name) === "pd_llA" ? Number(event.value) : Number(pd_llA.value);
-  final_llA.value = pd_llA_e + Number(fue_bono.value) + Number(pventaja_llA.value);
+  var pd_llA_e =
+    (event && event.target.name) === "pd_llA"
+      ? Number(event.value)
+      : Number(pd_llA.value);
+  final_llA.value =
+    pd_llA_e + Number(fue_bono.value) + Number(pventaja_llA.value);
 
   var armadura_posicion;
-
-
 
   if (armaduras_equipadas["Dura"]) {
     armadura_posicion = armaduras_equipadas["Dura"].posicion;
@@ -2764,15 +2914,12 @@ function actualizarLlA(event) {
   resetAtributosArmadura(armadura_posicion);
 
   aplicarNegativosArmadura(armadura_posicion);
-
-
 }
 
 function actualizarTablaDiferencias() {
   // Actualizar tablas diferencias
 
   for (i = 10; i <= 200; i = i + 10) {
-
     var a1 = this.getField("a1_" + i); // Izquierda
     var a2 = this.getField("a2_" + i); // Derecha
 
@@ -2791,14 +2938,11 @@ function actualizarTablaDiferencias() {
           (Number(lista_armas_equipadas["I"].df) * i) / 500
         );
       } else {
-        if (!lista_armas_equipadas["D"]) { // combate desarmado
-          a1.value = Math.round(
-            (Number(arma0_df.value) * i) / 500
-          );
+        if (!lista_armas_equipadas["D"]) {
+          // combate desarmado
+          a1.value = Math.round((Number(arma0_df.value) * i) / 500);
 
-          a2.value = Math.round(
-            (Number(arma0_df.value) * i) / 500
-          );
+          a2.value = Math.round((Number(arma0_df.value) * i) / 500);
         } else {
           a1.value = "-";
         }
@@ -2834,7 +2978,8 @@ function actualizarDiffX(event) {
         (Number(lista_armas_equipadas["I"].df) * diff_x_e.value) / 500
       );
     } else {
-      if (!lista_armas_equipadas["D"]) { // combate desarmado
+      if (!lista_armas_equipadas["D"]) {
+        // combate desarmado
         a1_x.value = Math.round(
           (Number(arma0_df.value) * diff_x_e.value) / 500
         );
@@ -2857,14 +3002,13 @@ function actualizarDiffX(event) {
   }
 }
 
-
-function logListaArmasEquipadas() {
+function armas_equipadas() {
   var str = "\n";
   for (var z in lista_armas_equipadas) {
     const element_z = lista_armas_equipadas[z];
     str += z + ": {\n";
     for (var v in element_z) {
-      str += v + ": " + element_z[v] + ",\n"
+      str += v + ": " + element_z[v] + ",\n";
     }
     str += "}\n";
   }
