@@ -875,7 +875,7 @@ var lista_armaduras = [
     reqarm: 20,
     advertir: "-",
     mov: -10,
-    dureza: "Duro",
+    dureza: "Dura",
     clase: "Armadura",
   },
   {
@@ -1153,7 +1153,7 @@ var lista_movimiento = [
 
 var armaduras_equipadas = {
   Dura: null,
-  Blanda: {
+  Blando: {
     1: null,
     2: null,
   },
@@ -1161,7 +1161,7 @@ var armaduras_equipadas = {
 
 var yelmos_equipados = {
   Dura: null,
-  Blanda: {
+  Blando: {
     1: null,
     2: null,
   },
@@ -1193,12 +1193,12 @@ for (i = 1; i <= 6; i++) {
         }
       } else {
         if (armadura_clase === "Yelmo") {
-          yelmos_equipados.Blanda[
-            yelmos_equipados.Blanda[1] ? 2 : 1
+          yelmos_equipados.Blando[
+            yelmos_equipados.Blando[1] ? 2 : 1
           ] = armadura_t;
         } else {
-          armaduras_equipadas.Blanda[
-            armaduras_equipadas.Blanda[1] ? 2 : 1
+          armaduras_equipadas.Blando[
+            armaduras_equipadas.Blando[1] ? 2 : 1
           ] = armadura_t;
         }
       }
@@ -1560,16 +1560,16 @@ function v_armadura_check(event) {
         armadura_dureza === "Dura" &&
         yelmos_equipados.Dura) ||
       (armadura_clase === "Yelmo" &&
-        armadura_dureza === "Blanda" &&
-        yelmos_equipados.Blanda[1] &&
-        yelmos_equipados.Blanda[2]) ||
+        armadura_dureza === "Blando" &&
+        yelmos_equipados.Blando[1] &&
+        yelmos_equipados.Blando[2]) ||
       (armadura_clase !== "Yelmo" &&
         armadura_dureza === "Dura" &&
         armaduras_equipadas.Dura) ||
       (armadura_clase !== "Yelmo" &&
-        armadura_dureza === "Blanda" &&
-        armaduras_equipadas.Blanda[1] &&
-        armaduras_equipadas.Blanda[2])
+        armadura_dureza === "Blando" &&
+        armaduras_equipadas.Blando[1] &&
+        armaduras_equipadas.Blando[2])
     ) {
       event.rc = false;
     } else {
@@ -1577,21 +1577,19 @@ function v_armadura_check(event) {
 
       aplicarNegativosArmadura(posicion);
 
-      equiparArmaduraYelmo(
-        {
-          posicion: posicion,
-          armadura: this.getField("armadura" + posicion).value,
-          def: this.getField("armadura" + posicion + "_def").value,
-          reqarm: this.getField("armadura" + posicion + "_reqarm").value,
-          advertir: this.getField("armadura" + posicion + "_advertir").value,
-          mov: this.getField("armadura" + posicion + "_mov").value,
-          dureza: armadura_dureza,
-          clase: armadura_clase,
-          calidad: this.getField("armadura" + posicion + "_calidad").value,
-        },
-        armadura_clase,
-        armadura_dureza
-      );
+      equiparArmaduraYelmo({
+        posicion: posicion,
+        armadura: this.getField("armadura" + posicion).value,
+        def: this.getField("armadura" + posicion + "_def").value,
+        reqarm: this.getField("armadura" + posicion + "_reqarm").value,
+        advertir: this.getField("armadura" + posicion + "_advertir").value,
+        mov: this.getField("armadura" + posicion + "_mov").value,
+        dureza: armadura_dureza,
+        clase: armadura_clase,
+        calidad: this.getField("armadura" + posicion + "_calidad").value,
+      });
+
+      calculoTotalArmaduras();
     }
   } else {
     resetAtributosArmadura(posicion);
@@ -2622,22 +2620,22 @@ function desequiparArmaduraYelmo(posicion) {
 
   if (!encontrado) {
     if (
-      armaduras_equipadas.Blanda[1] &&
-      armaduras_equipadas.Blanda[1].posicion === posicion
+      armaduras_equipadas.Blando[1] &&
+      armaduras_equipadas.Blando[1].posicion === posicion
     ) {
       clase = "Armadura";
-      armaduras_equipadas.Blanda[1] = null;
+      armaduras_equipadas.Blando[1] = null;
       encontrado = true;
     }
   }
 
   if (!encontrado) {
     if (
-      armaduras_equipadas.Blanda[2] &&
-      armaduras_equipadas.Blanda[2].posicion === posicion
+      armaduras_equipadas.Blando[2] &&
+      armaduras_equipadas.Blando[2].posicion === posicion
     ) {
       clase = "Armadura";
-      armaduras_equipadas.Blanda[2] = null;
+      armaduras_equipadas.Blando[2] = null;
       encontrado = true;
     }
   }
@@ -2652,22 +2650,22 @@ function desequiparArmaduraYelmo(posicion) {
 
   if (!encontrado) {
     if (
-      yelmos_equipados.Blanda[1] &&
-      yelmos_equipados.Blanda[1].posicion === posicion
+      yelmos_equipados.Blando[1] &&
+      yelmos_equipados.Blando[1].posicion === posicion
     ) {
       clase = "Yelmo";
-      yelmos_equipados.Blanda[1] = null;
+      yelmos_equipados.Blando[1] = null;
       encontrado = true;
     }
   }
 
   if (!encontrado) {
     if (
-      yelmos_equipados.Blanda[2] &&
-      yelmos_equipados.Blanda[2].posicion === posicion
+      yelmos_equipados.Blando[2] &&
+      yelmos_equipados.Blando[2].posicion === posicion
     ) {
       clase = "Yelmo";
-      yelmos_equipados.Blanda[2] = null;
+      yelmos_equipados.Blando[2] = null;
       encontrado = true;
     }
   }
@@ -2699,20 +2697,22 @@ function desequiparArmaduraYelmo(posicion) {
   }
 }
 
-function equiparArmaduraYelmo(armadura_yelmo, clase, dureza) {
-  if (clase === "Yelmo") {
-    if (dureza === "Blanda") {
-      yelmos_equipados.Blanda[
-        yelmos_equipados.Blanda[1] ? 2 : 1
+function equiparArmaduraYelmo(armadura_yelmo) {
+  if (armadura_yelmo.clase === "Yelmo") {
+    if (armadura_yelmo.dureza === "Blando") {
+      yelmos_equipados.Blando[
+        yelmos_equipados.Blando[1] ? 2 : 1
       ] = armadura_yelmo;
     } else {
       yelmos_equipados.Dura = armadura_yelmo;
     }
   } else {
-    if (dureza === "Blanda") {
-      armaduras_equipadas.Blanda[
-        armaduras_equipadas.Blanda[1] ? 2 : 1
-      ] = armadura_yelmo;
+    if (armadura_yelmo.dureza === "Blando") {
+      if (armaduras_equipadas.Blando[1]) {
+        armaduras_equipadas.Blando[2] = armadura_yelmo;
+      } else {
+        armaduras_equipadas.Blando[1] = armadura_yelmo;
+      }
     } else {
       armaduras_equipadas.Dura = armadura_yelmo;
     }
@@ -2867,24 +2867,24 @@ function actualizarLlA(event) {
     armadura_posicion = armaduras_equipadas["Dura"].posicion;
   }
 
-  if (armaduras_equipadas["Blanda"]["1"]) {
-    armadura_posicion = armaduras_equipadas["Blanda"]["1"].posicion;
+  if (armaduras_equipadas["Blando"]["1"]) {
+    armadura_posicion = armaduras_equipadas["Blando"]["1"].posicion;
   }
 
-  if (armaduras_equipadas["Blanda"]["2"]) {
-    armadura_posicion = armaduras_equipadas["Blanda"]["2"].posicion;
+  if (armaduras_equipadas["Blando"]["2"]) {
+    armadura_posicion = armaduras_equipadas["Blando"]["2"].posicion;
   }
 
   if (yelmos_equipados["Dura"]) {
     armadura_posicion = yelmos_equipados["Dura"].posicion;
   }
 
-  if (yelmos_equipados["Blanda"]["1"]) {
-    armadura_posicion = yelmos_equipados["Blanda"]["1"].posicion;
+  if (yelmos_equipados["Blando"]["1"]) {
+    armadura_posicion = yelmos_equipados["Blando"]["1"].posicion;
   }
 
-  if (yelmos_equipados["Blanda"]["2"]) {
-    armadura_posicion = yelmos_equipados["Blanda"]["2"].posicion;
+  if (yelmos_equipados["Blando"]["2"]) {
+    armadura_posicion = yelmos_equipados["Blando"]["2"].posicion;
   }
 
   resetAtributosArmadura(armadura_posicion);
@@ -2967,5 +2967,70 @@ function actualizarDiffX(event) {
     } else if (armas_equipadas["I"]) {
       a2_x.value = "-";
     }
+  }
+}
+
+function calculoTotalArmaduras() {
+  var num_armaduras = 0;
+  var armadura_defensa_total_array = [];
+  var armadura_reqarm_total = 0;
+
+  if (armaduras_equipadas.Dura) {
+    num_armaduras++;
+  }
+  if (armaduras_equipadas.Blando[1]) {
+    num_armaduras++;
+  }
+  if (armaduras_equipadas.Blando[2]) {
+    num_armaduras++;
+  }
+
+  var armadura_mov;
+  var armadura_def;
+  var armadura_reqarm;
+
+  if (armaduras_equipadas.Dura) {
+    armadura_mov = this.getField(
+      "armadura" + armaduras_equipadas.Dura.posicion + "_mov"
+    );
+    armadura_def = this.getField(
+      "armadura" + armaduras_equipadas.Dura.posicion + "_def"
+    );
+    armadura_reqarm = this.getField(
+      "armadura" + armaduras_equipadas.Dura.posicion + "_reqarm"
+    );
+    armadura_defensa_total_array.push(Number(armadura_def.value));
+    armadura_mov.value = Number(armadura_mov.value) - 10 * (num_armaduras - 1);
+    armadura_reqarm_total += Number(armadura_reqarm.value);
+  }
+
+  if (armaduras_equipadas.Blando[1]) {
+    armadura_mov = this.getField(
+      "armadura" + armaduras_equipadas.Blando[1].posicion + "_mov"
+    );
+    armadura_def = this.getField(
+      "armadura" + armaduras_equipadas.Blando[1].posicion + "_def"
+    );
+    armadura_reqarm = this.getField(
+      "armadura" + armaduras_equipadas.Blando[1].posicion + "_reqarm"
+    );
+    armadura_defensa_total_array.push(Number(armadura_def.value));
+    armadura_mov.value = Number(armadura_mov.value) - 10 * (num_armaduras - 1);
+    armadura_reqarm_total += Number(armadura_reqarm.value);
+  }
+
+  if (armaduras_equipadas.Blando[2]) {
+    armadura_mov = this.getField(
+      "armadura" + armaduras_equipadas.Blando[2].posicion + "_mov"
+    );
+    armadura_def = this.getField(
+      "armadura" + armaduras_equipadas.Blando[2].posicion + "_def"
+    );
+    armadura_reqarm = this.getField(
+      "armadura" + armaduras_equipadas.Blando[2].posicion + "_reqarm"
+    );
+    armadura_defensa_total_array.push(Number(armadura_def.value));
+    armadura_mov.value = Number(armadura_mov.value) - 10 * (num_armaduras - 1);
+    armadura_reqarm_total += Number(armadura_reqarm.value);
   }
 }
