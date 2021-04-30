@@ -1,1 +1,0 @@
-No pone a 0 los negativos de las armas al desequiparse automaticamente porque se selecciona otra
