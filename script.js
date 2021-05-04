@@ -1495,6 +1495,12 @@ var final_rastrear = f("final_rastrear");
 var num_ventajas_hab = f("num_ventajas_hab");
 var num_ventajas_gratis = f("num_ventajas_gratis");
 
+var warning_pm_actuales = f("warning_pm_actuales");
+var warning_pd_actuales = f("warning_pd_actuales");
+var warning_combate = f("warning_combate");
+var pd_actuales_combate = f("pd_actuales_combate");
+var pd_totales_combate = f("pd_totales_combate");
+
 var armadura0_def = f("armadura0_def");
 
 var armadura_cabeza_lista,
@@ -1517,10 +1523,6 @@ var validar_rama = true;
 var reset_arma = true;
 
 // VALIDATIONS
-
-function v_exp(event) {}
-
-function v_op_exp(event) {}
 
 function v_idioma_escrito(event) {
   posicion = event.target.name.substr(6, 1);
@@ -1560,8 +1562,9 @@ function v_idioma_escrito(event) {
     default:
       break;
   }
-
+  actualizarField(pd_actuales, coste_idioma.value, coste_idioma_v);
   coste_idioma.value = coste_idioma_v;
+  checkWarningPDActuales();
 }
 
 function v_idioma_hablado(event) {
@@ -1602,8 +1605,9 @@ function v_idioma_hablado(event) {
     default:
       break;
   }
-
+  actualizarField(pd_actuales, coste_idioma.value, coste_idioma_v);
   coste_idioma.value = coste_idioma_v;
+  checkWarningPDActuales();
 }
 
 function v_mano_dominante(event) {
@@ -1614,6 +1618,8 @@ function v_mano_dominante(event) {
   }
   mano_dominante_v = event.value;
   aplicarNegativosArmas();
+  checkWarningPMActuales();
+
 }
 
 /**
@@ -1637,11 +1643,9 @@ function v_atributo(event) {
   var atributo_actual_old_v = atributo_actual.value;
   var atributo_bono = f(atributo + "_bono");
   var atributo_bono_old_v = atributo_bono.value;
-
   if (
-    event.value < 0 ||
     atributo_puntos < 0 ||
-    pm_actuales.value + atributo_puntos > pm_totales.value ||
+    n(atributo_puntos) + n(atributo_base) > 20 ||
     atributo_base > 20 ||
     atributo_base < 1
   ) {
@@ -1906,6 +1910,9 @@ function v_atributo(event) {
         break;
     }
   }
+
+  checkWarningPMActuales();
+
 }
 
 // ARMADURAS
@@ -2178,6 +2185,42 @@ function v_tabla_arma(event) {
 
     aplicarNegativosArmas();
   }
+
+  checkWarningPDActuales();
+}
+
+function checkWarningPDActuales() {
+  if (pd_actuales.value > pd_totales.value) {
+    warning_pd_actuales.value = "_";
+  } else if (warning_pd_actuales.value == "_") {
+    warning_pd_actuales.value = "";
+  }
+}
+
+function checkWarningPMActuales() {
+  if (pm_actuales.value > pm_totales.value) {
+    warning_pm_actuales.value = "_";
+  } else if (warning_pm_actuales.value == "_") {
+    warning_pm_actuales.value = "";
+  }
+}
+
+function checkWarningCombate(event) {
+  var pd_llA_v = event && event.target.name == "pd_llA" ? event.value : pd_llA.value;
+  var pd_ataque_v = event && event.target.name == "pd_ataque" ? event.value : pd_ataque.value;
+  var pd_parada_v = event && event.target.name == "pd_parada" ? event.value : pd_parada.value;
+  var pd_esquiva_v = event && event.target.name == "pd_esquiva" ? event.value : pd_esquiva.value;
+  var suma_combate = n(pd_llA_v) +
+    n(pd_ataque_v) +
+    n(pd_parada_v) +
+    n(pd_esquiva_v);
+  pd_actuales_combate.value = suma_combate;
+  if (suma_combate >
+    floor(pd_totales.value / 2)) {
+    warning_combate.value = "_";
+  } else if (warning_combate.value == "_") {
+    warning_combate.value = "";
+  }
 }
 
 // LLEVAR ARMADURA
@@ -2185,16 +2228,13 @@ function v_tabla_arma(event) {
 function v_pd_llA(event) {
   event.value = floor(event.value);
   if (
-    event.value >= 0 &&
-    n(event.value) +
-    n(pd_ataque.value) +
-    n(pd_parada.value) +
-    n(pd_esquiva.value) <=
-    floor(pd_totales.value / 2)
+    event.value >= 0
   ) {
     actualizarFinal(event);
     actualizarField(pd_actuales, pd_llA.value, event.value);
     calculoTotalArmaduras();
+    checkWarningCombate(event);
+    checkWarningPDActuales();
   } else {
     event.rc = false;
   }
@@ -2206,10 +2246,11 @@ function v_pd_llA(event) {
 
 function v_nventaja_llA(event) {
   var pventaja_llA_old_v = pventaja_llA.value;
-  pventaja_llA.value = Math.floor((2.5 * nivel.value * event.value) / 5) * 5;
+  pventaja_llA.value = nivel.value * event.value * 5;
   actualizarField(final_llA, pventaja_llA_old_v, pventaja_llA.value);
   actualizarField(pm_actuales, nventaja_llA.value * 2, event.value * 2);
   calculoTotalArmaduras();
+  checkWarningPMActuales();
 }
 
 function v_esp_llA(event) {
@@ -2292,13 +2333,15 @@ function actualizarVidaPDCoste(pd_vida_p) {
       break;
   }
   actualizarField(pd_actuales, pd_vida_coste_old_v, pd_vida_coste.value);
+  checkWarningPDActuales();
+
 }
 
 function v_nventaja_vida(event) {
   actualizarField(
     pventaja_vida,
-    nventaja_vida.value * nivel.value,
-    event.value * nivel.value
+    nventaja_vida.value * nivel.value * 2,
+    event.value * nivel.value * 2
   );
   actualizarField(pm_actuales, nventaja_vida.value * 2, event.value * 2);
   actualizarField(
@@ -2311,6 +2354,8 @@ function v_nventaja_vida(event) {
     nventaja_vida.value * nivel.value,
     event.value * nivel.value
   );
+  checkWarningPMActuales();
+
 }
 
 function v_esp_vida(event) {
@@ -2340,12 +2385,7 @@ function v_pd_ataque(event) {
   event.value = floor(event.value);
 
   if (
-    event.value >= 0 &&
-    n(event.value) +
-    n(pd_parada.value) +
-    n(pd_esquiva.value) +
-    n(pd_llA.value) <=
-    floor(pd_totales.value / 2)
+    event.value >= 0
   ) {
     if (armas_equipadas["D"] || armas_equipadas["I"]) {
       if (armas_equipadas["D"]) {
@@ -2367,6 +2407,8 @@ function v_pd_ataque(event) {
       actualizarField(final_ataque_i, f(event.target.name).value, event.value);
     }
     actualizarField(pd_actuales, pd_ataque.value, event.value);
+    checkWarningCombate(event);
+    checkWarningPDActuales();
   } else {
     event.rc = false;
   }
@@ -2376,12 +2418,11 @@ function v_pd_esquiva(event) {
   event.value = floor(event.value);
 
   if (
-    event.value >= 0 &&
-    n(event.value) + n(pd_ataque.value) + n(pd_parada.value) <=
-    floor(pd_totales.value / 2)
-  ) {
+    event.value >= 0) {
     actualizarFinal(event);
     actualizarField(pd_actuales, pd_esquiva.value, event.value);
+    checkWarningCombate(event);
+    checkWarningPDActuales();
   } else {
     event.rc = false;
   }
@@ -2390,10 +2431,7 @@ function v_pd_esquiva(event) {
 function v_pd_parada(event) {
   event.value = floor(event.value);
   if (
-    event.value >= 0 &&
-    n(event.value) + n(pd_ataque.value) + n(pd_esquiva.value) <=
-    floor(pd_totales.value / 2)
-  ) {
+    event.value >= 0) {
     event.value = floor(event.value);
     if (armas_equipadas["D"] || armas_equipadas["I"]) {
       if (armas_equipadas["D"]) {
@@ -2416,6 +2454,8 @@ function v_pd_parada(event) {
     }
 
     actualizarField(pd_actuales, pd_parada.value, event.value);
+    checkWarningCombate(event);
+    checkWarningPDActuales();
 
   } else {
     event.rc = false;
@@ -2425,7 +2465,7 @@ function v_pd_parada(event) {
 function v_nventaja_combate(event) {
   var pventaja = f("p" + event.target.name.substr(1));
   var pventaja_old_v = pventaja.value;
-  pventaja.value = Math.min(50, event.value * 5 * floor(nivel.value / 2));
+  pventaja.value = Math.min(50, event.value * 5 * nivel.value);
 
   if (event.target.name.indexOf("esquiva") > -1) {
     actualizarField(final_esquiva, pventaja_old_v, pventaja.value);
@@ -2458,6 +2498,8 @@ function v_nventaja_combate(event) {
     f(event.target.name).value * 2,
     event.value * 2
   );
+  checkWarningPMActuales();
+
 }
 
 function v_esp_combate(event) {
@@ -2662,6 +2704,8 @@ function v_pd_habilidad(event) {
   if (event.rc) {
     actualizarField(hab_final, hab_base_old_v, hab_base.value);
     actualizarField(pd_actuales, f(event.target.name).value, event.value);
+    checkWarningPDActuales();
+
   }
 }
 
@@ -2715,6 +2759,7 @@ function v_mult_habilidad(event) {
         pm_actuales.value = n(pm_actuales.value) + 2;
       }
       actualizarField(hab_final, hab_base_old_v, hab_base.value);
+      checkWarningPMActuales();
     }
   }
 }
@@ -2746,6 +2791,7 @@ function v_mult_rama(event) {
   } else {
     pm_actuales.value = n(pm_actuales.value) + 4;
   }
+  checkWarningPMActuales();
 }
 
 function v_nventaja_rama(event) {
@@ -2755,8 +2801,8 @@ function v_nventaja_rama(event) {
     var hab_final = f("final_" + hab.habilidad);
     actualizarField(
       hab_pventaja,
-      Math.floor((2.5 * nivel.value * f(event.target.name).value) / 5) * 5,
-      Math.floor((2.5 * nivel.value * event.value) / 5) * 5
+      nivel.value * f(event.target.name).value * 5,
+      nivel.value * event.value * 5
     );
     actualizarField(hab_final, hab_pventaja_old_v, hab_pventaja.value);
   });
@@ -2766,6 +2812,8 @@ function v_nventaja_rama(event) {
     nventaja_pventaja[n(f(event.target.name).value)],
     nventaja_pventaja[n(event.value)]
   );
+  checkWarningPMActuales();
+
 }
 
 function v_nventaja_habilidad(event) {
@@ -2774,13 +2822,13 @@ function v_nventaja_habilidad(event) {
 
   actualizarField(
     hab_pventaja,
-    5 * nivel.value * f(event.target.name).value,
-    5 * nivel.value * event.value
+    10 * nivel.value * f(event.target.name).value,
+    10 * nivel.value * event.value
   );
   actualizarField(
     hab_final,
-    5 * nivel.value * f(event.target.name).value,
-    5 * nivel.value * event.value
+    10 * nivel.value * f(event.target.name).value,
+    10 * nivel.value * event.value
   );
 
   if (event.value == 1) {
@@ -2805,6 +2853,8 @@ function v_nventaja_habilidad(event) {
   }
 
   actualizarField(pm_actuales, cost_old, cost_new);
+  checkWarningPMActuales();
+
 }
 
 function v_esp_iniciativa(event) {
@@ -2849,6 +2899,8 @@ function v_nventaja_iniciativa(event) {
     f(event.target.name).value * 2,
     event.value * 2
   );
+  checkWarningPMActuales();
+
   actualizarIniciativa();
 }
 
@@ -3088,11 +3140,9 @@ function calculoTotalArmaduras() {
   var num_armaduras = 0;
 
   var armadura_mov;
-  var armadura_def;
   var armadura_reqarm;
 
   var yelmo_advertir;
-  var yelmo_def;
   var yelmo_reqarm;
 
   [
@@ -3102,7 +3152,6 @@ function calculoTotalArmaduras() {
   ].forEach(function (armadura_array) {
     if (armadura_array) {
       armadura_mov = f("armadura" + armadura_array.posicion + "_mov");
-      armadura_def = f("armadura" + armadura_array.posicion + "_def");
       armadura_reqarm = f("armadura" + armadura_array.posicion + "_reqarm");
       armaduras_mov_total += n(armadura_mov.value);
       armaduras_reqarm_total += n(armadura_reqarm.value);
@@ -3154,7 +3203,6 @@ function calculoTotalArmaduras() {
   ].forEach(function (yelmo_array) {
     if (yelmo_array) {
       yelmo_advertir = f("armadura" + yelmo_array.posicion + "_advertir");
-      yelmo_def = f("armadura" + yelmo_array.posicion + "_def");
       yelmo_reqarm = f("armadura" + yelmo_array.posicion + "_reqarm");
       yelmos_advertir_total += n(yelmo_advertir.value);
       yelmos_reqarm_total += n(yelmo_reqarm.value);
@@ -3420,6 +3468,8 @@ function v_nventaja_reg(event) {
   }
   actualizarField(pm_actuales, nventaja_reg.value * 2, event.value * 2);
   actualizarRegeneracionesSegunRegeneracionBase(reg_base.value);
+  checkWarningPMActuales();
+
 }
 
 function actualizarRegeneracionesSegunRegeneracionBase(reg_base_v) {
@@ -3510,76 +3560,71 @@ function v_nventaja_res(event) {
     actualizarField(final_res, nventaja_res.value * 25, event.value * 25);
   }
   actualizarField(pm_actuales, nventaja_res.value, event.value);
+  checkWarningPMActuales();
+
 }
 
 function v_pd_totales(event) {
   event.value = floor(event.value);
 
-  if (event.value < 225) {
-    event.value = 225;
+  if (event.value < 250) {
+    event.value = 250;
   }
 
   if (
-    isNaN(event.value) ||
-    event.value < pd_actuales.value ||
-    n(pd_ataque.value) +
-    n(pd_parada.value) +
-    n(pd_esquiva.value) +
-    n(pd_llA.value) >
-    event.value / 2
+    isNaN(event.value)
   ) {
     event.rc = false;
   } else {
-    nivel.value = floor((event.value - 225) / 25);
-    pm_totales.value = 6 + floor(nivel.value / 2);
+    nivel.value = floor((event.value - 250) / 50);
+    pm_totales.value = 6 + nivel.value;
+    log(event.value / 2);
+    pd_totales_combate.value = floor(event.value / 2);
 
     actualizarField(
       final_res_fisica,
       base_res.value,
-      30 + floor(nivel.value / 2) * 5
+      30 + nivel.value * 5
     );
     actualizarField(
       final_res_venenos,
       base_res.value,
-      30 + floor(nivel.value / 2) * 5
+      30 + nivel.value * 5
     );
     actualizarField(
       final_res_enfermedades,
       base_res.value,
-      30 + floor(nivel.value / 2) * 5
+      30 + nivel.value * 5
     );
     actualizarField(
       final_res_frio,
       base_res.value,
-      30 + floor(nivel.value / 2) * 5
+      30 + nivel.value * 5
     );
     actualizarField(
       final_res_calor,
       base_res.value,
-      30 + floor(nivel.value / 2) * 5
+      30 + nivel.value * 5
     );
-    base_res.value = 30 + floor(nivel.value / 2) * 5;
+    base_res.value = 30 + nivel.value * 5;
 
     if (nventaja_llA.value > 0) {
       actualizarField(
         final_llA,
         pventaja_llA.value,
-        floor((2.5 * nventaja_llA.value * nivel.value) / 5) * 5
+        nventaja_llA.value * nivel.value * 5
       );
       pventaja_llA.value =
-        floor((2.5 * nventaja_llA.value * nivel.value) / 5) * 5;
+        nventaja_llA.value * nivel.value * 5;
     }
 
     if (nventaja_esquiva.value > 0) {
       actualizarField(
         final_esquiva,
         pventaja_esquiva.value,
-        Math.min(50, floor((nivel.value * 5) / 2 / 5) * 5)
+        Math.min(50, nivel.value * 5)
       );
-      pventaja_esquiva.value = Math.min(
-        50,
-        floor((nivel.value * 5) / 2 / 5) * 5
-      );
+      pventaja_esquiva.value = Math.min(50, nivel.value * 5)
     }
 
     if (nventaja_ataque.value > 0) {
@@ -3587,20 +3632,17 @@ function v_pd_totales(event) {
         actualizarField(
           final_ataque_d,
           pventaja_ataque.value,
-          Math.min(50, floor((nivel.value * 5) / 2 / 5) * 5)
+          Math.min(50, nivel.value * 5)
         );
       }
       if (final_ataque_i != "-") {
         actualizarField(
           final_ataque_i,
           pventaja_ataque.value,
-          Math.min(50, floor((nivel.value * 5) / 2 / 5) * 5)
+          Math.min(50, nivel.value * 5)
         );
       }
-      pventaja_ataque.value = Math.min(
-        50,
-        floor((nivel.value * 5) / 2 / 5) * 5
-      );
+      pventaja_ataque.value = Math.min(50, nivel.value * 5)
     }
 
     if (nventaja_parada.value > 0) {
@@ -3608,19 +3650,19 @@ function v_pd_totales(event) {
         actualizarField(
           final_parada_d,
           pventaja_parada.value,
-          Math.min(50, floor((nivel.value * 5) / 2 / 5) * 5)
+          Math.min(50, nivel.value * 5)
         );
       }
       if (final_parada_i != "-") {
         actualizarField(
           final_parada_i,
           pventaja_parada.value,
-          Math.min(50, floor((nivel.value * 5) / 2 / 5) * 5)
+          Math.min(50, nivel.value * 5)
         );
       }
       pventaja_parada.value = Math.min(
         50,
-        floor((nivel.value * 5) / 2 / 5) * 5
+        Math.min(50, nivel.value * 5)
       );
     }
 
@@ -3643,7 +3685,7 @@ function v_pd_totales(event) {
       var nventaja_rama = f("nventaja_" + rama);
       if (nventaja_rama.value > 0) {
         pventaja_rama =
-          Math.floor((2.5 * nventaja_rama.value * nivel.value) / 5) * 5;
+          5 * nventaja_rama.value * nivel.value;
       }
       lista_habilidades[rama].forEach(function (hab) {
         var nventaja_hab = f("nventaja_" + hab.habilidad);
@@ -3652,12 +3694,16 @@ function v_pd_totales(event) {
           var pventaja_hab_old_v = pventaja_hab.value;
           var final_hab = f("final_" + hab.habilidad);
           pventaja_hab.value =
-            n(5 * nivel.value * nventaja_hab.value) + n(pventaja_rama);
+            n(10 * nivel.value * nventaja_hab.value) + n(pventaja_rama);
           final_hab.value =
             final_hab.value - n(pventaja_hab_old_v) + n(pventaja_hab.value);
         }
       });
     }
+    checkWarningPDActuales();
+    checkWarningPMActuales();
+    checkWarningCombate();
+
   }
 }
 
