@@ -24,15 +24,15 @@ var turnos = 200000;
 
 dmg_total = 0;
 
-atq_i = 50;
-atq_d = 50;
+atq_i = 65;
+atq_d = 65;
 df_i = 25;
 df_d = 25;
-par_i = 60;
+par_i = 70;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
-  tirada_atq2 = Math.floor(Math.random() * 100) + n(atq_adicional.value);
+  tirada_atq2 = Math.floor(Math.random() * 100);
   tirada_par1 = Math.floor(Math.random() * 100);
   tirada_par2 = Math.floor(Math.random() * 100);
 
@@ -55,9 +55,9 @@ log("(S) 2 vs 1 -> DMG Medio: " + Math.round((dmg_total / turnos) * 100) / 100);
 
 dmg_total = 0;
 
-atq_i = 60;
-df_i = 30;
-par_i = 60;
+atq_i = 70;
+df_i = 35;
+par_i = 70;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
@@ -77,15 +77,15 @@ log("(S) 1 vs 2 -> DMG Medio: " + Math.round((dmg_total / turnos) * 100) / 100);
 
 dmg_total = 0;
 
-atq_i = 40;
-atq_d = 40;
+atq_i = 60;
+atq_d = 60;
 df_i = 55;
 df_d = 55;
-par_i = 60;
+par_i = 70;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
-  tirada_atq2 = Math.floor(Math.random() * 100) + n(atq_adicional.value);
+  tirada_atq2 = Math.floor(Math.random() * 100);
   tirada_par1 = Math.floor(Math.random() * 100);
   tirada_par2 = Math.floor(Math.random() * 100);
 
@@ -108,9 +108,9 @@ log("(M) 2 vs 1 -> DMG Medio: " + Math.round((dmg_total / turnos) * 100) / 100);
 
 dmg_total = 0;
 
-atq_i = 60;
-df_i = 60;
-par_i = 60;
+atq_i = 70;
+df_i = 65;
+par_i = 70;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
@@ -130,15 +130,15 @@ log("(M) 1 vs 2 -> DMG Medio: " + Math.round((dmg_total / turnos) * 100) / 100);
 
 dmg_total = 0;
 
-atq_i = 15;
-atq_d = 15;
-df_i = 95;
-df_d = 95;
-par_i = 40;
+atq_i = 25;
+atq_d = 25;
+df_i = 60;
+df_d = 60;
+par_i = 60;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
-  tirada_atq2 = Math.floor(Math.random() * 100) + n(atq_adicional.value);
+  tirada_atq2 = Math.floor(Math.random() * 100);
   tirada_par1 = Math.floor(Math.random() * 100);
   tirada_par2 = Math.floor(Math.random() * 100);
 
@@ -161,9 +161,9 @@ log("(L) 2 vs 1 -> DMG Medio: " + Math.round((dmg_total / turnos) * 100) / 100);
 
 dmg_total = 0;
 
-atq_i = 50;
-df_i = 100;
-par_i = 40;
+atq_i = 60;
+df_i = 110;
+par_i = 50;
 
 for (index = 1; index <= turnos; index++) {
   tirada_atq1 = Math.floor(Math.random() * 100);
