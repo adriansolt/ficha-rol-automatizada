@@ -211,860 +211,280 @@ var lista_vida_base_por_nivel = [
   30, // 20
 ];
 
-var lista_armas = [
+var lista_armadura = [
   {
-    arma: "Lazo",
-    arma_db: 5,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Cuerda",
-    arma_tam: "S",
-    arma_especial: "Presa 18",
+    peso: "Muy ligera",
+    def: 10,
+    reqarm: 0,
+    advertir: 0,
+    movimiento: 0,
   },
   {
-    arma: "Red de gladiador",
-    arma_db: 5,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "4",
-    arma_clase: "Cuerda",
-    arma_tam: "M",
-    arma_especial: "Presa 20",
-  },
-  {
-    arma: "Combate desarmado",
-    arma_db: 10,
-    arma_iniciativa: 20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "-",
-    arma_tam: "-",
-    arma_clase: "Sin armas",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Jarr\u00f3n",
-    arma_db: 15,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Maza",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Botella rota",
-    arma_db: 15,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "6",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Antorcha",
-    arma_db: 20,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Maza",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Palo de madera",
-    arma_db: 20,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Maza",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Cadena",
-    arma_db: 25,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "12",
-    arma_clase: "Cuerda",
-    arma_tam: "M",
-    arma_especial: "Presa 16",
-  },
-  {
-    arma: "Estilete",
-    arma_db: 25,
-    arma_iniciativa: 20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "6",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Silla",
-    arma_db: 25,
-    arma_iniciativa: -20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "Mandoble",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Barra met\u00e1lica",
-    arma_db: 25,
-    arma_iniciativa: -5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "Maza",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Cestus",
-    arma_freq: "6",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-    arma_db: 25,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-  },
-  {
-    arma: "Cuchillo de cocina",
-    arma_db: 25,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Garrote",
-    arma_db: 30,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "Maza",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Daga",
-    arma_db: 30,
-    arma_iniciativa: 20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Vara",
-    arma_db: 30,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Asta",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Garfio",
-    arma_db: 30,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Daga de parada",
-    arma_db: 30,
-    arma_iniciativa: 15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "6",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Azada",
-    arma_db: 30,
-    arma_iniciativa: -20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Hacha",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Hoz",
-    arma_db: 35,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Arp\u00f3n",
-    arma_db: 35,
-    arma_iniciativa: -5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "Asta",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Florete",
-    arma_db: 35,
-    arma_iniciativa: 15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "6",
-    arma_clase: "Espada / Arma corta",
-    arma_especial: "Precisa",
-    arma_tam: "S",
-  },
-  {
-    arma: "Guada\u00f1a",
-    arma_db: 35,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10 / 18",
-    arma_clase: "Asta / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Jabalina",
-    arma_db: 35,
-    arma_iniciativa: 5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Asta",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "L\u00e1tigo",
-    arma_db: 35,
-    arma_iniciativa: -20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Cuerda",
-    arma_tam: "M",
-    arma_especial: "Presa 16",
-  },
-  {
-    arma: "Tridente",
-    arma_db: 40,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "12 / 14",
-    arma_clase: "Asta",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Hacha de le\u00f1ador",
-    arma_db: 40,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10 / 14",
-    arma_clase: "Hacha",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Pico",
-    arma_db: 40,
-    arma_iniciativa: -20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Lanza",
-    arma_db: 40,
-    arma_iniciativa: 5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8 / 12",
-    arma_clase: "Asta",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Estoque",
-    arma_db: 40,
-    arma_iniciativa: 15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "Espada",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Espada corta",
-    arma_db: 40,
-    arma_iniciativa: 15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "12",
-    arma_clase: "Arma corta",
-    arma_tam: "S",
-    arma_especial: "Precisa",
-  },
-  {
-    arma: "Mayal",
-    arma_db: 40,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "11",
-    arma_clase: "Maza / Cuerda",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Maza",
-    arma_db: 40,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "12",
-    arma_clase: "Maza",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Hacha de mano",
-    arma_db: 45,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "13",
-    arma_clase: "Hacha",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Sable",
-    arma_db: 45,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "14",
-    arma_clase: "Espada",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Martillo de guerra",
-    arma_db: 50,
-    arma_iniciativa: -5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "14",
-    arma_clase: "Asta",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Cimitarra",
-    arma_db: 50,
-    arma_iniciativa: -5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "14",
-    arma_clase: "Espada",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Espada larga",
-    arma_db: 50,
-    arma_iniciativa: 0,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "14",
-    arma_clase: "Espada",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Espada ancha",
-    arma_db: 55,
-    arma_iniciativa: -5,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "15",
-    arma_clase: "Espada",
-    arma_tam: "M",
-    arma_especial: "-",
-  },
-  {
-    arma: "Maza pesada de combate",
-    arma_db: 60,
-    arma_iniciativa: -15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "15 / 20",
-    arma_clase: "Maza / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Alabarda",
-    arma_db: 60,
-    arma_iniciativa: -15,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "15 / 22",
-    arma_clase: "Asta / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Espada bastarda",
-    arma_db: 70,
-    arma_iniciativa: -30,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "16 / 18",
-    arma_clase: "Espada / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Hacha de guerra",
-    arma_db: 70,
-    arma_iniciativa: -30,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "16",
-    arma_clase: "Hacha",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Gran martillo de guerra",
-    arma_db: 70,
-    arma_iniciativa: -35,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "16 / 20",
-    arma_clase: "Maza",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Lanza de caballer\u00eda",
-    arma_db: 80,
-    arma_iniciativa: -30,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "18",
-    arma_clase: "Asta",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Mangual",
-    arma_db: 80,
-    arma_iniciativa: -50,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "17 / 20",
-    arma_clase: "Maza / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Mandoble",
-    arma_db: 90,
-    arma_iniciativa: -60,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "18 / 20",
-    arma_clase: "Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Hacha a dos manos",
-    arma_db: 100,
-    arma_iniciativa: -70,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "18 / 22",
-    arma_clase: "Hacha / Mandoble",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Ballesta de mano",
-    arma_db: 30,
-    arma_iniciativa: 10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "6",
-    arma_clase: "A. de proyectil",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Ballesta Pesada",
-    arma_db: 60,
-    arma_iniciativa: -20,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "20",
-    arma_clase: "A. de proyectil",
-    arma_tam: "L",
-    arma_especial: "Recarga",
-  },
-  {
-    arma: "Arco corto",
-    arma_db: 30,
-    arma_iniciativa: -10,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "8",
-    arma_clase: "A. de proyectil",
-    arma_tam: "S",
-    arma_especial: "-",
-  },
-  {
-    arma: "Arco largo",
-    arma_db: 40,
-    arma_iniciativa: -30,
-    arma_atq: 0,
-    arma_par: 0,
-    arma_freq: "10",
-    arma_clase: "A. de proyectil",
-    arma_tam: "L",
-    arma_especial: "-",
-  },
-  {
-    arma: "Rodela",
-    arma_db: 15,
-    arma_iniciativa: -15,
-    arma_atq: 0,
-    arma_par: 10,
-    arma_freq: "10",
-    arma_tam: "S",
-    arma_especial: "-",
-    arma_clase: "Escudo",
-  },
-  {
-    arma: "Escudo",
-    arma_db: 20,
-    arma_iniciativa: -25,
-    arma_atq: 0,
-    arma_par: 20,
-    arma_freq: "14",
-    arma_tam: "M",
-    arma_especial: "-",
-    arma_clase: "Escudo",
-  },
-  {
-    arma: "Escudo corporal",
-    arma_db: 25,
-    arma_iniciativa: -40,
-    arma_atq: 0,
-    arma_par: 30,
-    arma_freq: "20",
-    arma_tam: "L",
-    arma_especial: "-",
-    arma_clase: "Escudo",
-  },
-];
-
-var lista_armaduras = [
-  {
-    armadura: "Peto de cuero endurecido",
+    peso: "Ligera",
     def: 20,
-    reqarm: 20,
-    advertir: "-",
-    mov: -10,
-    dureza: "Dura",
-    clase: "Armadura",
+    reqarm: 30 / 12,
+    advertir: -5 / 1,
+    movimiento: -10 / 12,
   },
   {
-    armadura: "Peto de cuero tachonado",
+    peso: "Media",
     def: 30,
-    reqarm: 25,
-    advertir: "-",
-    mov: -10,
-    dureza: "Dura",
-    clase: "Armadura",
+    reqarm: 60 / 12,
+    advertir: -10 / 1,
+    movimiento: -25 / 12,
   },
   {
-    armadura: "Peto de metal",
-    def: 40,
-    reqarm: 40,
-    advertir: "-",
-    mov: -10,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Camisola acolchada",
-    def: 10,
-    reqarm: 0,
-    advertir: "-",
-    mov: "0",
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Camisola de cuero",
-    def: 10,
-    reqarm: 0,
-    advertir: "-",
-    mov: "0",
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Camisola de piel",
-    def: 20,
-    reqarm: 10,
-    advertir: "-",
-    mov: -10,
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Camisola de anillas",
-    def: 40,
-    reqarm: 60,
-    advertir: "-",
-    mov: -20,
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa gabardina",
-    def: 10,
-    reqarm: 0,
-    advertir: "-",
-    mov: "0",
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de cuero",
-    def: 20,
-    reqarm: 10,
-    advertir: "-",
-    mov: -10,
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de mallas",
-    def: 30,
-    reqarm: 30,
-    advertir: "-",
-    mov: -10,
-    dureza: "Blanda",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de piezas",
+    peso: "Pesada",
     def: 50,
-    reqarm: 50,
-    advertir: "-",
-    mov: -20,
-    dureza: "Dura",
-    clase: "Armadura",
+    reqarm: 90 / 12,
+    advertir: -20 / 1,
+    movimiento: -40 / 12,
   },
   {
-    armadura: "Completa de metal",
-    def: 40,
-    reqarm: 70,
-    advertir: "-",
-    mov: -30,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa con escamas",
-    def: 40,
-    reqarm: 80,
-    advertir: "-",
-    mov: -30,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de placas",
-    def: 50,
-    reqarm: 90,
-    advertir: "-",
-    mov: -40,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de placas pesada",
-    def: 60,
-    reqarm: 120,
-    advertir: "-",
-    mov: -50,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Completa de campa\u00f1a pesada",
+    peso: "Muy pesada",
     def: 70,
-    reqarm: 150,
-    advertir: "-",
-    mov: -60,
-    dureza: "Dura",
-    clase: "Armadura",
-  },
-  {
-    armadura: "Yelmo de anillas",
-    def: 20,
-    reqarm: 0,
-    advertir: "0",
-    mov: "-",
-    dureza: "Duro",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo frent\u00f3n",
-    def: 30,
-    reqarm: 0,
-    advertir: "0",
-    mov: "-",
-    dureza: "Duro",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo coronilla",
-    def: 20,
-    reqarm: 0,
-    advertir: "0",
-    mov: "-",
-    dureza: "Duro",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo de cuero",
-    def: 10,
-    reqarm: 0,
-    advertir: "0",
-    mov: "-",
-    dureza: "Blando",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo de maya",
-    def: 40,
-    reqarm: 0,
-    advertir: -10,
-    mov: "-",
-    dureza: "Blando",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo completo abierto",
-    def: 50,
-    reqarm: 5,
-    advertir: -20,
-    mov: "-",
-    dureza: "Duro",
-    clase: "Yelmo",
-  },
-  {
-    armadura: "Yelmo completo cerrado",
-    def: 50,
-    reqarm: 10,
-    advertir: -30,
-    mov: "-",
-    dureza: "Duro",
-    clase: "Yelmo",
+    reqarm: 120 / 12,
+    advertir: -30 / 1,
+    movimiento: -60 / 12,
   },
 ];
 
-var lista_tabla_armas_estilos = [
+var lista_armas = [
+  // CUERDA
   {
-    tabla: "ARMAS CORTAS",
-    clase: "Arma corta",
+    peso: "Ligera",
+    tipo: "Cuerda",
+    freq: 4,
+    db: 10,
+    iniciativa: 20,
   },
   {
-    tabla: "HACHAS",
-    clase: "Hacha",
+    peso: "Media",
+    tipo: "Cuerda",
+    freq: 8,
+    db: 15,
+    iniciativa: 10,
   },
   {
-    tabla: "MAZAS",
-    clase: "Maza",
+    peso: "Pesada",
+    tipo: "Cuerda",
+    freq: 10,
+    db: 30,
+    iniciativa: 0,
   },
   {
-    tabla: "ESPADAS",
-    clase: "Espada",
+    peso: "Muy pesada",
+    tipo: "Cuerda",
+    freq: 14,
+    db: 45,
+    iniciativa: -20,
+  },
+  // ARMA CORTA
+  {
+    peso: "Ligera",
+    tipo: "Arma corta",
+    freq: 6,
+    db: 25,
+    iniciativa: 25,
   },
   {
-    tabla: "MANDOBLES",
-    clase: "Mandoble",
+    peso: "Media",
+    tipo: "Arma corta",
+    freq: 8,
+    db: 30,
+    iniciativa: 20,
   },
   {
-    tabla: "ASTAS",
-    clase: "Asta",
+    peso: "Pesada",
+    tipo: "Arma corta",
+    freq: 10,
+    db: 35,
+    iniciativa: 15,
   },
   {
-    tabla: "CUERDAS",
-    clase: "Cuerda",
+    peso: "Muy pesada",
+    tipo: "Arma corta",
+    freq: 12,
+    db: 40,
+    iniciativa: 10,
+  },
+  // ESPADA
+  {
+    peso: "Ligera",
+    tipo: "Espada",
+    freq: 10,
+    db: 35,
+    iniciativa: 0,
   },
   {
-    tabla: "A. DE PROYECTIL",
-    clase: "A. de proyectil",
+    peso: "Media",
+    tipo: "Espada",
+    freq: 13,
+    db: 60,
+    iniciativa: -25,
   },
   {
-    tabla: "ESCUDOS",
-    clase: "Escudo",
+    peso: "Pesada",
+    tipo: "Espada",
+    freq: 17,
+    db: 80,
+    iniciativa: -45,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "Espada",
+    freq: 19,
+    db: 90,
+    iniciativa: -60,
+  },
+  // HACHA
+  {
+    peso: "Ligera",
+    tipo: "Hacha",
+    freq: 10,
+    db: 40,
+    iniciativa: 0,
+  },
+  {
+    peso: "Media",
+    tipo: "Hacha",
+    freq: 14,
+    db: 65,
+    iniciativa: -25,
+  },
+  {
+    peso: "Pesada",
+    tipo: "Hacha",
+    freq: 18,
+    db: 85,
+    iniciativa: -50,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "Hacha",
+    freq: 20,
+    db: 95,
+    iniciativa: -65,
+  },
+  // MAZA
+  {
+    peso: "Ligera",
+    tipo: "Maza",
+    freq: 10,
+    db: 40,
+    iniciativa: 0,
+  },
+  {
+    peso: "Media",
+    tipo: "Maza",
+    freq: 14,
+    db: 65,
+    iniciativa: -25,
+  },
+  {
+    peso: "Pesada",
+    tipo: "Maza",
+    freq: 18,
+    db: 85,
+    iniciativa: -55,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "Maza",
+    freq: 20,
+    db: 100,
+    iniciativa: -70,
+  },
+  // LANZA
+  {
+    peso: "Ligera",
+    tipo: "Maza",
+    freq: 10,
+    db: 30,
+    iniciativa: 10,
+  },
+  {
+    peso: "Media",
+    tipo: "Maza",
+    freq: 12,
+    db: 40,
+    iniciativa: 0,
+  },
+  {
+    peso: "Pesada",
+    tipo: "Maza",
+    freq: 14,
+    db: 50,
+    iniciativa: -5,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "Maza",
+    freq: 18,
+    db: 80,
+    iniciativa: -30,
+  },
+  // A DISTANCIA
+  {
+    peso: "Ligera",
+    tipo: "A distancia",
+    freq: 8,
+    db: 30,
+    iniciativa: 10,
+  },
+  {
+    peso: "Media",
+    tipo: "A distancia",
+    freq: 10,
+    db: 40,
+    iniciativa: 0,
+  },
+  {
+    peso: "Pesada",
+    tipo: "A distancia",
+    freq: 14,
+    db: 50,
+    iniciativa: -20,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "A distancia",
+    freq: 18,
+    db: 60,
+    iniciativa: -30,
+  },
+  // ESCUDO
+  {
+    peso: "Ligera",
+    tipo: "Escudo",
+    freq: 8,
+    db: 5,
+    iniciativa: -10,
+    defensa: 5,
+  },
+  {
+    peso: "Media",
+    tipo: "Escudo",
+    freq: 10,
+    db: 15,
+    iniciativa: -15,
+    defensa: 10,
+  },
+  {
+    peso: "Pesada",
+    tipo: "Escudo",
+    freq: 14,
+    db: 20,
+    iniciativa: -25,
+    defensa: 20,
+  },
+  {
+    peso: "Muy pesada",
+    tipo: "Escudo",
+    freq: 18,
+    db: 25,
+    iniciativa: -40,
+    defensa: 30,
   },
 ];
 
@@ -1091,60 +511,33 @@ var lista_movimiento = [
   12, // 20
 ];
 
-var armaduras_equipadas = {
-  Dura: null,
-  Blanda: {
-    1: null,
-    2: null,
-  },
-};
+var armaduras_equipadas = [];
 
-var yelmos_equipados = {
-  Duro: null,
-  Blando: {
-    1: null,
-    2: null,
-  },
-};
-
-for (i = 1; i <= 6; i++) {
-  var armadura_checked = f("armadura" + i + "_check").value;
-  if (armadura_checked == "Eq.") {
-    var armadura_dureza = f("armadura" + i + "_dureza").value;
-    var armadura_clase = f("armadura" + i).value.split(" ")[0];
-
-    if (armadura_checked == "Eq.") {
-      var armadura_t = {
-        posicion: i,
-        armadura: f("armadura" + i).value,
-        def: f("armadura" + i + "_def").value,
-        reqarm: f("armadura" + i + "_reqarm").value,
-        advertir: f("armadura" + i + "_advertir").value,
-        mov: f("armadura" + i + "_mov").value,
-        dureza: armadura_dureza,
-        clase: armadura_clase,
-        calidad: f("armadura" + i + "_calidad").value,
-      };
-      switch (armadura_dureza) {
-        case "Dura":
-          armaduras_equipadas.Dura = armadura_t;
-          break;
-        case "Duro":
-          yelmos_equipados.Duro = armadura_t;
-          break;
-        case "Blanda":
-          armaduras_equipadas.Blanda[armaduras_equipadas.Blanda[1] ? 2 : 1] =
-            armadura_t;
-          break;
-        case "Blando":
-          yelmos_equipados.Blando[yelmos_equipados.Blando[1] ? 2 : 1] =
-            armadura_t;
-          break;
-
-        default:
-          break;
-      }
-    }
+for (i = 1; i <= 7; i++) {
+  var armadura_eq = f("armadura" + i + "_eq").value;
+  if (armadura_eq == "Eq.") {
+    armaduras_equipadas.push({
+      posicion: i,
+      peso: S(f("armadura" + i + "_peso").value),
+      reqarm: S(f("armadura" + i + "_reqarm").value),
+      def: S(f("armadura" + i + "_def").value),
+      advertir: S(f("armadura" + i + "_advertir").value),
+      movimiento: S(f("armadura" + i + "_mov").value),
+      calidad: S(f("armadura" + i + "_calidad").value),
+      cabeza: B(f("armadura" + i + "_cabeza").isBoxChecked(0)),
+      espalda: B(f("armadura" + i + "_espalda").isBoxChecked(0)),
+      pecho: B(f("armadura" + i + "_pecho").isBoxChecked(0)),
+      hombro_izq: B(f("armadura" + i + "_hombro_izq").isBoxChecked(0)),
+      hombro_der: B(f("armadura" + i + "_hombro_der").isBoxChecked(0)),
+      brazo_izq: B(f("armadura" + i + "_brazo_izq").isBoxChecked(0)),
+      brazo_der: B(f("armadura" + i + "_brazo_der").isBoxChecked(0)),
+      mano_izq: B(f("armadura" + i + "_mano_izq").isBoxChecked(0)),
+      mano_der: B(f("armadura" + i + "_mano_der").isBoxChecked(0)),
+      pierna_izq: B(f("armadura" + i + "_pierna_izq").isBoxChecked(0)),
+      pierna_der: B(f("armadura" + i + "_pierna_der").isBoxChecked(0)),
+      pie_izq: B(f("armadura" + i + "_pie_izq").isBoxChecked(0)),
+      pie_der: B(f("armadura" + i + "_pie_der").isBoxChecked(0)),
+    });
   }
 }
 
@@ -1161,31 +554,33 @@ for (
   !(armas_equipadas["I"] && armas_equipadas["D"]);
   i++
 ) {
-  var arma_checked = f("arma" + i + "_check").value;
-  if (arma_checked == "D" || arma_checked == "I" || arma_checked == "D+I") {
-    armas_equipadas[arma_checked] = {
+  var arma_mano = f("arma" + i + "_mano").value;
+  if (arma_mano == "D" || arma_mano == "I" || arma_mano == "D+I") {
+    armas_equipadas[arma_mano] = {
       posicion: i,
-      arma: f("arma" + i).value,
-      atq: f("arma" + i + "_atq").value,
-      par: f("arma" + i + "_par").value,
-      db: f("arma" + i + "_db").value,
-      iniciativa: f("arma" + i + "_iniciativa").value,
-      freq: f("arma" + i + "_freq").value,
-      clase: f("arma" + i + "_clase").value,
-      tam: f("arma" + i + "_tam").value,
-      especial: f("arma" + i + "_especial").value,
-      calidad: f("arma" + i + "_calidad").value,
+      tipo: S(f("arma" + i + "_tipo").value),
+      peso: S(f("arma" + i + "_peso").value),
+      freq: S(f("arma" + i + "_freq").value),
+      db: S(f("arma" + i + "_db").value),
+      atq: S(f("arma" + i + "_atq").value),
+      par: S(f("arma" + i + "_par").value),
+      iniciativa: S(f("arma" + i + "_iniciativa").value),
+      calidad: S(f("arma" + i + "_calidad").value),
     };
   }
 }
 
-var tablas_arma_aprendidas = [];
+var armas_aprendidas = [];
 
-for (i = 1; i <= 7 && n(f("tabla_arma" + i + "_nivel").value) > 0; i++) {
-  tablas_arma_aprendidas.push({
-    arma: f("tabla_arma" + i).value,
-    clase: f("tabla_arma" + i + "_clase").value,
-    nivel: f("tabla_arma" + i + "_nivel").value,
+for (
+  i = 1;
+  i <= 7 && S(f("aprendizaje_arma" + i + "_nivel").value) !== "-";
+  i++
+) {
+  armas_aprendidas.push({
+    nivel: S(f("aprendizaje_arma" + i + "_nivel").value),
+    tipo: S(f("aprendizaje_arma" + i + "_tipo").value),
+    peso: S(f("aprendizaje_arma" + i + "_peso").value),
   });
 }
 
@@ -1204,10 +599,10 @@ var exp = f("exp");
 var pm_actuales = f("pm_actuales");
 var pm_totales = f("pm_totales");
 
-// Puntos de desarrollo (PD)
+// Puntos de desarrollo (PE)
 
-var pd_actuales = f("pd_actuales");
-var pd_totales = f("pd_totales");
+var pe_actuales = f("pe_actuales");
+var pe_totales = f("pe_totales");
 
 // Mano dominante
 
@@ -1290,8 +685,8 @@ var esp_res_calor = f("esp_res_calor");
 
 var esp_vida = f("esp_vida");
 var base_vida = f("base_vida");
-var pd_vida = f("pd_vida");
-var pd_vida_coste = f("pd_vida_coste");
+var pe_vida = f("pe_vida");
+var pe_vida_coste = f("pe_vida_coste");
 var nventaja_vida = f("nventaja_vida");
 var pventaja_vida = f("pventaja_vida");
 var totales_vida = f("totales_vida");
@@ -1311,7 +706,7 @@ var final_iniciativa = f("final_iniciativa");
 
 // Llevar armadura
 
-var pd_llA = f("pd_llA");
+var pe_llA = f("pe_llA");
 var nventaja_llA = f("nventaja_llA");
 var pventaja_llA = f("pventaja_llA");
 var esp_llA = f("esp_llA");
@@ -1319,7 +714,7 @@ var final_llA = f("final_llA");
 
 // Esquiva
 
-var pd_esquiva = f("pd_esquiva");
+var pe_esquiva = f("pe_esquiva");
 var nventaja_esquiva = f("nventaja_esquiva");
 var pventaja_esquiva = f("pventaja_esquiva");
 var final_esquiva = f("final_esquiva");
@@ -1327,7 +722,7 @@ var esp_esquiva = f("esp_esquiva");
 
 // Parada
 
-var pd_parada = f("pd_parada");
+var pe_parada = f("pe_parada");
 var nventaja_parada = f("nventaja_parada");
 var pventaja_parada = f("pventaja_parada");
 var equipo_parada_i = f("equipo_parada_i");
@@ -1339,7 +734,7 @@ var esp_parada_i = f("esp_parada_i");
 
 // Ataque
 
-var pd_ataque = f("pd_ataque");
+var pe_ataque = f("pe_ataque");
 var nventaja_ataque = f("nventaja_ataque");
 var pventaja_ataque = f("pventaja_ataque");
 var equipo_ataque_i = f("equipo_ataque_i");
@@ -1351,52 +746,31 @@ var esp_ataque_i = f("esp_ataque_i");
 
 // Armadura
 
-var armadura_cabeza = f("armadura_cabeza");
-var armadura_espalda = f("armadura_espalda");
-var armadura_hombro_der = f("armadura_hombro_der");
-var armadura_hombro_izq = f("armadura_hombro_izq");
-var armadura_pecho = f("armadura_pecho");
-var armadura_brazo_der = f("armadura_brazo_der");
-var armadura_brazo_izq = f("armadura_brazo_izq");
-var armadura_mano_der = f("armadura_mano_der");
-var armadura_mano_izq = f("armadura_mano_izq");
-var armadura_pierna_der = f("armadura_pierna_der");
-var armadura_pierna_izq = f("armadura_pierna_izq");
-var armadura_pie_der = f("armadura_pie_der");
-var armadura_pie_izq = f("armadura_pie_izq");
-
-var negativo_armadura_cabeza = f("negativo_armadura_cabeza");
-var negativo_armadura_espalda = f("negativo_armadura_espalda");
-var negativo_armadura_hombro_der = f("negativo_armadura_hombro_der");
-var negativo_armadura_hombro_izq = f("negativo_armadura_hombro_izq");
-var negativo_armadura_pecho = f("negativo_armadura_pecho");
-var negativo_armadura_brazo_der = f("negativo_armadura_brazo_der");
-var negativo_armadura_brazo_izq = f("negativo_armadura_brazo_izq");
-var negativo_armadura_mano_der = f("negativo_armadura_mano_der");
-var negativo_armadura_mano_izq = f("negativo_armadura_mano_izq");
-var negativo_armadura_pierna_der = f("negativo_armadura_pierna_der");
-var negativo_armadura_pierna_izq = f("negativo_armadura_pierna_izq");
-var negativo_armadura_pie_der = f("negativo_armadura_pie_der");
-var negativo_armadura_pie_izq = f("negativo_armadura_pie_izq");
+var armaduras_cabeza = f("armaduras_cabeza");
+var armaduras_espalda = f("armaduras_espalda");
+var armaduras_hombro_der = f("armaduras_hombro_der");
+var armaduras_hombro_izq = f("armaduras_hombro_izq");
+var armaduras_pecho = f("armaduras_pecho");
+var armaduras_brazo_der = f("armaduras_brazo_der");
+var armaduras_brazo_izq = f("armaduras_brazo_izq");
+var armaduras_mano_der = f("armaduras_mano_der");
+var armaduras_mano_izq = f("armaduras_mano_izq");
+var armaduras_pierna_der = f("armaduras_pierna_der");
+var armaduras_pierna_izq = f("armaduras_pierna_izq");
+var armaduras_pie_der = f("armaduras_pie_der");
+var armaduras_pie_izq = f("armaduras_pie_izq");
 
 // Desarmado
 
-var arma0 = f("arma0");
-var arma0_check = f("arma0_check");
-var arma0_atq = f("arma0_atq");
-var arma0_par = f("arma0_par");
+var arma0_mano = f("arma0_mano");
+var arma0_tipo = f("arma0_tipo");
 var arma0_db = f("arma0_db");
 var arma0_fue_bono = f("arma0_fue_bono");
 var arma0_df = f("arma0_df");
+var arma0_atq = f("arma0_atq");
+var arma0_par = f("arma0_par");
 var arma0_iniciativa = f("arma0_iniciativa");
-var arma0_freq = f("arma0_freq");
-var arma0_clase = f("arma0_clase");
-var arma0_tam = f("arma0_tam");
-var arma0_especial = f("arma0_especial");
 var arma0_calidad = f("arma0_calidad");
-
-// Ataque adicional
-var atq_adicional = f("atq_adicional");
 
 // Dinero
 
@@ -1448,10 +822,10 @@ var num_ventajas_hab = f("num_ventajas_hab");
 var num_ventajas_gratis = f("num_ventajas_gratis");
 
 var warning_pm_actuales = f("warning_pm_actuales");
-var warning_pd_actuales = f("warning_pd_actuales");
+var warning_pe_actuales = f("warning_pe_actuales");
 var warning_combate = f("warning_combate");
-var pd_actuales_combate = f("pd_actuales_combate");
-var pd_totales_combate = f("pd_totales_combate");
+var pe_actuales_combate = f("pe_actuales_combate");
+var pe_totales_combate = f("pe_totales_combate");
 
 var armadura0_def = f("armadura0_def");
 
@@ -1484,7 +858,7 @@ function v_idioma(event) {
 
 function v_idioma_escrito(event) {
   posicion = event.target.name.substr(6, 1);
-  var coste_idioma = f("idioma" + posicion + "_pd");
+  var coste_idioma = f("idioma" + posicion + "_pe");
   var coste_idioma_v = 0;
 
   switch (event.value) {
@@ -1520,14 +894,14 @@ function v_idioma_escrito(event) {
     default:
       break;
   }
-  actualizarField(pd_actuales, coste_idioma.value, coste_idioma_v);
+  actualizarField(pe_actuales, coste_idioma.value, coste_idioma_v);
   coste_idioma.value = coste_idioma_v;
-  checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+  checkWarningPEActuales(pe_actuales.value, pe_totales.value);
 }
 
 function v_idioma_hablado(event) {
   posicion = event.target.name.substr(6, 1);
-  var coste_idioma = f("idioma" + posicion + "_pd");
+  var coste_idioma = f("idioma" + posicion + "_pe");
   var coste_idioma_v = 0;
 
   switch (event.value) {
@@ -1563,14 +937,14 @@ function v_idioma_hablado(event) {
     default:
       break;
   }
-  actualizarField(pd_actuales, coste_idioma.value, coste_idioma_v);
+  actualizarField(pe_actuales, coste_idioma.value, coste_idioma_v);
   coste_idioma.value = coste_idioma_v;
-  checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+  checkWarningPEActuales(pe_actuales.value, pe_totales.value);
 }
 
 function v_mano_dominante(event) {
   if (event.value == "Ambas") {
-    pm_actuales.value = n(pm_actuales.value) + 2;
+    pm_actuales.value = N(pm_actuales.value) + 2;
   } else if (mano_dominante.value == "Ambas") {
     pm_actuales.value -= 2;
   }
@@ -1602,7 +976,7 @@ function v_atributo(event) {
   var atributo_bono_old_v = atributo_bono.value;
   if (
     atributo_puntos < 0 ||
-    n(atributo_puntos) + n(atributo_base) > 20 ||
+    N(atributo_puntos) + N(atributo_base) > 20 ||
     atributo_base > 20 ||
     atributo_base < 1
   ) {
@@ -1611,7 +985,7 @@ function v_atributo(event) {
     if (event.target.name == atributo + "_puntos") {
       actualizarField(pm_actuales, f(atributo + "_puntos").value, event.value);
     }
-    atributo_actual.value = n(atributo_base) + n(atributo_puntos);
+    atributo_actual.value = N(atributo_base) + N(atributo_puntos);
 
     atributo_bono.value = lista_bonos[atributo_actual.value - 1];
 
@@ -1651,7 +1025,7 @@ function v_atributo(event) {
 
         break;
       case "fue":
-        switch (n(fue_actual.value)) {
+        switch (N(fue_actual.value)) {
           case 1:
             carga_normal.value = "< 1";
             carga_max.value = 1;
@@ -1757,10 +1131,10 @@ function v_atributo(event) {
         // REG
         reg_base.value = regBasePorCON(atributo_actual.value);
 
-        if (n(nventaja_reg.value) > 0) {
-          reg_base.value = n(reg_base.value) + n(nventaja_reg.value * 2);
+        if (N(nventaja_reg.value) > 0) {
+          reg_base.value = N(reg_base.value) + N(nventaja_reg.value * 2);
         }
-        if (n(nventaja_reg.value) == -1) {
+        if (N(nventaja_reg.value) == -1) {
           actualizarRegeneracionesSegunRegeneracionBase(reg_base.value, 2);
         } else {
           actualizarRegeneracionesSegunRegeneracionBase(reg_base.value, 1);
@@ -1782,7 +1156,7 @@ function v_atributo(event) {
             }
           }
         );
-        actualizarVidaPDCoste();
+        actualizarVidaPECoste();
         break;
       case "des":
         actualizarField(
@@ -1852,11 +1226,11 @@ function v_atributo(event) {
 
 // ARMADURAS
 
-function v_armadura_check(event) {
+function v_armadura_eq(event) {
   posicion = event.target.name.substr(8, 1);
   var armadura = f("armadura" + posicion);
   if (event.value == "Eq.") {
-    if (s(armadura.value) == "-" || noCabeArmadura(posicion)) {
+    if (S(armadura.value) == "-" || noCabeArmadura(posicion)) {
       event.rc = false;
     } else {
       resetAtributosArmadura(posicion);
@@ -1887,7 +1261,7 @@ function v_armadura_check(event) {
 function v_armadura(event) {
   posicion = event.target.name.substr(8, 1);
   f(event.target.name + "_calidad").value = 0;
-  f(event.target.name + "_check").value = "-";
+  f(event.target.name + "_eq").value = "-";
 
   resetAtributosArmadura(posicion, event.value);
 }
@@ -1897,9 +1271,9 @@ function v_armadura_calidad(event) {
   var armadura = f("armadura" + posicion);
   if (posicion == 0) {
     if (event.value == 0) {
-      pm_actuales.value = n(pm_actuales.value) - 2;
+      pm_actuales.value = N(pm_actuales.value) - 2;
     } else {
-      pm_actuales.value = n(pm_actuales.value) + 2;
+      pm_actuales.value = N(pm_actuales.value) + 2;
     }
   }
 
@@ -1909,7 +1283,7 @@ function v_armadura_calidad(event) {
 
 // ARMAS
 
-function v_arma_check(event) {
+function v_arma_mano(event) {
   var mano_a_desequipar = f(event.target.name).value;
   posicion = event.target.name.substr(4, 1);
   var arma = f("arma" + posicion);
@@ -1919,16 +1293,16 @@ function v_arma_check(event) {
   var arma_clase = f("arma" + posicion + "_clase");
 
   if (
-    s(arma.value) == "-" ||
+    S(arma.value) == "-" ||
     (arma_clase.value == "A. de proyectil" &&
       (event.value == "D" || event.value == "I")) ||
     manoOcupada(event.value, posicion)
   ) {
     event.rc = false;
-  } else if (s(event.value) == "-") {
+  } else if (S(event.value) == "-") {
     armas_equipadas[mano_a_desequipar] = null;
     arma_fue_bono.value = fue_bono.value;
-    arma_df.value = Math.max(0, n(arma_db.value) + n(arma_fue_bono.value));
+    arma_df.value = Math.max(0, N(arma_db.value) + N(arma_fue_bono.value));
 
     resetArma(posicion);
 
@@ -1939,7 +1313,7 @@ function v_arma_check(event) {
     ) {
       // Combate desarmado
 
-      arma0_check.value = "D+I";
+      arma0_mano.value = "D+I";
 
       actualizarIniciativa();
       actualizarEsquiva();
@@ -1947,14 +1321,14 @@ function v_arma_check(event) {
     aplicarNegativosArmas();
     actualizarTablaDiferencias();
   } else {
-    if (s(mano_a_desequipar) != "-") {
+    if (S(mano_a_desequipar) != "-") {
       resetArma(armas_equipadas[mano_a_desequipar].posicion);
       armas_equipadas[mano_a_desequipar] = null;
     } else {
       resetArma(0);
     }
 
-    arma0_check.value = "-";
+    arma0_mano.value = "-";
 
     armas_equipadas[event.value] = {
       posicion: posicion,
@@ -1991,7 +1365,7 @@ function v_arma_check(event) {
 
 function v_arma(event) {
   f(event.target.name + "_calidad").value = 0;
-  f(event.target.name + "_check").value = "-";
+  f(event.target.name + "_mano").value = "-";
 
   posicion = event.target.name.substr(4, 1);
 
@@ -2001,20 +1375,20 @@ function v_arma(event) {
 function v_arma_calidad(event) {
   i = event.target.name.substr(4, 1);
   var arma_clase = f("arma" + i + "_clase");
-  var arma_check = f("arma" + i + "_check");
+  var arma_mano = f("arma" + i + "_mano");
   var arma = f("arma" + i);
 
-  if (s(arma_clase.value) == "-") {
+  if (S(arma_clase.value) == "-") {
     event.rc = false;
   } else {
     resetArma(i, arma.value, event.value);
     if (
-      arma_check.value == "I" ||
-      arma_check.value == "D" ||
-      arma_check.value == "D+I"
+      arma_mano.value == "I" ||
+      arma_mano.value == "D" ||
+      arma_mano.value == "D+I"
     ) {
       reset_arma = false;
-      aplicarNegativosArma(arma_check.value);
+      aplicarNegativosArma(arma_mano.value);
       reset_arma = true;
     }
   }
@@ -2022,32 +1396,131 @@ function v_arma_calidad(event) {
 
 // TABLA DE ARMAS
 
+function v_aprendizaje_arma_nivel(event) {
+  posicion = event.target.name.substr(16, 1);
+  var aprendizaje_arma_nivel = f("aprendizaje_arma" + posicion + "_nivel");
+  var aprendizaje_arma_peso = f("aprendizaje_arma" + posicion + "_peso");
+  var aprendizaje_arma_tipo = f("aprendizaje_arma" + posicion + "_tipo");
+  var aprendizaje_arma_pe = f("aprendizaje_arma" + posicion + "_pe");
+  if (S(event.value) !== "-") {
+    if (
+      (N(posicion) > 1 &&
+        S(f("aprendizaje_arma" + (posicion - 1) + "_nivel").value) === "-") ||
+      S(aprendizaje_arma_tipo.value) === "-" ||
+      (S(aprendizaje_arma_peso.value) === "-" &&
+        S(aprendizaje_arma_tipo.value) !== "Sin armas")
+    ) {
+      event.rc = false;
+    } else {
+      if (S(f(event.target.name).value) !== "-") {
+        armas_aprendidas[posicion - 1].nivel = aprendizaje_arma_nivel.value;
+        aprendizaje_arma_pe.value = calcularAprendizajeArmaPE(posicion - 1);
+      } else {
+        armas_aprendidas.push({
+          nivel: aprendizaje_arma_nivel.value,
+          tipo: aprendizaje_arma_tipo.value,
+          peso: aprendizaje_arma_peso.value,
+        });
+        aprendizaje_arma_pe.value = calcularAprendizajeArmaPE(
+          armas_aprendidas.length
+        );
+      }
+    }
+  } else {
+    if (
+      N(posicion) < 7 &&
+      S(f("aprendizaje_arma" + (N(posicion) + 1) + "_nivel").value) !== "-"
+    ) {
+      event.rc = false;
+    } else {
+      armas_aprendidas.pop();
+    }
+  }
+}
+
+function calcularAprendizajeArmaPE(pos) {
+  var coste;
+  var similar = false;
+  var tipologia;
+  if (armas_aprendidas[pos].peso === "Todas") {
+    if (armas_aprendidas[pos].nivel === "Alto") {
+      coste = 25;
+    } else if (armas_aprendidas[pos].nivel === "Medio") {
+      coste = 20;
+    } else {
+      coste = 15;
+    }
+  } else {
+    for (i = 0; i < pos && !similar && !tipologia; i++) {
+      if (armas_aprendidas[pos].tipo === armas_aprendidas[i].tipo) {
+        if (armas_aprendidas[i].peso == "Todas") {
+          tipologia = armas_aprendidas[i].nivel;
+        } else if (armas_aprendidas[i].nivel == "Alto") {
+          similar = true;
+        }
+      }
+    }
+    if (tipologia) {
+      if (tipologia == "Bajo") {
+        if (armas_aprendidas[pos].nivel === "Bajo") {
+          coste = 0;
+        } else if (armas_aprendidas[pos].nivel === "Medio") {
+          coste = 5;
+        } else {
+          coste = 10;
+        }
+      } else if (tipologia == "Medio") {
+        if (
+          armas_aprendidas[pos].nivel === "Bajo" ||
+          armas_aprendidas[pos].nivel === "Medio"
+        ) {
+          coste = 0;
+        } else {
+          coste = 5;
+        }
+      } else {
+        coste = 0;
+      }
+    } else {
+      if (armas_aprendidas[pos].nivel == "Bajo") {
+        coste = similar ? 0 : 5;
+      } else if (armas_aprendidas[pos].nivel == "Medio") {
+        coste = 5;
+      } else {
+        coste = similar ? 5 : 10;
+      }
+    }
+  }
+
+  return coste;
+}
+
 function v_tabla_arma(event) {
   posicion = event.target.name.substr(event.target.name.length - 1);
-  var coste_pd = f(event.target.name + "_pd");
-  var coste_pd_old_v = coste_pd.value;
+  var coste_pe = f(event.target.name + "_pe");
+  var coste_pe_old_v = coste_pe.value;
   var arma_clase = f(event.target.name + "_clase");
 
   if (
-    (n(posicion) > 1 &&
-      n(f("tabla_arma" + (posicion - 1) + "_nivel").value) == 0) ||
-    (n(posicion) < 7 &&
-      n(f("tabla_arma" + (n(posicion) + 1) + "_nivel").value) > 0)
+    (N(posicion) > 1 &&
+      N(f("tabla_arma" + (posicion - 1) + "_nivel").value) == 0) ||
+    (N(posicion) < 7 &&
+      N(f("tabla_arma" + (N(posicion) + 1) + "_nivel").value) > 0)
   ) {
     event.rc = false;
   } else {
-    if (s(event.value) == "-" || s(f(event.target.name).value) != "-") {
+    if (S(event.value) == "-" || S(f(event.target.name).value) != "-") {
       tablas_arma_aprendidas.pop();
     }
 
-    if (s(event.value) == "-") {
-      coste_pd.value = 0;
+    if (S(event.value) == "-") {
+      coste_pe.value = 0;
       arma_clase.value = "-";
     } else if (
       event.value == event.value.toUpperCase()
       // || event.value.substr(0, 3) == "E. "
     ) {
-      coste_pd.value = 25;
+      coste_pe.value = 25;
       lista_tabla_armas_estilos.some(function (tabla_arma) {
         if (tabla_arma.tabla == event.value) {
           arma_clase.value = tabla_arma.clase;
@@ -2080,7 +1553,7 @@ function v_tabla_arma(event) {
           (t_arma_clase.value == arma_clase.value &&
             t_arma.value == t_arma.value.toUpperCase())
         ) {
-          coste_pd.value = 0;
+          coste_pe.value = 0;
           encontrado = true;
         } else {
           if (t_arma_clase.value.indexOf("/") > -1) {
@@ -2126,11 +1599,11 @@ function v_tabla_arma(event) {
       }
 
       if (!encontrado && posicion > 1) {
-        coste_pd.value = similar ? 5 : 10;
+        coste_pe.value = similar ? 5 : 10;
       }
     }
     if (posicion > 1) {
-      actualizarField(pd_actuales, coste_pd_old_v, coste_pd.value);
+      actualizarField(pe_actuales, coste_pe_old_v, coste_pe.value);
     }
 
     if (armas_equipadas["D+I"]) {
@@ -2151,14 +1624,14 @@ function v_tabla_arma(event) {
     aplicarNegativosArmas();
   }
 
-  checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+  checkWarningPEActuales(pe_actuales.value, pe_totales.value);
 }
 
-function checkWarningPDActuales(pd_act, pd_tot) {
-  if (pd_tot - pd_act >= 0) {
-    warning_pd_actuales.value = "";
+function checkWarningPEActuales(pe_act, pe_tot) {
+  if (pe_tot - pe_act >= 0) {
+    warning_pe_actuales.value = "";
   } else {
-    warning_pd_actuales.value = "_ _ _ _ _ _ _ _";
+    warning_pe_actuales.value = "_ _ _ _ _ _ _ _";
   }
 }
 
@@ -2171,18 +1644,18 @@ function checkWarningPMActuales(pm_act, pm_tot) {
 }
 
 function checkWarningCombate(event) {
-  var pd_llA_v =
-    event && event.target.name == "pd_llA" ? event.value : pd_llA.value;
-  var pd_ataque_v =
-    event && event.target.name == "pd_ataque" ? event.value : pd_ataque.value;
-  var pd_parada_v =
-    event && event.target.name == "pd_parada" ? event.value : pd_parada.value;
-  var pd_esquiva_v =
-    event && event.target.name == "pd_esquiva" ? event.value : pd_esquiva.value;
+  var pe_llA_v =
+    event && event.target.name == "pe_llA" ? event.value : pe_llA.value;
+  var pe_ataque_v =
+    event && event.target.name == "pe_ataque" ? event.value : pe_ataque.value;
+  var pe_parada_v =
+    event && event.target.name == "pe_parada" ? event.value : pe_parada.value;
+  var pe_esquiva_v =
+    event && event.target.name == "pe_esquiva" ? event.value : pe_esquiva.value;
   var suma_combate =
-    n(pd_llA_v) + n(pd_ataque_v) + n(pd_parada_v) + n(pd_esquiva_v);
-  pd_actuales_combate.value = suma_combate;
-  if (pd_totales_combate.value - pd_actuales_combate.value >= 0) {
+    N(pe_llA_v) + N(pe_ataque_v) + N(pe_parada_v) + N(pe_esquiva_v);
+  pe_actuales_combate.value = suma_combate;
+  if (pe_totales_combate.value - pe_actuales_combate.value >= 0) {
     warning_combate.value = "";
   } else {
     warning_combate.value =
@@ -2192,14 +1665,14 @@ function checkWarningCombate(event) {
 
 // LLEVAR ARMADURA
 
-function v_pd_llA(event) {
+function v_pe_llA(event) {
   event.value = floor(event.value);
   if (event.value >= 0) {
     actualizarFinal(event);
-    actualizarField(pd_actuales, pd_llA.value, event.value);
+    actualizarField(pe_actuales, pe_llA.value, event.value);
     calculoTotalArmaduras();
     checkWarningCombate(event);
-    checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   } else {
     event.rc = false;
   }
@@ -2235,70 +1708,70 @@ function v_esp_llA(event) {
 
 // VIDA
 
-function v_pd_vida(event) {
+function v_pe_vida(event) {
   event.value = floor(event.value);
 
   if (event.value < 0) {
     event.rc = false;
   } else {
-    actualizarField(actuales_vida, pd_vida.value, event.value);
-    actualizarField(totales_vida, pd_vida.value, event.value);
-    actualizarVidaPDCoste(event.value);
+    actualizarField(actuales_vida, pe_vida.value, event.value);
+    actualizarField(totales_vida, pe_vida.value, event.value);
+    actualizarVidaPECoste(event.value);
   }
 }
 
-function actualizarVidaPDCoste(pd_vida_p) {
-  var pd_vida_v = pd_vida_p || pd_vida_p == 0 ? pd_vida_p : pd_vida.value;
-  var pd_vida_coste_old_v = pd_vida_coste.value;
-  switch (n(con_actual.value)) {
+function actualizarVidaPECoste(pe_vida_p) {
+  var pe_vida_v = pe_vida_p || pe_vida_p == 0 ? pe_vida_p : pe_vida.value;
+  var pe_vida_coste_old_v = pe_vida_coste.value;
+  switch (N(con_actual.value)) {
     case 1:
-      pd_vida_coste.value = 15 * pd_vida_v;
+      pe_vida_coste.value = 15 * pe_vida_v;
       break;
     case 2:
     case 3:
-      pd_vida_coste.value = 14 * pd_vida_v;
+      pe_vida_coste.value = 14 * pe_vida_v;
       break;
     case 4:
     case 5:
-      pd_vida_coste.value = 13 * pd_vida_v;
+      pe_vida_coste.value = 13 * pe_vida_v;
       break;
     case 6:
     case 7:
-      pd_vida_coste.value = 12 * pd_vida_v;
+      pe_vida_coste.value = 12 * pe_vida_v;
       break;
     case 8:
     case 9:
-      pd_vida_coste.value = 11 * pd_vida_v;
+      pe_vida_coste.value = 11 * pe_vida_v;
       break;
     case 10:
     case 11:
-      pd_vida_coste.value = 10 * pd_vida_v;
+      pe_vida_coste.value = 10 * pe_vida_v;
       break;
     case 12:
     case 13:
-      pd_vida_coste.value = 9 * pd_vida_v;
+      pe_vida_coste.value = 9 * pe_vida_v;
       break;
     case 14:
     case 15:
-      pd_vida_coste.value = 8 * pd_vida_v;
+      pe_vida_coste.value = 8 * pe_vida_v;
       break;
     case 16:
     case 17:
-      pd_vida_coste.value = 7 * pd_vida_v;
+      pe_vida_coste.value = 7 * pe_vida_v;
       break;
     case 18:
     case 19:
-      pd_vida_coste.value = 6 * pd_vida_v;
+      pe_vida_coste.value = 6 * pe_vida_v;
       break;
     case 20:
-      pd_vida_coste.value = 5 * pd_vida_v;
+      pe_vida_coste.value = 5 * pe_vida_v;
       break;
     default:
       break;
   }
-  actualizarField(pd_actuales, pd_vida_coste_old_v, pd_vida_coste.value);
+  actualizarField(pe_actuales, pe_vida_coste_old_v, pe_vida_coste.value);
 
-  checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+  checkWarningPEActuales(pe_actuales.value, pe_totales.value);
 }
 
 function v_nventaja_vida(event) {
@@ -2344,7 +1817,7 @@ function v_actuales_vida(event) {
 
 // COMBATE
 
-function v_pd_ataque(event) {
+function v_pe_ataque(event) {
   event.value = floor(event.value);
 
   if (event.value >= 0) {
@@ -2367,28 +1840,28 @@ function v_pd_ataque(event) {
       actualizarField(final_ataque_d, f(event.target.name).value, event.value);
       actualizarField(final_ataque_i, f(event.target.name).value, event.value);
     }
-    actualizarField(pd_actuales, pd_ataque.value, event.value);
+    actualizarField(pe_actuales, pe_ataque.value, event.value);
     checkWarningCombate(event);
-    checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   } else {
     event.rc = false;
   }
 }
 
-function v_pd_esquiva(event) {
+function v_pe_esquiva(event) {
   event.value = floor(event.value);
 
   if (event.value >= 0) {
     actualizarFinal(event);
-    actualizarField(pd_actuales, pd_esquiva.value, event.value);
+    actualizarField(pe_actuales, pe_esquiva.value, event.value);
     checkWarningCombate(event);
-    checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   } else {
     event.rc = false;
   }
 }
 
-function v_pd_parada(event) {
+function v_pe_parada(event) {
   event.value = floor(event.value);
   if (event.value >= 0) {
     event.value = floor(event.value);
@@ -2412,9 +1885,9 @@ function v_pd_parada(event) {
       actualizarField(final_parada_i, f(event.target.name).value, event.value);
     }
 
-    actualizarField(pd_actuales, pd_parada.value, event.value);
+    actualizarField(pe_actuales, pe_parada.value, event.value);
     checkWarningCombate(event);
-    checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   } else {
     event.rc = false;
   }
@@ -2464,7 +1937,7 @@ function v_esp_combate(event) {
     var final_combate = f(
       "final" + event.target.name.substr(event.target.name.indexOf("_"))
     ).value;
-    if (s(final_combate) == "-") {
+    if (S(final_combate) == "-") {
       event.rc = false;
     } else {
       actualizarFinal(event);
@@ -2506,10 +1979,10 @@ function v_op_vida_resta(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    if (n(actuales_vida.value) + n(event.value) > totales_vida.value) {
+    if (N(actuales_vida.value) + N(event.value) > totales_vida.value) {
       actuales_vida.value = totales_vida.value;
     } else {
-      actuales_vida.value = n(actuales_vida.value) + n(event.value);
+      actuales_vida.value = N(actuales_vida.value) + N(event.value);
     }
     event.value = "-";
   } else {
@@ -2521,10 +1994,10 @@ function v_op_vida_suma(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    if (n(actuales_vida.value) + n(event.value) > totales_vida.value) {
+    if (N(actuales_vida.value) + N(event.value) > totales_vida.value) {
       actuales_vida.value = totales_vida.value;
     } else {
-      actuales_vida.value = n(actuales_vida.value) + n(event.value);
+      actuales_vida.value = N(actuales_vida.value) + N(event.value);
     }
     event.value = "+";
   } else {
@@ -2536,7 +2009,7 @@ function v_op_bronce_1(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    bronce.value = n(event.value) + n(bronce.value);
+    bronce.value = N(event.value) + N(bronce.value);
     event.value = "-";
   } else {
     event.rc = false;
@@ -2547,7 +2020,7 @@ function v_op_bronce_2(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    bronce.value = n(event.value) + n(bronce.value);
+    bronce.value = N(event.value) + N(bronce.value);
     event.value = "+";
   } else {
     event.rc = false;
@@ -2558,7 +2031,7 @@ function v_op_plata_1(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    plata.value = n(event.value) + n(plata.value);
+    plata.value = N(event.value) + N(plata.value);
     event.value = "-";
   } else {
     event.rc = false;
@@ -2569,7 +2042,7 @@ function v_op_plata_2(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    plata.value = n(event.value) + n(plata.value);
+    plata.value = N(event.value) + N(plata.value);
     event.value = "+";
   } else {
     event.rc = false;
@@ -2580,7 +2053,7 @@ function v_op_oro_1(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    oro.value = n(event.value) + n(oro.value);
+    oro.value = N(event.value) + N(oro.value);
     event.value = "-";
   } else {
     event.rc = false;
@@ -2591,7 +2064,7 @@ function v_op_oro_2(event) {
   event.value = floor(event.value);
 
   if (!isNaN(event.value)) {
-    oro.value = n(event.value) + n(oro.value);
+    oro.value = N(event.value) + N(oro.value);
     event.value = "+";
   } else {
     event.rc = false;
@@ -2603,7 +2076,7 @@ function v_bronce(event) {
 
   if (event.value >= 100) {
     var plata_up = Math.floor(event.value / 100);
-    plata.value = n(plata.value) + n(plata_up);
+    plata.value = N(plata.value) + N(plata_up);
     event.value = event.value - plata_up * 100;
   } else if (event.value < 0) {
     event.value = 0;
@@ -2617,7 +2090,7 @@ function v_plata(event) {
 
   if (event.value >= 100) {
     var oro_up = Math.floor(event.value / 100);
-    oro.value = n(oro.value) + n(oro_up);
+    oro.value = N(oro.value) + N(oro_up);
     event.value = event.value - oro_up * 100;
   } else if (event.value < 0) {
     event.value = 0;
@@ -2636,7 +2109,7 @@ function v_oro(event) {
   }
 }
 
-function v_pd_habilidad(event) {
+function v_pe_habilidad(event) {
   var habilidad = event.target.name.substr(3);
   var hab_mult = f("mult_" + habilidad);
   var hab_final = f("final_" + habilidad);
@@ -2646,9 +2119,9 @@ function v_pd_habilidad(event) {
   event.value = floor(event.value);
   if (event.value > 0) {
     if (hab_mult.value != "x2" && mult_rama.value != "x2") {
-      hab_base.value = n(event.value);
+      hab_base.value = N(event.value);
     } else {
-      hab_base.value = 2 * n(event.value);
+      hab_base.value = 2 * N(event.value);
     }
   } else {
     event.value = 0;
@@ -2656,8 +2129,8 @@ function v_pd_habilidad(event) {
   }
   if (event.rc) {
     actualizarField(hab_final, hab_base_old_v, hab_base.value);
-    actualizarField(pd_actuales, f(event.target.name).value, event.value);
-    checkWarningPDActuales(pd_actuales.value, pd_totales.value);
+    actualizarField(pe_actuales, f(event.target.name).value, event.value);
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   }
 }
 
@@ -2685,30 +2158,30 @@ function v_mult_habilidad(event) {
     var hab_base = f("base_" + event.target.name.substr(5));
     var hab_base_old_v = hab_base.value;
     var hab_final = f("final_" + event.target.name.substr(5));
-    var hab_pd = f("pd_" + event.target.name.substr(5));
+    var hab_pe = f("pe_" + event.target.name.substr(5));
     var rama_v = getRama(hab);
     var rama_mult = f("mult_" + rama_v);
     if (rama_mult.value == "x2" && event.value == "x2") {
       event.rc = false;
     } else {
       if (event.value != "x2") {
-        if (hab_pd.value > 0) {
+        if (hab_pe.value > 0) {
           if (rama_mult.value != "x2") {
-            hab_base.value = hab_pd.value;
+            hab_base.value = hab_pe.value;
           } else {
-            hab_base.value = hab_pd.value * 2;
+            hab_base.value = hab_pe.value * 2;
           }
         } else {
           hab_base.value = -30;
         }
-        pm_actuales.value = n(pm_actuales.value) - 2;
+        pm_actuales.value = N(pm_actuales.value) - 2;
       } else {
-        if (hab_pd.value > 0) {
-          hab_base.value = hab_pd.value * 2;
+        if (hab_pe.value > 0) {
+          hab_base.value = hab_pe.value * 2;
         } else {
           hab_base.value = -30;
         }
-        pm_actuales.value = n(pm_actuales.value) + 2;
+        pm_actuales.value = N(pm_actuales.value) + 2;
       }
       actualizarField(hab_final, hab_base_old_v, hab_base.value);
       checkWarningPMActuales(pm_actuales.value, pm_totales.value);
@@ -2719,29 +2192,29 @@ function v_mult_habilidad(event) {
 function v_mult_rama(event) {
   lista_habilidades[event.target.name.substr(5)].forEach(function (hab) {
     var hab_base = f("base_" + hab.habilidad);
-    var hab_pd = f("pd_" + hab.habilidad);
+    var hab_pe = f("pe_" + hab.habilidad);
     var hab_base_old_v = hab_base.value;
     var hab_final = f("final_" + hab.habilidad);
     var hab_mult = f("mult_" + hab.habilidad);
     if (hab_mult.value == "x2") {
       validar_rama = false;
       hab_mult.value = "-";
-      pm_actuales.value = n(pm_actuales.value) - 2;
+      pm_actuales.value = N(pm_actuales.value) - 2;
       validar_rama = true;
     }
     if (hab_base.value > 0) {
       if (event.value != "x2") {
-        hab_base.value = hab_pd.value;
+        hab_base.value = hab_pe.value;
       } else {
-        hab_base.value = hab_pd.value * 2;
+        hab_base.value = hab_pe.value * 2;
       }
       actualizarField(hab_final, hab_base_old_v, hab_base.value);
     }
   });
   if (event.value != "x2") {
-    pm_actuales.value = n(pm_actuales.value) - 4;
+    pm_actuales.value = N(pm_actuales.value) - 4;
   } else {
-    pm_actuales.value = n(pm_actuales.value) + 4;
+    pm_actuales.value = N(pm_actuales.value) + 4;
   }
   checkWarningPMActuales(pm_actuales.value, pm_totales.value);
 }
@@ -2761,8 +2234,8 @@ function v_nventaja_rama(event) {
   var nventaja_pventaja = [0, 4, 6];
   actualizarField(
     pm_actuales,
-    nventaja_pventaja[n(f(event.target.name).value)],
-    nventaja_pventaja[n(event.value)]
+    nventaja_pventaja[N(f(event.target.name).value)],
+    nventaja_pventaja[N(event.value)]
   );
   checkWarningPMActuales(pm_actuales.value, pm_totales.value);
 }
@@ -2783,7 +2256,7 @@ function v_nventaja_habilidad(event) {
   );
 
   if (event.value == 1) {
-    num_ventajas_hab.value = n(num_ventajas_hab.value) + 1;
+    num_ventajas_hab.value = N(num_ventajas_hab.value) + 1;
   }
 
   var cost_old = f(event.target.name).value * 2;
@@ -2797,7 +2270,7 @@ function v_nventaja_habilidad(event) {
     }
   }
   if (f(event.target.name).value == 1) {
-    num_ventajas_hab.value = n(num_ventajas_hab.value) - 1;
+    num_ventajas_hab.value = N(num_ventajas_hab.value) - 1;
   }
   if (num_ventajas_hab.value >= 0 && num_ventajas_hab.value <= 5) {
     num_ventajas_gratis.value = num_ventajas_hab.value;
@@ -2822,7 +2295,7 @@ function v_esp_resistencias(event) {
 }
 
 function v_nventaja_iniciativa(event) {
-  switch (n(event.value)) {
+  switch (N(event.value)) {
     case -2:
       pventaja_iniciativa.value = -60;
       break;
@@ -2857,25 +2330,25 @@ function actualizarIniciativa() {
     arma_iniciativa_total.value = armas_equipadas["I"].iniciativa;
   } else if (armas_equipadas["I"] != null && armas_equipadas["D"] != null) {
     arma_iniciativa_total.value =
-      n(armas_equipadas["I"].iniciativa) + n(armas_equipadas["D"].iniciativa);
+      N(armas_equipadas["I"].iniciativa) + N(armas_equipadas["D"].iniciativa);
   } else if (armas_equipadas["D+I"] != null) {
     arma_iniciativa_total.value = armas_equipadas["D+I"].iniciativa;
   } else {
     arma_iniciativa_total.value = arma0_iniciativa.value;
   }
   final_iniciativa.value =
-    n(base_iniciativa.value) +
-    n(des_bono.value) +
-    n(agi_bono.value) +
-    n(arma_iniciativa_total.value) +
-    n(armadura_iniciativa_total.value) +
-    n(pventaja_iniciativa.value) +
-    n(esp_iniciativa.value);
+    N(base_iniciativa.value) +
+    N(des_bono.value) +
+    N(agi_bono.value) +
+    N(arma_iniciativa_total.value) +
+    N(armadura_iniciativa_total.value) +
+    N(pventaja_iniciativa.value) +
+    N(esp_iniciativa.value);
 }
 
 function actualizarMovimiento() {
   var mov_total =
-    n(agi_actual.value) + n(floor(armadura_iniciativa_total.value / 10));
+    N(agi_actual.value) + N(floor(armadura_iniciativa_total.value / 10));
 
   if (mov_total - 1 >= 1 && mov_total - 1 <= 20) {
     mov_max.value = lista_movimiento[mov_total - 1];
@@ -2903,26 +2376,26 @@ function actualizarAtaque() {
     equipo_ataque_d.value = arma0_atq.value;
     equipo_ataque_i.value = arma0_atq.value;
   }
-  if (s(equipo_ataque_d.value) == "-") {
+  if (S(equipo_ataque_d.value) == "-") {
     final_ataque_d.value = "-";
   } else {
     final_ataque_d.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_d.value) +
-      n(esp_ataque_d.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_d.value) +
+      N(esp_ataque_d.value);
   }
 
-  if (s(equipo_ataque_i.value) == "-") {
+  if (S(equipo_ataque_i.value) == "-") {
     final_ataque_i.value = "-";
   } else {
     final_ataque_i.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_i.value) +
-      n(esp_ataque_i.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_i.value) +
+      N(esp_ataque_i.value);
   }
 }
 
@@ -2943,35 +2416,35 @@ function actualizarParada() {
     equipo_parada_d.value = arma0_atq.value;
     equipo_parada_i.value = arma0_atq.value;
   }
-  if (s(equipo_parada_d.value) == "-") {
+  if (S(equipo_parada_d.value) == "-") {
     final_parada_d.value = "-";
   } else {
     final_parada_d.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_d.value) +
-      n(esp_parada_d.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_d.value) +
+      N(esp_parada_d.value);
   }
 
-  if (s(equipo_parada_i.value) == "-") {
+  if (S(equipo_parada_i.value) == "-") {
     final_parada_i.value = "-";
   } else {
     final_parada_i.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_i.value) +
-      n(esp_parada_i.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_i.value) +
+      N(esp_parada_i.value);
   }
 }
 
 function actualizarEsquiva() {
   final_esquiva.value =
-    n(pd_esquiva.value) +
-    n(agi_bono.value) +
-    n(pventaja_esquiva.value) +
-    n(esp_esquiva.value);
+    N(pe_esquiva.value) +
+    N(agi_bono.value) +
+    N(pventaja_esquiva.value) +
+    N(esp_esquiva.value);
 }
 
 function actualizarTablaDiferencias() {
@@ -3090,8 +2563,8 @@ function calculoTotalArmaduras() {
     if (armadura_array) {
       armadura_mov = f("armadura" + armadura_array.posicion + "_mov");
       armadura_reqarm = f("armadura" + armadura_array.posicion + "_reqarm");
-      armaduras_mov_total += n(armadura_mov.value);
-      armaduras_reqarm_total += n(armadura_reqarm.value);
+      armaduras_mov_total += N(armadura_mov.value);
+      armaduras_reqarm_total += N(armadura_reqarm.value);
 
       num_armaduras++;
     }
@@ -3102,7 +2575,7 @@ function calculoTotalArmaduras() {
     if (diff_reqarm_armaduras > 0) {
       armaduras_mov_total = Math.min(
         0,
-        n(armaduras_mov_total) + floor(diff_reqarm_armaduras / 50) * 10
+        N(armaduras_mov_total) + floor(diff_reqarm_armaduras / 50) * 10
       );
     }
     armaduras_mov_total = armaduras_mov_total - 20 * (num_armaduras - 1);
@@ -3141,8 +2614,8 @@ function calculoTotalArmaduras() {
     if (yelmo_array) {
       yelmo_advertir = f("armadura" + yelmo_array.posicion + "_advertir");
       yelmo_reqarm = f("armadura" + yelmo_array.posicion + "_reqarm");
-      yelmos_advertir_total += n(yelmo_advertir.value);
-      yelmos_reqarm_total += n(yelmo_reqarm.value);
+      yelmos_advertir_total += N(yelmo_advertir.value);
+      yelmos_reqarm_total += N(yelmo_reqarm.value);
 
       num_yelmos++;
     }
@@ -3153,7 +2626,7 @@ function calculoTotalArmaduras() {
     if (diff_reqarm_yelmos > 0) {
       yelmos_advertir_total = Math.min(
         0,
-        n(yelmos_advertir_total) + floor(diff_reqarm_yelmos / 50) * 10
+        N(yelmos_advertir_total) + floor(diff_reqarm_yelmos / 50) * 10
       );
     }
     yelmos_advertir_total = yelmos_advertir_total - 20 * (num_yelmos - 1);
@@ -3350,10 +2823,10 @@ function totalArmadura(lista) {
   var total = 0;
   i = 1;
   while (i < lista.length) {
-    total = n(total) + lista[i] / 2;
+    total = N(total) + lista[i] / 2;
     i++;
   }
-  var res = lista.length == 0 ? 0 : n(lista[0]) + floor(total / 10) * 10;
+  var res = lista.length == 0 ? 0 : N(lista[0]) + floor(total / 10) * 10;
   return res;
 }
 
@@ -3396,12 +2869,12 @@ function manoOcupada(mano, posicion) {
 function v_nventaja_reg(event) {
   reg_base.value = regBasePorCON(con_actual.value);
 
-  if (n(event.value) > 0) {
-    reg_base.value = n(reg_base.value) + n(event.value * 2);
+  if (N(event.value) > 0) {
+    reg_base.value = N(reg_base.value) + N(event.value * 2);
   }
 
   actualizarField(pm_actuales, nventaja_reg.value * 2, event.value * 2);
-  if (n(event.value) == -1) {
+  if (N(event.value) == -1) {
     actualizarRegeneracionesSegunRegeneracionBase(reg_base.value, 2);
   } else {
     actualizarRegeneracionesSegunRegeneracionBase(reg_base.value, 1);
@@ -3502,7 +2975,7 @@ function v_nventaja_res(event) {
   checkWarningPMActuales(pm_actuales.value, pm_totales.value);
 }
 
-function v_pd_totales(event) {
+function v_pe_totales(event) {
   event.value = floor(event.value);
 
   if (event.value < 250) {
@@ -3513,22 +2986,22 @@ function v_pd_totales(event) {
     event.rc = false;
   } else {
     nivel.value = floor((event.value - 250) / 50);
-    pm_totales.value = 6 + n(nivel.value);
-    pd_totales_combate.value = floor(event.value / 2);
+    pm_totales.value = 6 + N(nivel.value);
+    pe_totales_combate.value = floor(event.value / 2);
 
     if (nventaja_res_fisica.value < 0) {
-      final_res_fisica.value = (30 + nivel.value * 5 + n(con_bono.value)) / 2;
+      final_res_fisica.value = (30 + nivel.value * 5 + N(con_bono.value)) / 2;
     } else {
       actualizarField(final_res_fisica, base_res.value, 30 + nivel.value * 5);
     }
     if (nventaja_res_venenos.value < 0) {
-      final_res_venenos.value = (30 + nivel.value * 5 + n(con_bono.value)) / 2;
+      final_res_venenos.value = (30 + nivel.value * 5 + N(con_bono.value)) / 2;
     } else {
       actualizarField(final_res_venenos, base_res.value, 30 + nivel.value * 5);
     }
     if (nventaja_res_enfermedades.value < 0) {
       final_res_enfermedades.value =
-        (30 + nivel.value * 5 + n(con_bono.value)) / 2;
+        (30 + nivel.value * 5 + N(con_bono.value)) / 2;
     } else {
       actualizarField(
         final_res_enfermedades,
@@ -3537,12 +3010,12 @@ function v_pd_totales(event) {
       );
     }
     if (nventaja_res_frio.value < 0) {
-      final_res_frio.value = (30 + nivel.value * 5 + n(con_bono.value)) / 2;
+      final_res_frio.value = (30 + nivel.value * 5 + N(con_bono.value)) / 2;
     } else {
       actualizarField(final_res_frio, base_res.value, 30 + nivel.value * 5);
     }
     if (nventaja_res_calor.value < 0) {
-      final_res_calor.value = (30 + nivel.value * 5 + n(con_bono.value)) / 2;
+      final_res_calor.value = (30 + nivel.value * 5 + N(con_bono.value)) / 2;
     } else {
       actualizarField(final_res_calor, base_res.value, 30 + nivel.value * 5);
     }
@@ -3568,14 +3041,14 @@ function v_pd_totales(event) {
     }
 
     if (nventaja_ataque.value > 0) {
-      if (s(final_ataque_d.value) != "-" && s(equipo_ataque_d.value) != "-") {
+      if (S(final_ataque_d.value) != "-" && S(equipo_ataque_d.value) != "-") {
         actualizarField(
           final_ataque_d,
           pventaja_ataque.value,
           Math.min(50, nivel.value * 5)
         );
       }
-      if (s(final_ataque_i.value) != "-" && s(equipo_ataque_i.value) != "-") {
+      if (S(final_ataque_i.value) != "-" && S(equipo_ataque_i.value) != "-") {
         actualizarField(
           final_ataque_i,
           pventaja_ataque.value,
@@ -3586,14 +3059,14 @@ function v_pd_totales(event) {
     }
 
     if (nventaja_parada.value > 0) {
-      if (s(final_parada_d.value) != "-" && s(equipo_parada_d.value) != "-") {
+      if (S(final_parada_d.value) != "-" && S(equipo_parada_d.value) != "-") {
         actualizarField(
           final_parada_d,
           pventaja_parada.value,
           Math.min(50, nivel.value * 5)
         );
       }
-      if (s(final_parada_i.value) != "-" && s(equipo_parada_i.value) != "-") {
+      if (S(final_parada_i.value) != "-" && S(equipo_parada_i.value) != "-") {
         actualizarField(
           final_parada_i,
           pventaja_parada.value,
@@ -3620,10 +3093,10 @@ function v_pd_totales(event) {
     actualizarField(
       final_iniciativa,
       base_iniciativa.value,
-      15 + n(5 * nivel.value)
+      15 + N(5 * nivel.value)
     );
 
-    base_iniciativa.value = 15 + n(5 * nivel.value);
+    base_iniciativa.value = 15 + N(5 * nivel.value);
 
     for (var rama in lista_habilidades) {
       var pventaja_rama = 0;
@@ -3638,13 +3111,13 @@ function v_pd_totales(event) {
           var pventaja_hab_old_v = pventaja_hab.value;
           var final_hab = f("final_" + hab.habilidad);
           pventaja_hab.value =
-            n(10 * nivel.value * nventaja_hab.value) + n(pventaja_rama);
+            N(10 * nivel.value * nventaja_hab.value) + N(pventaja_rama);
           final_hab.value =
-            final_hab.value - n(pventaja_hab_old_v) + n(pventaja_hab.value);
+            final_hab.value - N(pventaja_hab_old_v) + N(pventaja_hab.value);
         }
       });
     }
-    checkWarningPDActuales(pd_actuales.value, event.value);
+    checkWarningPEActuales(pe_actuales.value, event.value);
     checkWarningPMActuales(pm_actuales.value, pm_totales.value);
     checkWarningCombate();
   }
@@ -3662,17 +3135,17 @@ function resetArma(posicion, arma_nueva, calidad) {
   var arma_freq = f("arma" + posicion + "_freq");
   var arma_tam = f("arma" + posicion + "_tam");
   var arma_especial = f("arma" + posicion + "_especial");
-  var arma_check = f("arma" + posicion + "_check").value;
+  var arma_mano = f("arma" + posicion + "_mano").value;
   for (var mano in armas_equipadas) {
     if (armas_equipadas[mano] && armas_equipadas[mano].posicion == posicion) {
-      arma_check = mano;
+      arma_mano = mano;
     }
   }
   var arma_calidad = calidad
     ? calidad
     : f("arma" + posicion + "_calidad").value;
 
-  if (s(arma) == "-") {
+  if (S(arma) == "-") {
     arma_atq.value = "-";
     arma_par.value = "-";
     arma_db.value = "-";
@@ -3686,19 +3159,19 @@ function resetArma(posicion, arma_nueva, calidad) {
   } else {
     lista_armas.some(function (l_arma) {
       if (l_arma.arma == arma) {
-        arma_atq.value = n(l_arma.arma_atq) + n(5 * arma_calidad);
-        arma_par.value = n(l_arma.arma_par) + n(5 * arma_calidad);
-        arma_db.value = n(l_arma.arma_db) + n(10 * arma_calidad);
-        arma_iniciativa.value = n(l_arma.arma_iniciativa) + n(5 * arma_calidad);
+        arma_atq.value = N(l_arma.arma_atq) + N(5 * arma_calidad);
+        arma_par.value = N(l_arma.arma_par) + N(5 * arma_calidad);
+        arma_db.value = N(l_arma.arma_db) + N(10 * arma_calidad);
+        arma_iniciativa.value = N(l_arma.arma_iniciativa) + N(5 * arma_calidad);
         arma_freq.value = l_arma.arma_freq;
         arma_clase.value = l_arma.arma_clase;
         arma_tam.value = l_arma.arma_tam;
         arma_especial.value = l_arma.arma_especial;
         arma_fue_bono.value =
-          arma_check == "D+I" && arma_clase.value != "Sin armas"
-            ? n(fue_bono.value) + 10
+          arma_mano == "D+I" && arma_clase.value != "Sin armas"
+            ? N(fue_bono.value) + 10
             : fue_bono.value;
-        arma_df.value = Math.max(0, n(arma_db.value) + n(arma_fue_bono.value));
+        arma_df.value = Math.max(0, N(arma_db.value) + N(arma_fue_bono.value));
 
         return true;
       }
@@ -3719,7 +3192,7 @@ function resetAtributosArmadura(posicion, armadura_nueva, calidad_nueva) {
     ? calidad_nueva
     : f("armadura" + posicion + "_calidad").value;
 
-  if (s(armadura) == "-") {
+  if (S(armadura) == "-") {
     armadura_def.value = "-";
     armadura_reqarm.value = "-";
     armadura_advertir.value = "-";
@@ -3731,19 +3204,19 @@ function resetAtributosArmadura(posicion, armadura_nueva, calidad_nueva) {
   } else {
     lista_armaduras.some(function (l_armadura) {
       if (l_armadura.armadura == armadura) {
-        armadura_def.value = n(l_armadura.def) + n(10 * armadura_calidad);
+        armadura_def.value = N(l_armadura.def) + N(10 * armadura_calidad);
         armadura_reqarm.value = Math.max(
           0,
           l_armadura.reqarm - 5 * armadura_calidad
         );
         armadura_advertir.value =
-          s(l_armadura.advertir) == "-"
+          S(l_armadura.advertir) == "-"
             ? "-"
-            : Math.min(0, n(l_armadura.advertir) + n(5 * armadura_calidad));
+            : Math.min(0, N(l_armadura.advertir) + N(5 * armadura_calidad));
         armadura_mov.value =
-          s(l_armadura.mov) == "-"
+          S(l_armadura.mov) == "-"
             ? "-"
-            : Math.min(0, n(l_armadura.mov) + n(5 * armadura_calidad));
+            : Math.min(0, N(l_armadura.mov) + N(5 * armadura_calidad));
         armadura_dureza.value = l_armadura.dureza;
 
         return true;
@@ -3770,20 +3243,20 @@ function aplicarNegativosArma(mano) {
     resetArma(posicion);
   }
 
-  if (s(arma_freq.value).indexOf("/") > -1) {
+  if (S(arma_freq.value).indexOf("/") > -1) {
     if (mano_v == "D" || mano_v == "I") {
-      arma_freq.value = s(arma_freq.value).substr(
-        s(arma_freq.value).indexOf("/") + 2
+      arma_freq.value = S(arma_freq.value).substr(
+        S(arma_freq.value).indexOf("/") + 2
       );
     } else if (mano_v == "D+I") {
-      arma_freq.value = s(arma_freq.value).substr(
+      arma_freq.value = S(arma_freq.value).substr(
         0,
-        s(arma_freq.value).indexOf(" ")
+        S(arma_freq.value).indexOf(" ")
       );
     }
   }
   // Negativos por no tener fuerza requerida
-  if (s(arma_freq.value) != "-") {
+  if (S(arma_freq.value) != "-") {
     var fue_req_diff = arma_freq.value - fue_actual.value;
     if (fue_req_diff > 0) {
       arma_atq.value -= 10 * fue_req_diff;
@@ -3874,61 +3347,61 @@ function aplicarNegativosArma(mano) {
     equipo_parada_d.value = arma_par.value;
     equipo_ataque_d.value = arma_atq.value;
     final_ataque_d.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_d.value) +
-      n(esp_ataque_d.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_d.value) +
+      N(esp_ataque_d.value);
     final_parada_d.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_d.value) +
-      n(esp_parada_d.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_d.value) +
+      N(esp_parada_d.value);
   } else if (mano_v == "I") {
     equipo_parada_i.value = arma_par.value;
     equipo_ataque_i.value = arma_atq.value;
     final_ataque_i.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_i.value) +
-      n(esp_ataque_i.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_i.value) +
+      N(esp_ataque_i.value);
     final_parada_i.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_i.value) +
-      n(esp_parada_i.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_i.value) +
+      N(esp_parada_i.value);
   } else {
     equipo_parada_i.value = arma_par.value;
     equipo_ataque_i.value = arma_atq.value;
     equipo_parada_d.value = arma_par.value;
     equipo_ataque_d.value = arma_atq.value;
     final_ataque_i.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_i.value) +
-      n(esp_ataque_i.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_i.value) +
+      N(esp_ataque_i.value);
     final_ataque_d.value =
-      n(pd_ataque.value) +
-      n(des_bono.value) +
-      n(pventaja_ataque.value) +
-      n(equipo_ataque_d.value) +
-      n(esp_ataque_d.value);
+      N(pe_ataque.value) +
+      N(des_bono.value) +
+      N(pventaja_ataque.value) +
+      N(equipo_ataque_d.value) +
+      N(esp_ataque_d.value);
     final_parada_i.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_i.value) +
-      n(esp_parada_i.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_i.value) +
+      N(esp_parada_i.value);
     final_parada_d.value =
-      n(pd_parada.value) +
-      n(des_bono.value) +
-      n(pventaja_parada.value) +
-      n(equipo_parada_d.value) +
-      n(esp_parada_d.value);
+      N(pe_parada.value) +
+      N(des_bono.value) +
+      N(pventaja_parada.value) +
+      N(equipo_parada_d.value) +
+      N(esp_parada_d.value);
   }
 
   arma_df.value = Math.max(0, arma_db.value + arma_fue_bono.value);
@@ -3990,7 +3463,7 @@ function countReqArmTotalYelmos() {
     yelmos_equipados.Blando[2],
   ].forEach(function (yelmo_array) {
     if (yelmo_array) {
-      reqarm_total += n(yelmo_array.reqarm);
+      reqarm_total += N(yelmo_array.reqarm);
     }
   });
 
@@ -4005,7 +3478,7 @@ function countReqArmTotalArmaduras() {
     armaduras_equipadas.Blanda[2],
   ].forEach(function (armadura_array) {
     if (armadura_array) {
-      reqarm_total += n(armadura_array.reqarm);
+      reqarm_total += N(armadura_array.reqarm);
     }
   });
 
@@ -4036,10 +3509,10 @@ function actualizarHabilidad(habilidad) {
   }
 
   final_habilidad.value =
-    n(base_habilidad.value) +
-    n(bono) +
-    n(pventaja_habilidad.value) +
-    n(equipo_habilidad.value);
+    N(base_habilidad.value) +
+    N(bono) +
+    N(pventaja_habilidad.value) +
+    N(equipo_habilidad.value);
 }
 
 function desequiparArmaduraYelmo(posicion) {
@@ -4114,7 +3587,7 @@ function equiparArmaduraYelmo(armadura_yelmo) {
 }
 
 function actualizarField(field, old_value, new_value) {
-  field.value = n(field.value) + n(new_value) - n(old_value);
+  field.value = N(field.value) + N(new_value) - N(old_value);
 }
 
 function actualizarFinal(event) {
@@ -4137,12 +3610,16 @@ function f(value) {
   return this.getField(value);
 }
 
-function n(value) {
+function N(value) {
   return Number(value);
 }
 
-function s(value) {
+function S(value) {
   return String(value);
+}
+
+function B(value) {
+  return Boolean(value);
 }
 
 function floor(value) {
