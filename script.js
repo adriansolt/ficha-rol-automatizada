@@ -1,5 +1,7 @@
 var i, j, k, posicion;
 
+var MAX_CARGA_ARMADURA = 7;
+
 var lista_habilidades = {
   sensoriales: [
     {
@@ -211,7 +213,7 @@ var lista_vida_base_por_nivel = [
   30, // 20
 ];
 
-var lista_armadura = [
+var lista_armaduras = [
   {
     peso: "Muy ligera",
     def: 10,
@@ -524,19 +526,21 @@ for (i = 1; i <= 7; i++) {
       advertir: S(f("armadura" + i + "_advertir").value),
       movimiento: S(f("armadura" + i + "_mov").value),
       calidad: S(f("armadura" + i + "_calidad").value),
-      cabeza: B(f("armadura" + i + "_cabeza").isBoxChecked(0)),
-      espalda: B(f("armadura" + i + "_espalda").isBoxChecked(0)),
-      pecho: B(f("armadura" + i + "_pecho").isBoxChecked(0)),
-      hombro_izq: B(f("armadura" + i + "_hombro_izq").isBoxChecked(0)),
-      hombro_der: B(f("armadura" + i + "_hombro_der").isBoxChecked(0)),
-      brazo_izq: B(f("armadura" + i + "_brazo_izq").isBoxChecked(0)),
-      brazo_der: B(f("armadura" + i + "_brazo_der").isBoxChecked(0)),
-      mano_izq: B(f("armadura" + i + "_mano_izq").isBoxChecked(0)),
-      mano_der: B(f("armadura" + i + "_mano_der").isBoxChecked(0)),
-      pierna_izq: B(f("armadura" + i + "_pierna_izq").isBoxChecked(0)),
-      pierna_der: B(f("armadura" + i + "_pierna_der").isBoxChecked(0)),
-      pie_izq: B(f("armadura" + i + "_pie_izq").isBoxChecked(0)),
-      pie_der: B(f("armadura" + i + "_pie_der").isBoxChecked(0)),
+      zona: {
+        cabeza: B(f("armadura" + i + "_cabeza").isBoxChecked(0)),
+        espalda: B(f("armadura" + i + "_espalda").isBoxChecked(0)),
+        pecho: B(f("armadura" + i + "_pecho").isBoxChecked(0)),
+        hombro_izq: B(f("armadura" + i + "_hombro_izq").isBoxChecked(0)),
+        hombro_der: B(f("armadura" + i + "_hombro_der").isBoxChecked(0)),
+        brazo_izq: B(f("armadura" + i + "_brazo_izq").isBoxChecked(0)),
+        brazo_der: B(f("armadura" + i + "_brazo_der").isBoxChecked(0)),
+        mano_izq: B(f("armadura" + i + "_mano_izq").isBoxChecked(0)),
+        mano_der: B(f("armadura" + i + "_mano_der").isBoxChecked(0)),
+        pierna_izq: B(f("armadura" + i + "_pierna_izq").isBoxChecked(0)),
+        pierna_der: B(f("armadura" + i + "_pierna_der").isBoxChecked(0)),
+        pie_izq: B(f("armadura" + i + "_pie_izq").isBoxChecked(0)),
+        pie_der: B(f("armadura" + i + "_pie_der").isBoxChecked(0)),
+      },
     });
   }
 }
@@ -1228,42 +1232,49 @@ function v_atributo(event) {
 
 function v_armadura_eq(event) {
   posicion = event.target.name.substr(8, 1);
-  var armadura = f("armadura" + posicion);
+  var armadura = {
+    posicion: i,
+    peso: S(f("armadura" + i + "_peso").value),
+    reqarm: S(f("armadura" + i + "_reqarm").value),
+    def: S(f("armadura" + i + "_def").value),
+    advertir: S(f("armadura" + i + "_advertir").value),
+    movimiento: S(f("armadura" + i + "_mov").value),
+    calidad: S(f("armadura" + i + "_calidad").value),
+    zona: {
+      cabeza: B(f("armadura" + i + "_cabeza").isBoxChecked(0)),
+      espalda: B(f("armadura" + i + "_espalda").isBoxChecked(0)),
+      pecho: B(f("armadura" + i + "_pecho").isBoxChecked(0)),
+      hombro_izq: B(f("armadura" + i + "_hombro_izq").isBoxChecked(0)),
+      hombro_der: B(f("armadura" + i + "_hombro_der").isBoxChecked(0)),
+      brazo_izq: B(f("armadura" + i + "_brazo_izq").isBoxChecked(0)),
+      brazo_der: B(f("armadura" + i + "_brazo_der").isBoxChecked(0)),
+      mano_izq: B(f("armadura" + i + "_mano_izq").isBoxChecked(0)),
+      mano_der: B(f("armadura" + i + "_mano_der").isBoxChecked(0)),
+      pierna_izq: B(f("armadura" + i + "_pierna_izq").isBoxChecked(0)),
+      pierna_der: B(f("armadura" + i + "_pierna_der").isBoxChecked(0)),
+      pie_izq: B(f("armadura" + i + "_pie_izq").isBoxChecked(0)),
+      pie_der: B(f("armadura" + i + "_pie_der").isBoxChecked(0)),
+    },
+  };
   if (event.value == "Eq.") {
-    if (S(armadura.value) == "-" || noCabeArmadura(posicion)) {
+    if (
+      armadura.peso === "-" ||
+      armaduraSinZonas(posicion) ||
+      noCabeArmadura(armadura)
+    ) {
       event.rc = false;
     } else {
-      resetAtributosArmadura(posicion);
-
-      equiparArmaduraYelmo({
-        posicion: posicion,
-        armadura: f("armadura" + posicion).value,
-        def: f("armadura" + posicion + "_def").value,
-        reqarm: f("armadura" + posicion + "_reqarm").value,
-        advertir: f("armadura" + posicion + "_advertir").value,
-        mov: f("armadura" + posicion + "_mov").value,
-        dureza: f("armadura" + posicion + "_dureza").value,
-        clase: f("armadura" + posicion).value.split(" ")[0],
-        calidad: f("armadura" + posicion + "_calidad").value,
-      });
+      armaduras_equipadas.push(armadura);
 
       calculoTotalArmaduras();
     }
   } else {
     resetAtributosArmadura(posicion);
 
-    desequiparArmaduraYelmo(posicion);
+    desequiparArmadura(armadura.posicion);
 
     calculoTotalArmaduras();
   }
-}
-
-function v_armadura(event) {
-  posicion = event.target.name.substr(8, 1);
-  f(event.target.name + "_calidad").value = 0;
-  f(event.target.name + "_eq").value = "-";
-
-  resetAtributosArmadura(posicion, event.value);
 }
 
 function v_armadura_calidad(event) {
@@ -1394,7 +1405,7 @@ function v_arma_calidad(event) {
   }
 }
 
-// TABLA DE ARMAS
+// APRENDIZAJE EN ARMAS
 
 function v_aprendizaje_arma_nivel(event) {
   posicion = event.target.name.substr(16, 1);
@@ -1436,195 +1447,103 @@ function v_aprendizaje_arma_nivel(event) {
       armas_aprendidas.pop();
     }
   }
+
+  aplicarNegativosArmas();
+}
+
+function v_aprendizaje_arma_tipo(event) {
+  posicion = event.target.name.substr(16, 1);
+  var aprendizaje_arma_nivel = f("aprendizaje_arma" + posicion + "_nivel");
+  var aprendizaje_arma_peso = f("aprendizaje_arma" + posicion + "_peso");
+  if (
+    (N(posicion) > 1 &&
+      S(f("aprendizaje_arma" + (posicion - 1) + "_nivel").value) === "-") ||
+    (N(posicion) < 7 &&
+      S(f("aprendizaje_arma" + (N(posicion) + 1) + "_nivel").value) !== "-")
+  ) {
+    event.rc = false;
+  } else if (S(aprendizaje_arma_nivel.value) !== "-") {
+    aprendizaje_arma_nivel.value = "-";
+    aprendizaje_arma_peso.value = "-";
+  } else if (
+    event.value === "Sin armas" &&
+    S(aprendizaje_arma_peso.value) !== "-"
+  ) {
+    aprendizaje_arma_peso.value = "-";
+  }
+}
+
+function v_aprendizaje_arma_peso(event) {
+  posicion = event.target.name.substr(16, 1);
+  var aprendizaje_arma_nivel = f("aprendizaje_arma" + posicion + "_nivel");
+  var aprendizaje_arma_tipo = f("aprendizaje_arma" + posicion + "_tipo");
+  var aprendizaje_arma_pe = f("aprendizaje_arma" + posicion + "_pe");
+  if (aprendizaje_arma_tipo.value === "Sin armas") {
+    event.rc = false;
+  } else {
+    if (S(aprendizaje_arma_nivel.value) !== "-") {
+      armas_aprendidas[posicion - 1].peso = event.value;
+      aprendizaje_arma_pe.value = calcularAprendizajeArmaPE(posicion - 1);
+    }
+  }
 }
 
 function calcularAprendizajeArmaPE(pos) {
-  var coste;
-  var similar = false;
-  var tipologia;
-  if (armas_aprendidas[pos].peso === "Todas") {
-    if (armas_aprendidas[pos].nivel === "Alto") {
-      coste = 25;
-    } else if (armas_aprendidas[pos].nivel === "Medio") {
-      coste = 20;
-    } else {
-      coste = 15;
-    }
-  } else {
-    for (i = 0; i < pos && !similar && !tipologia; i++) {
-      if (armas_aprendidas[pos].tipo === armas_aprendidas[i].tipo) {
-        if (armas_aprendidas[i].peso == "Todas") {
-          tipologia = armas_aprendidas[i].nivel;
-        } else if (armas_aprendidas[i].nivel == "Alto") {
-          similar = true;
-        }
-      }
-    }
-    if (tipologia) {
-      if (tipologia == "Bajo") {
-        if (armas_aprendidas[pos].nivel === "Bajo") {
-          coste = 0;
-        } else if (armas_aprendidas[pos].nivel === "Medio") {
-          coste = 5;
-        } else {
-          coste = 10;
-        }
-      } else if (tipologia == "Medio") {
-        if (
-          armas_aprendidas[pos].nivel === "Bajo" ||
-          armas_aprendidas[pos].nivel === "Medio"
-        ) {
-          coste = 0;
-        } else {
-          coste = 5;
-        }
+  var coste = 0;
+  if (pos > 0) {
+    var similar = false;
+    var tipologia;
+    if (armas_aprendidas[pos].peso === "Todas") {
+      if (armas_aprendidas[pos].nivel === "Alto") {
+        coste = 25;
+      } else if (armas_aprendidas[pos].nivel === "Medio") {
+        coste = 20;
       } else {
-        coste = 0;
+        coste = 15;
       }
     } else {
-      if (armas_aprendidas[pos].nivel == "Bajo") {
-        coste = similar ? 0 : 5;
-      } else if (armas_aprendidas[pos].nivel == "Medio") {
-        coste = 5;
-      } else {
-        coste = similar ? 5 : 10;
-      }
-    }
-  }
-
-  return coste;
-}
-
-function v_tabla_arma(event) {
-  posicion = event.target.name.substr(event.target.name.length - 1);
-  var coste_pe = f(event.target.name + "_pe");
-  var coste_pe_old_v = coste_pe.value;
-  var arma_clase = f(event.target.name + "_clase");
-
-  if (
-    (N(posicion) > 1 &&
-      N(f("tabla_arma" + (posicion - 1) + "_nivel").value) == 0) ||
-    (N(posicion) < 7 &&
-      N(f("tabla_arma" + (N(posicion) + 1) + "_nivel").value) > 0)
-  ) {
-    event.rc = false;
-  } else {
-    if (S(event.value) == "-" || S(f(event.target.name).value) != "-") {
-      tablas_arma_aprendidas.pop();
-    }
-
-    if (S(event.value) == "-") {
-      coste_pe.value = 0;
-      arma_clase.value = "-";
-    } else if (
-      event.value == event.value.toUpperCase()
-      // || event.value.substr(0, 3) == "E. "
-    ) {
-      coste_pe.value = 25;
-      lista_tabla_armas_estilos.some(function (tabla_arma) {
-        if (tabla_arma.tabla == event.value) {
-          arma_clase.value = tabla_arma.clase;
-          tablas_arma_aprendidas.push({
-            arma: event.value,
-            clase: tabla_arma.clase,
-          });
-          return true;
-        }
-      });
-    } else {
-      lista_armas.some(function (arma) {
-        if (arma.arma == event.value) {
-          arma_clase.value = arma.arma_clase;
-          tablas_arma_aprendidas.push({
-            arma: event.value,
-            clase: arma.arma_clase,
-          });
-          return true;
-        }
-      });
-      var encontrado = false;
-      var similar = false;
-      for (i = 1; i < posicion && !encontrado; i++) {
-        var t_arma = f("tabla_arma" + i);
-        var t_arma_clase = f("tabla_arma" + i + "_clase");
-
-        if (
-          t_arma.value == event.value ||
-          (t_arma_clase.value == arma_clase.value &&
-            t_arma.value == t_arma.value.toUpperCase())
-        ) {
-          coste_pe.value = 0;
-          encontrado = true;
-        } else {
-          if (t_arma_clase.value.indexOf("/") > -1) {
-            if (
-              !similar &&
-              arma_clase.value.indexOf(
-                t_arma_clase.value.substr(0, t_arma_clase.value.indexOf(" "))
-              ) > -1
-            ) {
-              similar = true;
-            }
-            if (
-              !similar &&
-              arma_clase.value.indexOf(
-                t_arma_clase.value.substr(t_arma_clase.value.indexOf("/") + 2)
-              ) > -1
-            ) {
-              similar = true;
-            }
-          } else if (arma_clase.value.indexOf("/") > -1) {
-            if (
-              !similar &&
-              t_arma_clase.value.indexOf(
-                arma_clase.value.substr(0, arma_clase.value.indexOf(" "))
-              ) > -1
-            ) {
-              similar = true;
-            }
-            if (
-              !similar &&
-              t_arma_clase.value.indexOf(
-                arma_clase.value.substr(arma_clase.value.indexOf("/") + 2)
-              ) > -1
-            ) {
-              similar = true;
-            }
-          } else {
-            if (t_arma_clase.value == arma_clase.value && !similar) {
-              similar = true;
-            }
+      for (i = 0; i < pos && !similar && !tipologia; i++) {
+        if (armas_aprendidas[pos].tipo === armas_aprendidas[i].tipo) {
+          if (armas_aprendidas[i].peso == "Todas") {
+            tipologia = armas_aprendidas[i].nivel;
+          } else if (armas_aprendidas[i].nivel == "Alto") {
+            similar = true;
           }
         }
       }
-
-      if (!encontrado && posicion > 1) {
-        coste_pe.value = similar ? 5 : 10;
-      }
-    }
-    if (posicion > 1) {
-      actualizarField(pe_actuales, coste_pe_old_v, coste_pe.value);
-    }
-
-    if (armas_equipadas["D+I"]) {
-      resetArma(armas_equipadas["D+I"].posicion);
-    } else {
-      if (armas_equipadas["D"] || armas_equipadas["I"]) {
-        if (armas_equipadas["D"]) {
-          resetArma(armas_equipadas["D"].posicion);
-        }
-        if (armas_equipadas["I"]) {
-          resetArma(armas_equipadas["I"].posicion);
+      if (tipologia) {
+        if (tipologia == "Bajo") {
+          if (armas_aprendidas[pos].nivel === "Medio") {
+            coste = 5;
+          } else if (armas_aprendidas[pos].nivel === "Alto") {
+            coste = 10;
+          }
+        } else if (tipologia == "Medio") {
+          if (armas_aprendidas[pos].nivel === "Alto") {
+            coste = 5;
+          }
         }
       } else {
-        resetArma(0);
+        if (armas_aprendidas[pos].nivel == "Bajo") {
+          coste = similar ? 0 : 5;
+        } else if (armas_aprendidas[pos].nivel == "Medio") {
+          coste = 5;
+        } else {
+          coste = similar ? 5 : 10;
+        }
       }
     }
 
-    aplicarNegativosArmas();
+    actualizarField(
+      pe_actuales,
+      f("aprendizaje_arma" + (N(pos) + 1) + "_pe"),
+      coste
+    );
+
+    checkWarningPEActuales(pe_actuales.value, pe_totales.value);
   }
 
-  checkWarningPEActuales(pe_actuales.value, pe_totales.value);
+  return coste;
 }
 
 function checkWarningPEActuales(pe_act, pe_tot) {
@@ -2543,112 +2462,102 @@ function actualizarDiffX(event) {
 
 function calculoTotalArmaduras() {
   var armaduras_reqarm_total = 0;
-  var armaduras_mov_total = 0;
-  var yelmos_reqarm_total = 0;
-  var yelmos_advertir_total = 0;
-  var num_yelmos = 0;
-  var num_armaduras = 0;
+  var armaduras_movimiento_total = 0;
+  var armaduras_advertir_total = 0;
 
-  var armadura_mov;
-  var armadura_reqarm;
-
-  var yelmo_advertir;
-  var yelmo_reqarm;
-
-  [
-    armaduras_equipadas.Dura,
-    armaduras_equipadas.Blanda[1],
-    armaduras_equipadas.Blanda[2],
-  ].forEach(function (armadura_array) {
-    if (armadura_array) {
-      armadura_mov = f("armadura" + armadura_array.posicion + "_mov");
-      armadura_reqarm = f("armadura" + armadura_array.posicion + "_reqarm");
-      armaduras_mov_total += N(armadura_mov.value);
-      armaduras_reqarm_total += N(armadura_reqarm.value);
-
-      num_armaduras++;
-    }
+  armaduras_equipadas.forEach(function (armadura) {
+    // for (var zona in armadura.zona) {
+    //   if (armadura.zona[zona]) {
+    armaduras_movimiento_total =
+      N(armaduras_movimiento_total) + N(armadura.movimiento);
+    armaduras_reqarm_total = N(armaduras_reqarm_total) + N(armadura.reqarm);
+    armaduras_advertir_total =
+      N(armaduras_advertir_total) + N(armadura.advertir);
+    //   }
+    // }
   });
 
-  if (num_armaduras > 0) {
+  if (armaduras_equipadas.length > 0) {
     var diff_reqarm_armaduras = final_llA.value - armaduras_reqarm_total;
     if (diff_reqarm_armaduras > 0) {
-      armaduras_mov_total = Math.min(
+      armaduras_movimiento_total = Math.min(
         0,
-        N(armaduras_mov_total) + floor(diff_reqarm_armaduras / 50) * 10
+        N(armaduras_movimiento_total) + floor(diff_reqarm_armaduras / 50) * 10
+      );
+      armaduras_advertir_total = Math.min(
+        0,
+        N(armaduras_advertir_total) + floor(diff_reqarm_armaduras / 50) * 10
       );
     }
-    armaduras_mov_total = armaduras_mov_total - 20 * (num_armaduras - 1);
+    armaduras_movimiento_total =
+      armaduras_movimiento_total - 20 * (armaduras_equipadas.length - 1);
     if (diff_reqarm_armaduras < 0) {
-      armaduras_mov_total = armaduras_mov_total + diff_reqarm_armaduras;
+      armaduras_movimiento_total =
+        armaduras_movimiento_total + diff_reqarm_armaduras;
+    }
+    armaduras_advertir_total =
+      armaduras_advertir_total - 20 * (armaduras_equipadas.length - 1);
+    if (diff_reqarm_armaduras < 0) {
+      armaduras_advertir_total =
+        armaduras_advertir_total + diff_reqarm_armaduras;
     }
   }
 
   actualizarField(
     final_acrobacias,
     equipo_acrobacias.value,
-    armaduras_mov_total
+    armaduras_movimiento_total
   );
-  actualizarField(final_atletismo, equipo_atletismo.value, armaduras_mov_total);
-  actualizarField(final_nadar, equipo_nadar.value, armaduras_mov_total);
-  actualizarField(final_trepar, equipo_trepar.value, armaduras_mov_total);
-  actualizarField(final_ocultarse, equipo_ocultarse.value, armaduras_mov_total);
-  actualizarField(final_sigilo, equipo_sigilo.value, armaduras_mov_total);
+  actualizarField(
+    final_atletismo,
+    equipo_atletismo.value,
+    armaduras_movimiento_total
+  );
+  actualizarField(final_nadar, equipo_nadar.value, armaduras_movimiento_total);
+  actualizarField(
+    final_trepar,
+    equipo_trepar.value,
+    armaduras_movimiento_total
+  );
+  actualizarField(
+    final_ocultarse,
+    equipo_ocultarse.value,
+    armaduras_movimiento_total
+  );
+  actualizarField(
+    final_sigilo,
+    equipo_sigilo.value,
+    armaduras_movimiento_total
+  );
 
-  equipo_acrobacias.value = armaduras_mov_total;
-  equipo_atletismo.value = armaduras_mov_total;
-  equipo_nadar.value = armaduras_mov_total;
-  equipo_trepar.value = armaduras_mov_total;
-  equipo_ocultarse.value = armaduras_mov_total;
-  equipo_sigilo.value = armaduras_mov_total;
+  actualizarField(final_ver, equipo_ver.value, armaduras_advertir_total);
+  actualizarField(
+    final_escuchar,
+    equipo_escuchar.value,
+    armaduras_advertir_total
+  );
+  actualizarField(final_buscar, equipo_buscar.value, armaduras_advertir_total);
+  actualizarField(
+    final_rastrear,
+    equipo_rastrear.value,
+    armaduras_advertir_total
+  );
 
-  armadura_iniciativa_total.value = armaduras_mov_total;
+  equipo_acrobacias.value = armaduras_movimiento_total;
+  equipo_atletismo.value = armaduras_movimiento_total;
+  equipo_nadar.value = armaduras_movimiento_total;
+  equipo_trepar.value = armaduras_movimiento_total;
+  equipo_ocultarse.value = armaduras_movimiento_total;
+  equipo_sigilo.value = armaduras_movimiento_total;
+
+  equipo_ver.value = armaduras_advertir_total;
+  equipo_escuchar.value = armaduras_advertir_total;
+  equipo_buscar.value = armaduras_advertir_total;
+  equipo_rastrear.value = armaduras_advertir_total;
+
+  armadura_iniciativa_total.value = armaduras_movimiento_total;
   actualizarIniciativa();
   actualizarMovimiento();
-
-  [
-    yelmos_equipados.Duro,
-    yelmos_equipados.Blando[1],
-    yelmos_equipados.Blando[2],
-  ].forEach(function (yelmo_array) {
-    if (yelmo_array) {
-      yelmo_advertir = f("armadura" + yelmo_array.posicion + "_advertir");
-      yelmo_reqarm = f("armadura" + yelmo_array.posicion + "_reqarm");
-      yelmos_advertir_total += N(yelmo_advertir.value);
-      yelmos_reqarm_total += N(yelmo_reqarm.value);
-
-      num_yelmos++;
-    }
-  });
-
-  if (num_yelmos > 0) {
-    var diff_reqarm_yelmos = final_llA.value - yelmos_reqarm_total;
-    if (diff_reqarm_yelmos > 0) {
-      yelmos_advertir_total = Math.min(
-        0,
-        N(yelmos_advertir_total) + floor(diff_reqarm_yelmos / 50) * 10
-      );
-    }
-    yelmos_advertir_total = yelmos_advertir_total - 20 * (num_yelmos - 1);
-    if (diff_reqarm_yelmos < 0) {
-      yelmos_advertir_total = yelmos_advertir_total + diff_reqarm_yelmos;
-    }
-  }
-
-  actualizarField(final_ver, equipo_ver.value, yelmos_advertir_total);
-  actualizarField(final_escuchar, equipo_escuchar.value, yelmos_advertir_total);
-  actualizarField(final_buscar, equipo_buscar.value, yelmos_advertir_total);
-  actualizarField(final_rastrear, equipo_rastrear.value, yelmos_advertir_total);
-
-  equipo_ver.value = yelmos_advertir_total;
-  equipo_escuchar.value = yelmos_advertir_total;
-  equipo_buscar.value = yelmos_advertir_total;
-  equipo_rastrear.value = yelmos_advertir_total;
-
-  actualizarHabilidad("ver");
-  actualizarHabilidad("escuchar");
-  actualizarHabilidad("buscar");
-  actualizarHabilidad("rastrear");
 
   armadura_pecho_lista = [];
   armadura_espalda_lista = [];
@@ -2680,58 +2589,45 @@ function calculoTotalArmaduras() {
     armadura_cabeza_lista.push(armadura0_def.value);
   }
 
-  var armadura_def;
-  var armadura_clase;
-
-  [
-    armaduras_equipadas.Dura,
-    armaduras_equipadas.Blanda[1],
-    armaduras_equipadas.Blanda[2],
-    yelmos_equipados.Duro,
-    yelmos_equipados.Blando[1],
-    yelmos_equipados.Blando[2],
-  ].forEach(function (armadura_yelmo) {
-    if (armadura_yelmo) {
-      armadura_def = f("armadura" + armadura_yelmo.posicion + "_def");
-      armadura_clase = f("armadura" + armadura_yelmo.posicion).value.split(
-        " "
-      )[0];
-
-      switch (armadura_clase) {
-        case "Peto":
-          armadura_pecho_lista.push(armadura_def.value);
-          armadura_espalda_lista.push(armadura_def.value);
-          break;
-        case "Camisola":
-          armadura_pecho_lista.push(armadura_def.value);
-          armadura_espalda_lista.push(armadura_def.value);
-          armadura_hombro_der_lista.push(armadura_def.value);
-          armadura_hombro_izq_lista.push(armadura_def.value);
-          armadura_brazo_der_lista.push(armadura_def.value);
-          armadura_brazo_izq_lista.push(armadura_def.value);
-          armadura_mano_der_lista.push(armadura_def.value);
-          armadura_mano_izq_lista.push(armadura_def.value);
-          break;
-        case "Completa":
-          armadura_pecho_lista.push(armadura_def.value);
-          armadura_espalda_lista.push(armadura_def.value);
-          armadura_hombro_der_lista.push(armadura_def.value);
-          armadura_hombro_izq_lista.push(armadura_def.value);
-          armadura_brazo_der_lista.push(armadura_def.value);
-          armadura_brazo_izq_lista.push(armadura_def.value);
-          armadura_mano_der_lista.push(armadura_def.value);
-          armadura_mano_izq_lista.push(armadura_def.value);
-          armadura_pierna_der_lista.push(armadura_def.value);
-          armadura_pierna_izq_lista.push(armadura_def.value);
-          armadura_pie_der_lista.push(armadura_def.value);
-          armadura_pie_izq_lista.push(armadura_def.value);
-          break;
-        case "Yelmo":
-          armadura_cabeza_lista.push(armadura_def.value);
-          break;
-        default:
-          break;
-      }
+  armaduras_equipadas.forEach(function (armadura) {
+    if (armadura.zona.cabeza) {
+      armadura_cabeza_lista.push(armadura.def);
+    }
+    if (armadura.zona.espalda) {
+      armadura_espalda_lista.push(armadura.def);
+    }
+    if (armadura.zona.pecho) {
+      armadura_pecho_lista.push(armadura.def);
+    }
+    if (armadura.zona.hombro_izq) {
+      armadura_hombro_izq_lista.push(armadura.def);
+    }
+    if (armadura.zona.hombro_der) {
+      armadura_hombro_der_lista.push(armadura.def);
+    }
+    if (armadura.zona.brazo_izq) {
+      armadura_brazo_izq_lista.push(armadura.def);
+    }
+    if (armadura.zona.brazo_der) {
+      armadura_brazo_der_lista.push(armadura.def);
+    }
+    if (armadura.zona.mano_izq) {
+      armadura_mano_izq_lista.push(armadura.def);
+    }
+    if (armadura.zona.mano_der) {
+      armadura_mano_der_lista.push(armadura.def);
+    }
+    if (armadura.zona.pierna_izq) {
+      armadura_pierna_izq_lista.push(armadura.def);
+    }
+    if (armadura.zona.pierna_der) {
+      armadura_pierna_der_lista.push(armadura.def);
+    }
+    if (armadura.zona.pie_izq) {
+      armadura_pie_izq_lista.push(armadura.def);
+    }
+    if (armadura.zona.pie_der) {
+      armadura_pie_der_lista.push(armadura.def);
     }
   });
 
@@ -2749,74 +2645,19 @@ function calculoTotalArmaduras() {
   armadura_pie_izq_lista.sort().reverse();
   armadura_cabeza_lista.sort().reverse();
 
-  armadura_cabeza.value = Math.max(
-    0,
-    totalArmadura(armadura_cabeza_lista) - negativo_armadura_cabeza.value
-  );
-
-  armadura_pecho.value = Math.max(
-    0,
-    totalArmadura(armadura_pecho_lista) - negativo_armadura_pecho.value
-  );
-
-  armadura_espalda.value = Math.max(
-    0,
-    totalArmadura(armadura_espalda_lista) - negativo_armadura_espalda.value
-  );
-
-  armadura_hombro_der.value = Math.max(
-    0,
-    totalArmadura(armadura_hombro_der_lista) -
-      negativo_armadura_hombro_der.value
-  );
-
-  armadura_hombro_izq.value = Math.max(
-    0,
-    totalArmadura(armadura_hombro_izq_lista) -
-      negativo_armadura_hombro_izq.value
-  );
-
-  armadura_brazo_der.value = Math.max(
-    0,
-    totalArmadura(armadura_brazo_der_lista) - negativo_armadura_brazo_der.value
-  );
-
-  armadura_brazo_izq.value = Math.max(
-    0,
-    totalArmadura(armadura_brazo_izq_lista) - negativo_armadura_brazo_izq.value
-  );
-
-  armadura_mano_der.value = Math.max(
-    0,
-    totalArmadura(armadura_mano_der_lista) - negativo_armadura_mano_der.value
-  );
-
-  armadura_mano_izq.value = Math.max(
-    0,
-    totalArmadura(armadura_mano_izq_lista) - negativo_armadura_mano_izq.value
-  );
-
-  armadura_pierna_der.value = Math.max(
-    0,
-    totalArmadura(armadura_pierna_der_lista) -
-      negativo_armadura_pierna_der.value
-  );
-
-  armadura_pierna_izq.value = Math.max(
-    0,
-    totalArmadura(armadura_pierna_izq_lista) -
-      negativo_armadura_pierna_izq.value
-  );
-
-  armadura_pie_der.value = Math.max(
-    0,
-    totalArmadura(armadura_pie_der_lista) - negativo_armadura_pie_der.value
-  );
-
-  armadura_pie_izq.value = Math.max(
-    0,
-    totalArmadura(armadura_pie_izq_lista) - negativo_armadura_pie_izq.value
-  );
+  armaduras_cabeza.value = totalArmadura(armadura_cabeza_lista);
+  armaduras_pecho.value = totalArmadura(armadura_pecho_lista);
+  armaduras_espalda.value = totalArmadura(armadura_espalda_lista);
+  armaduras_hombro_der.value = totalArmadura(armadura_hombro_der_lista);
+  armaduras_hombro_izq.value = totalArmadura(armadura_hombro_izq_lista);
+  armaduras_brazo_der.value = totalArmadura(armadura_brazo_der_lista);
+  armaduras_brazo_izq.value = totalArmadura(armadura_brazo_izq_lista);
+  armaduras_mano_der.value = totalArmadura(armadura_mano_der_lista);
+  armaduras_mano_izq.value = totalArmadura(armadura_mano_izq_lista);
+  armaduras_pierna_der.value = totalArmadura(armadura_pierna_der_lista);
+  armaduras_pierna_izq.value = totalArmadura(armadura_pierna_izq_lista);
+  armaduras_pie_der.value = totalArmadura(armadura_pie_der_lista);
+  armaduras_pie_izq.value = totalArmadura(armadura_pie_izq_lista);
 }
 
 function totalArmadura(lista) {
@@ -2830,25 +2671,124 @@ function totalArmadura(lista) {
   return res;
 }
 
-function noCabeArmadura(posicion) {
-  var armadura_clase = f("armadura" + posicion).value.split(" ")[0];
-  var armadura_dureza = f("armadura" + posicion + "_dureza").value;
-
+function noCabeArmadura(armadura) {
+  var carga = 0,
+    carga_cabeza = 0,
+    carga_espalda = 0,
+    carga_pecho = 0,
+    carga_hombro_izq = 0,
+    carga_hombro_der = 0,
+    carga_brazo_izq = 0,
+    carga_brazo_der = 0,
+    carga_mano_izq = 0,
+    carga_mano_der = 0,
+    carga_pierna_izq = 0,
+    carga_pierna_der = 0,
+    carga_pie_izq = 0,
+    carga_pie_der = 0;
+  armaduras_equipadas.forEach(function (armadura_e) {
+    switch (armadura_e.peso) {
+      case "Muy ligera":
+        carga = 1;
+        break;
+      case "Ligera":
+        carga = 2;
+        break;
+      case "Media":
+        carga = 3;
+        break;
+      case "Pesada":
+        carga = 4;
+        break;
+      case "Muy pesada":
+        carga = 5;
+        break;
+      default:
+        break;
+    }
+    if (armadura_e.zona.cabeza) {
+      carga_cabeza += carga;
+    }
+    if (armadura_e.zona.espalda) {
+      carga_espalda += carga;
+    }
+    if (armadura_e.zona.pecho) {
+      carga_pecho += carga;
+    }
+    if (armadura_e.zona.hombro_izq) {
+      carga_hombro_izq += carga;
+    }
+    if (armadura_e.zona.hombro_der) {
+      carga_hombro_der += carga;
+    }
+    if (armadura_e.zona.brazo_izq) {
+      carga_brazo_izq += carga;
+    }
+    if (armadura_e.zona.brazo_der) {
+      carga_brazo_der += carga;
+    }
+    if (armadura_e.zona.mano_izq) {
+      carga_mano_izq += carga;
+    }
+    if (armadura_e.zona.mano_der) {
+      carga_mano_der += carga;
+    }
+    if (armadura_e.zona.pierna_izq) {
+      carga_pierna_izq += carga;
+    }
+    if (armadura_e.zona.pierna_der) {
+      carga_pierna_der += carga;
+    }
+    if (armadura_e.zona.pie_izq) {
+      carga_pie_izq += carga;
+    }
+    if (armadura_e.zona.pie_der) {
+      carga_pie_der += carga;
+    }
+  });
+  switch (armadura.peso) {
+    case "Muy ligera":
+      carga = 1;
+      break;
+    case "Ligera":
+      carga = 2;
+      break;
+    case "Media":
+      carga = 3;
+      break;
+    case "Pesada":
+      carga = 4;
+      break;
+    case "Muy pesada":
+      carga = 5;
+      break;
+    default:
+      break;
+  }
   return (
-    (armadura_clase == "Yelmo" &&
-      armadura_dureza == "Duro" &&
-      yelmos_equipados.Duro) ||
-    (armadura_clase == "Yelmo" &&
-      armadura_dureza == "Blando" &&
-      yelmos_equipados.Blando[1] &&
-      yelmos_equipados.Blando[2]) ||
-    (armadura_clase != "Yelmo" &&
-      armadura_dureza == "Dura" &&
-      armaduras_equipadas.Dura) ||
-    (armadura_clase != "Yelmo" &&
-      armadura_dureza == "Blanda" &&
-      armaduras_equipadas.Blanda[1] &&
-      armaduras_equipadas.Blanda[2])
+    (armadura.zona.cabeza && N(carga_cabeza) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.espalda &&
+      N(carga_espalda) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.pecho && N(carga_pecho) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.hombro_izq &&
+      N(carga_hombro_izq) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.hombro_der &&
+      N(carga_hombro_der) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.brazo_izq &&
+      N(carga_brazo_izq) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.brazo_der &&
+      N(carga_brazo_der) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.mano_izq &&
+      N(carga_mano_izq) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.mano_der &&
+      N(carga_mano_der) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.pierna_izq &&
+      N(carga_pierna_izq) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.pierna_der &&
+      N(carga_pierna_der) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.pie_izq &&
+      N(carga_pie_izq) + N(carga) > MAX_CARGA_ARMADURA) ||
+    (armadura.zona.pie_der && N(carga_pie_der) + N(carga) > MAX_CARGA_ARMADURA)
   );
 }
 
@@ -2863,6 +2803,24 @@ function manoOcupada(mano, posicion) {
     (armas_equipadas["D+I"] &&
       (mano == "I" || mano == "D" || mano == "D+I") &&
       armas_equipadas["D+I"].posicion != posicion)
+  );
+}
+
+function armaduraSinZonas(pos) {
+  return !(
+    B(f("armadura" + pos + "_cabeza").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_espalda").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_pecho").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_hombro_izq").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_hombro_der").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_brazo_izq").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_brazo_der").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_mano_izq").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_mano_der").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_pierna_izq").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_pierna_der").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_pie_izq").isBoxChecked(0)) ||
+    B(f("armadura" + pos + "_pie_der").isBoxChecked(0))
   );
 }
 
@@ -3179,50 +3137,8 @@ function resetArma(posicion, arma_nueva, calidad) {
   }
 }
 
-function resetAtributosArmadura(posicion, armadura_nueva, calidad_nueva) {
-  var armadura = armadura_nueva
-    ? armadura_nueva
-    : f("armadura" + posicion).value;
-  var armadura_def = f("armadura" + posicion + "_def");
-  var armadura_reqarm = f("armadura" + posicion + "_reqarm");
-  var armadura_advertir = f("armadura" + posicion + "_advertir");
-  var armadura_mov = f("armadura" + posicion + "_mov");
-  var armadura_dureza = f("armadura" + posicion + "_dureza");
-  var armadura_calidad = calidad_nueva
-    ? calidad_nueva
-    : f("armadura" + posicion + "_calidad").value;
-
-  if (S(armadura) == "-") {
-    armadura_def.value = "-";
-    armadura_reqarm.value = "-";
-    armadura_advertir.value = "-";
-    armadura_mov.value = "-";
-    armadura_dureza.value = "-";
-    armadura_calidad = "-";
-  } else if (armadura == "Cuerpo") {
-    armadura_def.value = 10 * armadura_calidad;
-  } else {
-    lista_armaduras.some(function (l_armadura) {
-      if (l_armadura.armadura == armadura) {
-        armadura_def.value = N(l_armadura.def) + N(10 * armadura_calidad);
-        armadura_reqarm.value = Math.max(
-          0,
-          l_armadura.reqarm - 5 * armadura_calidad
-        );
-        armadura_advertir.value =
-          S(l_armadura.advertir) == "-"
-            ? "-"
-            : Math.min(0, N(l_armadura.advertir) + N(5 * armadura_calidad));
-        armadura_mov.value =
-          S(l_armadura.mov) == "-"
-            ? "-"
-            : Math.min(0, N(l_armadura.mov) + N(5 * armadura_calidad));
-        armadura_dureza.value = l_armadura.dureza;
-
-        return true;
-      }
-    });
-  }
+function equiparArmadura(armadura) {
+  armaduras_equipadas.push(armadura);
 }
 
 function aplicarNegativosArma(mano) {
@@ -3483,107 +3399,6 @@ function countReqArmTotalArmaduras() {
   });
 
   return reqarm_total;
-}
-
-function actualizarHabilidad(habilidad) {
-  var base_habilidad = f("base_" + habilidad);
-  var pventaja_habilidad = f("pventaja_" + habilidad);
-  var equipo_habilidad = f("equipo_" + habilidad);
-  var final_habilidad = f("final_" + habilidad);
-  var bono = 0;
-  var encontrado;
-
-  for (var nombre_rama in lista_habilidades) {
-    var rama = lista_habilidades[nombre_rama];
-    rama.some(function (hab) {
-      if (!encontrado) {
-        if (hab.habilidad == habilidad) {
-          bono = f(hab.atributo + "_bono").value;
-          encontrado = true;
-          return true;
-        }
-      } else {
-        return true;
-      }
-    });
-  }
-
-  final_habilidad.value =
-    N(base_habilidad.value) +
-    N(bono) +
-    N(pventaja_habilidad.value) +
-    N(equipo_habilidad.value);
-}
-
-function desequiparArmaduraYelmo(posicion) {
-  var encontrado = false;
-  if (
-    armaduras_equipadas.Dura &&
-    armaduras_equipadas.Dura.posicion == posicion
-  ) {
-    armaduras_equipadas.Dura = null;
-    encontrado = true;
-  }
-  if (
-    !encontrado &&
-    armaduras_equipadas.Blanda[1] &&
-    armaduras_equipadas.Blanda[1].posicion == posicion
-  ) {
-    armaduras_equipadas.Blanda[1] = null;
-    encontrado = true;
-  }
-  if (
-    !encontrado &&
-    armaduras_equipadas.Blanda[2] &&
-    armaduras_equipadas.Blanda[2].posicion == posicion
-  ) {
-    armaduras_equipadas.Blanda[2] = null;
-    encontrado = true;
-  }
-  if (
-    !encontrado &&
-    yelmos_equipados.Duro &&
-    yelmos_equipados.Duro.posicion == posicion
-  ) {
-    yelmos_equipados.Duro = null;
-    encontrado = true;
-  }
-  if (
-    !encontrado &&
-    yelmos_equipados.Blando[1] &&
-    yelmos_equipados.Blando[1].posicion == posicion
-  ) {
-    yelmos_equipados.Blando[1] = null;
-    encontrado = true;
-  }
-  if (
-    !encontrado &&
-    yelmos_equipados.Blando[2] &&
-    yelmos_equipados.Blando[2].posicion == posicion
-  ) {
-    yelmos_equipados.Blando[2] = null;
-  }
-}
-
-function equiparArmaduraYelmo(armadura_yelmo) {
-  if (armadura_yelmo.clase == "Yelmo") {
-    if (armadura_yelmo.dureza == "Blando") {
-      yelmos_equipados.Blando[yelmos_equipados.Blando[1] ? 2 : 1] =
-        armadura_yelmo;
-    } else {
-      yelmos_equipados.Duro = armadura_yelmo;
-    }
-  } else {
-    if (armadura_yelmo.dureza == "Blanda") {
-      if (armaduras_equipadas.Blanda[1]) {
-        armaduras_equipadas.Blanda[2] = armadura_yelmo;
-      } else {
-        armaduras_equipadas.Blanda[1] = armadura_yelmo;
-      }
-    } else {
-      armaduras_equipadas.Dura = armadura_yelmo;
-    }
-  }
 }
 
 function actualizarField(field, old_value, new_value) {
